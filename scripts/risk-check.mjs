@@ -167,6 +167,10 @@ async function main() {
 
   for (const s of watchlist) {
     try {
+      // A small stagger between symbols, cheap insurance against Finnhub's free-tier
+      // rate limit now that the watchlist has grown — a symbol that does get rate
+      // limited just logs and is skipped for this run, not fatal to the whole job.
+      await new Promise(resolve => setTimeout(resolve, 150));
       const [quote, metrics, news] = await Promise.all([
         fetchJson(`https://finnhub.io/api/v1/quote?symbol=${s.sym}&token=${FINNHUB_API_KEY}`),
         fetchJson(`https://finnhub.io/api/v1/stock/metric?symbol=${s.sym}&metric=all&token=${FINNHUB_API_KEY}`),

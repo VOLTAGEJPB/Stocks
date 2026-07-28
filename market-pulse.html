@@ -367,7 +367,7 @@ function updateMomentumBadge(sym){
 // that shouldn't need to wait on the slower momentum/news cycle to surface.
 const MOMENTUM_DOWN_THRESHOLD = 45; // matches the DOWN cutoff in momentumLabel()
 const NEWS_RISK_THRESHOLD = 60;     // net negative headlines outweigh positive ones
-const EMERGENCY_PCT_THRESHOLD = -7; // a large single-day drop, checked every 30s off the live quote
+const EMERGENCY_PCT_THRESHOLD = -7; // a large single-day drop, checked every 60s off the live quote
 
 function updateRiskBadge(sym){
   const q = quoteCache[sym];
@@ -528,8 +528,10 @@ function startFeeds(){
   refreshSignals();
   clearInterval(window._pulseInterval);
   clearInterval(window._signalsInterval);
-  window._pulseInterval = setInterval(refreshAll, 30000);
-  window._signalsInterval = setInterval(refreshSignals, 900000); // 15 min — momentum/news inputs don't change every 30s
+  // 60s (not 30s) because the watchlist grew — Finnhub's free tier caps at 60 calls/min,
+  // and one quote call per symbol per cycle needs headroom as the list gets longer.
+  window._pulseInterval = setInterval(refreshAll, 60000);
+  window._signalsInterval = setInterval(refreshSignals, 900000); // 15 min — momentum/news inputs don't change every 60s
 }
 
 document.getElementById('save-key').addEventListener('click', ()=>{
