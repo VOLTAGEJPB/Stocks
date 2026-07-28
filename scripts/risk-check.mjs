@@ -120,11 +120,14 @@ async function main() {
       const pct = quote.dp;
       const severity = computeSeverity(momentum, newsRisk, pct);
 
-      const prior = state[s.sym] || { flagged: false, lastAlertAt: null, lastSeverity: null, lastNegCount: 0 };
+      const prior = state[s.sym] || { seen: false, flagged: false, lastAlertAt: null, lastSeverity: null, lastNegCount: 0 };
       const riskNow = momentum !== null && momentum < MOMENTUM_DOWN_THRESHOLD
                     && newsRisk !== null && newsRisk >= NEWS_RISK_THRESHOLD;
-      const emergencyNow = pct <= EMERGENCY_PCT_THRESHOLD
-                         || (negCount - (prior.lastNegCount ?? 0)) >= NEWS_SPIKE_THRESHOLD;
+      // The spike check needs a real prior observation to compare against — without
+      // `prior.seen`, a symbol's first-ever check (or the news backlog after a state
+      // reset) reads as a "sudden spike" purely because the baseline defaults to 0.
+      const newsSpike = prior.seen && (negCount - (prior.lastNegCount ?? 0)) >= NEWS_SPIKE_THRESHOLD;
+      const emergencyNow = pct <= EMERGENCY_PCT_THRESHOLD || newsSpike;
       const flaggedNow = riskNow || emergencyNow;
       const isFirstFlag = flaggedNow && !prior.flagged;
       const isDailyReminder = riskNow && prior.flagged && prior.lastAlertAt
@@ -135,13 +138,18 @@ async function main() {
       if (isFirstFlag || isDailyReminder || isEscalation) {
         const reason = emergencyNow ? "EMERGENCY" : isEscalation ? "ESCALATION" : isFirstFlag ? "NEW" : "REMINDER";
         toAlert.push({ sym: s.sym, name: s.name, momentum, newsRisk, negHeadlines, price: quote.c, pct, reason });
-        state[s.sym] = { flagged: true, lastAlertAt: new Date(now).toISOString(), lastSeverity: severity, lastNegCount: negCount };
+        state[s.sym] = { seen: true, flagged: true, lastAlertAt: new Date(now).toISOString(), lastSeverity: severity, lastNegCount: negCount };
       } else {
+        // lastNegCount always tracks the real current count (flagged or not), so the
+        // next run's spike check measures genuinely new headlines since this check —
+        // never an artificial reset — and lastSeverity/lastAlertAt only move on an
+        // actual alert, so escalation is always measured from what was last emailed.
         state[s.sym] = {
+          seen: true,
           flagged: flaggedNow,
           lastAlertAt: flaggedNow ? prior.lastAlertAt : null,
           lastSeverity: flaggedNow ? (prior.lastSeverity ?? severity) : null,
-          lastNegCount: flaggedNow ? (prior.lastNegCount ?? negCount) : 0,
+          lastNegCount: negCount,
         };
       }
     } catch (err) {
