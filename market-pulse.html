@@ -184,7 +184,7 @@
 </main>
 
 <footer>
-  MARKET PULSE — data via Finnhub.io, refreshed client-side. API key is stored only in your browser's local session, not on any server. Free-tier quotes may lag real-time by a few minutes. Momentum Score = weighted blend of 5-day, month-to-date, 13-week, and 26-week price returns plus position in the 52-week range. Risk Watch = flags a stock when its Momentum Score is falling AND its last 7 days of headlines skew negative on a keyword count, OR immediately on its own for a severe single-day price move (🚨 EMERGENCY). None of this is a prediction, probability, or forecast — all of it is reads on real, past data. Browser notifications only fire while this tab is open; for alerts even when you're away — including immediate re-alerts if a flagged stock gets meaningfully worse the same day, not just once every 24 hours — see the scheduled email workflow in this repo's README.
+  MARKET PULSE — data via Finnhub.io, refreshed client-side. API key is stored only in this browser (localStorage), not on any server, and persists across visits until you clear it. Free-tier quotes may lag real-time by a few minutes. Momentum Score = weighted blend of 5-day, month-to-date, 13-week, and 26-week price returns plus position in the 52-week range. Risk Watch = flags a stock when its Momentum Score is falling AND its last 7 days of headlines skew negative on a keyword count, OR immediately on its own for a severe single-day price move (🚨 EMERGENCY). None of this is a prediction, probability, or forecast — all of it is reads on real, past data. Browser notifications only fire while this tab is open; for alerts even when you're away — including immediate re-alerts if a flagged stock gets meaningfully worse the same day, not just once every 24 hours — see the scheduled email workflow in this repo's README.
 </footer>
 
 <script>
@@ -536,7 +536,7 @@ document.getElementById('save-key').addEventListener('click', ()=>{
   const val = document.getElementById('apikey-field').value.trim();
   if(!val){ return; }
   API_KEY = val;
-  sessionStorage.setItem('finnhub_key', val);
+  localStorage.setItem('finnhub_key', val);
   startFeeds();
 });
 
@@ -550,8 +550,8 @@ document.getElementById('save-key').addEventListener('click', ()=>{
   refreshPaperTrading();
   setInterval(refreshPaperTrading, 900000);
 
-  // restore key from this session only
-  const saved = sessionStorage.getItem('finnhub_key');
+  // restore key across visits — stored only in this browser, never sent anywhere but Finnhub
+  const saved = localStorage.getItem('finnhub_key');
   if(saved){
     document.getElementById('apikey-field').value = saved;
     API_KEY = saved;
