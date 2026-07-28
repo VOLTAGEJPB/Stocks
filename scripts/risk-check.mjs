@@ -31,6 +31,11 @@ const MOMENTUM_WEIGHTS = { fiveDay: 0.15, monthToDate: 0.15, week13: 0.25, week2
 const MOMENTUM_DOWN_THRESHOLD = 45;
 const NEWS_RISK_THRESHOLD = 60;
 
+// A sudden, severe move shouldn't wait for the daily-reminder cadence below.
+const EMERGENCY_PCT_THRESHOLD = -7;   // a large single-day drop (see IBM -25%, TSLA -19%/wk in watchlist.json for scale)
+const NEWS_SPIKE_THRESHOLD = 2;       // this many *new* negative-keyword headlines since the last alert, on their own, is worth an immediate ping
+const ESCALATION_DELTA = 12;          // if things get meaningfully worse since the last alert, re-notify immediately instead of waiting for the daily reminder
+
 function computeMomentum(m, todayPct, price) {
   const parts = [];
   const add = (score, weight) => { if (typeof score === "number" && !Number.isNaN(score)) parts.push({ score, weight }); };
@@ -52,18 +57,31 @@ function computeMomentum(m, todayPct, price) {
 }
 
 function computeNewsRisk(articles, keywords) {
-  if (!Array.isArray(articles) || articles.length === 0) return { score: null, negHeadlines: [] };
-  let neg = 0, pos = 0;
+  if (!Array.isArray(articles) || articles.length === 0) return { score: null, negHeadlines: [], negCount: 0 };
+  let neg = 0, pos = 0, negCount = 0;
   const negHeadlines = [];
   for (const a of articles.slice(0, 25)) {
     const text = `${a.headline || ""} ${a.summary || ""}`.toLowerCase();
     let hit = false;
     for (const kw of keywords.negative) { if (text.includes(kw)) { neg++; hit = true; } }
     for (const kw of keywords.positive) { if (text.includes(kw)) pos++; }
-    if (hit && negHeadlines.length < 3) negHeadlines.push(a.headline);
+    if (hit) {
+      negCount++;
+      if (negHeadlines.length < 3) negHeadlines.push(a.headline);
+    }
   }
   const net = neg - pos;
-  return { score: Math.round(clampScore(net, 6)), negHeadlines };
+  return { score: Math.round(clampScore(net, 6)), negHeadlines, negCount };
+}
+
+// Blends momentum + news + today's move into one "how bad does this look right
+// now" number, used only to detect whether things have gotten meaningfully
+// worse since the last email — not shown as a standalone metric anywhere.
+function computeSeverity(momentum, newsRisk, pct) {
+  const momentumPart = 100 - (momentum ?? 50);
+  const newsPart = newsRisk ?? 50;
+  const dropPart = clampScore(Math.max(0, -(pct ?? 0)), 15);
+  return Math.round(0.4 * momentumPart + 0.35 * newsPart + 0.25 * dropPart);
 }
 
 function dateStr(d) { return d.toISOString().slice(0, 10); }
@@ -98,20 +116,33 @@ async function main() {
       ]);
 
       const momentum = computeMomentum(metrics.metric || null, quote.dp, quote.c);
-      const { score: newsRisk, negHeadlines } = computeNewsRisk(news, keywords);
-      const combined = momentum !== null && momentum < MOMENTUM_DOWN_THRESHOLD
-                     && newsRisk !== null && newsRisk >= NEWS_RISK_THRESHOLD;
+      const { score: newsRisk, negHeadlines, negCount } = computeNewsRisk(news, keywords);
+      const pct = quote.dp;
+      const severity = computeSeverity(momentum, newsRisk, pct);
 
-      const prior = state[s.sym] || { risk: false, lastAlertAt: null };
-      const isNewRisk = combined && !prior.risk;
-      const isStaleReminder = combined && prior.risk && prior.lastAlertAt
+      const prior = state[s.sym] || { flagged: false, lastAlertAt: null, lastSeverity: null, lastNegCount: 0 };
+      const riskNow = momentum !== null && momentum < MOMENTUM_DOWN_THRESHOLD
+                    && newsRisk !== null && newsRisk >= NEWS_RISK_THRESHOLD;
+      const emergencyNow = pct <= EMERGENCY_PCT_THRESHOLD
+                         || (negCount - (prior.lastNegCount ?? 0)) >= NEWS_SPIKE_THRESHOLD;
+      const flaggedNow = riskNow || emergencyNow;
+      const isFirstFlag = flaggedNow && !prior.flagged;
+      const isDailyReminder = riskNow && prior.flagged && prior.lastAlertAt
         && (now - new Date(prior.lastAlertAt).getTime()) >= REALERT_AFTER_MS;
+      const isEscalation = flaggedNow && prior.flagged && prior.lastAlertAt
+        && severity >= (prior.lastSeverity ?? 0) + ESCALATION_DELTA;
 
-      if (isNewRisk || isStaleReminder) {
-        toAlert.push({ sym: s.sym, name: s.name, momentum, newsRisk, negHeadlines, price: quote.c, pct: quote.dp });
-        state[s.sym] = { risk: true, lastAlertAt: new Date(now).toISOString() };
+      if (isFirstFlag || isDailyReminder || isEscalation) {
+        const reason = emergencyNow ? "EMERGENCY" : isEscalation ? "ESCALATION" : isFirstFlag ? "NEW" : "REMINDER";
+        toAlert.push({ sym: s.sym, name: s.name, momentum, newsRisk, negHeadlines, price: quote.c, pct, reason });
+        state[s.sym] = { flagged: true, lastAlertAt: new Date(now).toISOString(), lastSeverity: severity, lastNegCount: negCount };
       } else {
-        state[s.sym] = { risk: combined, lastAlertAt: combined ? prior.lastAlertAt : null };
+        state[s.sym] = {
+          flagged: flaggedNow,
+          lastAlertAt: flaggedNow ? prior.lastAlertAt : null,
+          lastSeverity: flaggedNow ? (prior.lastSeverity ?? severity) : null,
+          lastNegCount: flaggedNow ? (prior.lastNegCount ?? negCount) : 0,
+        };
       }
     } catch (err) {
       console.error(`Skipping ${s.sym}: ${err.message}`);
@@ -136,13 +167,16 @@ async function main() {
     auth: { user: GMAIL_USER, pass: GMAIL_APP_PASSWORD },
   });
 
+  const hasEmergency = toAlert.some(a => a.reason === "EMERGENCY");
+  const reasonLabel = { EMERGENCY: "EMERGENCY — sudden severe move", ESCALATION: "ESCALATION — got meaningfully worse since the last alert", NEW: "new risk flag", REMINDER: "still flagged (daily reminder)" };
+
   const lines = toAlert.map(a => {
     const headline = a.negHeadlines[0] ? `\n    Headline: "${a.negHeadlines[0]}"` : "";
-    return `- ${a.sym} (${a.name}): $${a.price?.toFixed(2)} (${a.pct >= 0 ? "+" : ""}${a.pct?.toFixed(2)}% today), Momentum ${a.momentum}, News Risk ${a.newsRisk}${headline}`;
+    return `- [${reasonLabel[a.reason]}] ${a.sym} (${a.name}): $${a.price?.toFixed(2)} (${a.pct >= 0 ? "+" : ""}${a.pct?.toFixed(2)}% today), Momentum ${a.momentum}, News Risk ${a.newsRisk}${headline}`;
   });
 
   const text = [
-    "MarketPulse Risk Watch — stocks where recent momentum has turned down AND headlines skew negative.",
+    "MarketPulse alert — stocks where recent momentum has turned down and/or headlines/price action look severe.",
     "This is a heuristic reflecting past price/news data, not a prediction, forecast, or investment advice. Verify independently before acting.",
     "",
     ...lines,
@@ -150,14 +184,15 @@ async function main() {
     "https://voltagejpb.github.io/Stocks/market-pulse.html",
   ].join("\n");
 
+  const subjectPrefix = hasEmergency ? "🚨 EMERGENCY" : "MarketPulse Risk Watch";
   await transporter.sendMail({
     from: GMAIL_USER,
     to: ALERT_EMAIL_TO,
-    subject: `MarketPulse Risk Watch: ${toAlert.map(a => a.sym).join(", ")}`,
+    subject: `${subjectPrefix}: ${toAlert.map(a => a.sym).join(", ")}`,
     text,
   });
 
-  console.log(`Sent risk alert email for: ${toAlert.map(a => a.sym).join(", ")}`);
+  console.log(`Sent alert email (${toAlert.map(a => `${a.sym}:${a.reason}`).join(", ")})`);
 }
 
 main().catch(err => {

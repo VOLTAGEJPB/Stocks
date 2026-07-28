@@ -9,9 +9,10 @@ https://voltagejpb.github.io/Stocks/market-pulse.html. Paste in a free
 - **Momentum Score** — a weighted blend of real 5-day, month-to-date,
   13-week, and 26-week price returns plus position in the 52-week range.
   The board sorts by it and a "Trending Up" strip surfaces the top movers.
-- **Risk Watch** — flags a stock only when its Momentum Score has turned
-  down *and* its last 7 days of headlines skew negative on a keyword
-  count. Fires a browser notification while the page is open.
+- **Risk Watch** — flags a stock when its Momentum Score has turned down
+  *and* its last 7 days of headlines skew negative on a keyword count, or
+  immediately on its own for a severe single-day price move (🚨
+  EMERGENCY). Fires a browser notification while the page is open.
 
 Neither is a prediction, probability, or forecast — both are transparent
 reads of real, past price and news data. Not investment advice.
@@ -21,9 +22,21 @@ reads of real, past price and news data. Not investment advice.
 A GitHub Actions workflow (`.github/workflows/risk-alert.yml`) runs
 `scripts/risk-check.mjs` on a schedule (every 30 minutes, roughly US
 market hours, Mon-Fri) to check the same Risk Watch signal server-side
-and email you when a stock newly flags — plus a once-daily reminder while
-it stays flagged. State is tracked in `state/risk-state.json` so you
-don't get the same alert every 30 minutes.
+and email you. State is tracked in `state/risk-state.json` so alerts
+aren't repeated needlessly, but nothing big gets stuck waiting behind a
+quiet period either — an email goes out when:
+
+- a stock **newly** flags (Risk Watch or Emergency),
+- a flagged stock **escalates** — gets meaningfully worse than it was at
+  the last alert (further price drop, more negative headlines, momentum
+  still sliding) — sent immediately, not held for the next scheduled
+  reminder, and
+- a flagged stock is still flagged after 24 hours, as a reminder that it
+  hasn't resolved.
+
+A sudden, severe move (roughly a 7%+ single-day drop, or a fresh burst of
+negative-keyword headlines) is always treated as an emergency and emailed
+right away, whether or not the stock was already on the radar.
 
 This needs a few things set up in the repo that only a repo owner/admin
 can do (Claude can't create secrets or your email credentials):
