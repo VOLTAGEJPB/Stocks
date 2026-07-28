@@ -1,0 +1,40 @@
+name: MarketPulse Risk Alert
+
+on:
+  schedule:
+    # Every 30 minutes, Mon-Fri, ~13:00-21:00 UTC (roughly US market hours;
+    # shifts an hour off during EST vs EDT — good enough for a risk check).
+    - cron: "*/30 13-21 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  risk-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - run: npm ci
+
+      - run: npm run risk-check
+        env:
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+
+      - name: Commit updated risk state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet -- state/risk-state.json; then
+            git add state/risk-state.json
+            git commit -m "Update risk-check state [skip ci]"
+            git push
+          fi

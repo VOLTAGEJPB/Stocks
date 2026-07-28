@@ -92,12 +92,19 @@
   .trending-note{ color:#8A7C61; font-size:11px; letter-spacing:0; margin-left:8px; }
   .trending-list{ margin-top:10px; display:flex; flex-wrap:wrap; gap:18px; font-size:13px; color:#B8AA8F; }
   .trend-chip b{ color:var(--paper); margin-right:6px; }
+  .risk-box{ border-color:var(--red); background:rgba(255,68,56,.06); }
+  .risk-title{ color:var(--red); }
 
   /* ---- momentum badge ---- */
   .momentum-badge{
     font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.05em;
     margin-top:5px; padding:2px 7px; border:1px solid currentColor; display:inline-block; white-space:nowrap;
   }
+  .risk-badge{
+    font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.05em; color:var(--red);
+    margin-top:8px; padding:2px 7px; border:1px solid var(--red); display:none; width:fit-content;
+  }
+  .risk-badge.active{ display:inline-block; }
 
   /* ---- grid ---- */
   main{ max-width:1120px; margin:0 auto; padding:20px 24px 80px; }
@@ -134,7 +141,7 @@
     <span><span class="dot"></span> <span class="label" id="conn-label">CONNECTING</span></span>
     <span class="label">REFRESH: <span id="refresh-clock">--</span></span>
     <input id="apikey-field" type="password" placeholder="Paste your Finnhub API key" />
-    <button id="save-key">Connect Feed</button>
+    <button id="save-key" disabled>Connect Feed</button>
     <select id="sort-select" title="Sort the board">
       <option value="momentum" selected>Sort: Momentum</option>
       <option value="today">Sort: Today's Move</option>
@@ -154,26 +161,24 @@
   </div>
 </div>
 
+<div class="trending risk-strip">
+  <div class="trending-box risk-box">
+    <span class="trending-title risk-title">⚠ RISK WATCH</span><span class="trending-note">flags only when falling momentum AND a spike in negative-leaning headlines both show up — a risk flag, not a prediction</span>
+    <div class="trending-list" id="risk-list">Connect your API key to see risk data.</div>
+  </div>
+</div>
+
 <main>
   <div class="grid" id="grid"></div>
 </main>
 
 <footer>
-  MARKET PULSE — data via Finnhub.io, refreshed client-side. API key is stored only in your browser's local session, not on any server. Free-tier quotes may lag real-time by a few minutes. Momentum Score = weighted blend of 5-day, month-to-date, 13-week, and 26-week price returns plus position in the 52-week range — a read on recent trend strength, not a prediction of future returns.
+  MARKET PULSE — data via Finnhub.io, refreshed client-side. API key is stored only in your browser's local session, not on any server. Free-tier quotes may lag real-time by a few minutes. Momentum Score = weighted blend of 5-day, month-to-date, 13-week, and 26-week price returns plus position in the 52-week range. Risk Watch = flags a stock when its Momentum Score is falling AND its last 7 days of headlines skew negative on a keyword count, OR immediately on its own for a severe single-day price move (🚨 EMERGENCY). None of this is a prediction, probability, or forecast — all of it is reads on real, past data. Browser notifications only fire while this tab is open; for alerts even when you're away — including immediate re-alerts if a flagged stock gets meaningfully worse the same day, not just once every 24 hours — see the scheduled email workflow in this repo's README.
 </footer>
 
 <script>
-const WATCHLIST = [
-  { sym:"TSLA", name:"Tesla", story:"Down ~19% on the week after signaling heavier AI/robotaxi spend — a robotaxi update on the 22nd could flip sentiment fast either way." },
-  { sym:"IBM", name:"IBM", story:"Cratered 25% in one session on a profit warning tied to soft software/infrastructure demand." },
-  { sym:"SKHY", name:"SK Hynix ADR", story:"Record $26.5B Nasdaq debut; swung from an 8% rally to an 11%+ drop within days on AI-memory demand jitters." },
-  { sym:"MU", name:"Micron", story:"Chipmaker caught in the broader semiconductor sell-off/rebound whiplash." },
-  { sym:"LRCX", name:"Lam Research", story:"Moving with the semiconductor-equipment group as AI capex sentiment swings session to session." },
-  { sym:"BAH", name:"Booz Allen Hamilton", story:"Popped 12% after beating earnings estimates and reaffirming guidance — a defense-spending beneficiary." },
-  { sym:"DNA", name:"Ginkgo Bioworks", story:"One of the highest-beta small-caps on the board — big swings on light news flow." },
-  { sym:"AMC", name:"AMC Entertainment", story:"Perennial high-beta retail-trader favorite; still one of the most volatile mid-caps by beta." },
-  { sym:"NVDA", name:"Nvidia", story:"The AI bellwether — calmer than smaller chip names lately, but every AI-spending headline still moves it." }
-];
+let WATCHLIST = [];
+let NEWS_KEYWORDS = { negative: [], positive: [] };
 
 let API_KEY = "";
 let sortMode = "momentum";
@@ -182,10 +187,13 @@ const tape = document.getElementById('tape');
 const connLabel = document.getElementById('conn-label');
 const refreshClock = document.getElementById('refresh-clock');
 const trendingList = document.getElementById('trending-list');
+const riskList = document.getElementById('risk-list');
 const cardEls = {};
 const quoteCache = {};   // sym -> { price, pct }
 const metricsRaw = {};   // sym -> Finnhub /stock/metric "metric" object (or null)
 const momentumCache = {}; // sym -> integer score 0-100, or null
+const riskCache = {};    // sym -> { newsRisk: 0-100|null, negHeadlines: string[], combined: bool }
+const riskAlerted = {};  // sym -> bool, so a browser notification fires once per risk episode, not every refresh
 
 function buildCards(){
   grid.innerHTML = "";
@@ -201,6 +209,7 @@ function buildCards(){
         </div>
       </div>
       <div class="change loading" id="change-${s.sym}">awaiting feed</div>
+      <div class="risk-badge" id="risk-${s.sym}">⚠ RISK WATCH</div>
       <div class="name">${s.name}</div>
       <canvas id="wave-${s.sym}" width="600" height="104"></canvas>
       <div class="story">${s.story}</div>
@@ -209,7 +218,15 @@ function buildCards(){
     cardEls[s.sym] = el;
   });
 }
-buildCards();
+
+async function loadConfig(){
+  const [wl, kw] = await Promise.all([
+    fetch('./watchlist.json').then(r=>r.json()),
+    fetch('./news-keywords.json').then(r=>r.json())
+  ]);
+  WATCHLIST = wl;
+  NEWS_KEYWORDS = kw;
+}
 
 function drawWave(sym, pctChange){
   const canvas = document.getElementById('wave-'+sym);
@@ -247,6 +264,35 @@ async function fetchMetrics(sym){
   const res = await fetch(url);
   if(!res.ok) throw new Error('bad metric response');
   return res.json();
+}
+
+function dateStr(d){ return d.toISOString().slice(0,10); }
+
+async function fetchNews(sym){
+  const to = new Date();
+  const from = new Date(to.getTime() - 7*24*60*60*1000);
+  const url = `https://finnhub.io/api/v1/company-news?symbol=${sym}&from=${dateStr(from)}&to=${dateStr(to)}&token=${API_KEY}`;
+  const res = await fetch(url);
+  if(!res.ok) throw new Error('bad news response');
+  return res.json();
+}
+
+// Keyword-count heuristic over the last 7 days of headlines — not NLP sentiment,
+// just a transparent tally of negative- vs positive-leaning language.
+function computeNewsRisk(articles){
+  if(!Array.isArray(articles) || articles.length === 0) return { score: null, negHeadlines: [] };
+  let neg = 0, pos = 0;
+  const negHeadlines = [];
+  for(const a of articles.slice(0, 25)){
+    const text = `${a.headline||''} ${a.summary||''}`.toLowerCase();
+    let hit = false;
+    for(const kw of NEWS_KEYWORDS.negative){ if(text.includes(kw)){ neg++; hit = true; } }
+    for(const kw of NEWS_KEYWORDS.positive){ if(text.includes(kw)){ pos++; } }
+    if(hit && negHeadlines.length < 3) negHeadlines.push(a.headline);
+  }
+  const net = neg - pos;
+  const score = Math.round(clampScore(net, 6)); // 50 = neutral, 100 = heavily negative-leaning
+  return { score, negHeadlines };
 }
 
 // Maps a real percent-return figure onto a 0-100 scale using a per-horizon
@@ -304,6 +350,47 @@ function updateMomentumBadge(sym){
   badge.className = 'momentum-badge ' + cls;
 }
 
+// A stock flags as risk when BOTH momentum has turned down AND recent
+// headlines skew negative — cuts down on false alarms from either signal alone.
+// It also flags immediately, on its own, on a severe single-day price move —
+// that shouldn't need to wait on the slower momentum/news cycle to surface.
+const MOMENTUM_DOWN_THRESHOLD = 45; // matches the DOWN cutoff in momentumLabel()
+const NEWS_RISK_THRESHOLD = 60;     // net negative headlines outweigh positive ones
+const EMERGENCY_PCT_THRESHOLD = -7; // a large single-day drop, checked every 30s off the live quote
+
+function updateRiskBadge(sym){
+  const q = quoteCache[sym];
+  const momentum = momentumCache[sym];
+  const news = riskCache[sym]?.newsRisk ?? null;
+  const riskNow = momentum !== null && momentum !== undefined && momentum < MOMENTUM_DOWN_THRESHOLD
+                && news !== null && news >= NEWS_RISK_THRESHOLD;
+  const emergencyNow = typeof q?.pct === 'number' && q.pct <= EMERGENCY_PCT_THRESHOLD;
+  const combined = riskNow || emergencyNow;
+  if(riskCache[sym]) riskCache[sym].combined = combined;
+  const badge = document.getElementById('risk-'+sym);
+  if(badge){
+    badge.classList.toggle('active', combined);
+    badge.textContent = emergencyNow ? '🚨 EMERGENCY' : '⚠ RISK WATCH';
+  }
+
+  if(combined && !riskAlerted[sym]){
+    riskAlerted[sym] = true;
+    notifyRisk(sym, emergencyNow);
+  } else if(!combined){
+    riskAlerted[sym] = false; // reset so a future re-entry into risk notifies again
+  }
+}
+
+function notifyRisk(sym, emergency){
+  if(typeof Notification === 'undefined' || Notification.permission !== 'granted') return;
+  const w = WATCHLIST.find(x=>x.sym===sym);
+  const title = emergency ? `🚨 ${sym} sudden large drop` : `⚠ ${sym} risk watch`;
+  const body = emergency
+    ? `${w?.name || sym} moved sharply today. Not a prediction — verify before acting.`
+    : `Momentum turning down + negative news volume on ${w?.name || sym}. Not a prediction — verify before acting.`;
+  new Notification(title, { body });
+}
+
 function applySort(){
   const syms = WATCHLIST.map(s=>s.sym).slice();
   syms.sort((a,b)=>{
@@ -325,6 +412,19 @@ function renderTrending(sortedSyms){
   }).join('');
 }
 
+function renderRiskWatch(){
+  if(!riskList) return;
+  if(!API_KEY){ riskList.textContent = 'Connect your API key to see risk data.'; return; }
+  const flagged = WATCHLIST.filter(s => riskCache[s.sym]?.combined).map(s=>s.sym);
+  if(flagged.length === 0){ riskList.textContent = 'No stocks currently flag both falling momentum and negative news volume.'; return; }
+  riskList.innerHTML = flagged.map(sym=>{
+    const w = WATCHLIST.find(x=>x.sym===sym);
+    const headline = riskCache[sym].negHeadlines[0];
+    const snippet = headline ? ` — "${headline.slice(0,70)}${headline.length>70?'…':''}"` : '';
+    return `<span class="trend-chip"><b>${sym}</b>${w.name}${snippet}</span>`;
+  }).join('');
+}
+
 async function refreshAll(){
   connLabel.textContent = "REFRESHING";
   let tapeStr = "";
@@ -343,6 +443,7 @@ async function refreshAll(){
       changeEl.className = 'change ' + dir;
       drawWave(s.sym, pct||0);
       updateMomentumBadge(s.sym);
+      updateRiskBadge(s.sym); // catches a sudden severe price move immediately, without waiting on the 15-min momentum/news cycle
       tapeStr += `<span><b>${s.sym}</b>$${price?.toFixed(2)??'—'} <span class="${dir}">${arrow} ${pct?.toFixed(2)??'0.00'}%</span></span>`;
     }catch(e){
       document.getElementById('change-'+s.sym).textContent = 'feed error — check API key';
@@ -355,7 +456,7 @@ async function refreshAll(){
   applySort();
 }
 
-async function refreshMomentum(){
+async function refreshSignals(){
   for(const s of WATCHLIST){
     try{
       const data = await fetchMetrics(s.sym);
@@ -363,9 +464,18 @@ async function refreshMomentum(){
     }catch(e){
       // keep whatever we had before (or null) — badge falls back to today's move only
     }
+    try{
+      const news = await fetchNews(s.sym);
+      const { score, negHeadlines } = computeNewsRisk(news);
+      riskCache[s.sym] = { newsRisk: score, negHeadlines, combined: riskCache[s.sym]?.combined || false };
+    }catch(e){
+      riskCache[s.sym] = riskCache[s.sym] || { newsRisk: null, negHeadlines: [], combined: false };
+    }
     updateMomentumBadge(s.sym);
+    updateRiskBadge(s.sym);
   }
   applySort();
+  renderRiskWatch();
 }
 
 document.getElementById('sort-select').addEventListener('change', (e)=>{
@@ -374,12 +484,15 @@ document.getElementById('sort-select').addEventListener('change', (e)=>{
 });
 
 function startFeeds(){
+  if(typeof Notification !== 'undefined' && Notification.permission === 'default'){
+    Notification.requestPermission();
+  }
   refreshAll();
-  refreshMomentum();
+  refreshSignals();
   clearInterval(window._pulseInterval);
-  clearInterval(window._momentumInterval);
+  clearInterval(window._signalsInterval);
   window._pulseInterval = setInterval(refreshAll, 30000);
-  window._momentumInterval = setInterval(refreshMomentum, 900000); // 15 min — momentum inputs are weekly/monthly data
+  window._signalsInterval = setInterval(refreshSignals, 900000); // 15 min — momentum/news inputs don't change every 30s
 }
 
 document.getElementById('save-key').addEventListener('click', ()=>{
@@ -390,15 +503,21 @@ document.getElementById('save-key').addEventListener('click', ()=>{
   startFeeds();
 });
 
-// restore key from this session only
-const saved = sessionStorage.getItem('finnhub_key');
-if(saved){
-  document.getElementById('apikey-field').value = saved;
-  API_KEY = saved;
-  startFeeds();
-} else {
-  connLabel.textContent = "AWAITING KEY";
-}
+(async function init(){
+  await loadConfig();
+  buildCards();
+  document.getElementById('save-key').disabled = false;
+
+  // restore key from this session only
+  const saved = sessionStorage.getItem('finnhub_key');
+  if(saved){
+    document.getElementById('apikey-field').value = saved;
+    API_KEY = saved;
+    startFeeds();
+  } else {
+    connLabel.textContent = "AWAITING KEY";
+  }
+})();
 </script>
 </body>
 </html>
