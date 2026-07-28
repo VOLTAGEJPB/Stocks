@@ -64,3 +64,31 @@ can do (Claude can't create secrets or your email credentials):
 
 Scheduled workflows are automatically disabled by GitHub after 60 days
 of repo inactivity — if alerts stop, re-enable it from the Actions tab.
+
+### Paper trading (simulated — no real money)
+
+The same scheduled script also runs a simple, fully simulated trading rule
+against [Alpaca](https://alpaca.markets/)'s **paper trading** API: no real
+money, no real brokerage account, no real orders — Alpaca just simulates
+fills against live prices so a rule can be tracked honestly over time.
+
+**The rule**: buy $1,000 (simulated) worth of a stock when its Momentum
+Score crosses into "Strong Up" (≥65). Sell after ~5 trading days, or
+sooner if Risk Watch flags that stock. Results — win rate, average
+return, open positions — are tracked in `state/paper-trades.json`, shown
+in a "📊 Paper Trading" panel on the page, and included in the alert email
+whenever a simulated trade opens or closes. These are real (paper) trade
+outcomes, not an invented number — and past paper-trade results are not a
+guarantee of future performance, paper or otherwise.
+
+To turn this on, get free paper-trading API keys from Alpaca (sign up at
+https://alpaca.markets/, then generate keys from the **paper trading**
+dashboard — never the live-money one) and add two more repo secrets the
+same way as above:
+
+- `ALPACA_API_KEY_ID`
+- `ALPACA_API_SECRET_KEY`
+
+Without these two secrets, the paper-trading step is skipped entirely —
+the rest of MarketPulse (Momentum Score, Risk Watch, email alerts) works
+the same either way.

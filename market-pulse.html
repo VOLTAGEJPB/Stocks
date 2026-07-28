@@ -94,6 +94,9 @@
   .trend-chip b{ color:var(--paper); margin-right:6px; }
   .risk-box{ border-color:var(--red); background:rgba(255,68,56,.06); }
   .risk-title{ color:var(--red); }
+  .paper-box{ border-color:var(--green); background:rgba(57,255,106,.05); }
+  .paper-title{ color:var(--green); }
+  .paper-stats{ margin-top:8px; font-size:12.5px; color:#B8AA8F; }
 
   /* ---- momentum badge ---- */
   .momentum-badge{
@@ -165,6 +168,14 @@
   <div class="trending-box risk-box">
     <span class="trending-title risk-title">⚠ RISK WATCH</span><span class="trending-note">flags only when falling momentum AND a spike in negative-leaning headlines both show up — a risk flag, not a prediction</span>
     <div class="trending-list" id="risk-list">Connect your API key to see risk data.</div>
+  </div>
+</div>
+
+<div class="trending paper-strip">
+  <div class="trending-box paper-box">
+    <span class="trending-title paper-title">📊 PAPER TRADING</span><span class="trending-note">simulated only, no real money — buys on Momentum Score crossing into Strong Up, sells after ~5 trading days or a Risk Watch flag</span>
+    <div class="trending-list" id="paper-list">Loading paper trading data…</div>
+    <div class="paper-stats" id="paper-stats"></div>
   </div>
 </div>
 
@@ -425,6 +436,32 @@ function renderRiskWatch(){
   }).join('');
 }
 
+async function refreshPaperTrading(){
+  const list = document.getElementById('paper-list');
+  const statsEl = document.getElementById('paper-stats');
+  if(!list) return;
+  try{
+    const data = await fetch('./state/paper-trades.json', { cache: 'no-store' }).then(r=>r.json());
+    const openSyms = Object.keys(data.openPositions || {});
+    if(openSyms.length === 0){
+      list.textContent = 'No open simulated positions right now.';
+    } else {
+      list.innerHTML = openSyms.map(sym=>{
+        const pos = data.openPositions[sym];
+        const w = WATCHLIST.find(x=>x.sym===sym);
+        const days = Math.floor((Date.now() - new Date(pos.entryDate).getTime()) / 86400000);
+        return `<span class="trend-chip"><b>${sym}</b>${w?.name||sym} — held ${days}d, entry momentum ${pos.entryMomentum}</span>`;
+      }).join('');
+    }
+    const stats = data.stats || {};
+    statsEl.textContent = stats.totalTrades > 0
+      ? `Track record: ${stats.totalTrades} closed trade(s), ${stats.winRatePct}% win rate, ${stats.avgReturnPct>=0?'+':''}${stats.avgReturnPct}% average return. Simulated only — not a guarantee of future performance.`
+      : 'No closed paper trades yet.';
+  }catch(e){
+    list.textContent = 'Paper trading data unavailable.';
+  }
+}
+
 async function refreshAll(){
   connLabel.textContent = "REFRESHING";
   let tapeStr = "";
@@ -507,6 +544,11 @@ document.getElementById('save-key').addEventListener('click', ()=>{
   await loadConfig();
   buildCards();
   document.getElementById('save-key').disabled = false;
+
+  // Paper trading data comes from the repo's static state file, not Finnhub —
+  // it loads regardless of whether an API key is connected.
+  refreshPaperTrading();
+  setInterval(refreshPaperTrading, 900000);
 
   // restore key from this session only
   const saved = sessionStorage.getItem('finnhub_key');

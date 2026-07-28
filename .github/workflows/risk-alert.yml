@@ -28,13 +28,15 @@ jobs:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           ALERT_EMAIL_TO: ${{ secrets.ALERT_EMAIL_TO }}
+          ALPACA_API_KEY_ID: ${{ secrets.ALPACA_API_KEY_ID }}
+          ALPACA_API_SECRET_KEY: ${{ secrets.ALPACA_API_SECRET_KEY }}
 
       - name: Commit updated risk state
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet -- state/risk-state.json; then
-            git add state/risk-state.json
+          if ! git diff --quiet -- state/risk-state.json state/paper-trades.json; then
+            git add state/risk-state.json state/paper-trades.json
             git commit -m "Update risk-check state [skip ci]"
             git push
           fi
