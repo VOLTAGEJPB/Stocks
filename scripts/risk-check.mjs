@@ -119,6 +119,7 @@ async function main() {
       const { score: newsRisk, negHeadlines, negCount } = computeNewsRisk(news, keywords);
       const pct = quote.dp;
       const severity = computeSeverity(momentum, newsRisk, pct);
+      console.log(`${s.sym}: price=${quote.c} pct=${pct} momentum=${momentum} newsRisk=${newsRisk} negCount=${negCount} severity=${severity}`);
 
       const prior = state[s.sym] || { seen: false, flagged: false, lastAlertAt: null, lastSeverity: null, lastNegCount: 0 };
       const riskNow = momentum !== null && momentum < MOMENTUM_DOWN_THRESHOLD
