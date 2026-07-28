@@ -1,1 +1,65 @@
-{}
+{
+  "TSLA": {
+    "seen": true,
+    "flagged": true,
+    "lastAlertAt": "2026-07-28T15:20:14.735Z",
+    "lastSeverity": 73,
+    "lastNegCount": 2
+  },
+  "IBM": {
+    "seen": true,
+    "flagged": true,
+    "lastAlertAt": "2026-07-28T15:20:14.735Z",
+    "lastSeverity": 68,
+    "lastNegCount": 6
+  },
+  "SKHY": {
+    "seen": true,
+    "flagged": true,
+    "lastAlertAt": "2026-07-28T15:20:14.735Z",
+    "lastSeverity": 62,
+    "lastNegCount": 3
+  },
+  "MU": {
+    "seen": true,
+    "flagged": true,
+    "lastAlertAt": "2026-07-28T15:20:14.735Z",
+    "lastSeverity": 73,
+    "lastNegCount": 9
+  },
+  "LRCX": {
+    "seen": true,
+    "flagged": true,
+    "lastAlertAt": "2026-07-28T15:20:14.735Z",
+    "lastSeverity": 57,
+    "lastNegCount": 3
+  },
+  "BAH": {
+    "seen": true,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 0
+  },
+  "DNA": {
+    "seen": true,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 0
+  },
+  "AMC": {
+    "seen": true,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 0
+  },
+  "NVDA": {
+    "seen": true,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 2
+  }
+}
