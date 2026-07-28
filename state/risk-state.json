@@ -18,14 +18,14 @@
     "flagged": true,
     "lastAlertAt": "2026-07-28T16:58:41.902Z",
     "lastSeverity": 78,
-    "lastNegCount": 5
+    "lastNegCount": 7
   },
   "MU": {
     "seen": true,
     "flagged": true,
     "lastAlertAt": "2026-07-28T15:20:14.735Z",
     "lastSeverity": 73,
-    "lastNegCount": 8
+    "lastNegCount": 5
   },
   "LRCX": {
     "seen": true,
@@ -60,6 +60,6 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 0
   }
 }
