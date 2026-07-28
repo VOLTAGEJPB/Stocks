@@ -12,10 +12,22 @@ const FINNHUB_API_KEY = process.env.FINNHUB_API_KEY;
 const GMAIL_USER = process.env.GMAIL_USER;
 const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD;
 const ALERT_EMAIL_TO = process.env.ALERT_EMAIL_TO || GMAIL_USER;
+const ALPACA_API_KEY_ID = process.env.ALPACA_API_KEY_ID;
+const ALPACA_API_SECRET_KEY = process.env.ALPACA_API_SECRET_KEY;
+const ALPACA_BASE_URL = "https://paper-api.alpaca.markets"; // paper trading only — never the live-money endpoint
 
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const STATE_PATH = path.join(REPO_ROOT, "state", "risk-state.json");
+const PAPER_STATE_PATH = path.join(REPO_ROOT, "state", "paper-trades.json");
 const REALERT_AFTER_MS = 24 * 60 * 60 * 1000; // re-remind once a day while risk persists
+
+// Paper-trading rule: buy $1,000 (simulated) when a stock's Momentum Score crosses
+// into "Strong Up" territory, sell after ~5 trading days or sooner if Risk Watch
+// flags it. No real money — Alpaca's paper API simulates fills against live prices.
+const PAPER_ENABLED = Boolean(ALPACA_API_KEY_ID && ALPACA_API_SECRET_KEY);
+const PAPER_ENTRY_MOMENTUM = 65;   // matches the "STRONG UP" cutoff used in market-pulse.html
+const PAPER_NOTIONAL = 1000;       // simulated dollars per position
+const PAPER_HOLDING_DAYS = 7;      // ~5 trading days, approximated in calendar days
 
 if (!FINNHUB_API_KEY) {
   console.error("FINNHUB_API_KEY is not set — add it as a repo Actions secret.");
@@ -92,20 +104,66 @@ async function fetchJson(url) {
   return res.json();
 }
 
-async function loadState() {
+async function loadJson(filePath, fallback) {
   try {
-    return JSON.parse(await fs.readFile(STATE_PATH, "utf8"));
+    return JSON.parse(await fs.readFile(filePath, "utf8"));
   } catch {
-    return {};
+    return fallback;
   }
+}
+
+async function loadState() {
+  return loadJson(STATE_PATH, {});
+}
+
+async function loadPaperState() {
+  return loadJson(PAPER_STATE_PATH, { openPositions: {}, closedTrades: [] });
+}
+
+async function alpacaRequest(method, urlPath, body) {
+  const res = await fetch(`${ALPACA_BASE_URL}${urlPath}`, {
+    method,
+    headers: {
+      "APCA-API-KEY-ID": ALPACA_API_KEY_ID,
+      "APCA-API-SECRET-KEY": ALPACA_API_SECRET_KEY,
+      "Content-Type": "application/json",
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`Alpaca ${method} ${urlPath}: ${res.status} ${await res.text()}`);
+  if (res.status === 204) return null;
+  return res.json();
+}
+
+function submitPaperOrder(symbol, side, notional) {
+  return alpacaRequest("POST", "/v2/orders", { symbol, notional, side, type: "market", time_in_force: "day" });
+}
+
+function getPaperPosition(symbol) {
+  return alpacaRequest("GET", `/v2/positions/${symbol}`);
+}
+
+function closePaperPosition(symbol) {
+  return alpacaRequest("DELETE", `/v2/positions/${symbol}`);
+}
+
+function computePaperStats(closedTrades) {
+  const total = closedTrades.length;
+  if (total === 0) return { totalTrades: 0, wins: 0, winRatePct: null, avgReturnPct: null };
+  const wins = closedTrades.filter(t => t.returnPct > 0).length;
+  const avgReturnPct = closedTrades.reduce((a, t) => a + t.returnPct, 0) / total;
+  return { totalTrades: total, wins, winRatePct: Math.round((wins / total) * 1000) / 10, avgReturnPct: Math.round(avgReturnPct * 100) / 100 };
 }
 
 async function main() {
   const watchlist = JSON.parse(await fs.readFile(path.join(REPO_ROOT, "watchlist.json"), "utf8"));
   const keywords = JSON.parse(await fs.readFile(path.join(REPO_ROOT, "news-keywords.json"), "utf8"));
   const state = await loadState();
+  const paperState = await loadPaperState();
   const now = Date.now();
   const toAlert = [];
+  const paperEvents = [];
 
   for (const s of watchlist) {
     try {
@@ -153,21 +211,50 @@ async function main() {
           lastNegCount: negCount,
         };
       }
+
+      if (PAPER_ENABLED) {
+        const openPosition = paperState.openPositions[s.sym];
+        if (!openPosition && momentum !== null && momentum >= PAPER_ENTRY_MOMENTUM) {
+          await submitPaperOrder(s.sym, "buy", PAPER_NOTIONAL);
+          paperState.openPositions[s.sym] = { entryDate: new Date(now).toISOString(), entryMomentum: momentum };
+          paperEvents.push({ sym: s.sym, name: s.name, action: "BUY", momentum, reason: "Momentum crossed into Strong Up" });
+        } else if (openPosition) {
+          const daysHeld = (now - new Date(openPosition.entryDate).getTime()) / 86400000;
+          const exitReason = flaggedNow ? "Risk Watch flagged" : daysHeld >= PAPER_HOLDING_DAYS ? `Held ${PAPER_HOLDING_DAYS}+ days` : null;
+          if (exitReason) {
+            const position = await getPaperPosition(s.sym);
+            const returnPct = position ? Math.round(Number(position.unrealized_plpc) * 10000) / 100 : null;
+            await closePaperPosition(s.sym);
+            paperState.closedTrades.push({
+              sym: s.sym, name: s.name,
+              entryDate: openPosition.entryDate, exitDate: new Date(now).toISOString(),
+              returnPct, exitReason,
+            });
+            delete paperState.openPositions[s.sym];
+            paperEvents.push({ sym: s.sym, name: s.name, action: "SELL", returnPct, reason: exitReason });
+          }
+        }
+      }
     } catch (err) {
       console.error(`Skipping ${s.sym}: ${err.message}`);
     }
   }
 
+  if (PAPER_ENABLED) {
+    paperState.stats = computePaperStats(paperState.closedTrades);
+    await fs.writeFile(PAPER_STATE_PATH, JSON.stringify(paperState, null, 2) + "\n");
+  }
+
   await fs.mkdir(path.dirname(STATE_PATH), { recursive: true });
   await fs.writeFile(STATE_PATH, JSON.stringify(state, null, 2) + "\n");
 
-  if (toAlert.length === 0) {
-    console.log("No new risk alerts this run.");
+  if (toAlert.length === 0 && paperEvents.length === 0) {
+    console.log("No new risk alerts or paper trades this run.");
     return;
   }
 
   if (!GMAIL_USER || !GMAIL_APP_PASSWORD || !ALERT_EMAIL_TO) {
-    console.log(`${toAlert.length} stock(s) newly flagged, but email isn't configured (GMAIL_USER/GMAIL_APP_PASSWORD/ALERT_EMAIL_TO). Flagged: ${toAlert.map(a => a.sym).join(", ")}`);
+    console.log(`${toAlert.length} risk alert(s), ${paperEvents.length} paper trade event(s), but email isn't configured (GMAIL_USER/GMAIL_APP_PASSWORD/ALERT_EMAIL_TO).`);
     return;
   }
 
@@ -179,29 +266,52 @@ async function main() {
   const hasEmergency = toAlert.some(a => a.reason === "EMERGENCY");
   const reasonLabel = { EMERGENCY: "EMERGENCY — sudden severe move", ESCALATION: "ESCALATION — got meaningfully worse since the last alert", NEW: "new risk flag", REMINDER: "still flagged (daily reminder)" };
 
-  const lines = toAlert.map(a => {
-    const headline = a.negHeadlines[0] ? `\n    Headline: "${a.negHeadlines[0]}"` : "";
-    return `- [${reasonLabel[a.reason]}] ${a.sym} (${a.name}): $${a.price?.toFixed(2)} (${a.pct >= 0 ? "+" : ""}${a.pct?.toFixed(2)}% today), Momentum ${a.momentum}, News Risk ${a.newsRisk}${headline}`;
-  });
+  const sections = [];
 
-  const text = [
-    "MarketPulse alert — stocks where recent momentum has turned down and/or headlines/price action look severe.",
-    "This is a heuristic reflecting past price/news data, not a prediction, forecast, or investment advice. Verify independently before acting.",
-    "",
-    ...lines,
-    "",
-    "https://voltagejpb.github.io/Stocks/market-pulse.html",
-  ].join("\n");
+  if (toAlert.length > 0) {
+    const lines = toAlert.map(a => {
+      const headline = a.negHeadlines[0] ? `\n    Headline: "${a.negHeadlines[0]}"` : "";
+      return `- [${reasonLabel[a.reason]}] ${a.sym} (${a.name}): $${a.price?.toFixed(2)} (${a.pct >= 0 ? "+" : ""}${a.pct?.toFixed(2)}% today), Momentum ${a.momentum}, News Risk ${a.newsRisk}${headline}`;
+    });
+    sections.push([
+      "MarketPulse alert — stocks where recent momentum has turned down and/or headlines/price action look severe.",
+      "This is a heuristic reflecting past price/news data, not a prediction, forecast, or investment advice. Verify independently before acting.",
+      "",
+      ...lines,
+    ].join("\n"));
+  }
 
-  const subjectPrefix = hasEmergency ? "🚨 EMERGENCY" : "MarketPulse Risk Watch";
+  if (paperEvents.length > 0) {
+    const lines = paperEvents.map(e => {
+      const detail = e.action === "BUY" ? `Momentum ${e.momentum}` : `Return ${e.returnPct >= 0 ? "+" : ""}${e.returnPct?.toFixed(2)}%`;
+      return `- ${e.action} ${e.sym} (${e.name}) — ${e.reason} — ${detail}`;
+    });
+    const stats = paperState.stats;
+    const statsLine = stats.totalTrades > 0
+      ? `Track record so far: ${stats.totalTrades} closed trade(s), ${stats.winRatePct}% win rate, ${stats.avgReturnPct >= 0 ? "+" : ""}${stats.avgReturnPct}% average return.`
+      : "No closed trades yet.";
+    sections.push([
+      "📊 Paper Trading (simulated via Alpaca — no real money) — buys on Momentum Score crossing into Strong Up, sells after ~5 trading days or if Risk Watch flags it.",
+      ...lines,
+      "",
+      statsLine,
+      "Past paper-trade results are not a guarantee of future performance.",
+    ].join("\n"));
+  }
+
+  sections.push("https://voltagejpb.github.io/Stocks/market-pulse.html");
+  const text = sections.join("\n\n");
+
+  const subjectPrefix = hasEmergency ? "🚨 EMERGENCY" : toAlert.length > 0 ? "MarketPulse Risk Watch" : "MarketPulse Paper Trading";
+  const subjectSyms = toAlert.length > 0 ? toAlert.map(a => a.sym) : paperEvents.map(e => e.sym);
   await transporter.sendMail({
     from: GMAIL_USER,
     to: ALERT_EMAIL_TO,
-    subject: `${subjectPrefix}: ${toAlert.map(a => a.sym).join(", ")}`,
+    subject: `${subjectPrefix}: ${subjectSyms.join(", ")}`,
     text,
   });
 
-  console.log(`Sent alert email (${toAlert.map(a => `${a.sym}:${a.reason}`).join(", ")})`);
+  console.log(`Sent email (risk: ${toAlert.map(a => `${a.sym}:${a.reason}`).join(", ") || "none"}; paper: ${paperEvents.map(e => `${e.sym}:${e.action}`).join(", ") || "none"})`);
 }
 
 main().catch(err => {
