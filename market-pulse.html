@@ -71,6 +71,11 @@
   }
   button:hover{ background:var(--paper); }
   button:focus-visible, #apikey-field:focus-visible{ outline:2px solid var(--paper); outline-offset:2px; }
+  #sort-select{
+    background:var(--char); border:1px solid var(--char-line); color:var(--paper);
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; padding:8px 10px;
+  }
+  #sort-select:focus-visible{ outline:2px solid var(--paper); outline-offset:2px; }
 
   /* ---- disclaimer ---- */
   .disclaimer{
@@ -80,13 +85,28 @@
     border-left:2px solid var(--amber-dim); padding:10px 14px; font-size:12.5px; color:#B8AA8F; line-height:1.6;
   }
 
+  /* ---- trending strip ---- */
+  .trending{ max-width:1120px; margin:16px auto 0; padding:0 24px; }
+  .trending-box{ border:1px solid var(--amber-dim); background:rgba(255,182,39,.06); padding:14px 16px; }
+  .trending-title{ font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.14em; color:var(--amber); }
+  .trending-note{ color:#8A7C61; font-size:11px; letter-spacing:0; margin-left:8px; }
+  .trending-list{ margin-top:10px; display:flex; flex-wrap:wrap; gap:18px; font-size:13px; color:#B8AA8F; }
+  .trend-chip b{ color:var(--paper); margin-right:6px; }
+
+  /* ---- momentum badge ---- */
+  .momentum-badge{
+    font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.05em;
+    margin-top:5px; padding:2px 7px; border:1px solid currentColor; display:inline-block; white-space:nowrap;
+  }
+
   /* ---- grid ---- */
   main{ max-width:1120px; margin:0 auto; padding:20px 24px 80px; }
   .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; margin-top:18px; }
   .card{
     background:var(--char); border:1px solid var(--char-line); padding:18px 18px 14px; position:relative;
   }
-  .card-top{ display:flex; justify-content:space-between; align-items:baseline; }
+  .card-top{ display:flex; justify-content:space-between; align-items:flex-start; }
+  .card-top-right{ text-align:right; }
   .ticker{ font-family:'Space Mono',monospace; font-weight:700; font-size:20px; color:var(--paper); letter-spacing:.02em; }
   .price{ font-family:'Space Mono',monospace; font-size:20px; }
   .change{ font-family:'Space Mono',monospace; font-size:13px; margin-top:2px; }
@@ -115,11 +135,23 @@
     <span class="label">REFRESH: <span id="refresh-clock">--</span></span>
     <input id="apikey-field" type="password" placeholder="Paste your Finnhub API key" />
     <button id="save-key">Connect Feed</button>
+    <select id="sort-select" title="Sort the board">
+      <option value="momentum" selected>Sort: Momentum</option>
+      <option value="today">Sort: Today's Move</option>
+      <option value="alpha">Sort: A–Z</option>
+    </select>
   </div>
 </header>
 
 <div class="disclaimer">
-  <p>This board shows real price moves and the news context behind them. It is not investment advice, a recommendation, or a signal to buy or sell — verify everything independently and consider your own risk tolerance before trading. Volatile stocks can lose value as fast as they gain it.</p>
+  <p>This board shows real price moves and the news context behind them. It is not investment advice, a recommendation, or a signal to buy or sell — verify everything independently and consider your own risk tolerance before trading. Volatile stocks can lose value as fast as they gain it. The Momentum Score below is a transparent read of <em>past</em> price trends — not a probability, forecast, or estimate of future performance.</p>
+</div>
+
+<div class="trending">
+  <div class="trending-box">
+    <span class="trending-title">🔥 TRENDING UP</span><span class="trending-note">ranked by Momentum Score — recent trend strength, not a prediction</span>
+    <div class="trending-list" id="trending-list">Connect your API key to see momentum data.</div>
+  </div>
 </div>
 
 <main>
@@ -127,7 +159,7 @@
 </main>
 
 <footer>
-  MARKET PULSE — data via Finnhub.io, refreshed client-side. API key is stored only in your browser's local session, not on any server. Free-tier quotes may lag real-time by a few minutes.
+  MARKET PULSE — data via Finnhub.io, refreshed client-side. API key is stored only in your browser's local session, not on any server. Free-tier quotes may lag real-time by a few minutes. Momentum Score = weighted blend of 5-day, month-to-date, 13-week, and 26-week price returns plus position in the 52-week range — a read on recent trend strength, not a prediction of future returns.
 </footer>
 
 <script>
@@ -144,11 +176,16 @@ const WATCHLIST = [
 ];
 
 let API_KEY = "";
+let sortMode = "momentum";
 const grid = document.getElementById('grid');
 const tape = document.getElementById('tape');
 const connLabel = document.getElementById('conn-label');
 const refreshClock = document.getElementById('refresh-clock');
+const trendingList = document.getElementById('trending-list');
 const cardEls = {};
+const quoteCache = {};   // sym -> { price, pct }
+const metricsRaw = {};   // sym -> Finnhub /stock/metric "metric" object (or null)
+const momentumCache = {}; // sym -> integer score 0-100, or null
 
 function buildCards(){
   grid.innerHTML = "";
@@ -158,7 +195,10 @@ function buildCards(){
     el.innerHTML = `
       <div class="card-top">
         <div class="ticker">${s.sym}</div>
-        <div class="price loading" id="price-${s.sym}">···</div>
+        <div class="card-top-right">
+          <div class="price loading" id="price-${s.sym}">···</div>
+          <div class="momentum-badge loading" id="momo-${s.sym}">MO --</div>
+        </div>
       </div>
       <div class="change loading" id="change-${s.sym}">awaiting feed</div>
       <div class="name">${s.name}</div>
@@ -202,6 +242,89 @@ async function fetchQuote(sym){
   return res.json();
 }
 
+async function fetchMetrics(sym){
+  const url = `https://finnhub.io/api/v1/stock/metric?symbol=${sym}&metric=all&token=${API_KEY}`;
+  const res = await fetch(url);
+  if(!res.ok) throw new Error('bad metric response');
+  return res.json();
+}
+
+// Maps a real percent-return figure onto a 0-100 scale using a per-horizon
+// swing range (span), so a short-horizon return doesn't dominate a long one.
+function clampScore(pct, span){
+  const v = Math.max(-span, Math.min(span, pct));
+  return ((v + span) / (2*span)) * 100;
+}
+
+// Weighted blend of real historical returns (from Finnhub /stock/metric) plus
+// today's move and position in the 52-week range. Not a forecast — a trend read.
+const MOMENTUM_WEIGHTS = { fiveDay:0.15, monthToDate:0.15, week13:0.25, week26:0.20, today:0.10, range52:0.15 };
+
+function computeMomentum(m, todayPct, price){
+  const parts = [];
+  const add = (score, weight) => { if(typeof score === 'number' && !Number.isNaN(score)) parts.push({score, weight}); };
+  if(m){
+    const r5 = m['5DayPriceReturnDaily'];
+    if(typeof r5 === 'number') add(clampScore(r5, 15), MOMENTUM_WEIGHTS.fiveDay);
+    const rMtd = m['monthToDatePriceReturnDaily'];
+    if(typeof rMtd === 'number') add(clampScore(rMtd, 20), MOMENTUM_WEIGHTS.monthToDate);
+    const r13 = m['13WeekPriceReturnDaily'];
+    if(typeof r13 === 'number') add(clampScore(r13, 35), MOMENTUM_WEIGHTS.week13);
+    const r26 = m['26WeekPriceReturnDaily'];
+    if(typeof r26 === 'number') add(clampScore(r26, 50), MOMENTUM_WEIGHTS.week26);
+    const hi = m['52WeekHigh'], lo = m['52WeekLow'];
+    if(typeof hi === 'number' && typeof lo === 'number' && hi > lo && typeof price === 'number'){
+      const pos = ((price - lo) / (hi - lo)) * 100;
+      add(Math.max(0, Math.min(100, pos)), MOMENTUM_WEIGHTS.range52);
+    }
+  }
+  if(typeof todayPct === 'number' && !Number.isNaN(todayPct)) add(clampScore(todayPct, 8), MOMENTUM_WEIGHTS.today);
+  if(parts.length === 0) return null;
+  const totalWeight = parts.reduce((a,p)=>a+p.weight,0);
+  const raw = parts.reduce((a,p)=>a+p.score*p.weight,0) / totalWeight;
+  return Math.round(Math.max(0, Math.min(100, raw)));
+}
+
+function momentumLabel(score){
+  if(score === null) return { text:'NO DATA', cls:'flat' };
+  if(score >= 65) return { text:`STRONG UP ${score}`, cls:'up' };
+  if(score >= 52) return { text:`UP ${score}`, cls:'up' };
+  if(score >= 45) return { text:`FLAT ${score}`, cls:'flat' };
+  return { text:`DOWN ${score}`, cls:'down' };
+}
+
+function updateMomentumBadge(sym){
+  const q = quoteCache[sym];
+  const score = computeMomentum(metricsRaw[sym], q?.pct, q?.price);
+  momentumCache[sym] = score;
+  const badge = document.getElementById('momo-'+sym);
+  if(!badge) return;
+  const { text, cls } = momentumLabel(score);
+  badge.textContent = text;
+  badge.className = 'momentum-badge ' + cls;
+}
+
+function applySort(){
+  const syms = WATCHLIST.map(s=>s.sym).slice();
+  syms.sort((a,b)=>{
+    if(sortMode === 'alpha') return a.localeCompare(b);
+    if(sortMode === 'today') return (quoteCache[b]?.pct ?? -999) - (quoteCache[a]?.pct ?? -999);
+    return (momentumCache[b] ?? -1) - (momentumCache[a] ?? -1);
+  });
+  syms.forEach(sym => grid.appendChild(cardEls[sym]));
+  renderTrending(syms);
+}
+
+function renderTrending(sortedSyms){
+  if(!API_KEY){ trendingList.textContent = 'Connect your API key to see momentum data.'; return; }
+  const top = sortedSyms.filter(sym => (momentumCache[sym] ?? 0) >= 52).slice(0,3);
+  if(top.length === 0){ trendingList.textContent = 'No standout upward momentum right now — check back after the next refresh.'; return; }
+  trendingList.innerHTML = top.map(sym=>{
+    const w = WATCHLIST.find(x=>x.sym===sym);
+    return `<span class="trend-chip"><b>${sym}</b>${w.name} — momentum ${momentumCache[sym]}</span>`;
+  }).join('');
+}
+
 async function refreshAll(){
   connLabel.textContent = "REFRESHING";
   let tapeStr = "";
@@ -210,6 +333,7 @@ async function refreshAll(){
       const q = await fetchQuote(s.sym);
       const price = q.c;
       const pct = q.dp;
+      quoteCache[s.sym] = { price, pct };
       const dir = pct > 0.05 ? 'up' : pct < -0.05 ? 'down' : 'flat';
       const arrow = dir==='up' ? '▲' : dir==='down' ? '▼' : '·';
       document.getElementById('price-'+s.sym).textContent = price ? `$${price.toFixed(2)}` : '—';
@@ -218,6 +342,7 @@ async function refreshAll(){
       changeEl.textContent = `${arrow} ${pct?.toFixed(2)}% today`;
       changeEl.className = 'change ' + dir;
       drawWave(s.sym, pct||0);
+      updateMomentumBadge(s.sym);
       tapeStr += `<span><b>${s.sym}</b>$${price?.toFixed(2)??'—'} <span class="${dir}">${arrow} ${pct?.toFixed(2)??'0.00'}%</span></span>`;
     }catch(e){
       document.getElementById('change-'+s.sym).textContent = 'feed error — check API key';
@@ -227,6 +352,34 @@ async function refreshAll(){
   tape.innerHTML = tapeStr + tapeStr; // duplicate for seamless loop
   connLabel.textContent = "LIVE";
   refreshClock.textContent = new Date().toLocaleTimeString();
+  applySort();
+}
+
+async function refreshMomentum(){
+  for(const s of WATCHLIST){
+    try{
+      const data = await fetchMetrics(s.sym);
+      metricsRaw[s.sym] = data.metric || null;
+    }catch(e){
+      // keep whatever we had before (or null) — badge falls back to today's move only
+    }
+    updateMomentumBadge(s.sym);
+  }
+  applySort();
+}
+
+document.getElementById('sort-select').addEventListener('change', (e)=>{
+  sortMode = e.target.value;
+  applySort();
+});
+
+function startFeeds(){
+  refreshAll();
+  refreshMomentum();
+  clearInterval(window._pulseInterval);
+  clearInterval(window._momentumInterval);
+  window._pulseInterval = setInterval(refreshAll, 30000);
+  window._momentumInterval = setInterval(refreshMomentum, 900000); // 15 min — momentum inputs are weekly/monthly data
 }
 
 document.getElementById('save-key').addEventListener('click', ()=>{
@@ -234,9 +387,7 @@ document.getElementById('save-key').addEventListener('click', ()=>{
   if(!val){ return; }
   API_KEY = val;
   sessionStorage.setItem('finnhub_key', val);
-  refreshAll();
-  clearInterval(window._pulseInterval);
-  window._pulseInterval = setInterval(refreshAll, 30000);
+  startFeeds();
 });
 
 // restore key from this session only
@@ -244,8 +395,7 @@ const saved = sessionStorage.getItem('finnhub_key');
 if(saved){
   document.getElementById('apikey-field').value = saved;
   API_KEY = saved;
-  refreshAll();
-  window._pulseInterval = setInterval(refreshAll, 30000);
+  startFeeds();
 } else {
   connLabel.textContent = "AWAITING KEY";
 }
