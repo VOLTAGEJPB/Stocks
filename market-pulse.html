@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MARKET PULSE // Live Feed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0B0904;
+    --amber:#FFB627;
+    --amber-dim:#8A6A1F;
+    --green:#39FF6A;
+    --red:#FF4438;
+    --char:#211D17;
+    --char-line:#3A3227;
+    --paper:#F5EFE0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{background:var(--void); color:var(--paper); font-family:'IBM Plex Mono',monospace; overflow-x:hidden;}
+
+  .scanlines{
+    pointer-events:none; position:fixed; inset:0; z-index:50;
+    background:repeating-linear-gradient(to bottom, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 3px);
+    mix-blend-mode:multiply; opacity:.5;
+  }
+  .vignette{ position:fixed; inset:0; z-index:49; pointer-events:none;
+    background:radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%);
+  }
+
+  /* ---- ticker tape ---- */
+  .tape-wrap{
+    border-bottom:1px solid var(--char-line); background:var(--char);
+    overflow:hidden; white-space:nowrap; position:sticky; top:0; z-index:20;
+  }
+  .tape{
+    display:inline-block; padding:8px 0;
+    font-family:'Space Mono',monospace; font-size:13px; letter-spacing:.04em;
+    animation:scroll 38s linear infinite;
+  }
+  .tape span{ margin-right:2.5em; color:var(--amber-dim); }
+  .tape span b{ color:var(--paper); font-weight:700; margin-right:.6em; }
+  .tape .up{ color:var(--green); }
+  .tape .down{ color:var(--red); }
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---- header ---- */
+  header{ padding:44px 24px 28px; max-width:1120px; margin:0 auto; }
+  .eyebrow{ font-family:'Space Mono',monospace; font-size:12px; letter-spacing:.25em; color:var(--amber-dim); text-transform:uppercase;}
+  h1{
+    font-family:'Space Mono',monospace; font-weight:700; font-size:clamp(32px,6vw,58px);
+    color:var(--amber); letter-spacing:-0.01em; margin-top:10px; line-height:1;
+    text-shadow:0 0 18px rgba(255,182,39,.35);
+  }
+  .cursor{ display:inline-block; width:.5em; background:var(--amber); animation:blink 1.1s steps(1) infinite; margin-left:6px; }
+  @keyframes blink{ 50%{ opacity:0; } }
+  .sub{ margin-top:14px; color:#B8AA8F; max-width:620px; font-size:14.5px; line-height:1.6; }
+  .status-row{ display:flex; gap:22px; margin-top:24px; flex-wrap:wrap; align-items:center; }
+  .dot{ width:8px; height:8px; border-radius:50%; background:var(--green); display:inline-block; box-shadow:0 0 8px var(--green); animation:pulse 2s infinite; }
+  @keyframes pulse{ 50%{ opacity:.35; } }
+  .status-row .label{ font-size:12px; color:#9A8C71; letter-spacing:.08em; }
+  #apikey-field{
+    background:var(--char); border:1px solid var(--char-line); color:var(--paper);
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; padding:8px 10px; width:280px; max-width:60vw;
+  }
+  #apikey-field:focus{ outline:1px solid var(--amber); }
+  button{
+    font-family:'Space Mono',monospace; background:var(--amber); color:var(--void); border:none;
+    padding:8px 16px; font-size:12.5px; letter-spacing:.06em; cursor:pointer; font-weight:700;
+  }
+  button:hover{ background:var(--paper); }
+  button:focus-visible, #apikey-field:focus-visible{ outline:2px solid var(--paper); outline-offset:2px; }
+
+  /* ---- disclaimer ---- */
+  .disclaimer{
+    max-width:1120px; margin:0 auto 8px; padding:0 24px;
+  }
+  .disclaimer p{
+    border-left:2px solid var(--amber-dim); padding:10px 14px; font-size:12.5px; color:#B8AA8F; line-height:1.6;
+  }
+
+  /* ---- grid ---- */
+  main{ max-width:1120px; margin:0 auto; padding:20px 24px 80px; }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; margin-top:18px; }
+  .card{
+    background:var(--char); border:1px solid var(--char-line); padding:18px 18px 14px; position:relative;
+  }
+  .card-top{ display:flex; justify-content:space-between; align-items:baseline; }
+  .ticker{ font-family:'Space Mono',monospace; font-weight:700; font-size:20px; color:var(--paper); letter-spacing:.02em; }
+  .price{ font-family:'Space Mono',monospace; font-size:20px; }
+  .change{ font-family:'Space Mono',monospace; font-size:13px; margin-top:2px; }
+  .up{ color:var(--green); } .down{ color:var(--red); } .flat{ color:#9A8C71; }
+  .name{ font-size:11.5px; color:#8A7C61; margin-top:6px; letter-spacing:.03em; }
+  canvas{ width:100%; height:52px; display:block; margin-top:12px; }
+  .story{ font-size:12px; color:#B8AA8F; line-height:1.55; margin-top:10px; border-top:1px dashed var(--char-line); padding-top:10px; }
+  .loading{ color:#6B5F49; font-size:12px; }
+
+  footer{ max-width:1120px; margin:0 auto; padding:0 24px 60px; color:#6B5F49; font-size:11.5px; line-height:1.7; }
+</style>
+</head>
+<body>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+
+<div class="tape-wrap"><div class="tape" id="tape">LOADING FEED…&nbsp;&nbsp;&nbsp;&nbsp;</div></div>
+
+<header>
+  <div class="eyebrow">SEISMOGRAPH FOR EQUITIES</div>
+  <h1>MARKET PULSE<span class="cursor">&nbsp;</span></h1>
+  <p class="sub">A live read on the stocks moving because of what's happening right now — earnings shocks, IPO debuts, AI-capex whiplash, geopolitics. Data, not advice.</p>
+
+  <div class="status-row">
+    <span><span class="dot"></span> <span class="label" id="conn-label">CONNECTING</span></span>
+    <span class="label">REFRESH: <span id="refresh-clock">--</span></span>
+    <input id="apikey-field" type="password" placeholder="Paste your Finnhub API key" />
+    <button id="save-key">Connect Feed</button>
+  </div>
+</header>
+
+<div class="disclaimer">
+  <p>This board shows real price moves and the news context behind them. It is not investment advice, a recommendation, or a signal to buy or sell — verify everything independently and consider your own risk tolerance before trading. Volatile stocks can lose value as fast as they gain it.</p>
+</div>
+
+<main>
+  <div class="grid" id="grid"></div>
+</main>
+
+<footer>
+  MARKET PULSE — data via Finnhub.io, refreshed client-side. API key is stored only in your browser's local session, not on any server. Free-tier quotes may lag real-time by a few minutes.
+</footer>
+
+<script>
+const WATCHLIST = [
+  { sym:"TSLA", name:"Tesla", story:"Down ~19% on the week after signaling heavier AI/robotaxi spend — a robotaxi update on the 22nd could flip sentiment fast either way." },
+  { sym:"IBM", name:"IBM", story:"Cratered 25% in one session on a profit warning tied to soft software/infrastructure demand." },
+  { sym:"SKHY", name:"SK Hynix ADR", story:"Record $26.5B Nasdaq debut; swung from an 8% rally to an 11%+ drop within days on AI-memory demand jitters." },
+  { sym:"MU", name:"Micron", story:"Chipmaker caught in the broader semiconductor sell-off/rebound whiplash." },
+  { sym:"LRCX", name:"Lam Research", story:"Moving with the semiconductor-equipment group as AI capex sentiment swings session to session." },
+  { sym:"BAH", name:"Booz Allen Hamilton", story:"Popped 12% after beating earnings estimates and reaffirming guidance — a defense-spending beneficiary." },
+  { sym:"DNA", name:"Ginkgo Bioworks", story:"One of the highest-beta small-caps on the board — big swings on light news flow." },
+  { sym:"AMC", name:"AMC Entertainment", story:"Perennial high-beta retail-trader favorite; still one of the most volatile mid-caps by beta." },
+  { sym:"NVDA", name:"Nvidia", story:"The AI bellwether — calmer than smaller chip names lately, but every AI-spending headline still moves it." }
+];
+
+let API_KEY = "";
+const grid = document.getElementById('grid');
+const tape = document.getElementById('tape');
+const connLabel = document.getElementById('conn-label');
+const refreshClock = document.getElementById('refresh-clock');
+const cardEls = {};
+
+function buildCards(){
+  grid.innerHTML = "";
+  WATCHLIST.forEach(s=>{
+    const el = document.createElement('div');
+    el.className = 'card';
+    el.innerHTML = `
+      <div class="card-top">
+        <div class="ticker">${s.sym}</div>
+        <div class="price loading" id="price-${s.sym}">···</div>
+      </div>
+      <div class="change loading" id="change-${s.sym}">awaiting feed</div>
+      <div class="name">${s.name}</div>
+      <canvas id="wave-${s.sym}" width="600" height="104"></canvas>
+      <div class="story">${s.story}</div>
+    `;
+    grid.appendChild(el);
+    cardEls[s.sym] = el;
+  });
+}
+buildCards();
+
+function drawWave(sym, pctChange){
+  const canvas = document.getElementById('wave-'+sym);
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0,0,w,h);
+  const color = pctChange > 0.05 ? '#39FF6A' : pctChange < -0.05 ? '#FF4438' : '#8A7C61';
+  const amp = Math.min(Math.abs(pctChange) * 6 + 4, 40);
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  const mid = h/2;
+  const points = 60;
+  const seed = sym.split('').reduce((a,c)=>a+c.charCodeAt(0),0);
+  for(let i=0;i<=points;i++){
+    const x = (i/points)*w;
+    const spike = (i>points*0.35 && i<points*0.65) ? Math.sin((i-points*0.35)/(points*0.3)*Math.PI) : 0;
+    const jitter = Math.sin((i+seed)*1.3)*2;
+    const y = mid - spike*amp*(pctChange>=0?1:-1) + jitter;
+    if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  }
+  ctx.stroke();
+}
+
+async function fetchQuote(sym){
+  const url = `https://finnhub.io/api/v1/quote?symbol=${sym}&token=${API_KEY}`;
+  const res = await fetch(url);
+  if(!res.ok) throw new Error('bad response');
+  return res.json();
+}
+
+async function refreshAll(){
+  connLabel.textContent = "REFRESHING";
+  let tapeStr = "";
+  for(const s of WATCHLIST){
+    try{
+      const q = await fetchQuote(s.sym);
+      const price = q.c;
+      const pct = q.dp;
+      const dir = pct > 0.05 ? 'up' : pct < -0.05 ? 'down' : 'flat';
+      const arrow = dir==='up' ? '▲' : dir==='down' ? '▼' : '·';
+      document.getElementById('price-'+s.sym).textContent = price ? `$${price.toFixed(2)}` : '—';
+      document.getElementById('price-'+s.sym).classList.remove('loading');
+      const changeEl = document.getElementById('change-'+s.sym);
+      changeEl.textContent = `${arrow} ${pct?.toFixed(2)}% today`;
+      changeEl.className = 'change ' + dir;
+      drawWave(s.sym, pct||0);
+      tapeStr += `<span><b>${s.sym}</b>$${price?.toFixed(2)??'—'} <span class="${dir}">${arrow} ${pct?.toFixed(2)??'0.00'}%</span></span>`;
+    }catch(e){
+      document.getElementById('change-'+s.sym).textContent = 'feed error — check API key';
+      tapeStr += `<span><b>${s.sym}</b> ERR</span>`;
+    }
+  }
+  tape.innerHTML = tapeStr + tapeStr; // duplicate for seamless loop
+  connLabel.textContent = "LIVE";
+  refreshClock.textContent = new Date().toLocaleTimeString();
+}
+
+document.getElementById('save-key').addEventListener('click', ()=>{
+  const val = document.getElementById('apikey-field').value.trim();
+  if(!val){ return; }
+  API_KEY = val;
+  sessionStorage.setItem('finnhub_key', val);
+  refreshAll();
+  clearInterval(window._pulseInterval);
+  window._pulseInterval = setInterval(refreshAll, 30000);
+});
+
+// restore key from this session only
+const saved = sessionStorage.getItem('finnhub_key');
+if(saved){
+  document.getElementById('apikey-field').value = saved;
+  API_KEY = saved;
+  refreshAll();
+  window._pulseInterval = setInterval(refreshAll, 30000);
+} else {
+  connLabel.textContent = "AWAITING KEY";
+}
+</script>
+</body>
+</html>
