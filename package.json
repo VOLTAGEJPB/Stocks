@@ -1,0 +1,11 @@
+{
+  "name": "market-pulse-risk-check",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "risk-check": "node scripts/risk-check.mjs"
+  },
+  "dependencies": {
+    "nodemailer": "^9.0.3"
+  }
+}

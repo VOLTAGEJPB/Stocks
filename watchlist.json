@@ -1,0 +1,11 @@
+[
+  { "sym": "TSLA", "name": "Tesla", "story": "Down ~19% on the week after signaling heavier AI/robotaxi spend — a robotaxi update on the 22nd could flip sentiment fast either way." },
+  { "sym": "IBM", "name": "IBM", "story": "Cratered 25% in one session on a profit warning tied to soft software/infrastructure demand." },
+  { "sym": "SKHY", "name": "SK Hynix ADR", "story": "Record $26.5B Nasdaq debut; swung from an 8% rally to an 11%+ drop within days on AI-memory demand jitters." },
+  { "sym": "MU", "name": "Micron", "story": "Chipmaker caught in the broader semiconductor sell-off/rebound whiplash." },
+  { "sym": "LRCX", "name": "Lam Research", "story": "Moving with the semiconductor-equipment group as AI capex sentiment swings session to session." },
+  { "sym": "BAH", "name": "Booz Allen Hamilton", "story": "Popped 12% after beating earnings estimates and reaffirming guidance — a defense-spending beneficiary." },
+  { "sym": "DNA", "name": "Ginkgo Bioworks", "story": "One of the highest-beta small-caps on the board — big swings on light news flow." },
+  { "sym": "AMC", "name": "AMC Entertainment", "story": "Perennial high-beta retail-trader favorite; still one of the most volatile mid-caps by beta." },
+  { "sym": "NVDA", "name": "Nvidia", "story": "The AI bellwether — calmer than smaller chip names lately, but every AI-spending headline still moves it." }
+]

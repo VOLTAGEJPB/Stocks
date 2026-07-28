@@ -1,0 +1,21 @@
+{
+  "negative": [
+    "downgrade", "downgrades", "downgraded", "misses estimates", "misses expectations",
+    "warns", "warning", "profit warning", "cuts guidance", "guidance cut", "slashes forecast",
+    "lawsuit", "sues", "sued", "probe", "investigation", "investigated", "subpoena",
+    "recall", "recalls", "layoffs", "layoff", "job cuts", "bankruptcy", "chapter 11",
+    "delisted", "delisting", "fraud", "plunge", "plunges", "plunged", "crash", "crashes",
+    "slump", "slumps", "tumbles", "tumble", "sell-off", "selloff", "scandal",
+    "resigns", "resignation", "steps down", "sec charges", "antitrust", "fined",
+    "fine of", "data breach", "hacked", "default", "restructuring", "impairment",
+    "writedown", "write-down", "suspends dividend", "cuts dividend", "misses revenue",
+    "short seller", "short-seller", "accounting irregular", "restated earnings"
+  ],
+  "positive": [
+    "beats estimates", "beats expectations", "beat estimates", "raises guidance",
+    "upgrade", "upgrades", "upgraded", "record revenue", "record earnings", "rally",
+    "soars", "surges", "surge", "partnership", "strong demand", "buyback",
+    "dividend increase", "raises dividend", "approval", "approved", "breakthrough",
+    "signs deal", "wins contract", "beats revenue"
+  ]
+}
