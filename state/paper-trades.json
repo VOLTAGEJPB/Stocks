@@ -1,5 +1,15 @@
 {
-  "openPositions": {},
+  "openPositions": {
+    "AMC": {
+      "entryDate": "2026-07-28T20:26:45.232Z",
+      "entryMomentum": 80
+    }
+  },
   "closedTrades": [],
-  "stats": { "totalTrades": 0, "wins": 0, "winRatePct": null, "avgReturnPct": null }
+  "stats": {
+    "totalTrades": 0,
+    "wins": 0,
+    "winRatePct": null,
+    "avgReturnPct": null
+  }
 }
