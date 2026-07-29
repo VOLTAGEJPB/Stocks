@@ -15,9 +15,9 @@
   },
   "SKHY": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-07-29T20:55:26.651Z",
-    "lastSeverity": 49,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 3
   },
   "MU": {
@@ -32,7 +32,7 @@
     "flagged": true,
     "lastAlertAt": "2026-07-29T15:30:41.449Z",
     "lastSeverity": 71,
-    "lastNegCount": 9
+    "lastNegCount": 10
   },
   "BAH": {
     "seen": true,
@@ -95,7 +95,7 @@
     "flagged": true,
     "lastAlertAt": "2026-07-29T20:55:26.651Z",
     "lastSeverity": 73,
-    "lastNegCount": 9
+    "lastNegCount": 7
   },
   "AMD": {
     "seen": true,
