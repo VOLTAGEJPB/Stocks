@@ -18,14 +18,14 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 5
+    "lastNegCount": 6
   },
   "MU": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 5
+    "lastNegCount": 4
   },
   "LRCX": {
     "seen": true,
@@ -67,7 +67,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 3
   },
   "MSFT": {
     "seen": true,
@@ -88,14 +88,14 @@
     "flagged": true,
     "lastAlertAt": "2026-07-30T18:24:58.626Z",
     "lastSeverity": 70,
-    "lastNegCount": 6
+    "lastNegCount": 4
   },
   "META": {
     "seen": true,
     "flagged": true,
     "lastAlertAt": "2026-07-29T20:55:26.651Z",
     "lastSeverity": 73,
-    "lastNegCount": 5
+    "lastNegCount": 4
   },
   "AMD": {
     "seen": true,
