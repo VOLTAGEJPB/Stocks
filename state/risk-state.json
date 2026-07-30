@@ -4,7 +4,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "IBM": {
     "seen": true,
@@ -18,21 +18,21 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 5
   },
   "MU": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 6
+    "lastNegCount": 5
   },
   "LRCX": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 3
   },
   "BAH": {
     "seen": true,
@@ -67,42 +67,42 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 6
+    "lastNegCount": 4
   },
   "MSFT": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 5
+    "lastNegCount": 2
   },
   "GOOGL": {
-    "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-07-30T17:00:00.632Z",
-    "lastSeverity": 35,
-    "lastNegCount": 4
-  },
-  "AMZN": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
     "lastNegCount": 4
+  },
+  "AMZN": {
+    "seen": true,
+    "flagged": true,
+    "lastAlertAt": "2026-07-30T18:24:58.626Z",
+    "lastSeverity": 70,
+    "lastNegCount": 6
   },
   "META": {
     "seen": true,
     "flagged": true,
     "lastAlertAt": "2026-07-29T20:55:26.651Z",
     "lastSeverity": 73,
-    "lastNegCount": 6
+    "lastNegCount": 5
   },
   "AMD": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 5
+    "lastNegCount": 6
   },
   "INTC": {
     "seen": true,
@@ -120,10 +120,10 @@
   },
   "ARM": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-07-30T17:00:00.632Z",
-    "lastSeverity": 36,
-    "lastNegCount": 3
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 4
   },
   "SMCI": {
     "seen": true,
