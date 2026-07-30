@@ -4,16 +4,29 @@
       "entryDate": "2026-07-28T20:26:45.232Z",
       "entryMomentum": 80
     },
-    "AAPL": {
-      "entryDate": "2026-07-29T20:55:26.651Z",
-      "entryMomentum": 82
+    "MU": {
+      "entryDate": "2026-07-30T15:10:21.773Z",
+      "entryMomentum": 65
+    },
+    "AMD": {
+      "entryDate": "2026-07-30T15:10:21.773Z",
+      "entryMomentum": 65
     }
   },
-  "closedTrades": [],
+  "closedTrades": [
+    {
+      "sym": "AAPL",
+      "name": "Apple",
+      "entryDate": "2026-07-29T20:55:26.651Z",
+      "exitDate": "2026-07-30T15:10:21.773Z",
+      "returnPct": 0.1,
+      "exitReason": "Risk Watch flagged"
+    }
+  ],
   "stats": {
-    "totalTrades": 0,
-    "wins": 0,
-    "winRatePct": null,
-    "avgReturnPct": null
+    "totalTrades": 1,
+    "wins": 1,
+    "winRatePct": 100,
+    "avgReturnPct": 0.1
   }
 }
