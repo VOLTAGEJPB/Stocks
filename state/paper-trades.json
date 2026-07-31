@@ -15,10 +15,6 @@
     "MSFT": {
       "entryDate": "2026-07-31T17:04:50.707Z",
       "entryMomentum": 68
-    },
-    "AAPL": {
-      "entryDate": "2026-07-31T18:53:28.810Z",
-      "entryMomentum": 69
     }
   },
   "closedTrades": [
@@ -69,12 +65,20 @@
       "exitDate": "2026-07-31T18:53:28.810Z",
       "returnPct": -3.61,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AAPL",
+      "name": "Apple",
+      "entryDate": "2026-07-31T18:53:28.810Z",
+      "exitDate": "2026-07-31T20:20:20.821Z",
+      "returnPct": 2.01,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 6,
-    "wins": 2,
-    "winRatePct": 33.3,
-    "avgReturnPct": -1.87
+    "totalTrades": 7,
+    "wins": 3,
+    "winRatePct": 42.9,
+    "avgReturnPct": -1.32
   }
 }
