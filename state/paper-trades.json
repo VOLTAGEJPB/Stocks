@@ -12,13 +12,13 @@
       "entryDate": "2026-07-30T17:00:00.632Z",
       "entryMomentum": 65
     },
-    "LCID": {
-      "entryDate": "2026-07-30T18:24:58.626Z",
-      "entryMomentum": 65
-    },
     "MSFT": {
       "entryDate": "2026-07-31T17:04:50.707Z",
       "entryMomentum": 68
+    },
+    "AAPL": {
+      "entryDate": "2026-07-31T18:53:28.810Z",
+      "entryMomentum": 69
     }
   },
   "closedTrades": [
@@ -61,12 +61,20 @@
       "exitDate": "2026-07-31T17:04:50.707Z",
       "returnPct": -0.76,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "LCID",
+      "name": "Lucid Group",
+      "entryDate": "2026-07-30T18:24:58.626Z",
+      "exitDate": "2026-07-31T18:53:28.810Z",
+      "returnPct": -3.61,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 5,
+    "totalTrades": 6,
     "wins": 2,
-    "winRatePct": 40,
-    "avgReturnPct": -1.53
+    "winRatePct": 33.3,
+    "avgReturnPct": -1.87
   }
 }
