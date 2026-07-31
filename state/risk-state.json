@@ -1,10 +1,10 @@
 {
   "TSLA": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 2
+    "flagged": true,
+    "lastAlertAt": "2026-07-31T17:04:50.707Z",
+    "lastSeverity": 76,
+    "lastNegCount": 4
   },
   "IBM": {
     "seen": true,
@@ -57,10 +57,10 @@
   },
   "NVDA": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 0
+    "flagged": true,
+    "lastAlertAt": "2026-07-31T17:04:50.707Z",
+    "lastSeverity": 52,
+    "lastNegCount": 3
   },
   "AAPL": {
     "seen": true,
@@ -71,10 +71,10 @@
   },
   "MSFT": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-07-31T15:19:29.168Z",
-    "lastSeverity": 26,
-    "lastNegCount": 3
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 4
   },
   "GOOGL": {
     "seen": true,
@@ -88,21 +88,21 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 3
   },
   "META": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 3
   },
   "AMD": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 3
   },
   "INTC": {
     "seen": true,
@@ -151,14 +151,14 @@
     "flagged": true,
     "lastAlertAt": "2026-07-31T15:19:29.168Z",
     "lastSeverity": 71,
-    "lastNegCount": 2
+    "lastNegCount": 3
   },
   "MSTR": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-07-31T15:19:29.168Z",
-    "lastSeverity": 68,
-    "lastNegCount": 3
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 2
   },
   "RIVN": {
     "seen": true,
@@ -186,7 +186,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 0
+    "lastNegCount": 1
   },
   "PFE": {
     "seen": true,
@@ -207,6 +207,6 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   }
 }
