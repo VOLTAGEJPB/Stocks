@@ -124,6 +124,8 @@
   .name{ font-size:11.5px; color:#8A7C61; margin-top:6px; letter-spacing:.03em; }
   canvas{ width:100%; height:52px; display:block; margin-top:12px; }
   .story{ font-size:12px; color:#B8AA8F; line-height:1.55; margin-top:10px; border-top:1px dashed var(--char-line); padding-top:10px; }
+  .earnings{ font-size:11.5px; color:var(--amber-dim); margin-top:8px; letter-spacing:.03em; }
+  .earnings.soon{ color:var(--amber); }
   .loading{ color:#6B5F49; font-size:12px; }
 
   footer{ max-width:1120px; margin:0 auto; padding:0 24px 60px; color:#6B5F49; font-size:11.5px; line-height:1.7; }
@@ -184,7 +186,7 @@
 </main>
 
 <footer>
-  MARKET PULSE — data via Finnhub.io, refreshed client-side. API key is stored only in this browser (localStorage), not on any server, and persists across visits until you clear it. Free-tier quotes may lag real-time by a few minutes. Momentum Score = weighted blend of 5-day, month-to-date, 13-week, and 26-week price returns plus position in the 52-week range. Risk Watch = flags a stock when its Momentum Score is falling AND its last 7 days of headlines skew negative on a keyword count, OR immediately on its own for a severe single-day price move (🚨 EMERGENCY). None of this is a prediction, probability, or forecast — all of it is reads on real, past data. Browser notifications only fire while this tab is open; for alerts even when you're away — including immediate re-alerts if a flagged stock gets meaningfully worse the same day, not just once every 24 hours — see the scheduled email workflow in this repo's README.
+  MARKET PULSE — data via Finnhub.io, refreshed client-side. API key is stored only in this browser (localStorage), not on any server, and persists across visits until you clear it. Free-tier quotes may lag real-time by a few minutes. Momentum Score = weighted blend of 5-day, month-to-date, 13-week, and 26-week price returns plus position in the 52-week range. Risk Watch = flags a stock when its Momentum Score is falling AND its last 7 days of headlines skew negative on a keyword count, OR immediately on its own for a severe single-day price move (🚨 EMERGENCY). Each card also shows its next scheduled earnings date (via Finnhub's earnings calendar) — a real, dated event worth watching regardless of what the score says, highlighted when it's within a week. None of this is a prediction, probability, or forecast — all of it is reads on real, scheduled, or past data. Browser notifications only fire while this tab is open; for alerts even when you're away — including immediate re-alerts if a flagged stock gets meaningfully worse the same day, not just once every 24 hours — see the scheduled email workflow in this repo's README.
 </footer>
 
 <script>
@@ -224,6 +226,7 @@ function buildCards(){
       <div class="name">${s.name}</div>
       <canvas id="wave-${s.sym}" width="600" height="104"></canvas>
       <div class="story">${s.story}</div>
+      <div class="earnings" id="earnings-${s.sym}"></div>
     `;
     grid.appendChild(el);
     cardEls[s.sym] = el;
@@ -286,6 +289,29 @@ async function fetchNews(sym){
   const res = await fetch(url);
   if(!res.ok) throw new Error('bad news response');
   return res.json();
+}
+
+async function fetchNextEarnings(sym){
+  const from = new Date();
+  const to = new Date(from.getTime() + 180*24*60*60*1000);
+  const url = `https://finnhub.io/api/v1/calendar/earnings?symbol=${sym}&from=${dateStr(from)}&to=${dateStr(to)}&token=${API_KEY}`;
+  const res = await fetch(url);
+  if(!res.ok) throw new Error('bad earnings response');
+  const data = await res.json();
+  const upcoming = (data.earningsCalendar || [])
+    .filter(e => e.date >= dateStr(from))
+    .sort((a,b) => a.date.localeCompare(b.date));
+  return upcoming[0] || null;
+}
+
+function updateEarningsBadge(sym, earnings){
+  const el = document.getElementById('earnings-'+sym);
+  if(!el) return;
+  if(!earnings){ el.textContent = ''; el.classList.remove('soon'); return; }
+  const daysAway = Math.round((new Date(earnings.date) - Date.now()) / 86400000);
+  const when = earnings.hour === 'bmo' ? 'before open' : earnings.hour === 'amc' ? 'after close' : '';
+  el.textContent = `📅 Next earnings: ${earnings.date}${when ? ' (' + when + ')' : ''} — ${daysAway <= 0 ? 'today' : daysAway + 'd away'}`;
+  el.classList.toggle('soon', daysAway >= 0 && daysAway <= 7);
 }
 
 // Keyword-count heuristic over the last 7 days of headlines — not NLP sentiment,
@@ -507,6 +533,12 @@ async function refreshSignals(){
       riskCache[s.sym] = { newsRisk: score, negHeadlines, combined: riskCache[s.sym]?.combined || false };
     }catch(e){
       riskCache[s.sym] = riskCache[s.sym] || { newsRisk: null, negHeadlines: [], combined: false };
+    }
+    try{
+      const earnings = await fetchNextEarnings(s.sym);
+      updateEarningsBadge(s.sym, earnings);
+    }catch(e){
+      // leave whatever was last shown — a transient miss here isn't worth clearing it
     }
     updateMomentumBadge(s.sym);
     updateRiskBadge(s.sym);
