@@ -92,3 +92,17 @@ same way as above:
 Without these two secrets, the paper-trading step is skipped entirely —
 the rest of MarketPulse (Momentum Score, Risk Watch, email alerts) works
 the same either way.
+
+### News Watch (raw headlines for specific symbols)
+
+A separate, distinct email — not merged into the Risk Watch email — for
+symbols you specifically want to keep an eye on regardless of whether
+they trip any score. The list lives in `news-watch.json` (currently
+`META` and `SMCI`) and is checked on the same scheduled run.
+
+Unlike Risk Watch, this isn't sentiment-scored or gated behind a
+momentum/news-risk threshold — it just tells you when a **genuinely new**
+headline appears for a watched symbol since the last check (tracked in
+`state/news-watch-state.json` by headline timestamp), with the headline
+text, source, and a link. To add or remove symbols, edit `news-watch.json`
+directly.

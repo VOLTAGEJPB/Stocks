@@ -19,6 +19,7 @@ const ALPACA_BASE_URL = "https://paper-api.alpaca.markets"; // paper trading onl
 const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const STATE_PATH = path.join(REPO_ROOT, "state", "risk-state.json");
 const PAPER_STATE_PATH = path.join(REPO_ROOT, "state", "paper-trades.json");
+const NEWS_WATCH_STATE_PATH = path.join(REPO_ROOT, "state", "news-watch-state.json");
 const REALERT_AFTER_MS = 24 * 60 * 60 * 1000; // re-remind once a day while risk persists
 
 // Paper-trading rule: buy $1,000 (simulated) when a stock's Momentum Score crosses
@@ -120,6 +121,10 @@ async function loadPaperState() {
   return loadJson(PAPER_STATE_PATH, { openPositions: {}, closedTrades: [] });
 }
 
+async function loadNewsWatchState() {
+  return loadJson(NEWS_WATCH_STATE_PATH, {});
+}
+
 async function alpacaRequest(method, urlPath, body) {
   const res = await fetch(`${ALPACA_BASE_URL}${urlPath}`, {
     method,
@@ -159,11 +164,14 @@ function computePaperStats(closedTrades) {
 async function main() {
   const watchlist = JSON.parse(await fs.readFile(path.join(REPO_ROOT, "watchlist.json"), "utf8"));
   const keywords = JSON.parse(await fs.readFile(path.join(REPO_ROOT, "news-keywords.json"), "utf8"));
+  const newsWatchList = await loadJson(path.join(REPO_ROOT, "news-watch.json"), []);
   const state = await loadState();
   const paperState = await loadPaperState();
+  const newsWatchState = await loadNewsWatchState();
   const now = Date.now();
   const toAlert = [];
   const paperEvents = [];
+  const newsWatchEvents = [];
 
   for (const s of watchlist) {
     try {
@@ -216,6 +224,26 @@ async function main() {
         };
       }
 
+      if (newsWatchList.includes(s.sym)) {
+        const priorWatch = newsWatchState[s.sym] || { seen: false, lastSeenAt: 0 };
+        // Same cold-start problem as the risk spike check: without `seen`, the
+        // entire 7-day backlog would read as "new" on the first-ever check.
+        const freshHeadlines = priorWatch.seen
+          ? news.filter(a => typeof a.datetime === "number" && a.datetime > priorWatch.lastSeenAt)
+          : [];
+        const maxDatetime = news.reduce((max, a) => Math.max(max, a.datetime || 0), priorWatch.lastSeenAt);
+        if (freshHeadlines.length > 0) {
+          newsWatchEvents.push({
+            sym: s.sym, name: s.name,
+            headlines: freshHeadlines
+              .sort((a, b) => b.datetime - a.datetime)
+              .slice(0, 5)
+              .map(a => ({ headline: a.headline, url: a.url, source: a.source })),
+          });
+        }
+        newsWatchState[s.sym] = { seen: true, lastSeenAt: maxDatetime };
+      }
+
       if (PAPER_ENABLED) {
         const openPosition = paperState.openPositions[s.sym];
         if (!openPosition && momentum !== null && momentum >= PAPER_ENTRY_MOMENTUM) {
@@ -249,16 +277,18 @@ async function main() {
     await fs.writeFile(PAPER_STATE_PATH, JSON.stringify(paperState, null, 2) + "\n");
   }
 
+  await fs.writeFile(NEWS_WATCH_STATE_PATH, JSON.stringify(newsWatchState, null, 2) + "\n");
+
   await fs.mkdir(path.dirname(STATE_PATH), { recursive: true });
   await fs.writeFile(STATE_PATH, JSON.stringify(state, null, 2) + "\n");
 
-  if (toAlert.length === 0 && paperEvents.length === 0) {
-    console.log("No new risk alerts or paper trades this run.");
+  if (toAlert.length === 0 && paperEvents.length === 0 && newsWatchEvents.length === 0) {
+    console.log("No new risk alerts, paper trades, or watched headlines this run.");
     return;
   }
 
   if (!GMAIL_USER || !GMAIL_APP_PASSWORD || !ALERT_EMAIL_TO) {
-    console.log(`${toAlert.length} risk alert(s), ${paperEvents.length} paper trade event(s), but email isn't configured (GMAIL_USER/GMAIL_APP_PASSWORD/ALERT_EMAIL_TO).`);
+    console.log(`${toAlert.length} risk alert(s), ${paperEvents.length} paper trade event(s), ${newsWatchEvents.length} news-watch symbol(s) with new headlines, but email isn't configured (GMAIL_USER/GMAIL_APP_PASSWORD/ALERT_EMAIL_TO).`);
     return;
   }
 
@@ -270,52 +300,78 @@ async function main() {
   const hasEmergency = toAlert.some(a => a.reason === "EMERGENCY");
   const reasonLabel = { EMERGENCY: "EMERGENCY — sudden severe move", ESCALATION: "ESCALATION — got meaningfully worse since the last alert", NEW: "new risk flag", REMINDER: "still flagged (daily reminder)" };
 
-  const sections = [];
+  if (toAlert.length > 0 || paperEvents.length > 0) {
+    const sections = [];
 
-  if (toAlert.length > 0) {
-    const lines = toAlert.map(a => {
-      const headline = a.negHeadlines[0] ? `\n    Headline: "${a.negHeadlines[0]}"` : "";
-      return `- [${reasonLabel[a.reason]}] ${a.sym} (${a.name}): $${a.price?.toFixed(2)} (${a.pct >= 0 ? "+" : ""}${a.pct?.toFixed(2)}% today), Momentum ${a.momentum}, News Risk ${a.newsRisk}${headline}`;
+    if (toAlert.length > 0) {
+      const lines = toAlert.map(a => {
+        const headline = a.negHeadlines[0] ? `\n    Headline: "${a.negHeadlines[0]}"` : "";
+        return `- [${reasonLabel[a.reason]}] ${a.sym} (${a.name}): $${a.price?.toFixed(2)} (${a.pct >= 0 ? "+" : ""}${a.pct?.toFixed(2)}% today), Momentum ${a.momentum}, News Risk ${a.newsRisk}${headline}`;
+      });
+      sections.push([
+        "MarketPulse alert — stocks where recent momentum has turned down and/or headlines/price action look severe.",
+        "This is a heuristic reflecting past price/news data, not a prediction, forecast, or investment advice. Verify independently before acting.",
+        "",
+        ...lines,
+      ].join("\n"));
+    }
+
+    if (paperEvents.length > 0) {
+      const lines = paperEvents.map(e => {
+        const detail = e.action === "BUY" ? `Momentum ${e.momentum}` : `Return ${e.returnPct >= 0 ? "+" : ""}${e.returnPct?.toFixed(2)}%`;
+        return `- ${e.action} ${e.sym} (${e.name}) — ${e.reason} — ${detail}`;
+      });
+      const stats = paperState.stats;
+      const statsLine = stats.totalTrades > 0
+        ? `Track record so far: ${stats.totalTrades} closed trade(s), ${stats.winRatePct}% win rate, ${stats.avgReturnPct >= 0 ? "+" : ""}${stats.avgReturnPct}% average return.`
+        : "No closed trades yet.";
+      sections.push([
+        "📊 Paper Trading (simulated via Alpaca — no real money) — buys on Momentum Score crossing into Strong Up, sells after ~5 trading days or if Risk Watch flags it.",
+        ...lines,
+        "",
+        statsLine,
+        "Past paper-trade results are not a guarantee of future performance.",
+      ].join("\n"));
+    }
+
+    sections.push("https://voltagejpb.github.io/Stocks/market-pulse.html");
+    const text = sections.join("\n\n");
+
+    const subjectPrefix = hasEmergency ? "🚨 EMERGENCY" : toAlert.length > 0 ? "MarketPulse Risk Watch" : "MarketPulse Paper Trading";
+    const subjectSyms = toAlert.length > 0 ? toAlert.map(a => a.sym) : paperEvents.map(e => e.sym);
+    await transporter.sendMail({
+      from: GMAIL_USER,
+      to: ALERT_EMAIL_TO,
+      subject: `${subjectPrefix}: ${subjectSyms.join(", ")}`,
+      text,
     });
-    sections.push([
-      "MarketPulse alert — stocks where recent momentum has turned down and/or headlines/price action look severe.",
-      "This is a heuristic reflecting past price/news data, not a prediction, forecast, or investment advice. Verify independently before acting.",
-      "",
-      ...lines,
-    ].join("\n"));
+
+    console.log(`Sent email (risk: ${toAlert.map(a => `${a.sym}:${a.reason}`).join(", ") || "none"}; paper: ${paperEvents.map(e => `${e.sym}:${e.action}`).join(", ") || "none"})`);
   }
 
-  if (paperEvents.length > 0) {
-    const lines = paperEvents.map(e => {
-      const detail = e.action === "BUY" ? `Momentum ${e.momentum}` : `Return ${e.returnPct >= 0 ? "+" : ""}${e.returnPct?.toFixed(2)}%`;
-      return `- ${e.action} ${e.sym} (${e.name}) — ${e.reason} — ${detail}`;
-    });
-    const stats = paperState.stats;
-    const statsLine = stats.totalTrades > 0
-      ? `Track record so far: ${stats.totalTrades} closed trade(s), ${stats.winRatePct}% win rate, ${stats.avgReturnPct >= 0 ? "+" : ""}${stats.avgReturnPct}% average return.`
-      : "No closed trades yet.";
-    sections.push([
-      "📊 Paper Trading (simulated via Alpaca — no real money) — buys on Momentum Score crossing into Strong Up, sells after ~5 trading days or if Risk Watch flags it.",
+  if (newsWatchEvents.length > 0) {
+    const lines = newsWatchEvents.flatMap(e => [
+      `${e.sym} (${e.name}):`,
+      ...e.headlines.map(h => `  - "${h.headline}"${h.source ? ` [${h.source}]` : ""}${h.url ? `\n    ${h.url}` : ""}`),
+    ]);
+    const text = [
+      `📰 MarketPulse News Watch — new headlines for ${newsWatchEvents.map(e => e.sym).join(", ")} since the last check.`,
+      "Raw headlines, not sentiment-scored or risk-filtered — just surfacing what's new.",
+      "",
       ...lines,
       "",
-      statsLine,
-      "Past paper-trade results are not a guarantee of future performance.",
-    ].join("\n"));
+      "https://voltagejpb.github.io/Stocks/market-pulse.html",
+    ].join("\n");
+
+    await transporter.sendMail({
+      from: GMAIL_USER,
+      to: ALERT_EMAIL_TO,
+      subject: `📰 MarketPulse News Watch: ${newsWatchEvents.map(e => e.sym).join(", ")}`,
+      text,
+    });
+
+    console.log(`Sent News Watch email (${newsWatchEvents.map(e => `${e.sym}:${e.headlines.length}`).join(", ")})`);
   }
-
-  sections.push("https://voltagejpb.github.io/Stocks/market-pulse.html");
-  const text = sections.join("\n\n");
-
-  const subjectPrefix = hasEmergency ? "🚨 EMERGENCY" : toAlert.length > 0 ? "MarketPulse Risk Watch" : "MarketPulse Paper Trading";
-  const subjectSyms = toAlert.length > 0 ? toAlert.map(a => a.sym) : paperEvents.map(e => e.sym);
-  await transporter.sendMail({
-    from: GMAIL_USER,
-    to: ALERT_EMAIL_TO,
-    subject: `${subjectPrefix}: ${subjectSyms.join(", ")}`,
-    text,
-  });
-
-  console.log(`Sent email (risk: ${toAlert.map(a => `${a.sym}:${a.reason}`).join(", ") || "none"}; paper: ${paperEvents.map(e => `${e.sym}:${e.action}`).join(", ") || "none"})`);
 }
 
 main().catch(err => {
