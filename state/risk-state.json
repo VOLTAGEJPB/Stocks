@@ -1,31 +1,31 @@
 {
   "TSLA": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-03T17:50:23.516Z",
-    "lastSeverity": 65,
-    "lastNegCount": 3
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 2
   },
   "IBM": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 0
   },
   "SKHY": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 4
+    "flagged": true,
+    "lastAlertAt": "2026-08-03T19:36:22.252Z",
+    "lastSeverity": 69,
+    "lastNegCount": 6
   },
   "MU": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 5
+    "lastNegCount": 3
   },
   "LRCX": {
     "seen": true,
@@ -67,7 +67,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 1
   },
   "MSFT": {
     "seen": true,
@@ -88,14 +88,14 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "META": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "AMD": {
     "seen": true,
@@ -109,7 +109,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 2
   },
   "AVGO": {
     "seen": true,
@@ -144,14 +144,14 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 0
   },
   "COIN": {
     "seen": true,
     "flagged": true,
     "lastAlertAt": "2026-08-03T15:43:07.984Z",
     "lastSeverity": 78,
-    "lastNegCount": 5
+    "lastNegCount": 4
   },
   "MSTR": {
     "seen": true,
@@ -179,7 +179,7 @@
     "flagged": true,
     "lastAlertAt": "2026-08-03T15:43:07.984Z",
     "lastSeverity": 74,
-    "lastNegCount": 2
+    "lastNegCount": 4
   },
   "MRNA": {
     "seen": true,
