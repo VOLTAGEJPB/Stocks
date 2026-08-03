@@ -1,10 +1,10 @@
 {
   "TSLA": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 2
+    "flagged": true,
+    "lastAlertAt": "2026-08-03T17:50:23.516Z",
+    "lastSeverity": 65,
+    "lastNegCount": 3
   },
   "IBM": {
     "seen": true,
@@ -18,21 +18,21 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 4
   },
   "MU": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-03T15:43:07.984Z",
-    "lastSeverity": 64,
-    "lastNegCount": 6
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 5
   },
   "LRCX": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "BAH": {
     "seen": true,
@@ -74,7 +74,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "GOOGL": {
     "seen": true,
@@ -109,7 +109,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 6
+    "lastNegCount": 4
   },
   "AVGO": {
     "seen": true,
@@ -144,7 +144,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "COIN": {
     "seen": true,
@@ -155,9 +155,9 @@
   },
   "MSTR": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-03T15:43:07.984Z",
-    "lastSeverity": 64,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 3
   },
   "RIVN": {
