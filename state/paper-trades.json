@@ -15,6 +15,14 @@
     "MSFT": {
       "entryDate": "2026-07-31T17:04:50.707Z",
       "entryMomentum": 68
+    },
+    "GOOGL": {
+      "entryDate": "2026-08-03T15:43:07.984Z",
+      "entryMomentum": 65
+    },
+    "AMZN": {
+      "entryDate": "2026-08-03T15:43:07.984Z",
+      "entryMomentum": 77
     }
   },
   "closedTrades": [
