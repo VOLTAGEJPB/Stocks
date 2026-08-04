@@ -1,9 +1,5 @@
 {
   "openPositions": {
-    "AMC": {
-      "entryDate": "2026-07-28T20:26:45.232Z",
-      "entryMomentum": 80
-    },
     "UAL": {
       "entryDate": "2026-07-30T17:00:00.632Z",
       "entryMomentum": 65
@@ -16,10 +12,6 @@
       "entryDate": "2026-08-03T15:43:07.984Z",
       "entryMomentum": 77
     },
-    "MU": {
-      "entryDate": "2026-08-04T15:24:07.833Z",
-      "entryMomentum": 81
-    },
     "LRCX": {
       "entryDate": "2026-08-04T15:24:07.833Z",
       "entryMomentum": 71
@@ -31,6 +23,18 @@
     "ARM": {
       "entryDate": "2026-08-04T15:24:07.833Z",
       "entryMomentum": 68
+    },
+    "MSFT": {
+      "entryDate": "2026-08-04T17:12:44.202Z",
+      "entryMomentum": 71
+    },
+    "AMD": {
+      "entryDate": "2026-08-04T17:12:44.202Z",
+      "entryMomentum": 87
+    },
+    "MRNA": {
+      "entryDate": "2026-08-04T17:12:44.202Z",
+      "entryMomentum": 65
     }
   },
   "closedTrades": [
@@ -105,12 +109,28 @@
       "exitDate": "2026-08-04T15:24:07.833Z",
       "returnPct": 6.94,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-08-04T15:24:07.833Z",
+      "exitDate": "2026-08-04T17:12:44.202Z",
+      "returnPct": 0.08,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMC",
+      "name": "AMC Entertainment",
+      "entryDate": "2026-07-28T20:26:45.232Z",
+      "exitDate": "2026-08-04T17:12:44.202Z",
+      "returnPct": -1.12,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 9,
-    "wins": 5,
-    "winRatePct": 55.6,
-    "avgReturnPct": 0.67
+    "totalTrades": 11,
+    "wins": 6,
+    "winRatePct": 54.5,
+    "avgReturnPct": 0.46
   }
 }
