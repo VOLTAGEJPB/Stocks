@@ -24,10 +24,6 @@
       "entryDate": "2026-08-04T15:24:07.833Z",
       "entryMomentum": 68
     },
-    "MSFT": {
-      "entryDate": "2026-08-04T17:12:44.202Z",
-      "entryMomentum": 71
-    },
     "AMD": {
       "entryDate": "2026-08-04T17:12:44.202Z",
       "entryMomentum": 87
@@ -133,12 +129,20 @@
       "exitDate": "2026-08-04T17:12:44.202Z",
       "returnPct": -1.12,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-08-04T17:12:44.202Z",
+      "exitDate": "2026-08-04T20:51:08.238Z",
+      "returnPct": -0.37,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 11,
+    "totalTrades": 12,
     "wins": 6,
-    "winRatePct": 54.5,
-    "avgReturnPct": 0.46
+    "winRatePct": 50,
+    "avgReturnPct": 0.39
   }
 }

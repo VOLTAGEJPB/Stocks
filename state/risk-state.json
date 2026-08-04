@@ -1,10 +1,10 @@
 {
   "TSLA": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 1
+    "flagged": true,
+    "lastAlertAt": "2026-08-04T20:51:08.238Z",
+    "lastSeverity": 66,
+    "lastNegCount": 2
   },
   "IBM": {
     "seen": true,
@@ -50,9 +50,9 @@
   },
   "AMC": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-04T17:12:44.202Z",
-    "lastSeverity": 43,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 0
   },
   "NVDA": {
@@ -67,14 +67,14 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 5
   },
   "MSFT": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 0
+    "flagged": true,
+    "lastAlertAt": "2026-08-04T20:51:08.238Z",
+    "lastSeverity": 25,
+    "lastNegCount": 2
   },
   "GOOGL": {
     "seen": true,
@@ -88,21 +88,21 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "META": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 1
+    "flagged": true,
+    "lastAlertAt": "2026-08-04T20:51:08.238Z",
+    "lastSeverity": 59,
+    "lastNegCount": 3
   },
   "AMD": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "INTC": {
     "seen": true,
@@ -130,7 +130,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 6
+    "lastNegCount": 5
   },
   "TSM": {
     "seen": true,
