@@ -4,17 +4,9 @@
       "entryDate": "2026-07-28T20:26:45.232Z",
       "entryMomentum": 80
     },
-    "AMD": {
-      "entryDate": "2026-07-30T15:10:21.773Z",
-      "entryMomentum": 65
-    },
     "UAL": {
       "entryDate": "2026-07-30T17:00:00.632Z",
       "entryMomentum": 65
-    },
-    "MSFT": {
-      "entryDate": "2026-07-31T17:04:50.707Z",
-      "entryMomentum": 68
     },
     "GOOGL": {
       "entryDate": "2026-08-03T15:43:07.984Z",
@@ -23,6 +15,22 @@
     "AMZN": {
       "entryDate": "2026-08-03T15:43:07.984Z",
       "entryMomentum": 77
+    },
+    "MU": {
+      "entryDate": "2026-08-04T15:24:07.833Z",
+      "entryMomentum": 81
+    },
+    "LRCX": {
+      "entryDate": "2026-08-04T15:24:07.833Z",
+      "entryMomentum": 71
+    },
+    "INTC": {
+      "entryDate": "2026-08-04T15:24:07.833Z",
+      "entryMomentum": 69
+    },
+    "ARM": {
+      "entryDate": "2026-08-04T15:24:07.833Z",
+      "entryMomentum": 68
     }
   },
   "closedTrades": [
@@ -81,12 +89,28 @@
       "exitDate": "2026-07-31T20:20:20.821Z",
       "returnPct": 2.01,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-07-31T17:04:50.707Z",
+      "exitDate": "2026-08-04T15:24:07.833Z",
+      "returnPct": 8.36,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMD",
+      "name": "Advanced Micro Devices",
+      "entryDate": "2026-07-30T15:10:21.773Z",
+      "exitDate": "2026-08-04T15:24:07.833Z",
+      "returnPct": 6.94,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 7,
-    "wins": 3,
-    "winRatePct": 42.9,
-    "avgReturnPct": -1.32
+    "totalTrades": 9,
+    "wins": 5,
+    "winRatePct": 55.6,
+    "avgReturnPct": 0.67
   }
 }
