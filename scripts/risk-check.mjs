@@ -20,6 +20,7 @@ const REPO_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..
 const STATE_PATH = path.join(REPO_ROOT, "state", "risk-state.json");
 const PAPER_STATE_PATH = path.join(REPO_ROOT, "state", "paper-trades.json");
 const NEWS_WATCH_STATE_PATH = path.join(REPO_ROOT, "state", "news-watch-state.json");
+const IPO_WATCH_STATE_PATH = path.join(REPO_ROOT, "state", "ipo-watch-state.json");
 const REALERT_AFTER_MS = 24 * 60 * 60 * 1000; // re-remind once a day while risk persists
 
 // Paper-trading rule: buy $1,000 (simulated) when a stock's Momentum Score crosses
@@ -125,6 +126,22 @@ async function loadNewsWatchState() {
   return loadJson(NEWS_WATCH_STATE_PATH, {});
 }
 
+async function loadIpoWatchState() {
+  return loadJson(IPO_WATCH_STATE_PATH, {});
+}
+
+// Loose match since a private company's name in Finnhub's IPO calendar may not
+// exactly match how we refer to it — e.g. "Lambda Labs" could file as "Lambda,
+// Inc.", so a plain substring check in either direction misses it. Match on
+// the watched name's first (most distinctive) word as a whole word instead.
+function namesMatch(watched, calendarName) {
+  if (!calendarName) return false;
+  const firstWord = watched.toLowerCase().trim().split(/\s+/)[0].replace(/[^a-z0-9]/g, "");
+  if (!firstWord) return false;
+  const calendarWords = calendarName.toLowerCase().split(/[^a-z0-9]+/);
+  return calendarWords.includes(firstWord);
+}
+
 async function alpacaRequest(method, urlPath, body) {
   const res = await fetch(`${ALPACA_BASE_URL}${urlPath}`, {
     method,
@@ -165,13 +182,34 @@ async function main() {
   const watchlist = JSON.parse(await fs.readFile(path.join(REPO_ROOT, "watchlist.json"), "utf8"));
   const keywords = JSON.parse(await fs.readFile(path.join(REPO_ROOT, "news-keywords.json"), "utf8"));
   const newsWatchList = await loadJson(path.join(REPO_ROOT, "news-watch.json"), []);
+  const ipoWatchList = await loadJson(path.join(REPO_ROOT, "ipo-watch.json"), []);
   const state = await loadState();
   const paperState = await loadPaperState();
   const newsWatchState = await loadNewsWatchState();
+  const ipoWatchState = await loadIpoWatchState();
   const now = Date.now();
   const toAlert = [];
   const paperEvents = [];
   const newsWatchEvents = [];
+  const ipoWatchEvents = [];
+
+  if (ipoWatchList.length > 0) {
+    try {
+      const from = dateStr(new Date(now - 14 * 86400000));
+      const to = dateStr(new Date(now + 180 * 86400000));
+      const { ipoCalendar } = await fetchJson(`https://finnhub.io/api/v1/calendar/ipo?from=${from}&to=${to}&token=${FINNHUB_API_KEY}`);
+      for (const watched of ipoWatchList) {
+        if (ipoWatchState[watched]) continue; // already notified once — going public is a one-time event
+        const match = (ipoCalendar || []).find(entry => namesMatch(watched, entry.name));
+        if (match) {
+          ipoWatchEvents.push({ watched, name: match.name, symbol: match.symbol, exchange: match.exchange, date: match.date, status: match.status });
+          ipoWatchState[watched] = { notifiedAt: new Date(now).toISOString(), matchedName: match.name, date: match.date };
+        }
+      }
+    } catch (err) {
+      console.error(`IPO calendar check failed: ${err.message}`);
+    }
+  }
 
   for (const s of watchlist) {
     try {
@@ -278,17 +316,18 @@ async function main() {
   }
 
   await fs.writeFile(NEWS_WATCH_STATE_PATH, JSON.stringify(newsWatchState, null, 2) + "\n");
+  await fs.writeFile(IPO_WATCH_STATE_PATH, JSON.stringify(ipoWatchState, null, 2) + "\n");
 
   await fs.mkdir(path.dirname(STATE_PATH), { recursive: true });
   await fs.writeFile(STATE_PATH, JSON.stringify(state, null, 2) + "\n");
 
-  if (toAlert.length === 0 && paperEvents.length === 0 && newsWatchEvents.length === 0) {
-    console.log("No new risk alerts, paper trades, or watched headlines this run.");
+  if (toAlert.length === 0 && paperEvents.length === 0 && newsWatchEvents.length === 0 && ipoWatchEvents.length === 0) {
+    console.log("No new risk alerts, paper trades, watched headlines, or IPO matches this run.");
     return;
   }
 
   if (!GMAIL_USER || !GMAIL_APP_PASSWORD || !ALERT_EMAIL_TO) {
-    console.log(`${toAlert.length} risk alert(s), ${paperEvents.length} paper trade event(s), ${newsWatchEvents.length} news-watch symbol(s) with new headlines, but email isn't configured (GMAIL_USER/GMAIL_APP_PASSWORD/ALERT_EMAIL_TO).`);
+    console.log(`${toAlert.length} risk alert(s), ${paperEvents.length} paper trade event(s), ${newsWatchEvents.length} news-watch symbol(s), ${ipoWatchEvents.length} IPO match(es), but email isn't configured (GMAIL_USER/GMAIL_APP_PASSWORD/ALERT_EMAIL_TO).`);
     return;
   }
 
@@ -371,6 +410,29 @@ async function main() {
     });
 
     console.log(`Sent News Watch email (${newsWatchEvents.map(e => `${e.sym}:${e.headlines.length}`).join(", ")})`);
+  }
+
+  if (ipoWatchEvents.length > 0) {
+    const lines = ipoWatchEvents.map(e =>
+      `- ${e.watched} → matched "${e.name}"${e.symbol ? ` (${e.symbol})` : ""}${e.exchange ? ` on ${e.exchange}` : ""}, date ${e.date}${e.status ? `, status: ${e.status}` : ""}`
+    );
+    const text = [
+      `🔔 MarketPulse IPO Watch — a company you're watching showed up on the IPO calendar.`,
+      "This is a one-time notification per company — verify the listing independently before acting.",
+      "",
+      ...lines,
+      "",
+      "https://voltagejpb.github.io/Stocks/market-pulse.html",
+    ].join("\n");
+
+    await transporter.sendMail({
+      from: GMAIL_USER,
+      to: ALERT_EMAIL_TO,
+      subject: `🔔 MarketPulse IPO Watch: ${ipoWatchEvents.map(e => e.watched).join(", ")}`,
+      text,
+    });
+
+    console.log(`Sent IPO Watch email (${ipoWatchEvents.map(e => e.watched).join(", ")})`);
   }
 }
 

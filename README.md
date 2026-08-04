@@ -106,3 +106,17 @@ headline appears for a watched symbol since the last check (tracked in
 `state/news-watch-state.json` by headline timestamp), with the headline
 text, source, and a link. To add or remove symbols, edit `news-watch.json`
 directly.
+
+### IPO Watch (private companies you're waiting on)
+
+For companies that aren't public yet, so there's no ticker or price to
+track. The list lives in `ipo-watch.json` (currently `Lambda Labs`,
+`Crusoe Energy`, `Cerebras`, `Vultr`, `OpenAI`) and is checked against
+Finnhub's IPO calendar on the same scheduled run.
+
+When a watched company's name shows up on the calendar (matched loosely,
+since a legal filing name like "Lambda, Inc." won't exactly match a brand
+name like "Lambda Labs"), a one-time `🔔 MarketPulse IPO Watch` email goes
+out with the matched name, ticker, exchange, and date — tracked in
+`state/ipo-watch-state.json` so it never repeats for the same company. To
+add or remove companies, edit `ipo-watch.json` directly.
