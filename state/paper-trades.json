@@ -8,10 +8,6 @@
       "entryDate": "2026-08-03T15:43:07.984Z",
       "entryMomentum": 65
     },
-    "AMZN": {
-      "entryDate": "2026-08-03T15:43:07.984Z",
-      "entryMomentum": 77
-    },
     "LRCX": {
       "entryDate": "2026-08-04T15:24:07.833Z",
       "entryMomentum": 71
@@ -137,12 +133,20 @@
       "exitDate": "2026-08-04T20:51:08.238Z",
       "returnPct": -0.37,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMZN",
+      "name": "Amazon",
+      "entryDate": "2026-08-03T15:43:07.984Z",
+      "exitDate": "2026-08-04T22:11:20.663Z",
+      "returnPct": -2.72,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 12,
+    "totalTrades": 13,
     "wins": 6,
-    "winRatePct": 50,
-    "avgReturnPct": 0.39
+    "winRatePct": 46.2,
+    "avgReturnPct": 0.15
   }
 }
