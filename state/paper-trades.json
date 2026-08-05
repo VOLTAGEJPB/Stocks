@@ -4,10 +4,6 @@
       "entryDate": "2026-07-30T17:00:00.632Z",
       "entryMomentum": 65
     },
-    "GOOGL": {
-      "entryDate": "2026-08-03T15:43:07.984Z",
-      "entryMomentum": 65
-    },
     "LRCX": {
       "entryDate": "2026-08-04T15:24:07.833Z",
       "entryMomentum": 71
@@ -20,21 +16,41 @@
       "entryDate": "2026-08-04T15:24:07.833Z",
       "entryMomentum": 68
     },
-    "AMD": {
-      "entryDate": "2026-08-04T17:12:44.202Z",
-      "entryMomentum": 87
-    },
     "MRNA": {
       "entryDate": "2026-08-04T17:12:44.202Z",
       "entryMomentum": 65
     },
-    "MU": {
-      "entryDate": "2026-08-04T19:07:12.434Z",
-      "entryMomentum": 81
-    },
     "AMC": {
       "entryDate": "2026-08-04T19:07:12.434Z",
       "entryMomentum": 75
+    },
+    "SKHY": {
+      "entryDate": "2026-08-05T15:13:00.361Z",
+      "entryMomentum": 66
+    },
+    "NVDA": {
+      "entryDate": "2026-08-05T15:13:00.361Z",
+      "entryMomentum": 69
+    },
+    "MSFT": {
+      "entryDate": "2026-08-05T15:13:00.361Z",
+      "entryMomentum": 69
+    },
+    "AMZN": {
+      "entryDate": "2026-08-05T15:13:00.361Z",
+      "entryMomentum": 68
+    },
+    "AVGO": {
+      "entryDate": "2026-08-05T15:13:00.361Z",
+      "entryMomentum": 67
+    },
+    "TSM": {
+      "entryDate": "2026-08-05T15:13:00.361Z",
+      "entryMomentum": 66
+    },
+    "PLTR": {
+      "entryDate": "2026-08-05T15:13:00.361Z",
+      "entryMomentum": 69
     }
   },
   "closedTrades": [
@@ -141,12 +157,36 @@
       "exitDate": "2026-08-04T22:11:20.663Z",
       "returnPct": -2.72,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-08-04T19:07:12.434Z",
+      "exitDate": "2026-08-05T15:13:00.361Z",
+      "returnPct": 2.56,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "GOOGL",
+      "name": "Alphabet",
+      "entryDate": "2026-08-03T15:43:07.984Z",
+      "exitDate": "2026-08-05T15:13:00.361Z",
+      "returnPct": 1.53,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMD",
+      "name": "Advanced Micro Devices",
+      "entryDate": "2026-08-04T17:12:44.202Z",
+      "exitDate": "2026-08-05T15:13:00.361Z",
+      "returnPct": -7.99,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 13,
-    "wins": 6,
-    "winRatePct": 46.2,
-    "avgReturnPct": 0.15
+    "totalTrades": 16,
+    "wins": 8,
+    "winRatePct": 50,
+    "avgReturnPct": -0.12
   }
 }
