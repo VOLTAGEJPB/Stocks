@@ -2,8 +2,8 @@
   "TSLA": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-08-04T20:51:08.238Z",
-    "lastSeverity": 66,
+    "lastAlertAt": "2026-08-05T22:12:37.721Z",
+    "lastSeverity": 67,
     "lastNegCount": 5
   },
   "IBM": {
@@ -88,7 +88,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "META": {
     "seen": true,
