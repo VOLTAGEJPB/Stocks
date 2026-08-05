@@ -51,6 +51,14 @@
     "PLTR": {
       "entryDate": "2026-08-05T15:13:00.361Z",
       "entryMomentum": 69
+    },
+    "MU": {
+      "entryDate": "2026-08-05T17:02:01.985Z",
+      "entryMomentum": 89
+    },
+    "AMD": {
+      "entryDate": "2026-08-05T17:02:01.985Z",
+      "entryMomentum": 84
     }
   },
   "closedTrades": [
