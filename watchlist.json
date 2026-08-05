@@ -28,5 +28,6 @@
   { "sym": "MRNA", "name": "Moderna", "story": "Biotech binary-event risk — pipeline and vaccine-demand news causes sharp moves." },
   { "sym": "PFE", "name": "Pfizer", "story": "Large-cap pharma with real event-driven volatility around trial and earnings news." },
   { "sym": "UAL", "name": "United Airlines", "story": "Travel-demand and fuel-cost headlines swing airline names hard." },
-  { "sym": "OXY", "name": "Occidental Petroleum", "story": "Oil-price-sensitive name with real swings on crude-price moves." }
+  { "sym": "OXY", "name": "Occidental Petroleum", "story": "Oil-price-sensitive name with real swings on crude-price moves." },
+  { "sym": "APLD", "name": "Applied Digital", "story": "Owns the physical AI data-center real estate rather than selling compute directly — its Polaris Forge campus is leased to CoreWeave. Capital-intensive build-out makes it swing hard on financing and leasing news." }
 ]
