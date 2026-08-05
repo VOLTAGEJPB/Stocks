@@ -32,14 +32,6 @@
       "entryDate": "2026-08-05T15:13:00.361Z",
       "entryMomentum": 69
     },
-    "MSFT": {
-      "entryDate": "2026-08-05T15:13:00.361Z",
-      "entryMomentum": 69
-    },
-    "AMZN": {
-      "entryDate": "2026-08-05T15:13:00.361Z",
-      "entryMomentum": 68
-    },
     "AVGO": {
       "entryDate": "2026-08-05T15:13:00.361Z",
       "entryMomentum": 67
@@ -189,12 +181,28 @@
       "exitDate": "2026-08-05T15:13:00.361Z",
       "returnPct": -7.99,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-08-05T15:13:00.361Z",
+      "exitDate": "2026-08-05T19:01:21.712Z",
+      "returnPct": 0.08,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMZN",
+      "name": "Amazon",
+      "entryDate": "2026-08-05T15:13:00.361Z",
+      "exitDate": "2026-08-05T19:01:21.712Z",
+      "returnPct": -1.81,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 16,
-    "wins": 8,
+    "totalTrades": 18,
+    "wins": 9,
     "winRatePct": 50,
-    "avgReturnPct": -0.12
+    "avgReturnPct": -0.21
   }
 }
