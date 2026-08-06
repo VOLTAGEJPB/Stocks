@@ -44,17 +44,13 @@
       "entryDate": "2026-08-05T15:13:00.361Z",
       "entryMomentum": 69
     },
-    "MU": {
-      "entryDate": "2026-08-05T17:02:01.985Z",
-      "entryMomentum": 89
-    },
     "MSFT": {
       "entryDate": "2026-08-05T20:44:03.957Z",
       "entryMomentum": 69
     },
-    "AMZN": {
-      "entryDate": "2026-08-05T20:44:03.957Z",
-      "entryMomentum": 66
+    "AMD": {
+      "entryDate": "2026-08-06T15:13:25.366Z",
+      "entryMomentum": 79
     }
   },
   "closedTrades": [
@@ -209,12 +205,28 @@
       "exitDate": "2026-08-05T20:44:03.957Z",
       "returnPct": -1.46,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-08-05T17:02:01.985Z",
+      "exitDate": "2026-08-06T15:13:25.366Z",
+      "returnPct": -1.49,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMZN",
+      "name": "Amazon",
+      "entryDate": "2026-08-05T20:44:03.957Z",
+      "exitDate": "2026-08-06T15:13:25.366Z",
+      "returnPct": 0.02,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 19,
-    "wins": 9,
-    "winRatePct": 47.4,
-    "avgReturnPct": -0.27
+    "totalTrades": 21,
+    "wins": 10,
+    "winRatePct": 47.6,
+    "avgReturnPct": -0.32
   }
 }
