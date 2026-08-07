@@ -55,10 +55,6 @@
     "NVDA": {
       "entryDate": "2026-08-07T15:26:10.341Z",
       "entryMomentum": 71
-    },
-    "MU": {
-      "entryDate": "2026-08-07T20:09:22.110Z",
-      "entryMomentum": 81
     }
   },
   "closedTrades": [
@@ -261,12 +257,20 @@
       "exitDate": "2026-08-07T19:29:42.543Z",
       "returnPct": -3.15,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-08-07T20:09:22.110Z",
+      "exitDate": "2026-08-07T21:10:31.481Z",
+      "returnPct": null,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 25,
+    "totalTrades": 26,
     "wins": 13,
-    "winRatePct": 52,
-    "avgReturnPct": -0.14
+    "winRatePct": 50,
+    "avgReturnPct": -0.13
   }
 }

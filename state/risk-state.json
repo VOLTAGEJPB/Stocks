@@ -11,7 +11,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "SKHY": {
     "seen": true,
@@ -22,10 +22,10 @@
   },
   "MU": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 2
+    "flagged": true,
+    "lastAlertAt": "2026-08-07T21:10:31.481Z",
+    "lastSeverity": 55,
+    "lastNegCount": 5
   },
   "LRCX": {
     "seen": true,
@@ -60,7 +60,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "AAPL": {
     "seen": true,
@@ -88,7 +88,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 0
+    "lastNegCount": 1
   },
   "META": {
     "seen": true,
@@ -102,21 +102,21 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 0
   },
   "INTC": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 1
   },
   "AVGO": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "ARM": {
     "seen": true,
@@ -151,14 +151,14 @@
     "flagged": true,
     "lastAlertAt": "2026-08-07T15:26:10.341Z",
     "lastSeverity": 64,
-    "lastNegCount": 4
+    "lastNegCount": 3
   },
   "MSTR": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "RIVN": {
     "seen": true,
@@ -193,7 +193,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 3
   },
   "UAL": {
     "seen": true,
