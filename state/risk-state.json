@@ -22,10 +22,10 @@
   },
   "MU": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 0
+    "flagged": true,
+    "lastAlertAt": "2026-08-07T19:29:42.543Z",
+    "lastSeverity": 35,
+    "lastNegCount": 2
   },
   "LRCX": {
     "seen": true,
@@ -43,9 +43,9 @@
   },
   "DNA": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-06T15:13:25.366Z",
-    "lastSeverity": 54,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 0
   },
   "AMC": {
@@ -95,7 +95,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "AMD": {
     "seen": true,
@@ -109,7 +109,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 3
   },
   "AVGO": {
     "seen": true,
@@ -151,7 +151,7 @@
     "flagged": true,
     "lastAlertAt": "2026-08-07T15:26:10.341Z",
     "lastSeverity": 64,
-    "lastNegCount": 3
+    "lastNegCount": 4
   },
   "MSTR": {
     "seen": true,
