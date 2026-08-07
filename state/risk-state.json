@@ -22,9 +22,9 @@
   },
   "MU": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-07T19:29:42.543Z",
-    "lastSeverity": 35,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 2
   },
   "LRCX": {
