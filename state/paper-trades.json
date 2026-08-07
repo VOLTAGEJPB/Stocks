@@ -1,16 +1,8 @@
 {
   "openPositions": {
-    "UAL": {
-      "entryDate": "2026-07-30T17:00:00.632Z",
-      "entryMomentum": 65
-    },
     "LRCX": {
       "entryDate": "2026-08-04T15:24:07.833Z",
       "entryMomentum": 71
-    },
-    "INTC": {
-      "entryDate": "2026-08-04T15:24:07.833Z",
-      "entryMomentum": 69
     },
     "ARM": {
       "entryDate": "2026-08-04T15:24:07.833Z",
@@ -51,6 +43,14 @@
     "AMD": {
       "entryDate": "2026-08-06T15:13:25.366Z",
       "entryMomentum": 79
+    },
+    "MU": {
+      "entryDate": "2026-08-07T00:40:19.630Z",
+      "entryMomentum": 79
+    },
+    "AMZN": {
+      "entryDate": "2026-08-07T00:40:19.630Z",
+      "entryMomentum": 65
     }
   },
   "closedTrades": [
@@ -221,12 +221,28 @@
       "exitDate": "2026-08-06T15:13:25.366Z",
       "returnPct": 0.02,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "INTC",
+      "name": "Intel",
+      "entryDate": "2026-08-04T15:24:07.833Z",
+      "exitDate": "2026-08-07T00:40:19.630Z",
+      "returnPct": 0.67,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "UAL",
+      "name": "United Airlines",
+      "entryDate": "2026-07-30T17:00:00.632Z",
+      "exitDate": "2026-08-07T00:40:19.630Z",
+      "returnPct": 4.73,
+      "exitReason": "Held 7+ days"
     }
   ],
   "stats": {
-    "totalTrades": 21,
-    "wins": 10,
-    "winRatePct": 47.6,
-    "avgReturnPct": -0.32
+    "totalTrades": 23,
+    "wins": 12,
+    "winRatePct": 52.2,
+    "avgReturnPct": -0.05
   }
 }

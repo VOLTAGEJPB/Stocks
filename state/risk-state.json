@@ -1,10 +1,10 @@
 {
   "TSLA": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-05T22:12:37.721Z",
-    "lastSeverity": 67,
-    "lastNegCount": 4
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 1
   },
   "IBM": {
     "seen": true,
@@ -18,21 +18,21 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 4
   },
   "MU": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-06T15:13:25.366Z",
-    "lastSeverity": 52,
-    "lastNegCount": 5
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 6
   },
   "LRCX": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "BAH": {
     "seen": true,
@@ -60,70 +60,70 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 0
   },
   "AAPL": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 5
+    "lastNegCount": 4
   },
   "MSFT": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "GOOGL": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "AMZN": {
-    "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-06T15:13:25.366Z",
-    "lastSeverity": 50,
-    "lastNegCount": 3
-  },
-  "META": {
-    "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-06T15:13:25.366Z",
-    "lastSeverity": 51,
-    "lastNegCount": 6
-  },
-  "AMD": {
-    "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-06T15:13:25.366Z",
-    "lastSeverity": 50,
-    "lastNegCount": 6
-  },
-  "INTC": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 0
+    "lastNegCount": 1
+  },
+  "META": {
+    "seen": true,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 2
+  },
+  "AMD": {
+    "seen": true,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 5
+  },
+  "INTC": {
+    "seen": true,
+    "flagged": true,
+    "lastAlertAt": "2026-08-07T00:40:19.630Z",
+    "lastSeverity": 36,
+    "lastNegCount": 2
   },
   "AVGO": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 0
+    "lastNegCount": 1
   },
   "ARM": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 4
   },
   "SMCI": {
     "seen": true,
@@ -144,20 +144,20 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 5
+    "lastNegCount": 2
   },
   "COIN": {
     "seen": true,
     "flagged": true,
     "lastAlertAt": "2026-08-06T15:13:25.366Z",
     "lastSeverity": 78,
-    "lastNegCount": 7
+    "lastNegCount": 5
   },
   "MSTR": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-06T15:13:25.366Z",
-    "lastSeverity": 54,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 3
   },
   "RIVN": {
@@ -177,23 +177,23 @@
   "GME": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-08-05T19:01:21.712Z",
-    "lastSeverity": 80,
-    "lastNegCount": 5
+    "lastAlertAt": "2026-08-07T00:40:19.630Z",
+    "lastSeverity": 73,
+    "lastNegCount": 4
   },
   "MRNA": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 1
   },
   "PFE": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 3
   },
   "UAL": {
     "seen": true,
