@@ -4,7 +4,7 @@
     "flagged": true,
     "lastAlertAt": "2026-08-11T16:27:37.017Z",
     "lastSeverity": 61,
-    "lastNegCount": 6
+    "lastNegCount": 7
   },
   "IBM": {
     "seen": true,
@@ -60,7 +60,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "AAPL": {
     "seen": true,
@@ -88,7 +88,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 5
+    "lastNegCount": 4
   },
   "META": {
     "seen": true,
