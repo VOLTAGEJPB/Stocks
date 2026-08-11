@@ -25,7 +25,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 3
   },
   "LRCX": {
     "seen": true,
@@ -44,8 +44,8 @@
   "DNA": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-08-10T14:19:35.546Z",
-    "lastSeverity": 69,
+    "lastAlertAt": "2026-08-11T15:29:23.240Z",
+    "lastSeverity": 73,
     "lastNegCount": 2
   },
   "AMC": {
@@ -102,7 +102,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 4
   },
   "INTC": {
     "seen": true,
@@ -130,14 +130,14 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "TSM": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 0
   },
   "PLTR": {
     "seen": true,
@@ -149,8 +149,8 @@
   "COIN": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-08-10T14:19:35.546Z",
-    "lastSeverity": 76,
+    "lastAlertAt": "2026-08-11T15:29:23.240Z",
+    "lastSeverity": 72,
     "lastNegCount": 4
   },
   "MSTR": {
