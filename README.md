@@ -126,9 +126,16 @@ add or remove companies, edit `ipo-watch.json` directly.
 Claude cannot predict stock prices, and this feature is built to be
 explicit about that rather than pretend otherwise. Instead of a "what I
 think will happen" guess, each tracked stock gets a fully disclosed,
-mechanical projection: take its real 5-day daily average return rate and
-continue it forward 5 more days. That's the entire formula — no model,
-no hidden inputs.
+mechanical projection: take its real 5-day daily average return rate,
+continue it forward 5 more days, then nudge that daily rate by up to
+±1.5 points using the same real, keyword-based News Risk score already
+computed for Risk Watch — more negative-leaning recent headlines nudge the
+projection down, more positive-leaning headlines nudge it up, and neutral
+news leaves the price trend untouched. That's the entire formula — no
+model, no hidden inputs, and critically, Claude never reads or
+subjectively interprets the headlines to produce this number; the same
+mechanical keyword count that drives Risk Watch is the only "news" input
+here.
 
 The point isn't that this projection is accurate — naive trend-following
 usually isn't. The point is tracking it honestly: when the 5-day target

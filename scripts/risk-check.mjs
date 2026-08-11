@@ -33,10 +33,14 @@ const PAPER_NOTIONAL = 1000;       // simulated dollars per position
 const PAPER_HOLDING_DAYS = 7;      // ~5 trading days, approximated in calendar days
 
 // Trend Projection: NOT a forecast. A transparent formula — continue the recent
-// 5-day daily average return rate forward — projected against what actually
-// happens, tracked honestly (like Paper Trading) so its real accuracy is visible,
-// not asserted. Reuses quote/metric data already fetched for the risk check.
-const PROJECTION_HORIZON_DAYS = 5; // matches the paper-trading holding period, in calendar days
+// 5-day daily average return rate forward, tilted by the same real, keyword-based
+// News Risk score already computed for Risk Watch — projected against what
+// actually happens, tracked honestly (like Paper Trading) so its real accuracy
+// is visible, not asserted. Reuses quote/metric/news data already fetched for
+// the risk check; Claude never reads or interprets the headlines to produce
+// this number, the same computeNewsRisk() keyword count just nudges the rate.
+const PROJECTION_HORIZON_DAYS = 5;              // matches the paper-trading holding period, in calendar days
+const PROJECTION_NEWS_MAX_DAILY_TILT_PCT = 1.5; // at fully negative/positive headline skew, nudge the daily rate by at most this many points (up to ~7.5pts over the 5-day horizon) — additive, so neutral news (score 50) leaves the price-trend projection untouched
 
 if (!FINNHUB_API_KEY) {
   console.error("FINNHUB_API_KEY is not set — add it as a repo Actions secret.");
@@ -142,14 +146,22 @@ async function loadProjectionsState() {
 }
 
 // Naive linear extrapolation of the 5-day daily average return rate, continued
-// forward for PROJECTION_HORIZON_DAYS more days. Deliberately simple and fully
-// disclosed as a formula — not a model, not a forecast.
-function computeProjection(price, fiveDayReturnPct) {
+// forward for PROJECTION_HORIZON_DAYS more days, then tilted by the real
+// keyword-based News Risk score (same 0-100 scale as Risk Watch, 50 = neutral)
+// when one is available. Deliberately simple and fully disclosed as a formula
+// — not a model, not a forecast, and not Claude's subjective read of the news.
+function computeProjection(price, fiveDayReturnPct, newsRisk) {
   if (typeof price !== "number" || typeof fiveDayReturnPct !== "number") return null;
-  const dailyRatePct = fiveDayReturnPct / 5;
+  const priceDailyRatePct = fiveDayReturnPct / 5;
+  const hasNews = typeof newsRisk === "number";
+  // newsRisk > 50 skews negative-leaning, < 50 skews positive-leaning, 50 is
+  // neutral (see computeNewsRisk) — added on top of the price trend rather
+  // than blended into it, so neutral news never dilutes the price signal.
+  const newsTiltPct = hasNews ? -((newsRisk - 50) / 50) * PROJECTION_NEWS_MAX_DAILY_TILT_PCT : 0;
+  const dailyRatePct = priceDailyRatePct + newsTiltPct;
   const projectedPct = dailyRatePct * PROJECTION_HORIZON_DAYS;
   const projectedPrice = price * (1 + projectedPct / 100);
-  return { projectedPrice: Math.round(projectedPrice * 100) / 100, projectedPct: Math.round(projectedPct * 100) / 100 };
+  return { projectedPrice: Math.round(projectedPrice * 100) / 100, projectedPct: Math.round(projectedPct * 100) / 100, newsFactored: hasNews };
 }
 
 function computeProjectionStats(resolved) {
@@ -338,7 +350,7 @@ async function main() {
         }
         if (!projectionsState.pending[s.sym]) {
           const fiveDayReturn = metrics.metric?.["5DayPriceReturnDaily"];
-          const projection = computeProjection(quote.c, fiveDayReturn);
+          const projection = computeProjection(quote.c, fiveDayReturn, newsRisk);
           if (projection) {
             projectionsState.pending[s.sym] = {
               name: s.name,
@@ -347,6 +359,7 @@ async function main() {
               currentPriceAtProjection: quote.c,
               projectedPrice: projection.projectedPrice,
               projectedPct: projection.projectedPct,
+              newsFactored: projection.newsFactored,
             };
           }
         }
