@@ -60,14 +60,14 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 0
+    "lastNegCount": 1
   },
   "AAPL": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 6
+    "lastNegCount": 4
   },
   "MSFT": {
     "seen": true,
@@ -109,7 +109,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 0
   },
   "AVGO": {
     "seen": true,
@@ -165,7 +165,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 0
+    "lastNegCount": 1
   },
   "LCID": {
     "seen": true,
