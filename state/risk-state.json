@@ -25,7 +25,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "LRCX": {
     "seen": true,
@@ -85,9 +85,9 @@
   },
   "AMZN": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-11T16:27:37.017Z",
-    "lastSeverity": 60,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 4
   },
   "META": {

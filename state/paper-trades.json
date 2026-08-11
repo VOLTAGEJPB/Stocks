@@ -1,9 +1,5 @@
 {
   "openPositions": {
-    "MRNA": {
-      "entryDate": "2026-08-04T17:12:44.202Z",
-      "entryMomentum": 65
-    },
     "AMC": {
       "entryDate": "2026-08-04T19:07:12.434Z",
       "entryMomentum": 75
@@ -305,12 +301,20 @@
       "exitDate": "2026-08-11T16:27:37.017Z",
       "returnPct": -0.9,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-08-04T17:12:44.202Z",
+      "exitDate": "2026-08-11T17:30:17.556Z",
+      "returnPct": 2.2,
+      "exitReason": "Held 7+ days"
     }
   ],
   "stats": {
-    "totalTrades": 31,
-    "wins": 14,
-    "winRatePct": 45.2,
-    "avgReturnPct": -0.11
+    "totalTrades": 32,
+    "wins": 15,
+    "winRatePct": 46.9,
+    "avgReturnPct": -0.04
   }
 }
