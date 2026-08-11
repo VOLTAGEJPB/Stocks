@@ -1,9 +1,5 @@
 {
   "openPositions": {
-    "AMC": {
-      "entryDate": "2026-08-04T19:07:12.434Z",
-      "entryMomentum": 75
-    },
     "SKHY": {
       "entryDate": "2026-08-05T15:13:00.361Z",
       "entryMomentum": 66
@@ -313,12 +309,20 @@
       "exitDate": "2026-08-11T17:30:17.556Z",
       "returnPct": 2.2,
       "exitReason": "Held 7+ days"
+    },
+    {
+      "sym": "AMC",
+      "name": "AMC Entertainment",
+      "entryDate": "2026-08-04T19:07:12.434Z",
+      "exitDate": "2026-08-11T20:10:01.373Z",
+      "returnPct": -8.74,
+      "exitReason": "Held 7+ days"
     }
   ],
   "stats": {
-    "totalTrades": 32,
+    "totalTrades": 33,
     "wins": 15,
-    "winRatePct": 46.9,
-    "avgReturnPct": -0.04
+    "winRatePct": 45.5,
+    "avgReturnPct": -0.31
   }
 }
