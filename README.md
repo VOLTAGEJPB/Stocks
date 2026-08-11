@@ -120,3 +120,22 @@ name like "Lambda Labs"), a one-time `🔔 MarketPulse IPO Watch` email goes
 out with the matched name, ticker, exchange, and date — tracked in
 `state/ipo-watch-state.json` so it never repeats for the same company. To
 add or remove companies, edit `ipo-watch.json` directly.
+
+### Trend Projection (a formula, not a forecast)
+
+Claude cannot predict stock prices, and this feature is built to be
+explicit about that rather than pretend otherwise. Instead of a "what I
+think will happen" guess, each tracked stock gets a fully disclosed,
+mechanical projection: take its real 5-day daily average return rate and
+continue it forward 5 more days. That's the entire formula — no model,
+no hidden inputs.
+
+The point isn't that this projection is accurate — naive trend-following
+usually isn't. The point is tracking it honestly: when the 5-day target
+date arrives, the projection is compared against what the price actually
+did, and the result (hit or miss, and by how much) is logged permanently
+in `state/projections.json`. The "🎯 Trend Projection" panel on the page
+shows the real running accuracy — direction-hit rate and average error —
+so you can see for yourself how well (or poorly) simple trend-following
+actually performs, instead of taking anyone's word for it. Each card also
+shows its current pending projection next to the live price.

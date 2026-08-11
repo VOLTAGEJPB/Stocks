@@ -21,6 +21,7 @@ const STATE_PATH = path.join(REPO_ROOT, "state", "risk-state.json");
 const PAPER_STATE_PATH = path.join(REPO_ROOT, "state", "paper-trades.json");
 const NEWS_WATCH_STATE_PATH = path.join(REPO_ROOT, "state", "news-watch-state.json");
 const IPO_WATCH_STATE_PATH = path.join(REPO_ROOT, "state", "ipo-watch-state.json");
+const PROJECTIONS_STATE_PATH = path.join(REPO_ROOT, "state", "projections.json");
 const REALERT_AFTER_MS = 24 * 60 * 60 * 1000; // re-remind once a day while risk persists
 
 // Paper-trading rule: buy $1,000 (simulated) when a stock's Momentum Score crosses
@@ -30,6 +31,12 @@ const PAPER_ENABLED = Boolean(ALPACA_API_KEY_ID && ALPACA_API_SECRET_KEY);
 const PAPER_ENTRY_MOMENTUM = 65;   // matches the "STRONG UP" cutoff used in market-pulse.html
 const PAPER_NOTIONAL = 1000;       // simulated dollars per position
 const PAPER_HOLDING_DAYS = 7;      // ~5 trading days, approximated in calendar days
+
+// Trend Projection: NOT a forecast. A transparent formula — continue the recent
+// 5-day daily average return rate forward — projected against what actually
+// happens, tracked honestly (like Paper Trading) so its real accuracy is visible,
+// not asserted. Reuses quote/metric data already fetched for the risk check.
+const PROJECTION_HORIZON_DAYS = 5; // matches the paper-trading holding period, in calendar days
 
 if (!FINNHUB_API_KEY) {
   console.error("FINNHUB_API_KEY is not set — add it as a repo Actions secret.");
@@ -130,6 +137,34 @@ async function loadIpoWatchState() {
   return loadJson(IPO_WATCH_STATE_PATH, {});
 }
 
+async function loadProjectionsState() {
+  return loadJson(PROJECTIONS_STATE_PATH, { pending: {}, resolved: [], stats: { totalResolved: 0, directionHits: 0, directionAccuracyPct: null, avgAbsErrorPct: null } });
+}
+
+// Naive linear extrapolation of the 5-day daily average return rate, continued
+// forward for PROJECTION_HORIZON_DAYS more days. Deliberately simple and fully
+// disclosed as a formula — not a model, not a forecast.
+function computeProjection(price, fiveDayReturnPct) {
+  if (typeof price !== "number" || typeof fiveDayReturnPct !== "number") return null;
+  const dailyRatePct = fiveDayReturnPct / 5;
+  const projectedPct = dailyRatePct * PROJECTION_HORIZON_DAYS;
+  const projectedPrice = price * (1 + projectedPct / 100);
+  return { projectedPrice: Math.round(projectedPrice * 100) / 100, projectedPct: Math.round(projectedPct * 100) / 100 };
+}
+
+function computeProjectionStats(resolved) {
+  const total = resolved.length;
+  if (total === 0) return { totalResolved: 0, directionHits: 0, directionAccuracyPct: null, avgAbsErrorPct: null };
+  const hits = resolved.filter(r => r.directionHit).length;
+  const avgAbsErrorPct = resolved.reduce((a, r) => a + Math.abs(r.errorPct), 0) / total;
+  return {
+    totalResolved: total,
+    directionHits: hits,
+    directionAccuracyPct: Math.round((hits / total) * 1000) / 10,
+    avgAbsErrorPct: Math.round(avgAbsErrorPct * 100) / 100,
+  };
+}
+
 // Loose match since a private company's name in Finnhub's IPO calendar may not
 // exactly match how we refer to it — e.g. "Lambda Labs" could file as "Lambda,
 // Inc.", so a plain substring check in either direction misses it. Match on
@@ -187,6 +222,7 @@ async function main() {
   const paperState = await loadPaperState();
   const newsWatchState = await loadNewsWatchState();
   const ipoWatchState = await loadIpoWatchState();
+  const projectionsState = await loadProjectionsState();
   const now = Date.now();
   const toAlert = [];
   const paperEvents = [];
@@ -282,6 +318,40 @@ async function main() {
         newsWatchState[s.sym] = { seen: true, lastSeenAt: maxDatetime };
       }
 
+      {
+        const pending = projectionsState.pending[s.sym];
+        if (pending && now >= new Date(pending.targetDate).getTime()) {
+          const actualPrice = quote.c;
+          const actualPct = Math.round(((actualPrice - pending.currentPriceAtProjection) / pending.currentPriceAtProjection) * 10000) / 100;
+          const errorPct = Math.round((actualPct - pending.projectedPct) * 100) / 100;
+          const directionHit = Math.sign(actualPct) === Math.sign(pending.projectedPct) || (Math.abs(actualPct) < 0.5 && Math.abs(pending.projectedPct) < 0.5);
+          projectionsState.resolved.push({
+            sym: s.sym, name: s.name,
+            madeAt: pending.madeAt, targetDate: pending.targetDate,
+            projectedPrice: pending.projectedPrice, projectedPct: pending.projectedPct,
+            actualPrice, actualPct, errorPct, directionHit,
+          });
+          // Cap history so the state file (and stats) don't grow unbounded forever —
+          // keep the most recent 300, which is plenty for an honest accuracy read.
+          if (projectionsState.resolved.length > 300) projectionsState.resolved = projectionsState.resolved.slice(-300);
+          delete projectionsState.pending[s.sym];
+        }
+        if (!projectionsState.pending[s.sym]) {
+          const fiveDayReturn = metrics.metric?.["5DayPriceReturnDaily"];
+          const projection = computeProjection(quote.c, fiveDayReturn);
+          if (projection) {
+            projectionsState.pending[s.sym] = {
+              name: s.name,
+              madeAt: new Date(now).toISOString(),
+              targetDate: new Date(now + PROJECTION_HORIZON_DAYS * 86400000).toISOString(),
+              currentPriceAtProjection: quote.c,
+              projectedPrice: projection.projectedPrice,
+              projectedPct: projection.projectedPct,
+            };
+          }
+        }
+      }
+
       if (PAPER_ENABLED) {
         const openPosition = paperState.openPositions[s.sym];
         if (!openPosition && momentum !== null && momentum >= PAPER_ENTRY_MOMENTUM) {
@@ -317,6 +387,9 @@ async function main() {
 
   await fs.writeFile(NEWS_WATCH_STATE_PATH, JSON.stringify(newsWatchState, null, 2) + "\n");
   await fs.writeFile(IPO_WATCH_STATE_PATH, JSON.stringify(ipoWatchState, null, 2) + "\n");
+
+  projectionsState.stats = computeProjectionStats(projectionsState.resolved);
+  await fs.writeFile(PROJECTIONS_STATE_PATH, JSON.stringify(projectionsState, null, 2) + "\n");
 
   await fs.mkdir(path.dirname(STATE_PATH), { recursive: true });
   await fs.writeFile(STATE_PATH, JSON.stringify(state, null, 2) + "\n");

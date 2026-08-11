@@ -16,6 +16,7 @@
     --char:#211D17;
     --char-line:#3A3227;
     --paper:#F5EFE0;
+    --cyan:#5EEAD4;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html,body{background:var(--void); color:var(--paper); font-family:'IBM Plex Mono',monospace; overflow-x:hidden;}
@@ -60,6 +61,7 @@
   .dot{ width:8px; height:8px; border-radius:50%; background:var(--green); display:inline-block; box-shadow:0 0 8px var(--green); animation:pulse 2s infinite; }
   @keyframes pulse{ 50%{ opacity:.35; } }
   .status-row .label{ font-size:12px; color:#9A8C71; letter-spacing:.08em; }
+  .storage-note{ margin-top:14px; font-size:12.5px; color:var(--amber); border-left:2px solid var(--amber-dim); padding:8px 12px; max-width:640px; line-height:1.5; }
   #apikey-field{
     background:var(--char); border:1px solid var(--char-line); color:var(--paper);
     font-family:'IBM Plex Mono',monospace; font-size:12.5px; padding:8px 10px; width:280px; max-width:60vw;
@@ -76,6 +78,16 @@
     font-family:'IBM Plex Mono',monospace; font-size:12.5px; padding:8px 10px;
   }
   #sort-select:focus-visible{ outline:2px solid var(--paper); outline-offset:2px; }
+
+  /* ---- pulse bar ---- */
+  .pulse-bar{ max-width:1120px; margin:20px auto 0; padding:0 24px; display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:2px; }
+  .pulse-stat{ background:var(--char); border:1px solid var(--char-line); padding:16px 18px; text-align:center; }
+  .pulse-num{ font-family:'Space Mono',monospace; font-weight:700; font-size:clamp(26px,4vw,38px); line-height:1; }
+  .pulse-num.up{ color:var(--green); text-shadow:0 0 14px rgba(57,255,106,.4); }
+  .pulse-num.down{ color:var(--red); text-shadow:0 0 14px rgba(255,68,56,.4); }
+  .pulse-num.risk{ color:var(--red); }
+  .pulse-num.leader{ color:var(--amber); font-size:clamp(18px,2.6vw,26px); text-shadow:0 0 14px rgba(255,182,39,.4); }
+  .pulse-label{ font-size:10.5px; letter-spacing:.12em; color:#8A7C61; margin-top:6px; }
 
   /* ---- disclaimer ---- */
   .disclaimer{
@@ -96,12 +108,19 @@
   .risk-title{ color:var(--red); }
   .paper-box{ border-color:var(--green); background:rgba(57,255,106,.05); }
   .paper-title{ color:var(--green); }
-  .paper-stats{ margin-top:8px; font-size:12.5px; color:#B8AA8F; }
+  .projection-box{ border-color:var(--cyan); background:rgba(94,234,212,.05); }
+  .projection-title{ color:var(--cyan); }
+  .paper-stats{ margin-top:10px; font-size:14px; color:var(--paper); font-weight:600; }
+  .trend-chip.more{ color:#8A7C61; font-style:italic; }
 
   /* ---- momentum badge ---- */
   .momentum-badge{
     font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.05em;
     margin-top:5px; padding:2px 7px; border:1px solid currentColor; display:inline-block; white-space:nowrap;
+  }
+  .projection-tag{
+    font-family:'Space Mono',monospace; font-size:10px; letter-spacing:.03em; color:#8A7C61;
+    margin-top:5px; white-space:nowrap;
   }
   .risk-badge{
     font-family:'Space Mono',monospace; font-size:10.5px; letter-spacing:.05em; color:var(--red);
@@ -114,11 +133,14 @@
   .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px; margin-top:18px; }
   .card{
     background:var(--char); border:1px solid var(--char-line); padding:18px 18px 14px; position:relative;
+    transition:border-color .3s, box-shadow .3s;
   }
+  .card.risk-active{ border-color:var(--red); box-shadow:0 0 0 1px var(--red), 0 0 22px rgba(255,68,56,.18); }
+  .card.momentum-strong{ border-color:var(--amber-dim); box-shadow:0 0 0 1px var(--amber-dim), 0 0 18px rgba(255,182,39,.14); }
   .card-top{ display:flex; justify-content:space-between; align-items:flex-start; }
   .card-top-right{ text-align:right; }
-  .ticker{ font-family:'Space Mono',monospace; font-weight:700; font-size:20px; color:var(--paper); letter-spacing:.02em; }
-  .price{ font-family:'Space Mono',monospace; font-size:20px; }
+  .ticker{ font-family:'Space Mono',monospace; font-weight:700; font-size:24px; color:var(--paper); letter-spacing:.02em; }
+  .price{ font-family:'Space Mono',monospace; font-size:24px; font-weight:700; }
   .change{ font-family:'Space Mono',monospace; font-size:13px; margin-top:2px; }
   .up{ color:var(--green); } .down{ color:var(--red); } .flat{ color:#9A8C71; }
   .name{ font-size:11.5px; color:#8A7C61; margin-top:6px; letter-spacing:.03em; }
@@ -153,7 +175,27 @@
       <option value="alpha">Sort: A–Z</option>
     </select>
   </div>
+  <div id="storage-note" class="storage-note" style="display:none;">⚠ This browser context won't let the key persist (private browsing, or an in-app browser opened from another app). It'll work for this visit, but you'll likely need to reconnect next time — try opening this page directly in Safari (not from a link inside another app), or add it to your Home Screen.</div>
 </header>
+
+<div class="pulse-bar" id="pulse-bar">
+  <div class="pulse-stat">
+    <div class="pulse-num up" id="stat-up">--</div>
+    <div class="pulse-label">UP TODAY</div>
+  </div>
+  <div class="pulse-stat">
+    <div class="pulse-num down" id="stat-down">--</div>
+    <div class="pulse-label">DOWN TODAY</div>
+  </div>
+  <div class="pulse-stat">
+    <div class="pulse-num risk" id="stat-risk">--</div>
+    <div class="pulse-label">RISK FLAGGED</div>
+  </div>
+  <div class="pulse-stat">
+    <div class="pulse-num leader" id="stat-leader">--</div>
+    <div class="pulse-label">TOP MOMENTUM</div>
+  </div>
+</div>
 
 <div class="disclaimer">
   <p>This board shows real price moves and the news context behind them. It is not investment advice, a recommendation, or a signal to buy or sell — verify everything independently and consider your own risk tolerance before trading. Volatile stocks can lose value as fast as they gain it. The Momentum Score below is a transparent read of <em>past</em> price trends — not a probability, forecast, or estimate of future performance.</p>
@@ -176,8 +218,16 @@
 <div class="trending paper-strip">
   <div class="trending-box paper-box">
     <span class="trending-title paper-title">📊 PAPER TRADING</span><span class="trending-note">simulated only, no real money — buys on Momentum Score crossing into Strong Up, sells after ~5 trading days or a Risk Watch flag</span>
-    <div class="trending-list" id="paper-list">Loading paper trading data…</div>
     <div class="paper-stats" id="paper-stats"></div>
+    <div class="trending-list" id="paper-list">Loading paper trading data…</div>
+  </div>
+</div>
+
+<div class="trending projection-strip">
+  <div class="trending-box projection-box">
+    <span class="trending-title projection-title">🎯 TREND PROJECTION</span><span class="trending-note">a formula, not a forecast — extrapolates the recent 5-day trend forward 5 days, then tracks itself against what actually happens</span>
+    <div class="paper-stats" id="projection-stats"></div>
+    <div class="trending-list" id="projection-list">Loading projection data…</div>
   </div>
 </div>
 
@@ -219,6 +269,7 @@ function buildCards(){
         <div class="card-top-right">
           <div class="price loading" id="price-${s.sym}">···</div>
           <div class="momentum-badge loading" id="momo-${s.sym}">MO --</div>
+          <div class="projection-tag" id="proj-${s.sym}"></div>
         </div>
       </div>
       <div class="change loading" id="change-${s.sym}">awaiting feed</div>
@@ -385,6 +436,7 @@ function updateMomentumBadge(sym){
   const { text, cls } = momentumLabel(score);
   badge.textContent = text;
   badge.className = 'momentum-badge ' + cls;
+  cardEls[sym]?.classList.toggle('momentum-strong', score !== null && score >= 65);
 }
 
 // A stock flags as risk when BOTH momentum has turned down AND recent
@@ -409,6 +461,7 @@ function updateRiskBadge(sym){
     badge.classList.toggle('active', combined);
     badge.textContent = emergencyNow ? '🚨 EMERGENCY' : '⚠ RISK WATCH';
   }
+  cardEls[sym]?.classList.toggle('risk-active', combined);
 
   if(combined && !riskAlerted[sym]){
     riskAlerted[sym] = true;
@@ -437,6 +490,29 @@ function applySort(){
   });
   syms.forEach(sym => grid.appendChild(cardEls[sym]));
   renderTrending(syms);
+  updatePulseBar();
+}
+
+function updatePulseBar(){
+  const upEl = document.getElementById('stat-up');
+  const downEl = document.getElementById('stat-down');
+  const riskEl = document.getElementById('stat-risk');
+  const leaderEl = document.getElementById('stat-leader');
+  if(!upEl) return;
+  if(!API_KEY){ upEl.textContent = downEl.textContent = riskEl.textContent = leaderEl.textContent = '--'; return; }
+  let up = 0, down = 0, risk = 0;
+  for(const sym of WATCHLIST.map(s=>s.sym)){
+    const pct = quoteCache[sym]?.pct;
+    if(typeof pct === 'number'){ if(pct > 0.05) up++; else if(pct < -0.05) down++; }
+    if(riskCache[sym]?.combined) risk++;
+  }
+  upEl.textContent = up;
+  downEl.textContent = down;
+  riskEl.textContent = risk;
+  const byMomentum = WATCHLIST.map(s=>s.sym).filter(sym => typeof momentumCache[sym] === 'number');
+  byMomentum.sort((a,b) => momentumCache[b] - momentumCache[a]);
+  const leaderSym = byMomentum[0];
+  leaderEl.textContent = leaderSym ? `${leaderSym} ${momentumCache[leaderSym]}` : '--';
 }
 
 function renderTrending(sortedSyms){
@@ -462,29 +538,77 @@ function renderRiskWatch(){
   }).join('');
 }
 
+const PAPER_LIST_VISIBLE_CAP = 6; // avoid the open-positions list crowding out the actual stock grid as it grows
+
 async function refreshPaperTrading(){
   const list = document.getElementById('paper-list');
   const statsEl = document.getElementById('paper-stats');
   if(!list) return;
   try{
     const data = await fetch('./state/paper-trades.json', { cache: 'no-store' }).then(r=>r.json());
-    const openSyms = Object.keys(data.openPositions || {});
-    if(openSyms.length === 0){
-      list.textContent = 'No open simulated positions right now.';
-    } else {
-      list.innerHTML = openSyms.map(sym=>{
-        const pos = data.openPositions[sym];
-        const w = WATCHLIST.find(x=>x.sym===sym);
-        const days = Math.floor((Date.now() - new Date(pos.entryDate).getTime()) / 86400000);
-        return `<span class="trend-chip"><b>${sym}</b>${w?.name||sym} — held ${days}d, entry momentum ${pos.entryMomentum}</span>`;
-      }).join('');
-    }
     const stats = data.stats || {};
     statsEl.textContent = stats.totalTrades > 0
       ? `Track record: ${stats.totalTrades} closed trade(s), ${stats.winRatePct}% win rate, ${stats.avgReturnPct>=0?'+':''}${stats.avgReturnPct}% average return. Simulated only — not a guarantee of future performance.`
       : 'No closed paper trades yet.';
+
+    const openSyms = Object.keys(data.openPositions || {})
+      .sort((a,b) => new Date(data.openPositions[b].entryDate) - new Date(data.openPositions[a].entryDate));
+    if(openSyms.length === 0){
+      list.textContent = 'No open simulated positions right now.';
+    } else {
+      const visible = openSyms.slice(0, PAPER_LIST_VISIBLE_CAP);
+      const chips = visible.map(sym=>{
+        const pos = data.openPositions[sym];
+        const w = WATCHLIST.find(x=>x.sym===sym);
+        const days = Math.floor((Date.now() - new Date(pos.entryDate).getTime()) / 86400000);
+        return `<span class="trend-chip"><b>${sym}</b>${w?.name||sym} — held ${days}d, entry momentum ${pos.entryMomentum}</span>`;
+      });
+      if(openSyms.length > visible.length){
+        chips.push(`<span class="trend-chip more">+${openSyms.length - visible.length} more open</span>`);
+      }
+      list.innerHTML = chips.join('');
+    }
   }catch(e){
     list.textContent = 'Paper trading data unavailable.';
+  }
+}
+
+const PROJECTION_LIST_VISIBLE_CAP = 6;
+
+async function refreshProjections(){
+  const list = document.getElementById('projection-list');
+  const statsEl = document.getElementById('projection-stats');
+  if(!list) return;
+  try{
+    const data = await fetch('./state/projections.json', { cache: 'no-store' }).then(r=>r.json());
+    const stats = data.stats || {};
+    statsEl.textContent = stats.totalResolved > 0
+      ? `Track record: ${stats.totalResolved} resolved, ${stats.directionAccuracyPct}% got the direction right, ${stats.avgAbsErrorPct}% average error. This is how often naive trend-following actually works — judge for yourself.`
+      : 'No projections resolved yet — first ones settle ~5 days after the page starts tracking a stock.';
+
+    const pending = data.pending || {};
+    const pendingSyms = Object.keys(pending).sort((a,b) => new Date(pending[a].targetDate) - new Date(pending[b].targetDate));
+    if(pendingSyms.length === 0){
+      list.textContent = 'No pending projections right now.';
+    } else {
+      const visible = pendingSyms.slice(0, PROJECTION_LIST_VISIBLE_CAP);
+      const chips = visible.map(sym=>{
+        const p = pending[sym];
+        const daysLeft = Math.ceil((new Date(p.targetDate) - Date.now()) / 86400000);
+        return `<span class="trend-chip"><b>${sym}</b>${p.name} — projected $${p.projectedPrice.toFixed(2)} (${p.projectedPct>=0?'+':''}${p.projectedPct}%) in ${Math.max(daysLeft,0)}d</span>`;
+      });
+      if(pendingSyms.length > visible.length){
+        chips.push(`<span class="trend-chip more">+${pendingSyms.length - visible.length} more pending</span>`);
+      }
+      list.innerHTML = chips.join('');
+    }
+
+    for(const sym of Object.keys(pending)){
+      const tag = document.getElementById('proj-'+sym);
+      if(tag) tag.textContent = `🎯 proj $${pending[sym].projectedPrice.toFixed(2)}`;
+    }
+  }catch(e){
+    list.textContent = 'Projection data unavailable.';
   }
 }
 
@@ -566,11 +690,28 @@ function startFeeds(){
   window._signalsInterval = setInterval(refreshSignals, 900000); // 15 min — momentum/news inputs don't change every 60s
 }
 
+// localStorage can silently throw in some browsing contexts (Safari private
+// mode, some in-app webviews) — without a fallback that looks exactly like
+// "saved fine, but gone on next visit," which is the bug this guards against.
+function persistKey(val){
+  try{ localStorage.setItem('finnhub_key', val); return true; }
+  catch(e){
+    try{ sessionStorage.setItem('finnhub_key', val); }catch(e2){ /* storage fully blocked */ }
+    return false;
+  }
+}
+function loadPersistedKey(){
+  try{ const v = localStorage.getItem('finnhub_key'); if(v) return v; }catch(e){}
+  try{ return sessionStorage.getItem('finnhub_key'); }catch(e){ return null; }
+}
+
 document.getElementById('save-key').addEventListener('click', ()=>{
   const val = document.getElementById('apikey-field').value.trim();
   if(!val){ return; }
   API_KEY = val;
-  localStorage.setItem('finnhub_key', val);
+  const persisted = persistKey(val);
+  const note = document.getElementById('storage-note');
+  if(note) note.style.display = persisted ? 'none' : 'block';
   startFeeds();
 });
 
@@ -579,13 +720,15 @@ document.getElementById('save-key').addEventListener('click', ()=>{
   buildCards();
   document.getElementById('save-key').disabled = false;
 
-  // Paper trading data comes from the repo's static state file, not Finnhub —
-  // it loads regardless of whether an API key is connected.
+  // Paper trading and projection data come from the repo's static state files,
+  // not Finnhub — they load regardless of whether an API key is connected.
   refreshPaperTrading();
   setInterval(refreshPaperTrading, 900000);
+  refreshProjections();
+  setInterval(refreshProjections, 900000);
 
   // restore key across visits — stored only in this browser, never sent anywhere but Finnhub
-  const saved = localStorage.getItem('finnhub_key');
+  const saved = loadPersistedKey();
   if(saved){
     document.getElementById('apikey-field').value = saved;
     API_KEY = saved;
