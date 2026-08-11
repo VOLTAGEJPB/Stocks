@@ -25,12 +25,16 @@ const PROJECTIONS_STATE_PATH = path.join(REPO_ROOT, "state", "projections.json")
 const REALERT_AFTER_MS = 24 * 60 * 60 * 1000; // re-remind once a day while risk persists
 
 // Paper-trading rule: buy $1,000 (simulated) when a stock's Momentum Score crosses
-// into "Strong Up" territory, sell after ~5 trading days or sooner if Risk Watch
-// flags it. No real money — Alpaca's paper API simulates fills against live prices.
+// into "Strong Up" territory. Sell on whichever comes first: a take-profit target,
+// a stop-loss, Risk Watch flagging it, or a hard ~5-trading-day ceiling — so a
+// position isn't just held blind to a timer regardless of how the trade is doing.
+// No real money — Alpaca's paper API simulates fills against live prices.
 const PAPER_ENABLED = Boolean(ALPACA_API_KEY_ID && ALPACA_API_SECRET_KEY);
-const PAPER_ENTRY_MOMENTUM = 65;   // matches the "STRONG UP" cutoff used in market-pulse.html
-const PAPER_NOTIONAL = 1000;       // simulated dollars per position
-const PAPER_HOLDING_DAYS = 7;      // ~5 trading days, approximated in calendar days
+const PAPER_ENTRY_MOMENTUM = 65;    // matches the "STRONG UP" cutoff used in market-pulse.html
+const PAPER_NOTIONAL = 1000;        // simulated dollars per position
+const PAPER_TAKE_PROFIT_PCT = 8;    // lock in the win once a position is up this much
+const PAPER_STOP_LOSS_PCT = -4;     // cut the loss once a position is down this much
+const PAPER_HOLDING_DAYS = 7;       // hard ceiling if neither target hits first, ~5 trading days approximated in calendar days
 
 // Trend Projection: NOT a forecast. A transparent formula — continue the recent
 // 5-day daily average return rate forward, tilted by the same real, keyword-based
@@ -219,10 +223,19 @@ function closePaperPosition(symbol) {
 
 function computePaperStats(closedTrades) {
   const total = closedTrades.length;
-  if (total === 0) return { totalTrades: 0, wins: 0, winRatePct: null, avgReturnPct: null };
+  if (total === 0) return { totalTrades: 0, wins: 0, winRatePct: null, avgReturnPct: null, netProfitUsd: 0 };
   const wins = closedTrades.filter(t => t.returnPct > 0).length;
   const avgReturnPct = closedTrades.reduce((a, t) => a + t.returnPct, 0) / total;
-  return { totalTrades: total, wins, winRatePct: Math.round((wins / total) * 1000) / 10, avgReturnPct: Math.round(avgReturnPct * 100) / 100 };
+  // Each trade is a $PAPER_NOTIONAL simulated position, so its dollar P/L is just
+  // its return percentage applied to that notional — summed for one headline number.
+  const netProfitUsd = closedTrades.reduce((a, t) => a + (t.returnPct / 100) * PAPER_NOTIONAL, 0);
+  return {
+    totalTrades: total,
+    wins,
+    winRatePct: Math.round((wins / total) * 1000) / 10,
+    avgReturnPct: Math.round(avgReturnPct * 100) / 100,
+    netProfitUsd: Math.round(netProfitUsd * 100) / 100,
+  };
 }
 
 async function main() {
@@ -373,10 +386,16 @@ async function main() {
           paperEvents.push({ sym: s.sym, name: s.name, action: "BUY", momentum, reason: "Momentum crossed into Strong Up" });
         } else if (openPosition) {
           const daysHeld = (now - new Date(openPosition.entryDate).getTime()) / 86400000;
-          const exitReason = flaggedNow ? "Risk Watch flagged" : daysHeld >= PAPER_HOLDING_DAYS ? `Held ${PAPER_HOLDING_DAYS}+ days` : null;
+          // Checked every run (not just once an exit is already decided) so a
+          // take-profit or stop-loss can actually fire before the hold-days ceiling.
+          const position = await getPaperPosition(s.sym);
+          const returnPct = position ? Math.round(Number(position.unrealized_plpc) * 10000) / 100 : null;
+          const exitReason = flaggedNow ? "Risk Watch flagged"
+            : (returnPct !== null && returnPct >= PAPER_TAKE_PROFIT_PCT) ? `Take-profit hit (+${PAPER_TAKE_PROFIT_PCT}%+)`
+            : (returnPct !== null && returnPct <= PAPER_STOP_LOSS_PCT) ? `Stop-loss hit (${PAPER_STOP_LOSS_PCT}%)`
+            : daysHeld >= PAPER_HOLDING_DAYS ? `Held ${PAPER_HOLDING_DAYS}+ days`
+            : null;
           if (exitReason) {
-            const position = await getPaperPosition(s.sym);
-            const returnPct = position ? Math.round(Number(position.unrealized_plpc) * 10000) / 100 : null;
             await closePaperPosition(s.sym);
             paperState.closedTrades.push({
               sym: s.sym, name: s.name,
@@ -448,14 +467,14 @@ async function main() {
       });
       const stats = paperState.stats;
       const statsLine = stats.totalTrades > 0
-        ? `Track record so far: ${stats.totalTrades} closed trade(s), ${stats.winRatePct}% win rate, ${stats.avgReturnPct >= 0 ? "+" : ""}${stats.avgReturnPct}% average return.`
+        ? `${stats.netProfitUsd >= 0 ? "+" : "-"}$${Math.abs(stats.netProfitUsd).toFixed(2)} net · ${stats.totalTrades} trades · ${stats.winRatePct}% win rate.`
         : "No closed trades yet.";
       sections.push([
-        "📊 Paper Trading (simulated via Alpaca — no real money) — buys on Momentum Score crossing into Strong Up, sells after ~5 trading days or if Risk Watch flags it.",
+        `📊 Paper Trading (simulated via Alpaca — no real money) — buys on Momentum Score crossing into Strong Up, sells on a +${PAPER_TAKE_PROFIT_PCT}% take-profit, a ${PAPER_STOP_LOSS_PCT}% stop-loss, a Risk Watch flag, or after ~5 trading days, whichever comes first.`,
         ...lines,
         "",
         statsLine,
-        "Past paper-trade results are not a guarantee of future performance.",
+        "Simulated results — not a guarantee of future performance.",
       ].join("\n"));
     }
 

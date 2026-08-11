@@ -207,7 +207,7 @@
 
 <div class="trending paper-strip">
   <div class="trending-box paper-box">
-    <span class="trending-title paper-title">📊 PAPER TRADING</span><span class="trending-note">simulated only, no real money — buys on Momentum Score crossing into Strong Up, sells after ~5 trading days or a Risk Watch flag</span>
+    <span class="trending-title paper-title">📊 PAPER TRADING</span><span class="trending-note">simulated only, no real money — buys on Momentum Score crossing into Strong Up, sells on a +8% take-profit, a -4% stop-loss, a Risk Watch flag, or ~5 trading days, whichever comes first</span>
     <div class="paper-stats" id="paper-stats"></div>
     <div class="trending-list" id="paper-list">Loading paper trading data…</div>
   </div>
@@ -538,7 +538,7 @@ async function refreshPaperTrading(){
     const data = await fetch('./state/paper-trades.json', { cache: 'no-store' }).then(r=>r.json());
     const stats = data.stats || {};
     statsEl.textContent = stats.totalTrades > 0
-      ? `Track record: ${stats.totalTrades} closed trade(s), ${stats.winRatePct}% win rate, ${stats.avgReturnPct>=0?'+':''}${stats.avgReturnPct}% average return. Simulated only — not a guarantee of future performance.`
+      ? `${stats.netProfitUsd>=0?'+':'-'}$${Math.abs(stats.netProfitUsd).toFixed(2)} net · ${stats.totalTrades} trades · ${stats.winRatePct}% win rate. Simulated only — not a guarantee of future performance.`
       : 'No closed paper trades yet.';
 
     const openSyms = Object.keys(data.openPositions || {})

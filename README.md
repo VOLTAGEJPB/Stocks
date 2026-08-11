@@ -73,13 +73,16 @@ money, no real brokerage account, no real orders — Alpaca just simulates
 fills against live prices so a rule can be tracked honestly over time.
 
 **The rule**: buy $1,000 (simulated) worth of a stock when its Momentum
-Score crosses into "Strong Up" (≥65). Sell after ~5 trading days, or
-sooner if Risk Watch flags that stock. Results — win rate, average
-return, open positions — are tracked in `state/paper-trades.json`, shown
-in a "📊 Paper Trading" panel on the page, and included in the alert email
-whenever a simulated trade opens or closes. These are real (paper) trade
-outcomes, not an invented number — and past paper-trade results are not a
-guarantee of future performance, paper or otherwise.
+Score crosses into "Strong Up" (≥65). Sell on whichever comes first: an
+8% take-profit target, a 4% stop-loss, Risk Watch flagging that stock, or
+a ~5 trading day hard ceiling if none of those trigger first. Results —
+led by total net simulated dollar profit/loss across every closed trade,
+plus win rate, average return, and open positions — are tracked in
+`state/paper-trades.json`, shown in a "📊 Paper Trading" panel on the
+page, and included in the alert email whenever a simulated trade opens or
+closes. These are real (paper) trade outcomes, not an invented number —
+and past paper-trade results are not a guarantee of future performance,
+paper or otherwise.
 
 To turn this on, get free paper-trading API keys from Alpaca (sign up at
 https://alpaca.markets/, then generate keys from the **paper trading**
