@@ -4,7 +4,7 @@
     "flagged": true,
     "lastAlertAt": "2026-08-11T22:12:02.071Z",
     "lastSeverity": 73,
-    "lastNegCount": 6
+    "lastNegCount": 5
   },
   "IBM": {
     "seen": true,
@@ -18,14 +18,14 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 4
   },
   "MU": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "LRCX": {
     "seen": true,
@@ -60,14 +60,14 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 3
   },
   "AAPL": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 4
   },
   "MSFT": {
     "seen": true,
@@ -81,7 +81,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 3
   },
   "AMZN": {
     "seen": true,
@@ -95,14 +95,14 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "AMD": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "INTC": {
     "seen": true,
@@ -116,7 +116,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "ARM": {
     "seen": true,
@@ -130,7 +130,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "TSM": {
     "seen": true,
@@ -151,7 +151,7 @@
     "flagged": true,
     "lastAlertAt": "2026-08-11T15:29:23.240Z",
     "lastSeverity": 72,
-    "lastNegCount": 4
+    "lastNegCount": 3
   },
   "MSTR": {
     "seen": true,
@@ -172,7 +172,7 @@
     "flagged": true,
     "lastAlertAt": "2026-08-11T16:27:37.017Z",
     "lastSeverity": 67,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "GME": {
     "seen": true,
