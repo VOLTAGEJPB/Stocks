@@ -16,10 +16,6 @@
       "entryDate": "2026-08-07T22:06:12.248Z",
       "entryMomentum": 81
     },
-    "NVDA": {
-      "entryDate": "2026-08-10T15:30:41.898Z",
-      "entryMomentum": 68
-    },
     "MSFT": {
       "entryDate": "2026-08-10T15:30:41.898Z",
       "entryMomentum": 71
@@ -43,6 +39,10 @@
     "AMC": {
       "entryDate": "2026-08-12T14:20:00.613Z",
       "entryMomentum": 66
+    },
+    "PLTR": {
+      "entryDate": "2026-08-12T16:28:40.201Z",
+      "entryMomentum": 78
     }
   },
   "closedTrades": [
@@ -341,12 +341,20 @@
       "exitDate": "2026-08-12T15:28:53.586Z",
       "returnPct": 6.6,
       "exitReason": "Held 7+ days"
+    },
+    {
+      "sym": "NVDA",
+      "name": "Nvidia",
+      "entryDate": "2026-08-10T15:30:41.898Z",
+      "exitDate": "2026-08-12T16:28:40.201Z",
+      "returnPct": 1.75,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 37,
-    "wins": 17,
-    "winRatePct": 45.9,
-    "avgReturnPct": -0.03
+    "totalTrades": 38,
+    "wins": 18,
+    "winRatePct": 47.4,
+    "avgReturnPct": 0.02
   }
 }
