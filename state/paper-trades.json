@@ -1,21 +1,5 @@
 {
   "openPositions": {
-    "SKHY": {
-      "entryDate": "2026-08-05T15:13:00.361Z",
-      "entryMomentum": 66
-    },
-    "AVGO": {
-      "entryDate": "2026-08-05T15:13:00.361Z",
-      "entryMomentum": 67
-    },
-    "TSM": {
-      "entryDate": "2026-08-05T15:13:00.361Z",
-      "entryMomentum": 66
-    },
-    "PLTR": {
-      "entryDate": "2026-08-05T15:13:00.361Z",
-      "entryMomentum": 69
-    },
     "AMD": {
       "entryDate": "2026-08-06T15:13:25.366Z",
       "entryMomentum": 79
@@ -325,12 +309,44 @@
       "exitDate": "2026-08-11T20:10:01.373Z",
       "returnPct": -8.74,
       "exitReason": "Held 7+ days"
+    },
+    {
+      "sym": "SKHY",
+      "name": "SK Hynix ADR",
+      "entryDate": "2026-08-05T15:13:00.361Z",
+      "exitDate": "2026-08-12T15:28:53.586Z",
+      "returnPct": -0.68,
+      "exitReason": "Held 7+ days"
+    },
+    {
+      "sym": "AVGO",
+      "name": "Broadcom",
+      "entryDate": "2026-08-05T15:13:00.361Z",
+      "exitDate": "2026-08-12T15:28:53.586Z",
+      "returnPct": -0.38,
+      "exitReason": "Held 7+ days"
+    },
+    {
+      "sym": "TSM",
+      "name": "Taiwan Semiconductor ADR",
+      "entryDate": "2026-08-05T15:13:00.361Z",
+      "exitDate": "2026-08-12T15:28:53.586Z",
+      "returnPct": 3.43,
+      "exitReason": "Held 7+ days"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-08-05T15:13:00.361Z",
+      "exitDate": "2026-08-12T15:28:53.586Z",
+      "returnPct": 6.6,
+      "exitReason": "Held 7+ days"
     }
   ],
   "stats": {
-    "totalTrades": 33,
-    "wins": 15,
-    "winRatePct": 45.5,
-    "avgReturnPct": -0.31
+    "totalTrades": 37,
+    "wins": 17,
+    "winRatePct": 45.9,
+    "avgReturnPct": -0.03
   }
 }
