@@ -12,14 +12,6 @@
       "entryDate": "2026-08-07T14:13:18.260Z",
       "entryMomentum": 77
     },
-    "MU": {
-      "entryDate": "2026-08-07T22:06:12.248Z",
-      "entryMomentum": 81
-    },
-    "MSFT": {
-      "entryDate": "2026-08-10T15:30:41.898Z",
-      "entryMomentum": 71
-    },
     "OXY": {
       "entryDate": "2026-08-11T14:19:09.060Z",
       "entryMomentum": 67
@@ -40,13 +32,9 @@
       "entryDate": "2026-08-12T14:20:00.613Z",
       "entryMomentum": 66
     },
-    "PLTR": {
-      "entryDate": "2026-08-12T16:28:40.201Z",
-      "entryMomentum": 78
-    },
-    "NVDA": {
-      "entryDate": "2026-08-12T17:32:47.290Z",
-      "entryMomentum": 65
+    "SMCI": {
+      "entryDate": "2026-08-13T14:22:11.343Z",
+      "entryMomentum": 80
     }
   },
   "closedTrades": [
@@ -353,12 +341,44 @@
       "exitDate": "2026-08-12T16:28:40.201Z",
       "returnPct": 1.75,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-08-07T22:06:12.248Z",
+      "exitDate": "2026-08-13T14:22:11.343Z",
+      "returnPct": 9.03,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "NVDA",
+      "name": "Nvidia",
+      "entryDate": "2026-08-12T17:32:47.290Z",
+      "exitDate": "2026-08-13T14:22:11.343Z",
+      "returnPct": 0.76,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-08-10T15:30:41.898Z",
+      "exitDate": "2026-08-13T14:22:11.343Z",
+      "returnPct": -1.86,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-08-12T16:28:40.201Z",
+      "exitDate": "2026-08-13T14:22:11.343Z",
+      "returnPct": 3.03,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 38,
-    "wins": 18,
-    "winRatePct": 47.4,
-    "avgReturnPct": 0.02
+    "totalTrades": 42,
+    "wins": 21,
+    "winRatePct": 50,
+    "avgReturnPct": 0.28
   }
 }

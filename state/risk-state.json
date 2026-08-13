@@ -2,8 +2,8 @@
   "TSLA": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-08-11T22:12:02.071Z",
-    "lastSeverity": 73,
+    "lastAlertAt": "2026-08-13T14:22:11.343Z",
+    "lastSeverity": 67,
     "lastNegCount": 3
   },
   "IBM": {
@@ -11,7 +11,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "SKHY": {
     "seen": true,
@@ -22,17 +22,17 @@
   },
   "MU": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 2
+    "flagged": true,
+    "lastAlertAt": "2026-08-13T14:22:11.343Z",
+    "lastSeverity": 40,
+    "lastNegCount": 6
   },
   "LRCX": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "BAH": {
     "seen": true,
@@ -57,44 +57,44 @@
   },
   "NVDA": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 2
+    "flagged": true,
+    "lastAlertAt": "2026-08-13T14:22:11.343Z",
+    "lastSeverity": 52,
+    "lastNegCount": 6
   },
   "AAPL": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 1
   },
   "MSFT": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 1
+    "flagged": true,
+    "lastAlertAt": "2026-08-13T14:22:11.343Z",
+    "lastSeverity": 52,
+    "lastNegCount": 4
   },
   "GOOGL": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 0
+    "flagged": true,
+    "lastAlertAt": "2026-08-13T14:22:11.343Z",
+    "lastSeverity": 60,
+    "lastNegCount": 3
   },
   "AMZN": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 2
+    "flagged": true,
+    "lastAlertAt": "2026-08-13T14:22:11.343Z",
+    "lastSeverity": 59,
+    "lastNegCount": 5
   },
   "META": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
+    "flagged": true,
+    "lastAlertAt": "2026-08-13T14:22:11.343Z",
+    "lastSeverity": 58,
     "lastNegCount": 2
   },
   "AMD": {
@@ -109,21 +109,21 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "AVGO": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 0
   },
   "ARM": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 0
   },
   "SMCI": {
     "seen": true,
@@ -141,24 +141,24 @@
   },
   "PLTR": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 2
+    "flagged": true,
+    "lastAlertAt": "2026-08-13T14:22:11.343Z",
+    "lastSeverity": 46,
+    "lastNegCount": 4
   },
   "COIN": {
     "seen": true,
     "flagged": true,
     "lastAlertAt": "2026-08-12T20:08:58.465Z",
     "lastSeverity": 66,
-    "lastNegCount": 4
+    "lastNegCount": 7
   },
   "MSTR": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 0
   },
   "RIVN": {
     "seen": true,
@@ -186,21 +186,21 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "PFE": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 1
+    "flagged": true,
+    "lastAlertAt": "2026-08-13T14:22:11.343Z",
+    "lastSeverity": 42,
+    "lastNegCount": 3
   },
   "UAL": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 3
   },
   "OXY": {
     "seen": true,
