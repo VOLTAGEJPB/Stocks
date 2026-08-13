@@ -1,0 +1,12 @@
+{
+  "generatedAt": null,
+  "methodology": "Not yet run — trigger the \"MarketPulse Paper-Trading Backtest\" workflow from the Actions tab.",
+  "period": null,
+  "symbolsUsed": [],
+  "symbolsSkipped": [],
+  "minTradesToRank": null,
+  "parameterGrid": null,
+  "currentDefault": null,
+  "best": null,
+  "top10": []
+}
