@@ -92,9 +92,9 @@
   },
   "META": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-14T18:27:18.548Z",
-    "lastSeverity": 61,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 3
   },
   "AMD": {
