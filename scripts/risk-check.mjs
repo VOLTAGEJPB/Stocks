@@ -21,15 +21,30 @@ const STATE_PATH = path.join(REPO_ROOT, "state", "risk-state.json");
 const PAPER_STATE_PATH = path.join(REPO_ROOT, "state", "paper-trades.json");
 const NEWS_WATCH_STATE_PATH = path.join(REPO_ROOT, "state", "news-watch-state.json");
 const IPO_WATCH_STATE_PATH = path.join(REPO_ROOT, "state", "ipo-watch-state.json");
+const PROJECTIONS_STATE_PATH = path.join(REPO_ROOT, "state", "projections.json");
 const REALERT_AFTER_MS = 24 * 60 * 60 * 1000; // re-remind once a day while risk persists
 
 // Paper-trading rule: buy $1,000 (simulated) when a stock's Momentum Score crosses
-// into "Strong Up" territory, sell after ~5 trading days or sooner if Risk Watch
-// flags it. No real money — Alpaca's paper API simulates fills against live prices.
+// into "Strong Up" territory. Sell on whichever comes first: a take-profit target,
+// a stop-loss, Risk Watch flagging it, or a hard ~5-trading-day ceiling — so a
+// position isn't just held blind to a timer regardless of how the trade is doing.
+// No real money — Alpaca's paper API simulates fills against live prices.
 const PAPER_ENABLED = Boolean(ALPACA_API_KEY_ID && ALPACA_API_SECRET_KEY);
-const PAPER_ENTRY_MOMENTUM = 65;   // matches the "STRONG UP" cutoff used in market-pulse.html
-const PAPER_NOTIONAL = 1000;       // simulated dollars per position
-const PAPER_HOLDING_DAYS = 7;      // ~5 trading days, approximated in calendar days
+const PAPER_ENTRY_MOMENTUM = 65;    // matches the "STRONG UP" cutoff used in market-pulse.html
+const PAPER_NOTIONAL = 1000;        // simulated dollars per position
+const PAPER_TAKE_PROFIT_PCT = 8;    // lock in the win once a position is up this much
+const PAPER_STOP_LOSS_PCT = -4;     // cut the loss once a position is down this much
+const PAPER_HOLDING_DAYS = 7;       // hard ceiling if neither target hits first, ~5 trading days approximated in calendar days
+
+// Trend Projection: NOT a forecast. A transparent formula — continue the recent
+// 5-day daily average return rate forward, tilted by the same real, keyword-based
+// News Risk score already computed for Risk Watch — projected against what
+// actually happens, tracked honestly (like Paper Trading) so its real accuracy
+// is visible, not asserted. Reuses quote/metric/news data already fetched for
+// the risk check; Claude never reads or interprets the headlines to produce
+// this number, the same computeNewsRisk() keyword count just nudges the rate.
+const PROJECTION_HORIZON_DAYS = 5;              // matches the paper-trading holding period, in calendar days
+const PROJECTION_NEWS_MAX_DAILY_TILT_PCT = 1.5; // at fully negative/positive headline skew, nudge the daily rate by at most this many points (up to ~7.5pts over the 5-day horizon) — additive, so neutral news (score 50) leaves the price-trend projection untouched
 
 if (!FINNHUB_API_KEY) {
   console.error("FINNHUB_API_KEY is not set — add it as a repo Actions secret.");
@@ -130,6 +145,42 @@ async function loadIpoWatchState() {
   return loadJson(IPO_WATCH_STATE_PATH, {});
 }
 
+async function loadProjectionsState() {
+  return loadJson(PROJECTIONS_STATE_PATH, { pending: {}, resolved: [], stats: { totalResolved: 0, directionHits: 0, directionAccuracyPct: null, avgAbsErrorPct: null } });
+}
+
+// Naive linear extrapolation of the 5-day daily average return rate, continued
+// forward for PROJECTION_HORIZON_DAYS more days, then tilted by the real
+// keyword-based News Risk score (same 0-100 scale as Risk Watch, 50 = neutral)
+// when one is available. Deliberately simple and fully disclosed as a formula
+// — not a model, not a forecast, and not Claude's subjective read of the news.
+function computeProjection(price, fiveDayReturnPct, newsRisk) {
+  if (typeof price !== "number" || typeof fiveDayReturnPct !== "number") return null;
+  const priceDailyRatePct = fiveDayReturnPct / 5;
+  const hasNews = typeof newsRisk === "number";
+  // newsRisk > 50 skews negative-leaning, < 50 skews positive-leaning, 50 is
+  // neutral (see computeNewsRisk) — added on top of the price trend rather
+  // than blended into it, so neutral news never dilutes the price signal.
+  const newsTiltPct = hasNews ? -((newsRisk - 50) / 50) * PROJECTION_NEWS_MAX_DAILY_TILT_PCT : 0;
+  const dailyRatePct = priceDailyRatePct + newsTiltPct;
+  const projectedPct = dailyRatePct * PROJECTION_HORIZON_DAYS;
+  const projectedPrice = price * (1 + projectedPct / 100);
+  return { projectedPrice: Math.round(projectedPrice * 100) / 100, projectedPct: Math.round(projectedPct * 100) / 100, newsFactored: hasNews };
+}
+
+function computeProjectionStats(resolved) {
+  const total = resolved.length;
+  if (total === 0) return { totalResolved: 0, directionHits: 0, directionAccuracyPct: null, avgAbsErrorPct: null };
+  const hits = resolved.filter(r => r.directionHit).length;
+  const avgAbsErrorPct = resolved.reduce((a, r) => a + Math.abs(r.errorPct), 0) / total;
+  return {
+    totalResolved: total,
+    directionHits: hits,
+    directionAccuracyPct: Math.round((hits / total) * 1000) / 10,
+    avgAbsErrorPct: Math.round(avgAbsErrorPct * 100) / 100,
+  };
+}
+
 // Loose match since a private company's name in Finnhub's IPO calendar may not
 // exactly match how we refer to it — e.g. "Lambda Labs" could file as "Lambda,
 // Inc.", so a plain substring check in either direction misses it. Match on
@@ -172,10 +223,19 @@ function closePaperPosition(symbol) {
 
 function computePaperStats(closedTrades) {
   const total = closedTrades.length;
-  if (total === 0) return { totalTrades: 0, wins: 0, winRatePct: null, avgReturnPct: null };
+  if (total === 0) return { totalTrades: 0, wins: 0, winRatePct: null, avgReturnPct: null, netProfitUsd: 0 };
   const wins = closedTrades.filter(t => t.returnPct > 0).length;
   const avgReturnPct = closedTrades.reduce((a, t) => a + t.returnPct, 0) / total;
-  return { totalTrades: total, wins, winRatePct: Math.round((wins / total) * 1000) / 10, avgReturnPct: Math.round(avgReturnPct * 100) / 100 };
+  // Each trade is a $PAPER_NOTIONAL simulated position, so its dollar P/L is just
+  // its return percentage applied to that notional — summed for one headline number.
+  const netProfitUsd = closedTrades.reduce((a, t) => a + (t.returnPct / 100) * PAPER_NOTIONAL, 0);
+  return {
+    totalTrades: total,
+    wins,
+    winRatePct: Math.round((wins / total) * 1000) / 10,
+    avgReturnPct: Math.round(avgReturnPct * 100) / 100,
+    netProfitUsd: Math.round(netProfitUsd * 100) / 100,
+  };
 }
 
 async function main() {
@@ -187,6 +247,7 @@ async function main() {
   const paperState = await loadPaperState();
   const newsWatchState = await loadNewsWatchState();
   const ipoWatchState = await loadIpoWatchState();
+  const projectionsState = await loadProjectionsState();
   const now = Date.now();
   const toAlert = [];
   const paperEvents = [];
@@ -282,6 +343,41 @@ async function main() {
         newsWatchState[s.sym] = { seen: true, lastSeenAt: maxDatetime };
       }
 
+      {
+        const pending = projectionsState.pending[s.sym];
+        if (pending && now >= new Date(pending.targetDate).getTime()) {
+          const actualPrice = quote.c;
+          const actualPct = Math.round(((actualPrice - pending.currentPriceAtProjection) / pending.currentPriceAtProjection) * 10000) / 100;
+          const errorPct = Math.round((actualPct - pending.projectedPct) * 100) / 100;
+          const directionHit = Math.sign(actualPct) === Math.sign(pending.projectedPct) || (Math.abs(actualPct) < 0.5 && Math.abs(pending.projectedPct) < 0.5);
+          projectionsState.resolved.push({
+            sym: s.sym, name: s.name,
+            madeAt: pending.madeAt, targetDate: pending.targetDate,
+            projectedPrice: pending.projectedPrice, projectedPct: pending.projectedPct,
+            actualPrice, actualPct, errorPct, directionHit,
+          });
+          // Cap history so the state file (and stats) don't grow unbounded forever —
+          // keep the most recent 300, which is plenty for an honest accuracy read.
+          if (projectionsState.resolved.length > 300) projectionsState.resolved = projectionsState.resolved.slice(-300);
+          delete projectionsState.pending[s.sym];
+        }
+        if (!projectionsState.pending[s.sym]) {
+          const fiveDayReturn = metrics.metric?.["5DayPriceReturnDaily"];
+          const projection = computeProjection(quote.c, fiveDayReturn, newsRisk);
+          if (projection) {
+            projectionsState.pending[s.sym] = {
+              name: s.name,
+              madeAt: new Date(now).toISOString(),
+              targetDate: new Date(now + PROJECTION_HORIZON_DAYS * 86400000).toISOString(),
+              currentPriceAtProjection: quote.c,
+              projectedPrice: projection.projectedPrice,
+              projectedPct: projection.projectedPct,
+              newsFactored: projection.newsFactored,
+            };
+          }
+        }
+      }
+
       if (PAPER_ENABLED) {
         const openPosition = paperState.openPositions[s.sym];
         if (!openPosition && momentum !== null && momentum >= PAPER_ENTRY_MOMENTUM) {
@@ -290,10 +386,16 @@ async function main() {
           paperEvents.push({ sym: s.sym, name: s.name, action: "BUY", momentum, reason: "Momentum crossed into Strong Up" });
         } else if (openPosition) {
           const daysHeld = (now - new Date(openPosition.entryDate).getTime()) / 86400000;
-          const exitReason = flaggedNow ? "Risk Watch flagged" : daysHeld >= PAPER_HOLDING_DAYS ? `Held ${PAPER_HOLDING_DAYS}+ days` : null;
+          // Checked every run (not just once an exit is already decided) so a
+          // take-profit or stop-loss can actually fire before the hold-days ceiling.
+          const position = await getPaperPosition(s.sym);
+          const returnPct = position ? Math.round(Number(position.unrealized_plpc) * 10000) / 100 : null;
+          const exitReason = flaggedNow ? "Risk Watch flagged"
+            : (returnPct !== null && returnPct >= PAPER_TAKE_PROFIT_PCT) ? `Take-profit hit (+${PAPER_TAKE_PROFIT_PCT}%+)`
+            : (returnPct !== null && returnPct <= PAPER_STOP_LOSS_PCT) ? `Stop-loss hit (${PAPER_STOP_LOSS_PCT}%)`
+            : daysHeld >= PAPER_HOLDING_DAYS ? `Held ${PAPER_HOLDING_DAYS}+ days`
+            : null;
           if (exitReason) {
-            const position = await getPaperPosition(s.sym);
-            const returnPct = position ? Math.round(Number(position.unrealized_plpc) * 10000) / 100 : null;
             await closePaperPosition(s.sym);
             paperState.closedTrades.push({
               sym: s.sym, name: s.name,
@@ -317,6 +419,9 @@ async function main() {
 
   await fs.writeFile(NEWS_WATCH_STATE_PATH, JSON.stringify(newsWatchState, null, 2) + "\n");
   await fs.writeFile(IPO_WATCH_STATE_PATH, JSON.stringify(ipoWatchState, null, 2) + "\n");
+
+  projectionsState.stats = computeProjectionStats(projectionsState.resolved);
+  await fs.writeFile(PROJECTIONS_STATE_PATH, JSON.stringify(projectionsState, null, 2) + "\n");
 
   await fs.mkdir(path.dirname(STATE_PATH), { recursive: true });
   await fs.writeFile(STATE_PATH, JSON.stringify(state, null, 2) + "\n");
@@ -362,14 +467,14 @@ async function main() {
       });
       const stats = paperState.stats;
       const statsLine = stats.totalTrades > 0
-        ? `Track record so far: ${stats.totalTrades} closed trade(s), ${stats.winRatePct}% win rate, ${stats.avgReturnPct >= 0 ? "+" : ""}${stats.avgReturnPct}% average return.`
+        ? `${stats.netProfitUsd >= 0 ? "+" : "-"}$${Math.abs(stats.netProfitUsd).toFixed(2)} net · ${stats.totalTrades} trades · ${stats.winRatePct}% win rate.`
         : "No closed trades yet.";
       sections.push([
-        "📊 Paper Trading (simulated via Alpaca — no real money) — buys on Momentum Score crossing into Strong Up, sells after ~5 trading days or if Risk Watch flags it.",
+        `📊 Paper Trading (simulated via Alpaca — no real money) — buys on Momentum Score crossing into Strong Up, sells on a +${PAPER_TAKE_PROFIT_PCT}% take-profit, a ${PAPER_STOP_LOSS_PCT}% stop-loss, a Risk Watch flag, or after ~5 trading days, whichever comes first.`,
         ...lines,
         "",
         statsLine,
-        "Past paper-trade results are not a guarantee of future performance.",
+        "Simulated results — not a guarantee of future performance.",
       ].join("\n"));
     }
 

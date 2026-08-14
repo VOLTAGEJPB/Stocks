@@ -73,13 +73,16 @@ money, no real brokerage account, no real orders — Alpaca just simulates
 fills against live prices so a rule can be tracked honestly over time.
 
 **The rule**: buy $1,000 (simulated) worth of a stock when its Momentum
-Score crosses into "Strong Up" (≥65). Sell after ~5 trading days, or
-sooner if Risk Watch flags that stock. Results — win rate, average
-return, open positions — are tracked in `state/paper-trades.json`, shown
-in a "📊 Paper Trading" panel on the page, and included in the alert email
-whenever a simulated trade opens or closes. These are real (paper) trade
-outcomes, not an invented number — and past paper-trade results are not a
-guarantee of future performance, paper or otherwise.
+Score crosses into "Strong Up" (≥65). Sell on whichever comes first: an
+8% take-profit target, a 4% stop-loss, Risk Watch flagging that stock, or
+a ~5 trading day hard ceiling if none of those trigger first. Results —
+led by total net simulated dollar profit/loss across every closed trade,
+plus win rate, average return, and open positions — are tracked in
+`state/paper-trades.json`, shown in a "📊 Paper Trading" panel on the
+page, and included in the alert email whenever a simulated trade opens or
+closes. These are real (paper) trade outcomes, not an invented number —
+and past paper-trade results are not a guarantee of future performance,
+paper or otherwise.
 
 To turn this on, get free paper-trading API keys from Alpaca (sign up at
 https://alpaca.markets/, then generate keys from the **paper trading**
@@ -120,3 +123,29 @@ name like "Lambda Labs"), a one-time `🔔 MarketPulse IPO Watch` email goes
 out with the matched name, ticker, exchange, and date — tracked in
 `state/ipo-watch-state.json` so it never repeats for the same company. To
 add or remove companies, edit `ipo-watch.json` directly.
+
+### Trend Projection (a formula, not a forecast)
+
+Claude cannot predict stock prices, and this feature is built to be
+explicit about that rather than pretend otherwise. Instead of a "what I
+think will happen" guess, each tracked stock gets a fully disclosed,
+mechanical projection: take its real 5-day daily average return rate,
+continue it forward 5 more days, then nudge that daily rate by up to
+±1.5 points using the same real, keyword-based News Risk score already
+computed for Risk Watch — more negative-leaning recent headlines nudge the
+projection down, more positive-leaning headlines nudge it up, and neutral
+news leaves the price trend untouched. That's the entire formula — no
+model, no hidden inputs, and critically, Claude never reads or
+subjectively interprets the headlines to produce this number; the same
+mechanical keyword count that drives Risk Watch is the only "news" input
+here.
+
+The point isn't that this projection is accurate — naive trend-following
+usually isn't. The point is tracking it honestly: when the 5-day target
+date arrives, the projection is compared against what the price actually
+did, and the result (hit or miss, and by how much) is logged permanently
+in `state/projections.json`. The "🎯 Trend Projection" panel on the page
+shows the real running accuracy — direction-hit rate and average error —
+so you can see for yourself how well (or poorly) simple trend-following
+actually performs, instead of taking anyone's word for it. Each card also
+shows its current pending projection next to the live price.
