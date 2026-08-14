@@ -149,8 +149,8 @@
   "COIN": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-08-13T21:20:58.728Z",
-    "lastSeverity": 73,
+    "lastAlertAt": "2026-08-14T21:26:50.773Z",
+    "lastSeverity": 78,
     "lastNegCount": 6
   },
   "MSTR": {
