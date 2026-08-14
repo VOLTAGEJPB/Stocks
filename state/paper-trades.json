@@ -43,6 +43,14 @@
     "SMCI": {
       "entryDate": "2026-08-13T20:04:05.078Z",
       "entryMomentum": 76
+    },
+    "INTC": {
+      "entryDate": "2026-08-14T15:22:15.396Z",
+      "entryMomentum": 65
+    },
+    "UAL": {
+      "entryDate": "2026-08-14T15:22:15.396Z",
+      "entryMomentum": 66
     }
   },
   "closedTrades": [

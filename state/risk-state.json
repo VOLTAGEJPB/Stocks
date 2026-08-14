@@ -74,7 +74,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 0
   },
   "GOOGL": {
     "seen": true,
@@ -151,7 +151,7 @@
     "flagged": true,
     "lastAlertAt": "2026-08-13T21:20:58.728Z",
     "lastSeverity": 73,
-    "lastNegCount": 7
+    "lastNegCount": 6
   },
   "MSTR": {
     "seen": true,
