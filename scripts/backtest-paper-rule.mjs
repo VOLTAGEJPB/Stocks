@@ -194,10 +194,16 @@ async function main() {
     }
   }
 
-  const ENTRY_CANDIDATES = [55, 60, 65, 70];
-  const TAKE_PROFIT_CANDIDATES = [5, 8, 12];
-  const STOP_LOSS_CANDIDATES = [-3, -4, -6];
-  const HOLD_DAYS_CANDIDATES = [5, 7, 10];
+  // Widened from an initial [55,60,65,70]/[5,8,12]/[-3,-4,-6]/[5,7,10] pass after
+  // every top-10 result there hit entryMomentum=55 (the floor) and several other
+  // params sat at their edge too — evidence the true optimum was outside that
+  // grid. 45 is the floor here since it's MOMENTUM_DOWN_THRESHOLD in the live
+  // app (momentumLabel calls anything below that "DOWN") — going lower would
+  // stop being a momentum-following entry in any real sense.
+  const ENTRY_CANDIDATES = [45, 50, 55, 60, 65, 70];
+  const TAKE_PROFIT_CANDIDATES = [5, 8, 12, 16, 20];
+  const STOP_LOSS_CANDIDATES = [-3, -4, -6, -8, -10];
+  const HOLD_DAYS_CANDIDATES = [5, 7, 10, 15, 20];
 
   const allResults = [];
   for (const entryMomentum of ENTRY_CANDIDATES) {
