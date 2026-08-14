@@ -1,13 +1,5 @@
 {
   "openPositions": {
-    "INTC": {
-      "entryDate": "2026-08-07T14:13:18.260Z",
-      "entryMomentum": 68
-    },
-    "UAL": {
-      "entryDate": "2026-08-07T14:13:18.260Z",
-      "entryMomentum": 77
-    },
     "OXY": {
       "entryDate": "2026-08-11T14:19:09.060Z",
       "entryMomentum": 67
@@ -405,12 +397,29 @@
       "exitDate": "2026-08-13T19:11:53.503Z",
       "returnPct": -3.21,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "INTC",
+      "name": "Intel",
+      "entryDate": "2026-08-07T14:13:18.260Z",
+      "exitDate": "2026-08-14T14:15:21.965Z",
+      "returnPct": 6.78,
+      "exitReason": "Held 7+ days"
+    },
+    {
+      "sym": "UAL",
+      "name": "United Airlines",
+      "entryDate": "2026-08-07T14:13:18.260Z",
+      "exitDate": "2026-08-14T14:15:21.965Z",
+      "returnPct": -0.99,
+      "exitReason": "Held 7+ days"
     }
   ],
   "stats": {
-    "totalTrades": 44,
-    "wins": 22,
+    "totalTrades": 46,
+    "wins": 23,
     "winRatePct": 50,
-    "avgReturnPct": 0.2
+    "avgReturnPct": 0.31,
+    "netProfitUsd": 143.9
   }
 }

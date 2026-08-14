@@ -1,5 +1,290 @@
 {
-  "pending": {},
+  "pending": {
+    "TSLA": {
+      "name": "Tesla",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 347.9,
+      "projectedPrice": 364.12,
+      "projectedPct": 4.66,
+      "newsFactored": true
+    },
+    "IBM": {
+      "name": "IBM",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 234.51,
+      "projectedPrice": 249.15,
+      "projectedPct": 6.24,
+      "newsFactored": true
+    },
+    "SKHY": {
+      "name": "SK Hynix ADR",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 170.49,
+      "projectedPrice": 208.25,
+      "projectedPct": 22.15,
+      "newsFactored": true
+    },
+    "MU": {
+      "name": "Micron",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 980.31,
+      "projectedPrice": 1134.55,
+      "projectedPct": 15.73,
+      "newsFactored": true
+    },
+    "LRCX": {
+      "name": "Lam Research",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 336.12,
+      "projectedPrice": 372.39,
+      "projectedPct": 10.79,
+      "newsFactored": true
+    },
+    "BAH": {
+      "name": "Booz Allen Hamilton",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 77.79,
+      "projectedPrice": 81.13,
+      "projectedPct": 4.29,
+      "newsFactored": true
+    },
+    "DNA": {
+      "name": "Ginkgo Bioworks",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 6.98,
+      "projectedPrice": 6,
+      "projectedPct": -14.11,
+      "newsFactored": true
+    },
+    "AMC": {
+      "name": "AMC Entertainment",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 2.55,
+      "projectedPrice": 2.59,
+      "projectedPct": 1.54,
+      "newsFactored": true
+    },
+    "NVDA": {
+      "name": "Nvidia",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 226.3,
+      "projectedPrice": 227.65,
+      "projectedPct": 0.6,
+      "newsFactored": true
+    },
+    "AAPL": {
+      "name": "Apple",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 305.87,
+      "projectedPrice": 297.99,
+      "projectedPct": -2.58,
+      "newsFactored": true
+    },
+    "MSFT": {
+      "name": "Microsoft",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 497.87,
+      "projectedPrice": 494.77,
+      "projectedPct": -0.62,
+      "newsFactored": true
+    },
+    "GOOGL": {
+      "name": "Alphabet",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 347.97,
+      "projectedPrice": 344.35,
+      "projectedPct": -1.04,
+      "newsFactored": true
+    },
+    "AMZN": {
+      "name": "Amazon",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 264.64,
+      "projectedPrice": 255.63,
+      "projectedPct": -3.41,
+      "newsFactored": true
+    },
+    "META": {
+      "name": "Meta Platforms",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 598.04,
+      "projectedPrice": 593.76,
+      "projectedPct": -0.72,
+      "newsFactored": true
+    },
+    "AMD": {
+      "name": "Advanced Micro Devices",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 502.37,
+      "projectedPrice": 526.87,
+      "projectedPct": 4.88,
+      "newsFactored": true
+    },
+    "INTC": {
+      "name": "Intel",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 105.45,
+      "projectedPrice": 109.73,
+      "projectedPct": 4.06,
+      "newsFactored": true
+    },
+    "AVGO": {
+      "name": "Broadcom",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 400.7,
+      "projectedPrice": 406.42,
+      "projectedPct": 1.43,
+      "newsFactored": true
+    },
+    "ARM": {
+      "name": "Arm Holdings",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 278.82,
+      "projectedPrice": 278.3,
+      "projectedPct": -0.19,
+      "newsFactored": true
+    },
+    "SMCI": {
+      "name": "Super Micro Computer",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 40.25,
+      "projectedPrice": 53.65,
+      "projectedPct": 33.3,
+      "newsFactored": true
+    },
+    "TSM": {
+      "name": "Taiwan Semiconductor ADR",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 427.5,
+      "projectedPrice": 455.26,
+      "projectedPct": 6.49,
+      "newsFactored": true
+    },
+    "PLTR": {
+      "name": "Palantir",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 177.04,
+      "projectedPrice": 170.97,
+      "projectedPct": -3.43,
+      "newsFactored": true
+    },
+    "COIN": {
+      "name": "Coinbase",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 148.69,
+      "projectedPrice": 137.83,
+      "projectedPct": -7.3,
+      "newsFactored": true
+    },
+    "MSTR": {
+      "name": "MicroStrategy",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 92.71,
+      "projectedPrice": 88.9,
+      "projectedPct": -4.11,
+      "newsFactored": true
+    },
+    "RIVN": {
+      "name": "Rivian",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 15.63,
+      "projectedPrice": 14.87,
+      "projectedPct": -4.87,
+      "newsFactored": true
+    },
+    "LCID": {
+      "name": "Lucid Group",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 6.44,
+      "projectedPrice": 5.65,
+      "projectedPct": -12.27,
+      "newsFactored": true
+    },
+    "GME": {
+      "name": "GameStop",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 18.52,
+      "projectedPrice": 19.34,
+      "projectedPct": 4.42,
+      "newsFactored": true
+    },
+    "MRNA": {
+      "name": "Moderna",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 63.58,
+      "projectedPrice": 70.02,
+      "projectedPct": 10.12,
+      "newsFactored": true
+    },
+    "PFE": {
+      "name": "Pfizer",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 26.64,
+      "projectedPrice": 26.36,
+      "projectedPct": -1.05,
+      "newsFactored": true
+    },
+    "UAL": {
+      "name": "United Airlines",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 126.61,
+      "projectedPrice": 126.7,
+      "projectedPct": 0.07,
+      "newsFactored": true
+    },
+    "OXY": {
+      "name": "Occidental Petroleum",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 58.64,
+      "projectedPrice": 60.52,
+      "projectedPct": 3.2,
+      "newsFactored": true
+    },
+    "APLD": {
+      "name": "Applied Digital",
+      "madeAt": "2026-08-14T14:15:21.965Z",
+      "targetDate": "2026-08-19T14:15:21.965Z",
+      "currentPriceAtProjection": 30.45,
+      "projectedPrice": 32.69,
+      "projectedPct": 7.34,
+      "newsFactored": true
+    }
+  },
   "resolved": [],
-  "stats": { "totalResolved": 0, "directionHits": 0, "directionAccuracyPct": null, "avgAbsErrorPct": null }
+  "stats": {
+    "totalResolved": 0,
+    "directionHits": 0,
+    "directionAccuracyPct": null,
+    "avgAbsErrorPct": null
+  }
 }
