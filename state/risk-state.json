@@ -25,7 +25,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "LRCX": {
     "seen": true,
@@ -44,8 +44,8 @@
   "DNA": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-08-13T16:56:01.130Z",
-    "lastSeverity": 71,
+    "lastAlertAt": "2026-08-14T17:28:46.300Z",
+    "lastSeverity": 75,
     "lastNegCount": 2
   },
   "AMC": {
@@ -170,8 +170,8 @@
   "LCID": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-08-13T16:56:01.130Z",
-    "lastSeverity": 64,
+    "lastAlertAt": "2026-08-14T17:28:46.300Z",
+    "lastSeverity": 68,
     "lastNegCount": 2
   },
   "GME": {
