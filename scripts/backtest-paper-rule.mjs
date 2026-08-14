@@ -73,11 +73,14 @@ async function fetchDailyBars(symbol, start, end) {
     url.searchParams.set("end", end);
     url.searchParams.set("limit", "10000");
     url.searchParams.set("adjustment", "split");
+    // Free/paper Alpaca accounts are only entitled to the IEX feed — the
+    // endpoint defaults to SIP, which returns a blanket 403 without this.
+    url.searchParams.set("feed", "iex");
     if (pageToken) url.searchParams.set("page_token", pageToken);
     const res = await fetch(url, {
       headers: { "APCA-API-KEY-ID": ALPACA_API_KEY_ID, "APCA-API-SECRET-KEY": ALPACA_API_SECRET_KEY },
     });
-    if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText}: ${(await res.text()).slice(0, 300)}`);
     const data = await res.json();
     bars.push(...(data.bars || []));
     pageToken = data.next_page_token || null;
