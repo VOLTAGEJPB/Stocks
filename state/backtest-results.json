@@ -1,12 +1,176 @@
 {
-  "generatedAt": null,
-  "methodology": "Not yet run — trigger the \"MarketPulse Paper-Trading Backtest\" workflow from the Actions tab.",
-  "period": null,
+  "generatedAt": "2026-08-14T01:20:57.997Z",
+  "methodology": "Replays computeMomentum() against real historical daily prices (Alpaca Market Data API, IEX feed, split-adjusted) to find which take-profit/stop-loss/entry-momentum/hold-days combination for Paper Trading would have produced the best real (simulated) net profit. Does NOT replay the Risk Watch news-based exit — no historical headline archive exists to test that against, so this calibrates only the take-profit/stop-loss/hold-days part of the live rule. Ranked by total net simulated $ profit among combinations with at least 50 trades in the sample (to avoid picking a combination based on a thin, lucky sample). Past performance on historical data is not a guarantee of future performance.",
+  "period": {
+    "start": "2021-08-15",
+    "end": "2026-08-14",
+    "years": 5
+  },
   "symbolsUsed": [],
-  "symbolsSkipped": [],
-  "minTradesToRank": null,
-  "parameterGrid": null,
-  "currentDefault": null,
+  "symbolsSkipped": [
+    {
+      "sym": "TSLA",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "IBM",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "SKHY",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "MU",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "LRCX",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "BAH",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "DNA",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "AMC",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "NVDA",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "AAPL",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "MSFT",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "GOOGL",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "AMZN",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "META",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "AMD",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "INTC",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "AVGO",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "ARM",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "SMCI",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "TSM",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "PLTR",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "COIN",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "MSTR",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "RIVN",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "LCID",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "GME",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "MRNA",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "PFE",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "UAL",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "OXY",
+      "reason": "403 Forbidden"
+    },
+    {
+      "sym": "APLD",
+      "reason": "403 Forbidden"
+    }
+  ],
+  "minTradesToRank": 50,
+  "parameterGrid": {
+    "entryMomentum": [
+      55,
+      60,
+      65,
+      70
+    ],
+    "takeProfitPct": [
+      5,
+      8,
+      12
+    ],
+    "stopLossPct": [
+      -3,
+      -4,
+      -6
+    ],
+    "holdDays": [
+      5,
+      7,
+      10
+    ]
+  },
+  "currentDefault": {
+    "params": {
+      "entryMomentum": 65,
+      "takeProfitPct": 8,
+      "stopLossPct": -4,
+      "holdDays": 7
+    },
+    "totalTrades": 0,
+    "wins": 0,
+    "winRatePct": null,
+    "avgReturnPct": null,
+    "netProfitUsd": 0,
+    "profitFactor": null
+  },
   "best": null,
   "top10": []
 }
