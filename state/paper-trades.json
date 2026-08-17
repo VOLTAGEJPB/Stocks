@@ -28,10 +28,6 @@
       "entryDate": "2026-08-13T15:30:49.910Z",
       "entryMomentum": 67
     },
-    "MSFT": {
-      "entryDate": "2026-08-13T15:30:49.910Z",
-      "entryMomentum": 67
-    },
     "PLTR": {
       "entryDate": "2026-08-13T15:30:49.910Z",
       "entryMomentum": 81
@@ -421,13 +417,21 @@
       "exitDate": "2026-08-14T14:15:21.965Z",
       "returnPct": -0.99,
       "exitReason": "Held 7+ days"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-08-13T15:30:49.910Z",
+      "exitDate": "2026-08-17T13:38:24.661Z",
+      "returnPct": -0.99,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 46,
+    "totalTrades": 47,
     "wins": 23,
-    "winRatePct": 50,
-    "avgReturnPct": 0.31,
-    "netProfitUsd": 143.9
+    "winRatePct": 48.9,
+    "avgReturnPct": 0.29,
+    "netProfitUsd": 134
   }
 }
