@@ -1,9 +1,9 @@
 {
   "TSLA": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-17T13:38:24.661Z",
-    "lastSeverity": 55,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 3
   },
   "IBM": {
@@ -71,9 +71,9 @@
   },
   "MSFT": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-17T13:38:24.661Z",
-    "lastSeverity": 42,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 3
   },
   "GOOGL": {
@@ -85,9 +85,9 @@
   },
   "AMZN": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-17T13:38:24.661Z",
-    "lastSeverity": 43,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 3
   },
   "META": {

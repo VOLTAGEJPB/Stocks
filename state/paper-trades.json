@@ -8,10 +8,6 @@
       "entryDate": "2026-08-11T16:27:37.017Z",
       "entryMomentum": 71
     },
-    "MRNA": {
-      "entryDate": "2026-08-11T19:01:42.052Z",
-      "entryMomentum": 74
-    },
     "LRCX": {
       "entryDate": "2026-08-12T14:20:00.613Z",
       "entryMomentum": 70
@@ -425,13 +421,21 @@
       "exitDate": "2026-08-17T13:38:24.661Z",
       "returnPct": -0.99,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-08-11T19:01:42.052Z",
+      "exitDate": "2026-08-17T14:27:06.913Z",
+      "returnPct": 8.3,
+      "exitReason": "Take-profit hit (+8%+)"
     }
   ],
   "stats": {
-    "totalTrades": 47,
-    "wins": 23,
-    "winRatePct": 48.9,
-    "avgReturnPct": 0.29,
-    "netProfitUsd": 134
+    "totalTrades": 48,
+    "wins": 24,
+    "winRatePct": 50,
+    "avgReturnPct": 0.45,
+    "netProfitUsd": 217
   }
 }
