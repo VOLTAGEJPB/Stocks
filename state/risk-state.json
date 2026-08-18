@@ -15,9 +15,9 @@
   },
   "SKHY": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
+    "flagged": true,
+    "lastAlertAt": "2026-08-18T15:31:06.947Z",
+    "lastSeverity": 42,
     "lastNegCount": 2
   },
   "MU": {
@@ -74,7 +74,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 4
   },
   "GOOGL": {
     "seen": true,
@@ -92,10 +92,10 @@
   },
   "META": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 2
+    "flagged": true,
+    "lastAlertAt": "2026-08-18T15:31:06.947Z",
+    "lastSeverity": 64,
+    "lastNegCount": 3
   },
   "AMD": {
     "seen": true,
@@ -106,9 +106,9 @@
   },
   "INTC": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
+    "flagged": true,
+    "lastAlertAt": "2026-08-18T15:31:06.947Z",
+    "lastSeverity": 51,
     "lastNegCount": 3
   },
   "AVGO": {
@@ -120,9 +120,9 @@
   },
   "ARM": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
+    "flagged": true,
+    "lastAlertAt": "2026-08-18T15:31:06.947Z",
+    "lastSeverity": 50,
     "lastNegCount": 1
   },
   "SMCI": {
@@ -144,7 +144,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 3
   },
   "COIN": {
     "seen": true,
@@ -211,9 +211,9 @@
   },
   "APLD": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
+    "flagged": true,
+    "lastAlertAt": "2026-08-18T15:31:06.947Z",
+    "lastSeverity": 55,
     "lastNegCount": 0
   }
 }
