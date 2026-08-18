@@ -4,7 +4,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "IBM": {
     "seen": true,
@@ -18,7 +18,7 @@
     "flagged": true,
     "lastAlertAt": "2026-08-18T15:31:06.947Z",
     "lastSeverity": 42,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "MU": {
     "seen": true,
@@ -109,7 +109,7 @@
     "flagged": true,
     "lastAlertAt": "2026-08-18T15:31:06.947Z",
     "lastSeverity": 51,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "AVGO": {
     "seen": true,
@@ -120,9 +120,9 @@
   },
   "ARM": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-18T17:55:11.552Z",
-    "lastSeverity": 46,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 1
   },
   "SMCI": {
