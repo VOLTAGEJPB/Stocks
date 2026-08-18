@@ -22,9 +22,9 @@
   },
   "MU": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
+    "flagged": true,
+    "lastAlertAt": "2026-08-18T16:30:11.885Z",
+    "lastSeverity": 33,
     "lastNegCount": 0
   },
   "LRCX": {
@@ -144,7 +144,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "COIN": {
     "seen": true,
@@ -211,9 +211,9 @@
   },
   "APLD": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-18T15:31:06.947Z",
-    "lastSeverity": 55,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 0
   }
 }

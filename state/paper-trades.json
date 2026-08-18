@@ -4,10 +4,6 @@
       "entryDate": "2026-08-12T14:20:00.613Z",
       "entryMomentum": 70
     },
-    "MU": {
-      "entryDate": "2026-08-13T15:30:49.910Z",
-      "entryMomentum": 79
-    },
     "NVDA": {
       "entryDate": "2026-08-13T15:30:49.910Z",
       "entryMomentum": 67
@@ -20,10 +16,6 @@
       "entryDate": "2026-08-13T16:56:01.130Z",
       "entryMomentum": 67
     },
-    "UAL": {
-      "entryDate": "2026-08-14T15:22:15.396Z",
-      "entryMomentum": 66
-    },
     "MRNA": {
       "entryDate": "2026-08-17T14:54:57.213Z",
       "entryMomentum": 81
@@ -31,10 +23,6 @@
     "AMC": {
       "entryDate": "2026-08-18T15:31:06.947Z",
       "entryMomentum": 69
-    },
-    "ARM": {
-      "entryDate": "2026-08-18T15:31:06.947Z",
-      "entryMomentum": 66
     },
     "SMCI": {
       "entryDate": "2026-08-18T15:31:06.947Z",
@@ -473,13 +461,37 @@
       "exitDate": "2026-08-18T14:33:06.259Z",
       "returnPct": 0.82,
       "exitReason": "Held 7+ days"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-08-13T15:30:49.910Z",
+      "exitDate": "2026-08-18T16:30:11.885Z",
+      "returnPct": -3.55,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "ARM",
+      "name": "Arm Holdings",
+      "entryDate": "2026-08-18T15:31:06.947Z",
+      "exitDate": "2026-08-18T16:30:11.885Z",
+      "returnPct": -0.35,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "UAL",
+      "name": "United Airlines",
+      "entryDate": "2026-08-14T15:22:15.396Z",
+      "exitDate": "2026-08-18T16:30:11.885Z",
+      "returnPct": -4.26,
+      "exitReason": "Stop-loss hit (-4%)"
     }
   ],
   "stats": {
-    "totalTrades": 54,
+    "totalTrades": 57,
     "wins": 25,
-    "winRatePct": 46.3,
-    "avgReturnPct": -0.02,
-    "netProfitUsd": -8.7
+    "winRatePct": 43.9,
+    "avgReturnPct": -0.16,
+    "netProfitUsd": -90.3
   }
 }
