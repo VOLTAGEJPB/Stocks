@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-14T01:26:54.819Z",
+  "generatedAt": "2026-08-18T14:47:35.271Z",
   "methodology": "Replays computeMomentum() against real historical daily prices (Alpaca Market Data API, IEX feed, split-adjusted) to find which take-profit/stop-loss/entry-momentum/hold-days combination for Paper Trading would have produced the best real (simulated) net profit. Does NOT replay the Risk Watch news-based exit — no historical headline archive exists to test that against, so this calibrates only the take-profit/stop-loss/hold-days part of the live rule. Ranked by total net simulated $ profit among combinations with at least 50 trades in the sample (to avoid picking a combination based on a thin, lucky sample). Past performance on historical data is not a guarantee of future performance.",
   "period": {
-    "start": "2021-08-15",
-    "end": "2026-08-14",
+    "start": "2021-08-19",
+    "end": "2026-08-18",
     "years": 5
   },
   "symbolsUsed": [
@@ -41,7 +41,7 @@
   "symbolsSkipped": [
     {
       "sym": "SKHY",
-      "reason": "only 25 trading days of history available"
+      "reason": "only 28 trading days of history available"
     }
   ],
   "minTradesToRank": 50,
@@ -83,12 +83,12 @@
       "stopLossPct": -4,
       "holdDays": 7
     },
-    "totalTrades": 2558,
-    "wins": 1176,
-    "winRatePct": 46,
-    "avgReturnPct": 0.6,
-    "netProfitUsd": 15433.9,
-    "profitFactor": 1.2
+    "totalTrades": 2570,
+    "wins": 1184,
+    "winRatePct": 46.1,
+    "avgReturnPct": 0.62,
+    "netProfitUsd": 15954.3,
+    "profitFactor": 1.21
   },
   "best": {
     "params": {
@@ -98,11 +98,97 @@
       "holdDays": 15
     },
     "totalTrades": 2241,
-    "wins": 967,
-    "winRatePct": 43.2,
-    "avgReturnPct": 1.3,
-    "netProfitUsd": 29236.4,
+    "wins": 970,
+    "winRatePct": 43.3,
+    "avgReturnPct": 1.32,
+    "netProfitUsd": 29653.3,
     "profitFactor": 1.31
+  },
+  "bestByEntryMomentum": {
+    "45": {
+      "params": {
+        "entryMomentum": 45,
+        "takeProfitPct": 16,
+        "stopLossPct": -6,
+        "holdDays": 15
+      },
+      "totalTrades": 2640,
+      "wins": 1121,
+      "winRatePct": 42.5,
+      "avgReturnPct": 1.04,
+      "netProfitUsd": 27527.7,
+      "profitFactor": 1.24
+    },
+    "50": {
+      "params": {
+        "entryMomentum": 50,
+        "takeProfitPct": 20,
+        "stopLossPct": -6,
+        "holdDays": 15
+      },
+      "totalTrades": 2241,
+      "wins": 970,
+      "winRatePct": 43.3,
+      "avgReturnPct": 1.32,
+      "netProfitUsd": 29653.3,
+      "profitFactor": 1.31
+    },
+    "55": {
+      "params": {
+        "entryMomentum": 55,
+        "takeProfitPct": 20,
+        "stopLossPct": -6,
+        "holdDays": 10
+      },
+      "totalTrades": 2455,
+      "wins": 1137,
+      "winRatePct": 46.3,
+      "avgReturnPct": 1.11,
+      "netProfitUsd": 27230.4,
+      "profitFactor": 1.3
+    },
+    "60": {
+      "params": {
+        "entryMomentum": 60,
+        "takeProfitPct": 20,
+        "stopLossPct": -6,
+        "holdDays": 10
+      },
+      "totalTrades": 2145,
+      "wins": 1011,
+      "winRatePct": 47.1,
+      "avgReturnPct": 1.13,
+      "netProfitUsd": 24283.4,
+      "profitFactor": 1.31
+    },
+    "65": {
+      "params": {
+        "entryMomentum": 65,
+        "takeProfitPct": 20,
+        "stopLossPct": -6,
+        "holdDays": 10
+      },
+      "totalTrades": 1796,
+      "wins": 852,
+      "winRatePct": 47.4,
+      "avgReturnPct": 1.29,
+      "netProfitUsd": 23115.7,
+      "profitFactor": 1.35
+    },
+    "70": {
+      "params": {
+        "entryMomentum": 70,
+        "takeProfitPct": 12,
+        "stopLossPct": -6,
+        "holdDays": 15
+      },
+      "totalTrades": 1353,
+      "wins": 641,
+      "winRatePct": 47.4,
+      "avgReturnPct": 1.63,
+      "netProfitUsd": 22049.8,
+      "profitFactor": 1.4
+    }
   },
   "top10": [
     {
@@ -113,10 +199,10 @@
         "holdDays": 15
       },
       "totalTrades": 2241,
-      "wins": 967,
-      "winRatePct": 43.2,
-      "avgReturnPct": 1.3,
-      "netProfitUsd": 29236.4,
+      "wins": 970,
+      "winRatePct": 43.3,
+      "avgReturnPct": 1.32,
+      "netProfitUsd": 29653.3,
       "profitFactor": 1.31
     },
     {
@@ -126,26 +212,12 @@
         "stopLossPct": -6,
         "holdDays": 10
       },
-      "totalTrades": 2843,
-      "wins": 1330,
+      "totalTrades": 2846,
+      "wins": 1331,
       "winRatePct": 46.8,
-      "avgReturnPct": 1.01,
-      "netProfitUsd": 28587.8,
+      "avgReturnPct": 1.03,
+      "netProfitUsd": 29210.6,
       "profitFactor": 1.28
-    },
-    {
-      "params": {
-        "entryMomentum": 50,
-        "takeProfitPct": 20,
-        "stopLossPct": -6,
-        "holdDays": 7
-      },
-      "totalTrades": 3392,
-      "wins": 1635,
-      "winRatePct": 48.2,
-      "avgReturnPct": 0.84,
-      "netProfitUsd": 28556.1,
-      "profitFactor": 1.27
     },
     {
       "params": {
@@ -154,26 +226,40 @@
         "stopLossPct": -6,
         "holdDays": 10
       },
-      "totalTrades": 2762,
-      "wins": 1283,
-      "winRatePct": 46.5,
-      "avgReturnPct": 1.03,
-      "netProfitUsd": 28516.1,
-      "profitFactor": 1.28
+      "totalTrades": 2766,
+      "wins": 1284,
+      "winRatePct": 46.4,
+      "avgReturnPct": 1.05,
+      "netProfitUsd": 29067.2,
+      "profitFactor": 1.29
     },
     {
       "params": {
         "entryMomentum": 50,
         "takeProfitPct": 20,
-        "stopLossPct": -8,
-        "holdDays": 15
+        "stopLossPct": -6,
+        "holdDays": 7
       },
-      "totalTrades": 2070,
-      "wins": 964,
-      "winRatePct": 46.6,
-      "avgReturnPct": 1.36,
-      "netProfitUsd": 28133.4,
-      "profitFactor": 1.3
+      "totalTrades": 3393,
+      "wins": 1636,
+      "winRatePct": 48.2,
+      "avgReturnPct": 0.85,
+      "netProfitUsd": 28997,
+      "profitFactor": 1.28
+    },
+    {
+      "params": {
+        "entryMomentum": 50,
+        "takeProfitPct": 16,
+        "stopLossPct": -10,
+        "holdDays": 10
+      },
+      "totalTrades": 2591,
+      "wins": 1319,
+      "winRatePct": 50.9,
+      "avgReturnPct": 1.12,
+      "netProfitUsd": 28899.1,
+      "profitFactor": 1.29
     },
     {
       "params": {
@@ -183,10 +269,52 @@
         "holdDays": 15
       },
       "totalTrades": 2532,
-      "wins": 1146,
-      "winRatePct": 45.3,
-      "avgReturnPct": 1.1,
-      "netProfitUsd": 27959.6,
+      "wins": 1150,
+      "winRatePct": 45.4,
+      "avgReturnPct": 1.13,
+      "netProfitUsd": 28606.4,
+      "profitFactor": 1.27
+    },
+    {
+      "params": {
+        "entryMomentum": 50,
+        "takeProfitPct": 20,
+        "stopLossPct": -4,
+        "holdDays": 15
+      },
+      "totalTrades": 2520,
+      "wins": 958,
+      "winRatePct": 38,
+      "avgReturnPct": 1.13,
+      "netProfitUsd": 28394.1,
+      "profitFactor": 1.29
+    },
+    {
+      "params": {
+        "entryMomentum": 50,
+        "takeProfitPct": 20,
+        "stopLossPct": -8,
+        "holdDays": 15
+      },
+      "totalTrades": 2072,
+      "wins": 969,
+      "winRatePct": 46.8,
+      "avgReturnPct": 1.37,
+      "netProfitUsd": 28371.4,
+      "profitFactor": 1.3
+    },
+    {
+      "params": {
+        "entryMomentum": 50,
+        "takeProfitPct": 16,
+        "stopLossPct": -4,
+        "holdDays": 10
+      },
+      "totalTrades": 3101,
+      "wins": 1301,
+      "winRatePct": 42,
+      "avgReturnPct": 0.91,
+      "netProfitUsd": 28152.9,
       "profitFactor": 1.27
     },
     {
@@ -196,54 +324,12 @@
         "stopLossPct": -6,
         "holdDays": 20
       },
-      "totalTrades": 1987,
+      "totalTrades": 1985,
       "wins": 803,
-      "winRatePct": 40.4,
-      "avgReturnPct": 1.4,
-      "netProfitUsd": 27902.5,
+      "winRatePct": 40.5,
+      "avgReturnPct": 1.42,
+      "netProfitUsd": 28141.6,
       "profitFactor": 1.3
-    },
-    {
-      "params": {
-        "entryMomentum": 50,
-        "takeProfitPct": 16,
-        "stopLossPct": -10,
-        "holdDays": 10
-      },
-      "totalTrades": 2586,
-      "wins": 1315,
-      "winRatePct": 50.9,
-      "avgReturnPct": 1.08,
-      "netProfitUsd": 27849.9,
-      "profitFactor": 1.28
-    },
-    {
-      "params": {
-        "entryMomentum": 50,
-        "takeProfitPct": 20,
-        "stopLossPct": -4,
-        "holdDays": 15
-      },
-      "totalTrades": 2523,
-      "wins": 954,
-      "winRatePct": 37.8,
-      "avgReturnPct": 1.1,
-      "netProfitUsd": 27821.9,
-      "profitFactor": 1.29
-    },
-    {
-      "params": {
-        "entryMomentum": 50,
-        "takeProfitPct": 16,
-        "stopLossPct": -4,
-        "holdDays": 10
-      },
-      "totalTrades": 3095,
-      "wins": 1299,
-      "winRatePct": 42,
-      "avgReturnPct": 0.89,
-      "netProfitUsd": 27642.8,
-      "profitFactor": 1.26
     }
   ]
 }
