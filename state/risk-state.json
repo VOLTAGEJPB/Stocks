@@ -60,7 +60,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "AAPL": {
     "seen": true,
@@ -106,9 +106,9 @@
   },
   "INTC": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-18T15:31:06.947Z",
-    "lastSeverity": 51,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 2
   },
   "AVGO": {
