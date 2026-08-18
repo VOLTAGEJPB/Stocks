@@ -73,9 +73,9 @@ money, no real brokerage account, no real orders — Alpaca just simulates
 fills against live prices so a rule can be tracked honestly over time.
 
 **The rule**: buy $1,000 (simulated) worth of a stock when its Momentum
-Score crosses into "Strong Up" (≥65). Sell on whichever comes first: an
-8% take-profit target, a 4% stop-loss, Risk Watch flagging that stock, or
-a ~5 trading day hard ceiling if none of those trigger first. Results —
+Score crosses into "Strong Up" (≥65). Sell on whichever comes first: a
+20% take-profit target, a 6% stop-loss, Risk Watch flagging that stock, or
+a ~7 trading day hard ceiling if none of those trigger first. Results —
 led by total net simulated dollar profit/loss across every closed trade,
 plus win rate, average return, and open positions — are tracked in
 `state/paper-trades.json`, shown in a "📊 Paper Trading" panel on the
@@ -83,6 +83,23 @@ page, and included in the alert email whenever a simulated trade opens or
 closes. These are real (paper) trade outcomes, not an invented number —
 and past paper-trade results are not a guarantee of future performance,
 paper or otherwise.
+
+The take-profit/stop-loss/hold-days values above aren't guesses — they're
+calibrated from `scripts/backtest-paper-rule.mjs`, a manually-triggered
+tool (Actions tab → "MarketPulse Paper-Trading Backtest" → Run workflow)
+that replays the exact same Momentum Score formula against 5 years of
+real historical prices (via Alpaca's market data API) for every
+watchlist stock, tests hundreds of take-profit/stop-loss/entry/hold-days
+combinations, and reports which would have produced the best real
+(simulated) net profit — with the entry threshold pinned at 65 to match
+the "Strong Up" label used everywhere else. It deliberately can't replay
+the Risk Watch news-based exit (no historical headline archive exists to
+test that against), so it only calibrates the take-profit/stop-loss/
+hold-days part of the rule. Full results, including the parameter grid
+tested and runner-up combinations, are in `state/backtest-results.json`.
+Past performance on historical data is not a guarantee of future
+performance — this picks the least-bad-in-hindsight parameters, not a
+predictor of what happens next.
 
 To turn this on, get free paper-trading API keys from Alpaca (sign up at
 https://alpaca.markets/, then generate keys from the **paper trading**
