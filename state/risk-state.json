@@ -16,16 +16,16 @@
   "SKHY": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-08-18T15:31:06.947Z",
-    "lastSeverity": 42,
-    "lastNegCount": 1
+    "lastAlertAt": "2026-08-18T20:50:06.099Z",
+    "lastSeverity": 55,
+    "lastNegCount": 2
   },
   "MU": {
     "seen": true,
     "flagged": true,
     "lastAlertAt": "2026-08-18T16:30:11.885Z",
     "lastSeverity": 33,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "LRCX": {
     "seen": true,
