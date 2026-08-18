@@ -1,10 +1,10 @@
 {
   "TSLA": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-17T17:28:41.353Z",
-    "lastSeverity": 61,
-    "lastNegCount": 3
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 2
   },
   "IBM": {
     "seen": true,
@@ -18,7 +18,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "MU": {
     "seen": true,
@@ -32,7 +32,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "BAH": {
     "seen": true,
@@ -60,7 +60,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "AAPL": {
     "seen": true,
@@ -74,28 +74,28 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 3
   },
   "GOOGL": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "AMZN": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "META": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "AMD": {
     "seen": true,
@@ -109,7 +109,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 3
   },
   "AVGO": {
     "seen": true,
@@ -149,8 +149,8 @@
   "COIN": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-08-17T13:38:24.661Z",
-    "lastSeverity": 74,
+    "lastAlertAt": "2026-08-18T13:41:53.500Z",
+    "lastSeverity": 76,
     "lastNegCount": 5
   },
   "MSTR": {
@@ -162,16 +162,16 @@
   },
   "RIVN": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
+    "flagged": true,
+    "lastAlertAt": "2026-08-18T13:41:53.500Z",
+    "lastSeverity": 65,
     "lastNegCount": 1
   },
   "LCID": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-08-17T13:38:24.661Z",
-    "lastSeverity": 69,
+    "lastAlertAt": "2026-08-18T13:41:53.500Z",
+    "lastSeverity": 70,
     "lastNegCount": 2
   },
   "GME": {
