@@ -223,6 +223,16 @@ async function main() {
   rankable.sort((a, b) => b.netProfitUsd - a.netProfitUsd);
   const best = rankable[0] || null;
 
+  // Best exit combo (take-profit/stop-loss/hold-days) *within* each tested entry
+  // threshold — useful when the entry threshold itself is fixed for other reasons
+  // (e.g. matching the live UI's "Strong Up" label) and only the exit rule should
+  // be calibrated from the backtest.
+  const bestByEntryMomentum = {};
+  for (const entryMomentum of ENTRY_CANDIDATES) {
+    const subset = rankable.filter(r => r.params.entryMomentum === entryMomentum);
+    bestByEntryMomentum[entryMomentum] = subset[0] || null;
+  }
+
   let currentTrades = [];
   const currentParams = { entryMomentum: 65, takeProfitPct: 8, stopLossPct: -4, holdDays: 7 };
   for (const sym of symbolsUsed) currentTrades = currentTrades.concat(simulate(momentumSeriesBySymbol[sym], currentParams));
@@ -238,6 +248,7 @@ async function main() {
     parameterGrid: { entryMomentum: ENTRY_CANDIDATES, takeProfitPct: TAKE_PROFIT_CANDIDATES, stopLossPct: STOP_LOSS_CANDIDATES, holdDays: HOLD_DAYS_CANDIDATES },
     currentDefault: currentResult,
     best,
+    bestByEntryMomentum,
     top10: rankable.slice(0, 10),
   };
 
