@@ -32,10 +32,6 @@
       "entryDate": "2026-08-18T17:26:24.507Z",
       "entryMomentum": 65
     },
-    "MU": {
-      "entryDate": "2026-08-18T18:37:43.502Z",
-      "entryMomentum": 84
-    },
     "ARM": {
       "entryDate": "2026-08-18T18:37:43.502Z",
       "entryMomentum": 67
@@ -513,13 +509,21 @@
       "exitDate": "2026-08-18T17:55:11.552Z",
       "returnPct": -0.88,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-08-18T18:37:43.502Z",
+      "exitDate": "2026-08-18T19:27:19.869Z",
+      "returnPct": 0.2,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 59,
-    "wins": 25,
-    "winRatePct": 42.4,
+    "totalTrades": 60,
+    "wins": 26,
+    "winRatePct": 43.3,
     "avgReturnPct": -0.17,
-    "netProfitUsd": -102.8
+    "netProfitUsd": -100.8
   }
 }
