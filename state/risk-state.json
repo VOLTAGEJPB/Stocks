@@ -25,7 +25,7 @@
     "flagged": true,
     "lastAlertAt": "2026-08-18T16:30:11.885Z",
     "lastSeverity": 33,
-    "lastNegCount": 0
+    "lastNegCount": 1
   },
   "LRCX": {
     "seen": true,
@@ -67,7 +67,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "MSFT": {
     "seen": true,
@@ -81,7 +81,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 3
   },
   "AMZN": {
     "seen": true,
@@ -92,10 +92,10 @@
   },
   "META": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-18T15:31:06.947Z",
-    "lastSeverity": 64,
-    "lastNegCount": 3
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 2
   },
   "AMD": {
     "seen": true,
@@ -120,9 +120,9 @@
   },
   "ARM": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
+    "flagged": true,
+    "lastAlertAt": "2026-08-18T17:55:11.552Z",
+    "lastSeverity": 46,
     "lastNegCount": 1
   },
   "SMCI": {

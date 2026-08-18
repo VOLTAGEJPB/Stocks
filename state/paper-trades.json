@@ -28,14 +28,6 @@
       "entryDate": "2026-08-18T15:31:06.947Z",
       "entryMomentum": 70
     },
-    "MU": {
-      "entryDate": "2026-08-18T17:26:24.507Z",
-      "entryMomentum": 85
-    },
-    "ARM": {
-      "entryDate": "2026-08-18T17:26:24.507Z",
-      "entryMomentum": 67
-    },
     "UAL": {
       "entryDate": "2026-08-18T17:26:24.507Z",
       "entryMomentum": 65
@@ -497,13 +489,29 @@
       "exitDate": "2026-08-18T16:30:11.885Z",
       "returnPct": -4.26,
       "exitReason": "Stop-loss hit (-4%)"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-08-18T17:26:24.507Z",
+      "exitDate": "2026-08-18T17:55:11.552Z",
+      "returnPct": -0.37,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "ARM",
+      "name": "Arm Holdings",
+      "entryDate": "2026-08-18T17:26:24.507Z",
+      "exitDate": "2026-08-18T17:55:11.552Z",
+      "returnPct": -0.88,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 57,
+    "totalTrades": 59,
     "wins": 25,
-    "winRatePct": 43.9,
-    "avgReturnPct": -0.16,
-    "netProfitUsd": -90.3
+    "winRatePct": 42.4,
+    "avgReturnPct": -0.17,
+    "netProfitUsd": -102.8
   }
 }
