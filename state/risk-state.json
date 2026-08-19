@@ -57,9 +57,9 @@
   },
   "NVDA": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-19T13:43:04.612Z",
-    "lastSeverity": 44,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 3
   },
   "AAPL": {
@@ -85,9 +85,9 @@
   },
   "AMZN": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-19T13:43:04.612Z",
-    "lastSeverity": 57,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 3
   },
   "META": {
