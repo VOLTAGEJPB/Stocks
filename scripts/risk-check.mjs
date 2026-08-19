@@ -26,15 +26,21 @@ const REALERT_AFTER_MS = 24 * 60 * 60 * 1000; // re-remind once a day while risk
 
 // Paper-trading rule: buy $1,000 (simulated) when a stock's Momentum Score crosses
 // into "Strong Up" territory. Sell on whichever comes first: a take-profit target,
-// a stop-loss, Risk Watch flagging it, or a hard ~5-trading-day ceiling — so a
+// a stop-loss, Risk Watch flagging it, or a hard ~7-trading-day ceiling — so a
 // position isn't just held blind to a timer regardless of how the trade is doing.
 // No real money — Alpaca's paper API simulates fills against live prices.
 const PAPER_ENABLED = Boolean(ALPACA_API_KEY_ID && ALPACA_API_SECRET_KEY);
 const PAPER_ENTRY_MOMENTUM = 65;    // matches the "STRONG UP" cutoff used in market-pulse.html
 const PAPER_NOTIONAL = 1000;        // simulated dollars per position
-const PAPER_TAKE_PROFIT_PCT = 8;    // lock in the win once a position is up this much
-const PAPER_STOP_LOSS_PCT = -4;     // cut the loss once a position is down this much
-const PAPER_HOLDING_DAYS = 7;       // hard ceiling if neither target hits first, ~5 trading days approximated in calendar days
+// Take-profit/stop-loss/hold-days calibrated from a real backtest (see
+// scripts/backtest-paper-rule.mjs and state/backtest-results.json) against 5
+// years of real historical prices for entryMomentum=65 specifically — the
+// best-performing combination at that entry threshold was +20%/-6%/10 days,
+// vs. the prior +8%/-4%/7 days guess: +45% more net simulated profit
+// ($23,116 vs $15,954 on 2021-08 to 2026-08 price history, 30 symbols).
+const PAPER_TAKE_PROFIT_PCT = 20;   // lock in the win once a position is up this much
+const PAPER_STOP_LOSS_PCT = -6;     // cut the loss once a position is down this much
+const PAPER_HOLDING_DAYS = 10;      // hard ceiling if neither target hits first, ~7 trading days approximated in calendar days
 
 // Trend Projection: NOT a forecast. A transparent formula — continue the recent
 // 5-day daily average return rate forward, tilted by the same real, keyword-based
@@ -470,7 +476,7 @@ async function main() {
         ? `${stats.netProfitUsd >= 0 ? "+" : "-"}$${Math.abs(stats.netProfitUsd).toFixed(2)} net · ${stats.totalTrades} trades · ${stats.winRatePct}% win rate.`
         : "No closed trades yet.";
       sections.push([
-        `📊 Paper Trading (simulated via Alpaca — no real money) — buys on Momentum Score crossing into Strong Up, sells on a +${PAPER_TAKE_PROFIT_PCT}% take-profit, a ${PAPER_STOP_LOSS_PCT}% stop-loss, a Risk Watch flag, or after ~5 trading days, whichever comes first.`,
+        `📊 Paper Trading (simulated via Alpaca — no real money) — buys on Momentum Score crossing into Strong Up, sells on a +${PAPER_TAKE_PROFIT_PCT}% take-profit, a ${PAPER_STOP_LOSS_PCT}% stop-loss, a Risk Watch flag, or after ~7 trading days, whichever comes first.`,
         ...lines,
         "",
         statsLine,
