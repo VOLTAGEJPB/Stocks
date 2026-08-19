@@ -22,9 +22,9 @@
   },
   "MU": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-19T15:30:38.345Z",
-    "lastSeverity": 32,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 4
   },
   "LRCX": {
@@ -60,7 +60,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 3
   },
   "AAPL": {
     "seen": true,
@@ -85,10 +85,10 @@
   },
   "AMZN": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-19T15:30:38.345Z",
-    "lastSeverity": 65,
-    "lastNegCount": 5
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 4
   },
   "META": {
     "seen": true,
