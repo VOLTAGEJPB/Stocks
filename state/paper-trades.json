@@ -28,17 +28,9 @@
       "entryDate": "2026-08-18T18:37:43.502Z",
       "entryMomentum": 67
     },
-    "MU": {
-      "entryDate": "2026-08-19T13:43:04.612Z",
-      "entryMomentum": 81
-    },
     "PFE": {
       "entryDate": "2026-08-19T13:43:04.612Z",
       "entryMomentum": 65
-    },
-    "MRNA": {
-      "entryDate": "2026-08-19T14:33:07.466Z",
-      "entryMomentum": 88
     }
   },
   "closedTrades": [
@@ -545,13 +537,29 @@
       "exitDate": "2026-08-19T13:43:04.612Z",
       "returnPct": 93.02,
       "exitReason": "Take-profit hit (+8%+)"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-08-19T13:43:04.612Z",
+      "exitDate": "2026-08-19T15:30:38.345Z",
+      "returnPct": -0.55,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-08-19T14:33:07.466Z",
+      "exitDate": "2026-08-19T15:30:38.345Z",
+      "returnPct": -10.89,
+      "exitReason": "Stop-loss hit (-6%)"
     }
   ],
   "stats": {
-    "totalTrades": 63,
+    "totalTrades": 65,
     "wins": 27,
-    "winRatePct": 42.9,
-    "avgReturnPct": 1.28,
-    "netProfitUsd": 804.3
+    "winRatePct": 41.5,
+    "avgReturnPct": 1.06,
+    "netProfitUsd": 689.9
   }
 }
