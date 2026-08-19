@@ -459,9 +459,7 @@ async function main() {
         return `- [${reasonLabel[a.reason]}] ${a.sym} (${a.name}): $${a.price?.toFixed(2)} (${a.pct >= 0 ? "+" : ""}${a.pct?.toFixed(2)}% today), Momentum ${a.momentum}, News Risk ${a.newsRisk}${headline}`;
       });
       sections.push([
-        "MarketPulse alert — stocks where recent momentum has turned down and/or headlines/price action look severe.",
-        "This is a heuristic reflecting past price/news data, not a prediction, forecast, or investment advice. Verify independently before acting.",
-        "",
+        "⚠ Risk Watch:",
         ...lines,
       ].join("\n"));
     }
@@ -476,11 +474,10 @@ async function main() {
         ? `${stats.netProfitUsd >= 0 ? "+" : "-"}$${Math.abs(stats.netProfitUsd).toFixed(2)} net · ${stats.totalTrades} trades · ${stats.winRatePct}% win rate.`
         : "No closed trades yet.";
       sections.push([
-        `📊 Paper Trading (simulated via Alpaca — no real money) — buys on Momentum Score crossing into Strong Up, sells on a +${PAPER_TAKE_PROFIT_PCT}% take-profit, a ${PAPER_STOP_LOSS_PCT}% stop-loss, a Risk Watch flag, or after ~7 trading days, whichever comes first.`,
+        "📊 Paper Trading (simulated — no real money):",
         ...lines,
         "",
         statsLine,
-        "Simulated results — not a guarantee of future performance.",
       ].join("\n"));
     }
 
@@ -505,9 +502,7 @@ async function main() {
       ...e.headlines.map(h => `  - "${h.headline}"${h.source ? ` [${h.source}]` : ""}${h.url ? `\n    ${h.url}` : ""}`),
     ]);
     const text = [
-      `📰 MarketPulse News Watch — new headlines for ${newsWatchEvents.map(e => e.sym).join(", ")} since the last check.`,
-      "Raw headlines, not sentiment-scored or risk-filtered — just surfacing what's new.",
-      "",
+      "📰 News Watch:",
       ...lines,
       "",
       "https://voltagejpb.github.io/Stocks/market-pulse.html",
@@ -528,9 +523,7 @@ async function main() {
       `- ${e.watched} → matched "${e.name}"${e.symbol ? ` (${e.symbol})` : ""}${e.exchange ? ` on ${e.exchange}` : ""}, date ${e.date}${e.status ? `, status: ${e.status}` : ""}`
     );
     const text = [
-      `🔔 MarketPulse IPO Watch — a company you're watching showed up on the IPO calendar.`,
-      "This is a one-time notification per company — verify the listing independently before acting.",
-      "",
+      "🔔 IPO Watch:",
       ...lines,
       "",
       "https://voltagejpb.github.io/Stocks/market-pulse.html",
