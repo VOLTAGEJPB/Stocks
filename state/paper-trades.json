@@ -4,10 +4,6 @@
       "entryDate": "2026-08-12T14:20:00.613Z",
       "entryMomentum": 70
     },
-    "NVDA": {
-      "entryDate": "2026-08-13T15:30:49.910Z",
-      "entryMomentum": 67
-    },
     "PLTR": {
       "entryDate": "2026-08-13T15:30:49.910Z",
       "entryMomentum": 81
@@ -15,10 +11,6 @@
     "AMD": {
       "entryDate": "2026-08-13T16:56:01.130Z",
       "entryMomentum": 67
-    },
-    "MRNA": {
-      "entryDate": "2026-08-17T14:54:57.213Z",
-      "entryMomentum": 81
     },
     "AMC": {
       "entryDate": "2026-08-18T15:31:06.947Z",
@@ -35,6 +27,14 @@
     "ARM": {
       "entryDate": "2026-08-18T18:37:43.502Z",
       "entryMomentum": 67
+    },
+    "MU": {
+      "entryDate": "2026-08-19T13:43:04.612Z",
+      "entryMomentum": 81
+    },
+    "PFE": {
+      "entryDate": "2026-08-19T13:43:04.612Z",
+      "entryMomentum": 65
     }
   },
   "closedTrades": [
@@ -525,13 +525,29 @@
       "exitDate": "2026-08-18T20:23:11.552Z",
       "returnPct": -0.5,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "NVDA",
+      "name": "Nvidia",
+      "entryDate": "2026-08-13T15:30:49.910Z",
+      "exitDate": "2026-08-19T13:43:04.612Z",
+      "returnPct": -2.01,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-08-17T14:54:57.213Z",
+      "exitDate": "2026-08-19T13:43:04.612Z",
+      "returnPct": 93.02,
+      "exitReason": "Take-profit hit (+8%+)"
     }
   ],
   "stats": {
-    "totalTrades": 61,
-    "wins": 26,
-    "winRatePct": 42.6,
-    "avgReturnPct": -0.17,
-    "netProfitUsd": -105.8
+    "totalTrades": 63,
+    "wins": 27,
+    "winRatePct": 42.9,
+    "avgReturnPct": 1.28,
+    "netProfitUsd": 804.3
   }
 }
