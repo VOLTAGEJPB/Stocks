@@ -43,9 +43,9 @@
   },
   "DNA": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
+    "flagged": true,
+    "lastAlertAt": "2026-08-20T18:51:19.616Z",
+    "lastSeverity": 60,
     "lastNegCount": 0
   },
   "AMC": {
@@ -81,7 +81,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 3
   },
   "AMZN": {
     "seen": true,
@@ -95,7 +95,7 @@
     "flagged": true,
     "lastAlertAt": "2026-08-20T13:45:25.960Z",
     "lastSeverity": 69,
-    "lastNegCount": 7
+    "lastNegCount": 6
   },
   "AMD": {
     "seen": true,
@@ -116,7 +116,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 0
+    "lastNegCount": 1
   },
   "ARM": {
     "seen": true,
@@ -137,7 +137,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "PLTR": {
     "seen": true,
