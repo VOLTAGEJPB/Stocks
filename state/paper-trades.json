@@ -31,10 +31,6 @@
     "AMD": {
       "entryDate": "2026-08-20T17:58:15.936Z",
       "entryMomentum": 65
-    },
-    "MRNA": {
-      "entryDate": "2026-08-20T18:51:19.616Z",
-      "entryMomentum": 86
     }
   },
   "closedTrades": [
@@ -613,13 +609,21 @@
       "exitDate": "2026-08-20T17:58:15.936Z",
       "returnPct": 2.19,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-08-20T18:51:19.616Z",
+      "exitDate": "2026-08-20T19:30:27.634Z",
+      "returnPct": -0.06,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 72,
+    "totalTrades": 73,
     "wins": 29,
-    "winRatePct": 40.3,
-    "avgReturnPct": 0.98,
-    "netProfitUsd": 705.2
+    "winRatePct": 39.7,
+    "avgReturnPct": 0.97,
+    "netProfitUsd": 704.6
   }
 }
