@@ -60,7 +60,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 0
+    "lastNegCount": 1
   },
   "AAPL": {
     "seen": true,
@@ -116,7 +116,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "ARM": {
     "seen": true,
