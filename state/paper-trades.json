@@ -1,28 +1,8 @@
 {
   "openPositions": {
-    "PLTR": {
-      "entryDate": "2026-08-13T15:30:49.910Z",
-      "entryMomentum": 81
-    },
     "AMC": {
       "entryDate": "2026-08-18T15:31:06.947Z",
       "entryMomentum": 69
-    },
-    "SMCI": {
-      "entryDate": "2026-08-18T15:31:06.947Z",
-      "entryMomentum": 70
-    },
-    "ARM": {
-      "entryDate": "2026-08-18T18:37:43.502Z",
-      "entryMomentum": 67
-    },
-    "PFE": {
-      "entryDate": "2026-08-19T13:43:04.612Z",
-      "entryMomentum": 65
-    },
-    "MU": {
-      "entryDate": "2026-08-19T16:30:32.426Z",
-      "entryMomentum": 81
     },
     "OXY": {
       "entryDate": "2026-08-20T13:45:25.960Z",
@@ -633,13 +613,53 @@
       "exitDate": "2026-08-20T20:58:28.690Z",
       "returnPct": null,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-08-19T16:30:32.426Z",
+      "exitDate": "2026-08-24T13:51:21.946Z",
+      "returnPct": -3.93,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "ARM",
+      "name": "Arm Holdings",
+      "entryDate": "2026-08-18T18:37:43.502Z",
+      "exitDate": "2026-08-24T13:51:21.946Z",
+      "returnPct": -6.43,
+      "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "SMCI",
+      "name": "Super Micro Computer",
+      "entryDate": "2026-08-18T15:31:06.947Z",
+      "exitDate": "2026-08-24T13:51:21.946Z",
+      "returnPct": -6.01,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-08-13T15:30:49.910Z",
+      "exitDate": "2026-08-24T13:51:21.946Z",
+      "returnPct": 0.44,
+      "exitReason": "Held 10+ days"
+    },
+    {
+      "sym": "PFE",
+      "name": "Pfizer",
+      "entryDate": "2026-08-19T13:43:04.612Z",
+      "exitDate": "2026-08-24T13:51:21.946Z",
+      "returnPct": -0.4,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 74,
-    "wins": 29,
-    "winRatePct": 39.2,
-    "avgReturnPct": 0.95,
-    "netProfitUsd": 704.6
+    "totalTrades": 79,
+    "wins": 30,
+    "winRatePct": 38,
+    "avgReturnPct": 0.69,
+    "netProfitUsd": 541.3
   }
 }
