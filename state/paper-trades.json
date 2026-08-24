@@ -12,12 +12,24 @@
       "entryDate": "2026-08-20T17:58:15.936Z",
       "entryMomentum": 65
     },
-    "MRNA": {
-      "entryDate": "2026-08-20T21:35:39.022Z",
-      "entryMomentum": 86
-    },
     "RIVN": {
       "entryDate": "2026-08-21T16:33:52.280Z",
+      "entryMomentum": 65
+    },
+    "MU": {
+      "entryDate": "2026-08-24T14:41:10.468Z",
+      "entryMomentum": 74
+    },
+    "MSFT": {
+      "entryDate": "2026-08-24T14:41:10.468Z",
+      "entryMomentum": 65
+    },
+    "PLTR": {
+      "entryDate": "2026-08-24T14:41:10.468Z",
+      "entryMomentum": 79
+    },
+    "PFE": {
+      "entryDate": "2026-08-24T14:41:10.468Z",
       "entryMomentum": 65
     }
   },
@@ -653,13 +665,21 @@
       "exitDate": "2026-08-24T13:51:21.946Z",
       "returnPct": -0.4,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-08-20T21:35:39.022Z",
+      "exitDate": "2026-08-24T14:41:10.468Z",
+      "returnPct": -2.78,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 79,
+    "totalTrades": 80,
     "wins": 30,
-    "winRatePct": 38,
-    "avgReturnPct": 0.69,
-    "netProfitUsd": 541.3
+    "winRatePct": 37.5,
+    "avgReturnPct": 0.64,
+    "netProfitUsd": 513.5
   }
 }
