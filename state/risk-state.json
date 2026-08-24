@@ -88,7 +88,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "META": {
     "seen": true,
@@ -158,7 +158,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "RIVN": {
     "seen": true,
@@ -183,9 +183,9 @@
   },
   "MRNA": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-08-24T14:41:10.468Z",
-    "lastSeverity": 24,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 0
   },
   "PFE": {
