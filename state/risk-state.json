@@ -169,9 +169,9 @@
   },
   "LCID": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
+    "flagged": true,
+    "lastAlertAt": "2026-08-24T20:35:48.944Z",
+    "lastSeverity": 70,
     "lastNegCount": 0
   },
   "GME": {
