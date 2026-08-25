@@ -4,10 +4,6 @@
       "entryDate": "2026-08-18T15:31:06.947Z",
       "entryMomentum": 69
     },
-    "OXY": {
-      "entryDate": "2026-08-20T13:45:25.960Z",
-      "entryMomentum": 67
-    },
     "AMD": {
       "entryDate": "2026-08-20T17:58:15.936Z",
       "entryMomentum": 65
@@ -681,13 +677,21 @@
       "exitDate": "2026-08-24T14:41:10.468Z",
       "returnPct": -2.78,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "OXY",
+      "name": "Occidental Petroleum",
+      "entryDate": "2026-08-20T13:45:25.960Z",
+      "exitDate": "2026-08-25T20:27:46.724Z",
+      "returnPct": -6.04,
+      "exitReason": "Stop-loss hit (-6%)"
     }
   ],
   "stats": {
-    "totalTrades": 80,
+    "totalTrades": 81,
     "wins": 30,
-    "winRatePct": 37.5,
-    "avgReturnPct": 0.64,
-    "netProfitUsd": 513.5
+    "winRatePct": 37,
+    "avgReturnPct": 0.56,
+    "netProfitUsd": 453.1
   }
 }
