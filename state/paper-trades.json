@@ -4,10 +4,6 @@
       "entryDate": "2026-08-18T15:31:06.947Z",
       "entryMomentum": 69
     },
-    "AMD": {
-      "entryDate": "2026-08-20T17:58:15.936Z",
-      "entryMomentum": 65
-    },
     "RIVN": {
       "entryDate": "2026-08-21T16:33:52.280Z",
       "entryMomentum": 65
@@ -685,13 +681,21 @@
       "exitDate": "2026-08-25T20:27:46.724Z",
       "returnPct": -6.04,
       "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "AMD",
+      "name": "Advanced Micro Devices",
+      "entryDate": "2026-08-20T17:58:15.936Z",
+      "exitDate": "2026-08-26T13:54:08.838Z",
+      "returnPct": 5.2,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 81,
-    "wins": 30,
-    "winRatePct": 37,
-    "avgReturnPct": 0.56,
-    "netProfitUsd": 453.1
+    "totalTrades": 82,
+    "wins": 31,
+    "winRatePct": 37.8,
+    "avgReturnPct": 0.62,
+    "netProfitUsd": 505.1
   }
 }
