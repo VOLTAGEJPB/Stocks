@@ -4,10 +4,6 @@
       "entryDate": "2026-08-18T15:31:06.947Z",
       "entryMomentum": 69
     },
-    "RIVN": {
-      "entryDate": "2026-08-21T16:33:52.280Z",
-      "entryMomentum": 65
-    },
     "MU": {
       "entryDate": "2026-08-24T14:41:10.468Z",
       "entryMomentum": 74
@@ -693,13 +689,21 @@
       "exitDate": "2026-08-26T13:54:08.838Z",
       "returnPct": 5.2,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "RIVN",
+      "name": "Rivian",
+      "entryDate": "2026-08-21T16:33:52.280Z",
+      "exitDate": "2026-08-26T16:17:06.425Z",
+      "returnPct": -6.11,
+      "exitReason": "Stop-loss hit (-6%)"
     }
   ],
   "stats": {
-    "totalTrades": 82,
+    "totalTrades": 83,
     "wins": 31,
-    "winRatePct": 37.8,
-    "avgReturnPct": 0.62,
-    "netProfitUsd": 505.1
+    "winRatePct": 37.3,
+    "avgReturnPct": 0.53,
+    "netProfitUsd": 444
   }
 }
