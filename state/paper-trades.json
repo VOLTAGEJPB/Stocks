@@ -20,10 +20,6 @@
       "entryDate": "2026-08-24T14:41:10.468Z",
       "entryMomentum": 65
     },
-    "MRNA": {
-      "entryDate": "2026-08-24T15:38:20.465Z",
-      "entryMomentum": 89
-    },
     "SMCI": {
       "entryDate": "2026-08-25T14:43:48.700Z",
       "entryMomentum": 65
@@ -697,13 +693,21 @@
       "exitDate": "2026-08-26T16:17:06.425Z",
       "returnPct": -6.11,
       "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-08-24T15:38:20.465Z",
+      "exitDate": "2026-08-26T18:15:27.145Z",
+      "returnPct": 4.67,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 83,
-    "wins": 31,
-    "winRatePct": 37.3,
-    "avgReturnPct": 0.53,
-    "netProfitUsd": 444
+    "totalTrades": 84,
+    "wins": 32,
+    "winRatePct": 38.1,
+    "avgReturnPct": 0.58,
+    "netProfitUsd": 490.7
   }
 }
