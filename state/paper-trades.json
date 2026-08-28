@@ -1,16 +1,8 @@
 {
   "openPositions": {
-    "AMC": {
-      "entryDate": "2026-08-18T15:31:06.947Z",
-      "entryMomentum": 69
-    },
     "MU": {
       "entryDate": "2026-08-24T14:41:10.468Z",
       "entryMomentum": 74
-    },
-    "MSFT": {
-      "entryDate": "2026-08-24T14:41:10.468Z",
-      "entryMomentum": 65
     },
     "PLTR": {
       "entryDate": "2026-08-24T14:41:10.468Z",
@@ -31,6 +23,10 @@
     "MRNA": {
       "entryDate": "2026-08-26T20:34:12.029Z",
       "entryMomentum": 77
+    },
+    "NVDA": {
+      "entryDate": "2026-08-28T22:54:19.224Z",
+      "entryMomentum": 65
     }
   },
   "closedTrades": [
@@ -705,13 +701,29 @@
       "exitDate": "2026-08-26T18:15:27.145Z",
       "returnPct": 4.67,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMC",
+      "name": "AMC Entertainment",
+      "entryDate": "2026-08-18T15:31:06.947Z",
+      "exitDate": "2026-08-28T22:54:19.224Z",
+      "returnPct": 9.77,
+      "exitReason": "Held 10+ days"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-08-24T14:41:10.468Z",
+      "exitDate": "2026-08-28T22:54:19.224Z",
+      "returnPct": 5.03,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 84,
-    "wins": 32,
-    "winRatePct": 38.1,
-    "avgReturnPct": 0.58,
-    "netProfitUsd": 490.7
+    "totalTrades": 86,
+    "wins": 34,
+    "winRatePct": 39.5,
+    "avgReturnPct": 0.74,
+    "netProfitUsd": 638.7
   }
 }
