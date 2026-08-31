@@ -60,28 +60,28 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 4
   },
   "AAPL": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 3
+    "flagged": true,
+    "lastAlertAt": "2026-08-31T23:16:56.342Z",
+    "lastSeverity": 52,
+    "lastNegCount": 5
   },
   "MSFT": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 4
   },
   "GOOGL": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "AMZN": {
     "seen": true,
@@ -95,7 +95,7 @@
     "flagged": true,
     "lastAlertAt": "2026-08-31T19:24:24.990Z",
     "lastSeverity": 68,
-    "lastNegCount": 4
+    "lastNegCount": 3
   },
   "AMD": {
     "seen": true,
