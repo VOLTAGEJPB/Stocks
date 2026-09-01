@@ -16,14 +16,6 @@
       "entryDate": "2026-08-25T14:43:48.700Z",
       "entryMomentum": 65
     },
-    "AMD": {
-      "entryDate": "2026-08-26T14:43:23.381Z",
-      "entryMomentum": 67
-    },
-    "MRNA": {
-      "entryDate": "2026-08-26T20:34:12.029Z",
-      "entryMomentum": 77
-    },
     "NVDA": {
       "entryDate": "2026-08-28T22:54:19.224Z",
       "entryMomentum": 65
@@ -725,13 +717,29 @@
       "exitDate": "2026-08-28T22:54:19.224Z",
       "returnPct": 5.03,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMD",
+      "name": "Advanced Micro Devices",
+      "entryDate": "2026-08-26T14:43:23.381Z",
+      "exitDate": "2026-09-01T17:10:17.806Z",
+      "returnPct": -5.8,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-08-26T20:34:12.029Z",
+      "exitDate": "2026-09-01T17:10:17.806Z",
+      "returnPct": 1.56,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 86,
-    "wins": 34,
-    "winRatePct": 39.5,
-    "avgReturnPct": 0.74,
-    "netProfitUsd": 638.7
+    "totalTrades": 88,
+    "wins": 35,
+    "winRatePct": 39.8,
+    "avgReturnPct": 0.68,
+    "netProfitUsd": 596.3
   }
 }
