@@ -106,9 +106,9 @@
   },
   "INTC": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-09-01T20:03:08.168Z",
-    "lastSeverity": 47,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 3
   },
   "AVGO": {
