@@ -4,16 +4,8 @@
       "entryDate": "2026-08-24T14:41:10.468Z",
       "entryMomentum": 74
     },
-    "PLTR": {
-      "entryDate": "2026-08-24T14:41:10.468Z",
-      "entryMomentum": 79
-    },
     "PFE": {
       "entryDate": "2026-08-24T14:41:10.468Z",
-      "entryMomentum": 65
-    },
-    "SMCI": {
-      "entryDate": "2026-08-25T14:43:48.700Z",
       "entryMomentum": 65
     },
     "NVDA": {
@@ -27,6 +19,10 @@
     "MSFT": {
       "entryDate": "2026-08-31T19:24:24.990Z",
       "entryMomentum": 74
+    },
+    "MRNA": {
+      "entryDate": "2026-09-02T19:59:31.762Z",
+      "entryMomentum": 81
     }
   },
   "closedTrades": [
@@ -741,13 +737,29 @@
       "exitDate": "2026-09-02T17:01:00.990Z",
       "returnPct": -4.26,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "SMCI",
+      "name": "Super Micro Computer",
+      "entryDate": "2026-08-25T14:43:48.700Z",
+      "exitDate": "2026-09-02T19:59:31.762Z",
+      "returnPct": -3.09,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-08-24T14:41:10.468Z",
+      "exitDate": "2026-09-02T19:59:31.762Z",
+      "returnPct": -3.79,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 89,
+    "totalTrades": 91,
     "wins": 35,
-    "winRatePct": 39.3,
-    "avgReturnPct": 0.62,
-    "netProfitUsd": 553.7
+    "winRatePct": 38.5,
+    "avgReturnPct": 0.53,
+    "netProfitUsd": 484.9
   }
 }
