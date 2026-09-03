@@ -8,10 +8,6 @@
       "entryDate": "2026-08-31T19:24:24.990Z",
       "entryMomentum": 74
     },
-    "MRNA": {
-      "entryDate": "2026-09-02T19:59:31.762Z",
-      "entryMomentum": 81
-    },
     "AAPL": {
       "entryDate": "2026-09-03T16:56:36.445Z",
       "entryMomentum": 65
@@ -769,13 +765,21 @@
       "exitDate": "2026-09-03T16:56:36.445Z",
       "returnPct": 2.88,
       "exitReason": "Held 10+ days"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-09-02T19:59:31.762Z",
+      "exitDate": "2026-09-03T19:40:45.981Z",
+      "returnPct": -3.09,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 94,
+    "totalTrades": 95,
     "wins": 38,
-    "winRatePct": 40.4,
-    "avgReturnPct": 0.65,
-    "netProfitUsd": 615.2
+    "winRatePct": 40,
+    "avgReturnPct": 0.62,
+    "netProfitUsd": 584.3
   }
 }
