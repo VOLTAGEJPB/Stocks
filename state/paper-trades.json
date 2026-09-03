@@ -1,17 +1,5 @@
 {
   "openPositions": {
-    "MU": {
-      "entryDate": "2026-08-24T14:41:10.468Z",
-      "entryMomentum": 74
-    },
-    "PFE": {
-      "entryDate": "2026-08-24T14:41:10.468Z",
-      "entryMomentum": 65
-    },
-    "NVDA": {
-      "entryDate": "2026-08-28T22:54:19.224Z",
-      "entryMomentum": 65
-    },
     "AMC": {
       "entryDate": "2026-08-31T19:24:24.990Z",
       "entryMomentum": 72
@@ -23,6 +11,10 @@
     "MRNA": {
       "entryDate": "2026-09-02T19:59:31.762Z",
       "entryMomentum": 81
+    },
+    "AAPL": {
+      "entryDate": "2026-09-03T16:56:36.445Z",
+      "entryMomentum": 65
     }
   },
   "closedTrades": [
@@ -753,13 +745,37 @@
       "exitDate": "2026-09-02T19:59:31.762Z",
       "returnPct": -3.79,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-08-24T14:41:10.468Z",
+      "exitDate": "2026-09-03T16:56:36.445Z",
+      "returnPct": 5.5,
+      "exitReason": "Held 10+ days"
+    },
+    {
+      "sym": "NVDA",
+      "name": "Nvidia",
+      "entryDate": "2026-08-28T22:54:19.224Z",
+      "exitDate": "2026-09-03T16:56:36.445Z",
+      "returnPct": 4.65,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PFE",
+      "name": "Pfizer",
+      "entryDate": "2026-08-24T14:41:10.468Z",
+      "exitDate": "2026-09-03T16:56:36.445Z",
+      "returnPct": 2.88,
+      "exitReason": "Held 10+ days"
     }
   ],
   "stats": {
-    "totalTrades": 91,
-    "wins": 35,
-    "winRatePct": 38.5,
-    "avgReturnPct": 0.53,
-    "netProfitUsd": 484.9
+    "totalTrades": 94,
+    "wins": 38,
+    "winRatePct": 40.4,
+    "avgReturnPct": 0.65,
+    "netProfitUsd": 615.2
   }
 }
