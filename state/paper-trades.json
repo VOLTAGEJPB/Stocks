@@ -8,10 +8,6 @@
       "entryDate": "2026-08-31T19:24:24.990Z",
       "entryMomentum": 74
     },
-    "AAPL": {
-      "entryDate": "2026-09-03T16:56:36.445Z",
-      "entryMomentum": 65
-    },
     "MRNA": {
       "entryDate": "2026-09-03T22:24:27.869Z",
       "entryMomentum": 82
@@ -789,13 +785,21 @@
       "exitDate": "2026-09-03T19:40:45.981Z",
       "returnPct": -3.09,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AAPL",
+      "name": "Apple",
+      "entryDate": "2026-09-03T16:56:36.445Z",
+      "exitDate": "2026-09-04T21:39:41.663Z",
+      "returnPct": -2.77,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 95,
+    "totalTrades": 96,
     "wins": 38,
-    "winRatePct": 40,
-    "avgReturnPct": 0.62,
-    "netProfitUsd": 584.3
+    "winRatePct": 39.6,
+    "avgReturnPct": 0.58,
+    "netProfitUsd": 556.6
   }
 }
