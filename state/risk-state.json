@@ -4,7 +4,7 @@
     "flagged": true,
     "lastAlertAt": "2026-09-07T18:07:14.775Z",
     "lastSeverity": 68,
-    "lastNegCount": 2
+    "lastNegCount": 4
   },
   "IBM": {
     "seen": true,
@@ -74,28 +74,28 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "GOOGL": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 0
+    "flagged": true,
+    "lastAlertAt": "2026-09-07T21:42:16.571Z",
+    "lastSeverity": 51,
+    "lastNegCount": 3
   },
   "AMZN": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 5
+    "lastNegCount": 6
   },
   "META": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 0
+    "flagged": true,
+    "lastAlertAt": "2026-09-07T21:42:16.571Z",
+    "lastSeverity": 49,
+    "lastNegCount": 2
   },
   "AMD": {
     "seen": true,
@@ -130,7 +130,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 3
   },
   "TSM": {
     "seen": true,
@@ -141,9 +141,9 @@
   },
   "PLTR": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-09-07T18:07:14.775Z",
-    "lastSeverity": 66,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 4
   },
   "COIN": {
@@ -151,7 +151,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "MSTR": {
     "seen": true,
@@ -162,9 +162,9 @@
   },
   "RIVN": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-09-04T19:18:38.232Z",
-    "lastSeverity": 62,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 3
   },
   "LCID": {
@@ -186,7 +186,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 3
   },
   "PFE": {
     "seen": true,
