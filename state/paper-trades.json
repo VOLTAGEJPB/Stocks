@@ -1,36 +1,20 @@
 {
   "openPositions": {
-    "AMC": {
-      "entryDate": "2026-08-31T19:24:24.990Z",
-      "entryMomentum": 72
-    },
-    "MSFT": {
-      "entryDate": "2026-08-31T19:24:24.990Z",
-      "entryMomentum": 74
-    },
     "PFE": {
       "entryDate": "2026-09-03T22:24:27.869Z",
-      "entryMomentum": 65
-    },
-    "AMD": {
-      "entryDate": "2026-09-07T18:07:14.775Z",
-      "entryMomentum": 65
-    },
-    "INTC": {
-      "entryDate": "2026-09-07T18:07:14.775Z",
       "entryMomentum": 65
     },
     "MU": {
       "entryDate": "2026-09-08T20:05:56.502Z",
       "entryMomentum": 69
     },
-    "NVDA": {
-      "entryDate": "2026-09-09T17:02:27.749Z",
-      "entryMomentum": 66
-    },
     "MRNA": {
       "entryDate": "2026-09-09T17:02:27.749Z",
       "entryMomentum": 78
+    },
+    "LRCX": {
+      "entryDate": "2026-09-10T16:54:18.857Z",
+      "entryMomentum": 67
     }
   },
   "closedTrades": [
@@ -825,13 +809,53 @@
       "exitDate": "2026-09-08T20:05:56.502Z",
       "returnPct": -7.73,
       "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "AMC",
+      "name": "AMC Entertainment",
+      "entryDate": "2026-08-31T19:24:24.990Z",
+      "exitDate": "2026-09-10T16:54:18.857Z",
+      "returnPct": -6.51,
+      "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "NVDA",
+      "name": "Nvidia",
+      "entryDate": "2026-09-09T17:02:27.749Z",
+      "exitDate": "2026-09-10T16:54:18.857Z",
+      "returnPct": -2.48,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-08-31T19:24:24.990Z",
+      "exitDate": "2026-09-10T16:54:18.857Z",
+      "returnPct": -3.2,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMD",
+      "name": "Advanced Micro Devices",
+      "entryDate": "2026-09-07T18:07:14.775Z",
+      "exitDate": "2026-09-10T16:54:18.857Z",
+      "returnPct": 2.7,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "INTC",
+      "name": "Intel",
+      "entryDate": "2026-09-07T18:07:14.775Z",
+      "exitDate": "2026-09-10T16:54:18.857Z",
+      "returnPct": -0.71,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 99,
-    "wins": 39,
-    "winRatePct": 39.4,
-    "avgReturnPct": 0.48,
-    "netProfitUsd": 475.9
+    "totalTrades": 104,
+    "wins": 40,
+    "winRatePct": 38.5,
+    "avgReturnPct": 0.36,
+    "netProfitUsd": 373.9
   }
 }
