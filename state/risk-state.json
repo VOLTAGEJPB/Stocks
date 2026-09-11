@@ -4,7 +4,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 0
   },
   "IBM": {
     "seen": true,
@@ -60,7 +60,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "AAPL": {
     "seen": true,
@@ -74,7 +74,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 0
+    "lastNegCount": 1
   },
   "GOOGL": {
     "seen": true,
@@ -102,7 +102,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "INTC": {
     "seen": true,
@@ -130,7 +130,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "TSM": {
     "seen": true,
@@ -170,8 +170,8 @@
   "LCID": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-09-10T19:27:42.390Z",
-    "lastSeverity": 68,
+    "lastAlertAt": "2026-09-11T19:28:31.084Z",
+    "lastSeverity": 69,
     "lastNegCount": 3
   },
   "GME": {
