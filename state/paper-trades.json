@@ -1,21 +1,5 @@
 {
   "openPositions": {
-    "PFE": {
-      "entryDate": "2026-09-03T22:24:27.869Z",
-      "entryMomentum": 65
-    },
-    "MU": {
-      "entryDate": "2026-09-08T20:05:56.502Z",
-      "entryMomentum": 69
-    },
-    "MRNA": {
-      "entryDate": "2026-09-09T17:02:27.749Z",
-      "entryMomentum": 78
-    },
-    "LRCX": {
-      "entryDate": "2026-09-10T16:54:18.857Z",
-      "entryMomentum": 67
-    },
     "AMC": {
       "entryDate": "2026-09-10T19:27:42.390Z",
       "entryMomentum": 72
@@ -24,13 +8,17 @@
       "entryDate": "2026-09-10T19:27:42.390Z",
       "entryMomentum": 74
     },
-    "INTC": {
-      "entryDate": "2026-09-10T19:27:42.390Z",
-      "entryMomentum": 75
+    "MSFT": {
+      "entryDate": "2026-09-14T18:21:32.030Z",
+      "entryMomentum": 67
     },
-    "AAPL": {
-      "entryDate": "2026-09-11T16:55:20.341Z",
-      "entryMomentum": 68
+    "META": {
+      "entryDate": "2026-09-14T18:21:32.030Z",
+      "entryMomentum": 65
+    },
+    "SMCI": {
+      "entryDate": "2026-09-14T18:21:32.030Z",
+      "entryMomentum": 67
     }
   },
   "closedTrades": [
@@ -865,13 +853,61 @@
       "exitDate": "2026-09-10T16:54:18.857Z",
       "returnPct": -0.71,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-09-08T20:05:56.502Z",
+      "exitDate": "2026-09-14T18:21:32.030Z",
+      "returnPct": -6.91,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "LRCX",
+      "name": "Lam Research",
+      "entryDate": "2026-09-10T16:54:18.857Z",
+      "exitDate": "2026-09-14T18:21:32.030Z",
+      "returnPct": -8.14,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AAPL",
+      "name": "Apple",
+      "entryDate": "2026-09-11T16:55:20.341Z",
+      "exitDate": "2026-09-14T18:21:32.030Z",
+      "returnPct": -0.08,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "INTC",
+      "name": "Intel",
+      "entryDate": "2026-09-10T19:27:42.390Z",
+      "exitDate": "2026-09-14T18:21:32.030Z",
+      "returnPct": -2.32,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-09-09T17:02:27.749Z",
+      "exitDate": "2026-09-14T18:21:32.030Z",
+      "returnPct": 5.94,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PFE",
+      "name": "Pfizer",
+      "entryDate": "2026-09-03T22:24:27.869Z",
+      "exitDate": "2026-09-14T18:21:32.030Z",
+      "returnPct": -3.1,
+      "exitReason": "Held 10+ days"
     }
   ],
   "stats": {
-    "totalTrades": 104,
-    "wins": 40,
-    "winRatePct": 38.5,
-    "avgReturnPct": 0.36,
-    "netProfitUsd": 373.9
+    "totalTrades": 110,
+    "wins": 41,
+    "winRatePct": 37.3,
+    "avgReturnPct": 0.21,
+    "netProfitUsd": 227.8
   }
 }
