@@ -28,9 +28,9 @@
       "entryDate": "2026-09-15T17:29:15.805Z",
       "entryMomentum": 65
     },
-    "SMCI": {
-      "entryDate": "2026-09-15T17:29:15.805Z",
-      "entryMomentum": 69
+    "AMD": {
+      "entryDate": "2026-09-15T20:24:19.061Z",
+      "entryMomentum": 79
     }
   },
   "closedTrades": [
@@ -929,13 +929,21 @@
       "exitDate": "2026-09-15T17:29:15.805Z",
       "returnPct": -0.21,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "SMCI",
+      "name": "Super Micro Computer",
+      "entryDate": "2026-09-15T17:29:15.805Z",
+      "exitDate": "2026-09-15T20:24:19.061Z",
+      "returnPct": -1.35,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 112,
+    "totalTrades": 113,
     "wins": 41,
-    "winRatePct": 36.6,
-    "avgReturnPct": 0.19,
-    "netProfitUsd": 210.1
+    "winRatePct": 36.3,
+    "avgReturnPct": 0.17,
+    "netProfitUsd": 196.6
   }
 }
