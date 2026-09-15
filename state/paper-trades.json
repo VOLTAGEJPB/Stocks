@@ -4,10 +4,6 @@
       "entryDate": "2026-09-10T19:27:42.390Z",
       "entryMomentum": 72
     },
-    "AMD": {
-      "entryDate": "2026-09-10T19:27:42.390Z",
-      "entryMomentum": 74
-    },
     "MSFT": {
       "entryDate": "2026-09-14T18:21:32.030Z",
       "entryMomentum": 67
@@ -27,6 +23,14 @@
     "MRNA": {
       "entryDate": "2026-09-14T21:56:57.728Z",
       "entryMomentum": 79
+    },
+    "MU": {
+      "entryDate": "2026-09-15T17:29:15.805Z",
+      "entryMomentum": 65
+    },
+    "SMCI": {
+      "entryDate": "2026-09-15T17:29:15.805Z",
+      "entryMomentum": 69
     }
   },
   "closedTrades": [
@@ -917,13 +921,21 @@
       "exitDate": "2026-09-14T21:56:57.728Z",
       "returnPct": -1.56,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMD",
+      "name": "Advanced Micro Devices",
+      "entryDate": "2026-09-10T19:27:42.390Z",
+      "exitDate": "2026-09-15T17:29:15.805Z",
+      "returnPct": -0.21,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 111,
+    "totalTrades": 112,
     "wins": 41,
-    "winRatePct": 36.9,
+    "winRatePct": 36.6,
     "avgReturnPct": 0.19,
-    "netProfitUsd": 212.2
+    "netProfitUsd": 210.1
   }
 }
