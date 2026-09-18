@@ -4,10 +4,6 @@
       "entryDate": "2026-09-10T19:27:42.390Z",
       "entryMomentum": 72
     },
-    "META": {
-      "entryDate": "2026-09-14T18:21:32.030Z",
-      "entryMomentum": 65
-    },
     "AAPL": {
       "entryDate": "2026-09-14T21:56:57.728Z",
       "entryMomentum": 70
@@ -23,10 +19,6 @@
     "AMD": {
       "entryDate": "2026-09-15T20:24:19.061Z",
       "entryMomentum": 79
-    },
-    "PLTR": {
-      "entryDate": "2026-09-16T17:29:00.276Z",
-      "entryMomentum": 65
     },
     "OXY": {
       "entryDate": "2026-09-17T17:29:26.415Z",
@@ -957,13 +949,29 @@
       "exitDate": "2026-09-17T17:29:26.415Z",
       "returnPct": 11.72,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "META",
+      "name": "Meta Platforms",
+      "entryDate": "2026-09-14T18:21:32.030Z",
+      "exitDate": "2026-09-18T16:57:41.104Z",
+      "returnPct": 0.64,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-09-16T17:29:00.276Z",
+      "exitDate": "2026-09-18T16:57:41.104Z",
+      "returnPct": 1.49,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 115,
-    "wins": 42,
-    "winRatePct": 36.5,
-    "avgReturnPct": 0.25,
-    "netProfitUsd": 288.6
+    "totalTrades": 117,
+    "wins": 44,
+    "winRatePct": 37.6,
+    "avgReturnPct": 0.26,
+    "netProfitUsd": 309.9
   }
 }
