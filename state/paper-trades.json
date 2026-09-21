@@ -1,16 +1,8 @@
 {
   "openPositions": {
-    "AMC": {
-      "entryDate": "2026-09-10T19:27:42.390Z",
-      "entryMomentum": 72
-    },
     "AAPL": {
       "entryDate": "2026-09-14T21:56:57.728Z",
       "entryMomentum": 70
-    },
-    "MRNA": {
-      "entryDate": "2026-09-14T21:56:57.728Z",
-      "entryMomentum": 79
     },
     "MU": {
       "entryDate": "2026-09-15T17:29:15.805Z",
@@ -24,10 +16,6 @@
       "entryDate": "2026-09-17T17:29:26.415Z",
       "entryMomentum": 65
     },
-    "MSFT": {
-      "entryDate": "2026-09-17T20:31:04.770Z",
-      "entryMomentum": 68
-    },
     "META": {
       "entryDate": "2026-09-18T19:29:32.611Z",
       "entryMomentum": 65
@@ -35,6 +23,26 @@
     "PLTR": {
       "entryDate": "2026-09-18T19:29:32.611Z",
       "entryMomentum": 67
+    },
+    "NVDA": {
+      "entryDate": "2026-09-21T18:29:32.226Z",
+      "entryMomentum": 67
+    },
+    "INTC": {
+      "entryDate": "2026-09-21T18:29:32.226Z",
+      "entryMomentum": 79
+    },
+    "ARM": {
+      "entryDate": "2026-09-21T18:29:32.226Z",
+      "entryMomentum": 67
+    },
+    "SMCI": {
+      "entryDate": "2026-09-21T18:29:32.226Z",
+      "entryMomentum": 76
+    },
+    "MSTR": {
+      "entryDate": "2026-09-21T18:29:32.226Z",
+      "entryMomentum": 76
     }
   },
   "closedTrades": [
@@ -973,13 +981,37 @@
       "exitDate": "2026-09-18T16:57:41.104Z",
       "returnPct": 1.49,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMC",
+      "name": "AMC Entertainment",
+      "entryDate": "2026-09-10T19:27:42.390Z",
+      "exitDate": "2026-09-21T18:29:32.226Z",
+      "returnPct": 21.67,
+      "exitReason": "Take-profit hit (+20%+)"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-09-17T20:31:04.770Z",
+      "exitDate": "2026-09-21T18:29:32.226Z",
+      "returnPct": 0.29,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-09-14T21:56:57.728Z",
+      "exitDate": "2026-09-21T18:29:32.226Z",
+      "returnPct": 20.69,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 117,
-    "wins": 44,
-    "winRatePct": 37.6,
-    "avgReturnPct": 0.26,
-    "netProfitUsd": 309.9
+    "totalTrades": 120,
+    "wins": 47,
+    "winRatePct": 39.2,
+    "avgReturnPct": 0.61,
+    "netProfitUsd": 736.4
   }
 }
