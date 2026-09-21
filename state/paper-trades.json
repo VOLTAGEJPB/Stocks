@@ -43,6 +43,18 @@
     "MSTR": {
       "entryDate": "2026-09-21T18:29:32.226Z",
       "entryMomentum": 76
+    },
+    "AMC": {
+      "entryDate": "2026-09-21T22:09:04.350Z",
+      "entryMomentum": 75
+    },
+    "MSFT": {
+      "entryDate": "2026-09-21T22:09:04.350Z",
+      "entryMomentum": 68
+    },
+    "MRNA": {
+      "entryDate": "2026-09-21T22:09:04.350Z",
+      "entryMomentum": 91
     }
   },
   "closedTrades": [
