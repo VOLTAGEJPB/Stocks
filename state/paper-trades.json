@@ -4,14 +4,6 @@
       "entryDate": "2026-09-14T21:56:57.728Z",
       "entryMomentum": 70
     },
-    "MU": {
-      "entryDate": "2026-09-15T17:29:15.805Z",
-      "entryMomentum": 65
-    },
-    "AMD": {
-      "entryDate": "2026-09-15T20:24:19.061Z",
-      "entryMomentum": 79
-    },
     "OXY": {
       "entryDate": "2026-09-17T17:29:26.415Z",
       "entryMomentum": 65
@@ -48,10 +40,6 @@
       "entryDate": "2026-09-21T22:09:04.350Z",
       "entryMomentum": 75
     },
-    "MSFT": {
-      "entryDate": "2026-09-21T22:09:04.350Z",
-      "entryMomentum": 68
-    },
     "MRNA": {
       "entryDate": "2026-09-21T22:09:04.350Z",
       "entryMomentum": 91
@@ -59,6 +47,10 @@
     "GME": {
       "entryDate": "2026-09-22T17:31:45.447Z",
       "entryMomentum": 67
+    },
+    "DNA": {
+      "entryDate": "2026-09-22T20:56:17.432Z",
+      "entryMomentum": 65
     }
   },
   "closedTrades": [
@@ -1021,13 +1013,37 @@
       "exitDate": "2026-09-21T18:29:32.226Z",
       "returnPct": 20.69,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-09-15T17:29:15.805Z",
+      "exitDate": "2026-09-22T20:56:17.432Z",
+      "returnPct": 17.96,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-09-21T22:09:04.350Z",
+      "exitDate": "2026-09-22T20:56:17.432Z",
+      "returnPct": -1.86,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMD",
+      "name": "Advanced Micro Devices",
+      "entryDate": "2026-09-15T20:24:19.061Z",
+      "exitDate": "2026-09-22T20:56:17.432Z",
+      "returnPct": 20.19,
+      "exitReason": "Take-profit hit (+20%+)"
     }
   ],
   "stats": {
-    "totalTrades": 120,
-    "wins": 47,
-    "winRatePct": 39.2,
-    "avgReturnPct": 0.61,
-    "netProfitUsd": 736.4
+    "totalTrades": 123,
+    "wins": 49,
+    "winRatePct": 39.8,
+    "avgReturnPct": 0.89,
+    "netProfitUsd": 1099.3
   }
 }
