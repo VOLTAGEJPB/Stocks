@@ -12,6 +12,11 @@ const FINNHUB_API_KEY = process.env.FINNHUB_API_KEY;
 const GMAIL_USER = process.env.GMAIL_USER;
 const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD;
 const ALERT_EMAIL_TO = process.env.ALERT_EMAIL_TO || GMAIL_USER;
+// Turned off by request — everything else (Risk Watch, Paper Trading, News
+// Watch, IPO Watch, Trend Projection) keeps running and updating state on
+// its normal schedule; only the email step is skipped. Set back to true to
+// resume alerts.
+const EMAIL_ALERTS_ENABLED = false;
 const ALPACA_API_KEY_ID = process.env.ALPACA_API_KEY_ID;
 const ALPACA_API_SECRET_KEY = process.env.ALPACA_API_SECRET_KEY;
 const ALPACA_BASE_URL = "https://paper-api.alpaca.markets"; // paper trading only — never the live-money endpoint
@@ -434,6 +439,11 @@ async function main() {
 
   if (toAlert.length === 0 && paperEvents.length === 0 && newsWatchEvents.length === 0 && ipoWatchEvents.length === 0) {
     console.log("No new risk alerts, paper trades, watched headlines, or IPO matches this run.");
+    return;
+  }
+
+  if (!EMAIL_ALERTS_ENABLED) {
+    console.log(`Email alerts are disabled — ${toAlert.length} risk alert(s), ${paperEvents.length} paper trade event(s), ${newsWatchEvents.length} news-watch symbol(s), ${ipoWatchEvents.length} IPO match(es) this run, not emailed.`);
     return;
   }
 
