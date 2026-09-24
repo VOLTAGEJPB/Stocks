@@ -4,17 +4,9 @@
       "entryDate": "2026-09-17T17:29:26.415Z",
       "entryMomentum": 65
     },
-    "PLTR": {
-      "entryDate": "2026-09-18T19:29:32.611Z",
-      "entryMomentum": 67
-    },
     "INTC": {
       "entryDate": "2026-09-21T18:29:32.226Z",
       "entryMomentum": 79
-    },
-    "ARM": {
-      "entryDate": "2026-09-21T18:29:32.226Z",
-      "entryMomentum": 67
     },
     "SMCI": {
       "entryDate": "2026-09-21T18:29:32.226Z",
@@ -59,6 +51,10 @@
     "META": {
       "entryDate": "2026-09-24T17:45:11.067Z",
       "entryMomentum": 86
+    },
+    "NVDA": {
+      "entryDate": "2026-09-24T21:11:58.391Z",
+      "entryMomentum": 68
     }
   },
   "closedTrades": [
@@ -1085,13 +1081,29 @@
       "exitDate": "2026-09-24T17:45:11.067Z",
       "returnPct": -1.68,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "ARM",
+      "name": "Arm Holdings",
+      "entryDate": "2026-09-21T18:29:32.226Z",
+      "exitDate": "2026-09-24T21:11:58.391Z",
+      "returnPct": -3.57,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-09-18T19:29:32.611Z",
+      "exitDate": "2026-09-24T21:11:58.391Z",
+      "returnPct": 8.44,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 128,
-    "wins": 51,
-    "winRatePct": 39.8,
-    "avgReturnPct": 0.91,
-    "netProfitUsd": 1165.2
+    "totalTrades": 130,
+    "wins": 52,
+    "winRatePct": 40,
+    "avgReturnPct": 0.93,
+    "netProfitUsd": 1213.9
   }
 }
