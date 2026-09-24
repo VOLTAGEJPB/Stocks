@@ -60,7 +60,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "AAPL": {
     "seen": true,
@@ -85,17 +85,17 @@
   },
   "AMZN": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 1
+    "flagged": true,
+    "lastAlertAt": "2026-09-24T23:57:47.258Z",
+    "lastSeverity": 55,
+    "lastNegCount": 4
   },
   "META": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 0
   },
   "AMD": {
     "seen": true,
@@ -141,10 +141,10 @@
   },
   "PLTR": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-09-24T21:11:58.391Z",
-    "lastSeverity": 37,
-    "lastNegCount": 3
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 2
   },
   "COIN": {
     "seen": true,
