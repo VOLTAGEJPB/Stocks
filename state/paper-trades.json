@@ -55,6 +55,14 @@
     "PLTR": {
       "entryDate": "2026-09-25T17:47:03.421Z",
       "entryMomentum": 78
+    },
+    "MSFT": {
+      "entryDate": "2026-09-25T21:09:01.668Z",
+      "entryMomentum": 75
+    },
+    "INTC": {
+      "entryDate": "2026-09-25T21:09:01.668Z",
+      "entryMomentum": 74
     }
   },
   "closedTrades": [
