@@ -4,10 +4,6 @@
       "entryDate": "2026-09-17T17:29:26.415Z",
       "entryMomentum": 65
     },
-    "INTC": {
-      "entryDate": "2026-09-21T18:29:32.226Z",
-      "entryMomentum": 79
-    },
     "SMCI": {
       "entryDate": "2026-09-21T18:29:32.226Z",
       "entryMomentum": 76
@@ -44,10 +40,6 @@
       "entryDate": "2026-09-24T17:45:11.067Z",
       "entryMomentum": 78
     },
-    "MSFT": {
-      "entryDate": "2026-09-24T17:45:11.067Z",
-      "entryMomentum": 71
-    },
     "META": {
       "entryDate": "2026-09-24T17:45:11.067Z",
       "entryMomentum": 86
@@ -55,6 +47,14 @@
     "NVDA": {
       "entryDate": "2026-09-24T21:11:58.391Z",
       "entryMomentum": 68
+    },
+    "ARM": {
+      "entryDate": "2026-09-25T17:47:03.421Z",
+      "entryMomentum": 75
+    },
+    "PLTR": {
+      "entryDate": "2026-09-25T17:47:03.421Z",
+      "entryMomentum": 78
     }
   },
   "closedTrades": [
@@ -1097,13 +1097,29 @@
       "exitDate": "2026-09-24T21:11:58.391Z",
       "returnPct": 8.44,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-09-24T17:45:11.067Z",
+      "exitDate": "2026-09-25T17:47:03.421Z",
+      "returnPct": 4.26,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "INTC",
+      "name": "Intel",
+      "entryDate": "2026-09-21T18:29:32.226Z",
+      "exitDate": "2026-09-25T17:47:03.421Z",
+      "returnPct": 2.46,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 130,
-    "wins": 52,
-    "winRatePct": 40,
-    "avgReturnPct": 0.93,
-    "netProfitUsd": 1213.9
+    "totalTrades": 132,
+    "wins": 54,
+    "winRatePct": 40.9,
+    "avgReturnPct": 0.97,
+    "netProfitUsd": 1281.1
   }
 }
