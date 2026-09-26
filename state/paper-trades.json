@@ -44,10 +44,6 @@
       "entryDate": "2026-09-24T17:45:11.067Z",
       "entryMomentum": 86
     },
-    "NVDA": {
-      "entryDate": "2026-09-24T21:11:58.391Z",
-      "entryMomentum": 68
-    },
     "ARM": {
       "entryDate": "2026-09-25T17:47:03.421Z",
       "entryMomentum": 75
@@ -63,6 +59,10 @@
     "INTC": {
       "entryDate": "2026-09-25T21:09:01.668Z",
       "entryMomentum": 74
+    },
+    "PFE": {
+      "entryDate": "2026-09-26T00:00:37.717Z",
+      "entryMomentum": 65
     }
   },
   "closedTrades": [
@@ -1121,13 +1121,21 @@
       "exitDate": "2026-09-25T17:47:03.421Z",
       "returnPct": 2.46,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "NVDA",
+      "name": "Nvidia",
+      "entryDate": "2026-09-24T21:11:58.391Z",
+      "exitDate": "2026-09-26T00:00:37.717Z",
+      "returnPct": -0.46,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 132,
+    "totalTrades": 133,
     "wins": 54,
-    "winRatePct": 40.9,
-    "avgReturnPct": 0.97,
-    "netProfitUsd": 1281.1
+    "winRatePct": 40.6,
+    "avgReturnPct": 0.96,
+    "netProfitUsd": 1276.5
   }
 }
