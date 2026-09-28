@@ -1,9 +1,5 @@
 {
   "openPositions": {
-    "OXY": {
-      "entryDate": "2026-09-17T17:29:26.415Z",
-      "entryMomentum": 65
-    },
     "SMCI": {
       "entryDate": "2026-09-21T18:29:32.226Z",
       "entryMomentum": 76
@@ -40,21 +36,9 @@
       "entryDate": "2026-09-24T17:45:11.067Z",
       "entryMomentum": 78
     },
-    "META": {
-      "entryDate": "2026-09-24T17:45:11.067Z",
-      "entryMomentum": 86
-    },
-    "ARM": {
-      "entryDate": "2026-09-25T17:47:03.421Z",
-      "entryMomentum": 75
-    },
     "PLTR": {
       "entryDate": "2026-09-25T17:47:03.421Z",
       "entryMomentum": 78
-    },
-    "MSFT": {
-      "entryDate": "2026-09-25T21:09:01.668Z",
-      "entryMomentum": 75
     },
     "INTC": {
       "entryDate": "2026-09-25T21:09:01.668Z",
@@ -63,6 +47,10 @@
     "PFE": {
       "entryDate": "2026-09-26T00:00:37.717Z",
       "entryMomentum": 65
+    },
+    "NVDA": {
+      "entryDate": "2026-09-28T19:59:59.005Z",
+      "entryMomentum": 68
     }
   },
   "closedTrades": [
@@ -1129,13 +1117,45 @@
       "exitDate": "2026-09-26T00:00:37.717Z",
       "returnPct": -0.46,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-09-25T21:09:01.668Z",
+      "exitDate": "2026-09-28T19:59:59.005Z",
+      "returnPct": 0.84,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "META",
+      "name": "Meta Platforms",
+      "entryDate": "2026-09-24T17:45:11.067Z",
+      "exitDate": "2026-09-28T19:59:59.005Z",
+      "returnPct": -6.97,
+      "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "ARM",
+      "name": "Arm Holdings",
+      "entryDate": "2026-09-25T17:47:03.421Z",
+      "exitDate": "2026-09-28T19:59:59.005Z",
+      "returnPct": -10.23,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "OXY",
+      "name": "Occidental Petroleum",
+      "entryDate": "2026-09-17T17:29:26.415Z",
+      "exitDate": "2026-09-28T19:59:59.005Z",
+      "returnPct": -5.43,
+      "exitReason": "Held 10+ days"
     }
   ],
   "stats": {
-    "totalTrades": 133,
-    "wins": 54,
-    "winRatePct": 40.6,
-    "avgReturnPct": 0.96,
-    "netProfitUsd": 1276.5
+    "totalTrades": 137,
+    "wins": 55,
+    "winRatePct": 40.1,
+    "avgReturnPct": 0.77,
+    "netProfitUsd": 1058.6
   }
 }
