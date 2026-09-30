@@ -4,10 +4,6 @@
       "entryDate": "2026-09-21T18:29:32.226Z",
       "entryMomentum": 76
     },
-    "MRNA": {
-      "entryDate": "2026-09-21T22:09:04.350Z",
-      "entryMomentum": 91
-    },
     "GME": {
       "entryDate": "2026-09-22T17:31:45.447Z",
       "entryMomentum": 67
@@ -31,10 +27,6 @@
     "MSFT": {
       "entryDate": "2026-09-29T18:28:09.403Z",
       "entryMomentum": 75
-    },
-    "META": {
-      "entryDate": "2026-09-29T18:28:09.403Z",
-      "entryMomentum": 82
     },
     "ARM": {
       "entryDate": "2026-09-29T18:28:09.403Z",
@@ -1209,13 +1201,29 @@
       "exitDate": "2026-09-29T18:28:09.403Z",
       "returnPct": -7.48,
       "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "META",
+      "name": "Meta Platforms",
+      "entryDate": "2026-09-29T18:28:09.403Z",
+      "exitDate": "2026-09-30T18:16:48.968Z",
+      "returnPct": 0.03,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-09-21T22:09:04.350Z",
+      "exitDate": "2026-09-30T18:16:48.968Z",
+      "returnPct": 12.43,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 143,
-    "wins": 57,
-    "winRatePct": 39.9,
-    "avgReturnPct": 0.89,
-    "netProfitUsd": 1274.5
+    "totalTrades": 145,
+    "wins": 59,
+    "winRatePct": 40.7,
+    "avgReturnPct": 0.96,
+    "netProfitUsd": 1399.1
   }
 }
