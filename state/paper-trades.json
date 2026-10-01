@@ -47,6 +47,18 @@
     "MRNA": {
       "entryDate": "2026-09-30T22:28:40.181Z",
       "entryMomentum": 87
+    },
+    "AMC": {
+      "entryDate": "2026-10-01T23:00:15.302Z",
+      "entryMomentum": 78
+    },
+    "AMD": {
+      "entryDate": "2026-10-01T23:00:15.302Z",
+      "entryMomentum": 79
+    },
+    "SMCI": {
+      "entryDate": "2026-10-01T23:00:15.302Z",
+      "entryMomentum": 78
     }
   },
   "closedTrades": [
