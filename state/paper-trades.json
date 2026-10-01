@@ -1,9 +1,5 @@
 {
   "openPositions": {
-    "SMCI": {
-      "entryDate": "2026-09-21T18:29:32.226Z",
-      "entryMomentum": 76
-    },
     "GME": {
       "entryDate": "2026-09-22T17:31:45.447Z",
       "entryMomentum": 67
@@ -15,10 +11,6 @@
     "INTC": {
       "entryDate": "2026-09-25T21:09:01.668Z",
       "entryMomentum": 74
-    },
-    "PFE": {
-      "entryDate": "2026-09-26T00:00:37.717Z",
-      "entryMomentum": 65
     },
     "NVDA": {
       "entryDate": "2026-09-28T19:59:59.005Z",
@@ -40,17 +32,9 @@
       "entryDate": "2026-09-29T22:32:05.182Z",
       "entryMomentum": 85
     },
-    "AMC": {
-      "entryDate": "2026-09-29T22:32:05.182Z",
-      "entryMomentum": 80
-    },
     "AAPL": {
       "entryDate": "2026-09-29T22:32:05.182Z",
       "entryMomentum": 72
-    },
-    "AMD": {
-      "entryDate": "2026-09-29T22:32:05.182Z",
-      "entryMomentum": 82
     },
     "MSTR": {
       "entryDate": "2026-09-29T22:32:05.182Z",
@@ -1225,13 +1209,45 @@
       "exitDate": "2026-09-30T18:16:48.968Z",
       "returnPct": 12.43,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMC",
+      "name": "AMC Entertainment",
+      "entryDate": "2026-09-29T22:32:05.182Z",
+      "exitDate": "2026-10-01T18:42:14.535Z",
+      "returnPct": -11.98,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMD",
+      "name": "Advanced Micro Devices",
+      "entryDate": "2026-09-29T22:32:05.182Z",
+      "exitDate": "2026-10-01T18:42:14.535Z",
+      "returnPct": 1.34,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "SMCI",
+      "name": "Super Micro Computer",
+      "entryDate": "2026-09-21T18:29:32.226Z",
+      "exitDate": "2026-10-01T18:42:14.535Z",
+      "returnPct": 2.01,
+      "exitReason": "Held 10+ days"
+    },
+    {
+      "sym": "PFE",
+      "name": "Pfizer",
+      "entryDate": "2026-09-26T00:00:37.717Z",
+      "exitDate": "2026-10-01T18:42:14.535Z",
+      "returnPct": -1.22,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 145,
-    "wins": 59,
-    "winRatePct": 40.7,
-    "avgReturnPct": 0.96,
-    "netProfitUsd": 1399.1
+    "totalTrades": 149,
+    "wins": 61,
+    "winRatePct": 40.9,
+    "avgReturnPct": 0.87,
+    "netProfitUsd": 1300.6
   }
 }
