@@ -23,9 +23,9 @@
   "MU": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-10-02T18:13:38.054Z",
-    "lastSeverity": 40,
-    "lastNegCount": 3
+    "lastAlertAt": "2026-10-02T22:26:51.362Z",
+    "lastSeverity": 55,
+    "lastNegCount": 5
   },
   "LRCX": {
     "seen": true,
@@ -60,55 +60,55 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 0
   },
   "AAPL": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 0
+    "lastNegCount": 1
   },
   "MSFT": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 0
+    "lastNegCount": 1
   },
   "GOOGL": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "AMZN": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 3
   },
   "META": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 0
   },
   "AMD": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "INTC": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-02T18:13:38.054Z",
-    "lastSeverity": 56,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 4
   },
   "AVGO": {
@@ -163,8 +163,8 @@
   "RIVN": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-10-01T18:42:14.535Z",
-    "lastSeverity": 64,
+    "lastAlertAt": "2026-10-02T22:26:51.362Z",
+    "lastSeverity": 68,
     "lastNegCount": 4
   },
   "LCID": {
@@ -193,7 +193,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 5
+    "lastNegCount": 4
   },
   "UAL": {
     "seen": true,
