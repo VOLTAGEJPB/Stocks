@@ -1,16 +1,8 @@
 {
   "openPositions": {
-    "GME": {
-      "entryDate": "2026-09-22T17:31:45.447Z",
-      "entryMomentum": 67
-    },
     "PLTR": {
       "entryDate": "2026-09-25T17:47:03.421Z",
       "entryMomentum": 78
-    },
-    "INTC": {
-      "entryDate": "2026-09-25T21:09:01.668Z",
-      "entryMomentum": 74
     },
     "NVDA": {
       "entryDate": "2026-09-28T19:59:59.005Z",
@@ -23,10 +15,6 @@
     "ARM": {
       "entryDate": "2026-09-29T18:28:09.403Z",
       "entryMomentum": 66
-    },
-    "MU": {
-      "entryDate": "2026-09-29T22:32:05.182Z",
-      "entryMomentum": 68
     },
     "DNA": {
       "entryDate": "2026-09-29T22:32:05.182Z",
@@ -1253,13 +1241,37 @@
       "exitDate": "2026-10-01T18:42:14.535Z",
       "returnPct": -1.22,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-09-29T22:32:05.182Z",
+      "exitDate": "2026-10-02T18:13:38.054Z",
+      "returnPct": 0.22,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "INTC",
+      "name": "Intel",
+      "entryDate": "2026-09-25T21:09:01.668Z",
+      "exitDate": "2026-10-02T18:13:38.054Z",
+      "returnPct": -0.96,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "GME",
+      "name": "GameStop",
+      "entryDate": "2026-09-22T17:31:45.447Z",
+      "exitDate": "2026-10-02T18:13:38.054Z",
+      "returnPct": 1.68,
+      "exitReason": "Held 10+ days"
     }
   ],
   "stats": {
-    "totalTrades": 149,
-    "wins": 61,
-    "winRatePct": 40.9,
-    "avgReturnPct": 0.87,
-    "netProfitUsd": 1300.6
+    "totalTrades": 152,
+    "wins": 63,
+    "winRatePct": 41.4,
+    "avgReturnPct": 0.86,
+    "netProfitUsd": 1310
   }
 }
