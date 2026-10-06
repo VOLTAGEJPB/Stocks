@@ -16,10 +16,6 @@
       "entryDate": "2026-09-29T22:32:05.182Z",
       "entryMomentum": 65
     },
-    "MRNA": {
-      "entryDate": "2026-09-30T22:28:40.181Z",
-      "entryMomentum": 87
-    },
     "AMC": {
       "entryDate": "2026-10-01T23:00:15.302Z",
       "entryMomentum": 78
@@ -40,10 +36,6 @@
       "entryDate": "2026-10-06T01:43:12.340Z",
       "entryMomentum": 70
     },
-    "DNA": {
-      "entryDate": "2026-10-06T18:47:57.897Z",
-      "entryMomentum": 69
-    },
     "META": {
       "entryDate": "2026-10-06T18:47:57.897Z",
       "entryMomentum": 73
@@ -51,6 +43,14 @@
     "PLTR": {
       "entryDate": "2026-10-06T18:47:57.897Z",
       "entryMomentum": 77
+    },
+    "MU": {
+      "entryDate": "2026-10-06T22:54:41.959Z",
+      "entryMomentum": 68
+    },
+    "NVDA": {
+      "entryDate": "2026-10-06T22:54:41.959Z",
+      "entryMomentum": 75
     }
   },
   "closedTrades": [
@@ -1309,13 +1309,29 @@
       "exitDate": "2026-10-06T18:47:57.897Z",
       "returnPct": 3.73,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "DNA",
+      "name": "Ginkgo Bioworks",
+      "entryDate": "2026-10-06T18:47:57.897Z",
+      "exitDate": "2026-10-06T22:54:41.959Z",
+      "returnPct": -2.53,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-09-30T22:28:40.181Z",
+      "exitDate": "2026-10-06T22:54:41.959Z",
+      "returnPct": -2.5,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 157,
+    "totalTrades": 159,
     "wins": 66,
-    "winRatePct": 42,
-    "avgReturnPct": 1,
-    "netProfitUsd": 1573.1
+    "winRatePct": 41.5,
+    "avgReturnPct": 0.96,
+    "netProfitUsd": 1522.8
   }
 }
