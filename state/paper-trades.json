@@ -1,9 +1,5 @@
 {
   "openPositions": {
-    "PLTR": {
-      "entryDate": "2026-09-25T17:47:03.421Z",
-      "entryMomentum": 78
-    },
     "NVDA": {
       "entryDate": "2026-09-28T19:59:59.005Z",
       "entryMomentum": 68
@@ -16,10 +12,6 @@
       "entryDate": "2026-09-29T18:28:09.403Z",
       "entryMomentum": 66
     },
-    "DNA": {
-      "entryDate": "2026-09-29T22:32:05.182Z",
-      "entryMomentum": 85
-    },
     "AAPL": {
       "entryDate": "2026-09-29T22:32:05.182Z",
       "entryMomentum": 72
@@ -27,10 +19,6 @@
     "MSTR": {
       "entryDate": "2026-09-29T22:32:05.182Z",
       "entryMomentum": 65
-    },
-    "META": {
-      "entryDate": "2026-09-30T22:28:40.181Z",
-      "entryMomentum": 74
     },
     "MRNA": {
       "entryDate": "2026-09-30T22:28:40.181Z",
@@ -51,6 +39,14 @@
     "GME": {
       "entryDate": "2026-10-02T22:26:51.362Z",
       "entryMomentum": 67
+    },
+    "MU": {
+      "entryDate": "2026-10-06T01:43:12.340Z",
+      "entryMomentum": 69
+    },
+    "LRCX": {
+      "entryDate": "2026-10-06T01:43:12.340Z",
+      "entryMomentum": 70
     }
   },
   "closedTrades": [
@@ -1269,13 +1265,37 @@
       "exitDate": "2026-10-02T18:13:38.054Z",
       "returnPct": 1.68,
       "exitReason": "Held 10+ days"
+    },
+    {
+      "sym": "DNA",
+      "name": "Ginkgo Bioworks",
+      "entryDate": "2026-09-29T22:32:05.182Z",
+      "exitDate": "2026-10-06T01:43:12.340Z",
+      "returnPct": 22.61,
+      "exitReason": "Take-profit hit (+20%+)"
+    },
+    {
+      "sym": "META",
+      "name": "Meta Platforms",
+      "entryDate": "2026-09-30T22:28:40.181Z",
+      "exitDate": "2026-10-06T01:43:12.340Z",
+      "returnPct": 1.75,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-09-25T17:47:03.421Z",
+      "exitDate": "2026-10-06T01:43:12.340Z",
+      "returnPct": -1.31,
+      "exitReason": "Held 10+ days"
     }
   ],
   "stats": {
-    "totalTrades": 152,
-    "wins": 63,
-    "winRatePct": 41.4,
-    "avgReturnPct": 0.86,
-    "netProfitUsd": 1310
+    "totalTrades": 155,
+    "wins": 65,
+    "winRatePct": 41.9,
+    "avgReturnPct": 0.99,
+    "netProfitUsd": 1540.5
   }
 }
