@@ -36,21 +36,17 @@
       "entryDate": "2026-10-06T18:47:57.897Z",
       "entryMomentum": 77
     },
-    "MU": {
-      "entryDate": "2026-10-06T22:54:41.959Z",
-      "entryMomentum": 68
-    },
-    "NVDA": {
-      "entryDate": "2026-10-06T22:54:41.959Z",
-      "entryMomentum": 75
-    },
-    "DNA": {
-      "entryDate": "2026-10-07T19:13:02.958Z",
-      "entryMomentum": 83
-    },
     "MRNA": {
       "entryDate": "2026-10-07T19:13:02.958Z",
       "entryMomentum": 83
+    },
+    "AAPL": {
+      "entryDate": "2026-10-07T23:40:54.224Z",
+      "entryMomentum": 66
+    },
+    "MSTR": {
+      "entryDate": "2026-10-07T23:40:54.224Z",
+      "entryMomentum": 67
     }
   },
   "closedTrades": [
@@ -1341,13 +1337,37 @@
       "exitDate": "2026-10-07T19:13:02.958Z",
       "returnPct": -4.73,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-10-06T22:54:41.959Z",
+      "exitDate": "2026-10-07T23:40:54.224Z",
+      "returnPct": 7.68,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "DNA",
+      "name": "Ginkgo Bioworks",
+      "entryDate": "2026-10-07T19:13:02.958Z",
+      "exitDate": "2026-10-07T23:40:54.224Z",
+      "returnPct": -3.29,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "NVDA",
+      "name": "Nvidia",
+      "entryDate": "2026-10-06T22:54:41.959Z",
+      "exitDate": "2026-10-07T23:40:54.224Z",
+      "returnPct": 0.12,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 161,
-    "wins": 67,
-    "winRatePct": 41.6,
-    "avgReturnPct": 0.93,
-    "netProfitUsd": 1491
+    "totalTrades": 164,
+    "wins": 69,
+    "winRatePct": 42.1,
+    "avgReturnPct": 0.94,
+    "netProfitUsd": 1536.1
   }
 }
