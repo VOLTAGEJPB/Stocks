@@ -8,14 +8,6 @@
       "entryDate": "2026-09-29T18:28:09.403Z",
       "entryMomentum": 66
     },
-    "AAPL": {
-      "entryDate": "2026-09-29T22:32:05.182Z",
-      "entryMomentum": 72
-    },
-    "MSTR": {
-      "entryDate": "2026-09-29T22:32:05.182Z",
-      "entryMomentum": 65
-    },
     "AMC": {
       "entryDate": "2026-10-01T23:00:15.302Z",
       "entryMomentum": 78
@@ -51,6 +43,14 @@
     "NVDA": {
       "entryDate": "2026-10-06T22:54:41.959Z",
       "entryMomentum": 75
+    },
+    "DNA": {
+      "entryDate": "2026-10-07T19:13:02.958Z",
+      "entryMomentum": 83
+    },
+    "MRNA": {
+      "entryDate": "2026-10-07T19:13:02.958Z",
+      "entryMomentum": 83
     }
   },
   "closedTrades": [
@@ -1325,13 +1325,29 @@
       "exitDate": "2026-10-06T22:54:41.959Z",
       "returnPct": -2.5,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AAPL",
+      "name": "Apple",
+      "entryDate": "2026-09-29T22:32:05.182Z",
+      "exitDate": "2026-10-07T19:13:02.958Z",
+      "returnPct": 1.55,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MSTR",
+      "name": "MicroStrategy",
+      "entryDate": "2026-09-29T22:32:05.182Z",
+      "exitDate": "2026-10-07T19:13:02.958Z",
+      "returnPct": -4.73,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 159,
-    "wins": 66,
-    "winRatePct": 41.5,
-    "avgReturnPct": 0.96,
-    "netProfitUsd": 1522.8
+    "totalTrades": 161,
+    "wins": 67,
+    "winRatePct": 41.6,
+    "avgReturnPct": 0.93,
+    "netProfitUsd": 1491
   }
 }
