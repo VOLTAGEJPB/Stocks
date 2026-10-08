@@ -4,7 +4,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 0
   },
   "IBM": {
     "seen": true,
@@ -18,13 +18,13 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
+    "lastNegCount": 1
   },
   "MU": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-07T23:40:54.224Z",
-    "lastSeverity": 39,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 2
   },
   "LRCX": {
@@ -43,9 +43,9 @@
   },
   "DNA": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-07T23:40:54.224Z",
-    "lastSeverity": 41,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 0
   },
   "AMC": {
@@ -57,10 +57,10 @@
   },
   "NVDA": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-07T23:40:54.224Z",
-    "lastSeverity": 43,
-    "lastNegCount": 3
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 2
   },
   "AAPL": {
     "seen": true,
@@ -71,31 +71,31 @@
   },
   "MSFT": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 0
+    "flagged": true,
+    "lastAlertAt": "2026-10-08T19:09:16.886Z",
+    "lastSeverity": 40,
+    "lastNegCount": 3
   },
   "GOOGL": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "AMZN": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 0
+    "flagged": true,
+    "lastAlertAt": "2026-10-08T19:09:16.886Z",
+    "lastSeverity": 45,
+    "lastNegCount": 3
   },
   "META": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 0
   },
   "AMD": {
     "seen": true,
@@ -109,35 +109,35 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 1
   },
   "AVGO": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 0
+    "flagged": true,
+    "lastAlertAt": "2026-10-08T19:09:16.886Z",
+    "lastSeverity": 58,
+    "lastNegCount": 4
   },
   "ARM": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 0
+    "flagged": true,
+    "lastAlertAt": "2026-10-08T19:09:16.886Z",
+    "lastSeverity": 53,
+    "lastNegCount": 2
   },
   "SMCI": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 0
+    "lastNegCount": 1
   },
   "TSM": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 0
+    "flagged": true,
+    "lastAlertAt": "2026-10-08T19:09:16.886Z",
+    "lastSeverity": 60,
+    "lastNegCount": 5
   },
   "PLTR": {
     "seen": true,
@@ -151,7 +151,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 3
   },
   "MSTR": {
     "seen": true,
@@ -172,35 +172,35 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 3
   },
   "GME": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "MRNA": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "PFE": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 3
   },
   "UAL": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "OXY": {
     "seen": true,
