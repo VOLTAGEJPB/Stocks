@@ -15,17 +15,17 @@
   },
   "SKHY": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-09T18:39:54.850Z",
-    "lastSeverity": 46,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 3
   },
   "MU": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-09T18:39:54.850Z",
-    "lastSeverity": 48,
-    "lastNegCount": 5
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 4
   },
   "LRCX": {
     "seen": true,
@@ -57,10 +57,10 @@
   },
   "NVDA": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 2
+    "flagged": true,
+    "lastAlertAt": "2026-10-09T23:02:16.924Z",
+    "lastSeverity": 54,
+    "lastNegCount": 6
   },
   "AAPL": {
     "seen": true,
@@ -78,17 +78,17 @@
   },
   "GOOGL": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-09T18:39:54.850Z",
-    "lastSeverity": 62,
-    "lastNegCount": 4
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 3
   },
   "AMZN": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 2
+    "lastNegCount": 1
   },
   "META": {
     "seen": true,
@@ -102,21 +102,21 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "INTC": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-09T18:39:54.850Z",
-    "lastSeverity": 54,
-    "lastNegCount": 5
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 4
   },
   "AVGO": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 5
+    "lastNegCount": 4
   },
   "ARM": {
     "seen": true,
@@ -141,9 +141,9 @@
   },
   "PLTR": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-09T18:39:54.850Z",
-    "lastSeverity": 20,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 3
   },
   "COIN": {
@@ -211,9 +211,9 @@
   },
   "APLD": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-09T18:39:54.850Z",
-    "lastSeverity": 52,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 2
   }
 }
