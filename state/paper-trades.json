@@ -20,10 +20,6 @@
       "entryDate": "2026-10-06T18:47:57.897Z",
       "entryMomentum": 73
     },
-    "PLTR": {
-      "entryDate": "2026-10-06T18:47:57.897Z",
-      "entryMomentum": 77
-    },
     "MRNA": {
       "entryDate": "2026-10-07T19:13:02.958Z",
       "entryMomentum": 83
@@ -47,6 +43,14 @@
     "MSFT": {
       "entryDate": "2026-10-08T23:50:48.964Z",
       "entryMomentum": 78
+    },
+    "MU": {
+      "entryDate": "2026-10-09T18:39:54.850Z",
+      "entryMomentum": 70
+    },
+    "AMZN": {
+      "entryDate": "2026-10-09T18:39:54.850Z",
+      "entryMomentum": 66
     }
   },
   "closedTrades": [
@@ -1385,13 +1389,21 @@
       "exitDate": "2026-10-08T19:09:16.886Z",
       "returnPct": -9.09,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-10-06T18:47:57.897Z",
+      "exitDate": "2026-10-09T18:39:54.850Z",
+      "returnPct": 7.07,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 167,
-    "wins": 70,
-    "winRatePct": 41.9,
-    "avgReturnPct": 0.83,
-    "netProfitUsd": 1390.5
+    "totalTrades": 168,
+    "wins": 71,
+    "winRatePct": 42.3,
+    "avgReturnPct": 0.87,
+    "netProfitUsd": 1461.2
   }
 }
