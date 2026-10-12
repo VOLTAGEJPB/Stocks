@@ -1,17 +1,5 @@
 {
   "openPositions": {
-    "AMC": {
-      "entryDate": "2026-10-01T23:00:15.302Z",
-      "entryMomentum": 78
-    },
-    "AMD": {
-      "entryDate": "2026-10-01T23:00:15.302Z",
-      "entryMomentum": 79
-    },
-    "SMCI": {
-      "entryDate": "2026-10-01T23:00:15.302Z",
-      "entryMomentum": 78
-    },
     "GME": {
       "entryDate": "2026-10-02T22:26:51.362Z",
       "entryMomentum": 67
@@ -20,20 +8,12 @@
       "entryDate": "2026-10-06T18:47:57.897Z",
       "entryMomentum": 73
     },
-    "MRNA": {
-      "entryDate": "2026-10-07T19:13:02.958Z",
-      "entryMomentum": 83
-    },
     "AAPL": {
       "entryDate": "2026-10-07T23:40:54.224Z",
       "entryMomentum": 66
     },
     "MSTR": {
       "entryDate": "2026-10-07T23:40:54.224Z",
-      "entryMomentum": 67
-    },
-    "DNA": {
-      "entryDate": "2026-10-08T19:09:16.886Z",
       "entryMomentum": 67
     },
     "MSFT": {
@@ -1405,13 +1385,53 @@
       "exitDate": "2026-10-09T23:02:16.924Z",
       "returnPct": -0.44,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "DNA",
+      "name": "Ginkgo Bioworks",
+      "entryDate": "2026-10-08T19:09:16.886Z",
+      "exitDate": "2026-10-12T21:34:11.108Z",
+      "returnPct": 4.37,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMC",
+      "name": "AMC Entertainment",
+      "entryDate": "2026-10-01T23:00:15.302Z",
+      "exitDate": "2026-10-12T21:34:11.108Z",
+      "returnPct": 7.13,
+      "exitReason": "Held 10+ days"
+    },
+    {
+      "sym": "AMD",
+      "name": "Advanced Micro Devices",
+      "entryDate": "2026-10-01T23:00:15.302Z",
+      "exitDate": "2026-10-12T21:34:11.108Z",
+      "returnPct": -6.69,
+      "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "SMCI",
+      "name": "Super Micro Computer",
+      "entryDate": "2026-10-01T23:00:15.302Z",
+      "exitDate": "2026-10-12T21:34:11.108Z",
+      "returnPct": -6.63,
+      "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-10-07T19:13:02.958Z",
+      "exitDate": "2026-10-12T21:34:11.108Z",
+      "returnPct": 10.06,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 169,
-    "wins": 71,
-    "winRatePct": 42,
-    "avgReturnPct": 0.86,
-    "netProfitUsd": 1456.8
+    "totalTrades": 174,
+    "wins": 74,
+    "winRatePct": 42.5,
+    "avgReturnPct": 0.88,
+    "netProfitUsd": 1539.2
   }
 }
