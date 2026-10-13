@@ -1,17 +1,5 @@
 {
   "openPositions": {
-    "GME": {
-      "entryDate": "2026-10-02T22:26:51.362Z",
-      "entryMomentum": 67
-    },
-    "META": {
-      "entryDate": "2026-10-06T18:47:57.897Z",
-      "entryMomentum": 73
-    },
-    "AAPL": {
-      "entryDate": "2026-10-07T23:40:54.224Z",
-      "entryMomentum": 66
-    },
     "MSTR": {
       "entryDate": "2026-10-07T23:40:54.224Z",
       "entryMomentum": 67
@@ -20,17 +8,29 @@
       "entryDate": "2026-10-08T23:50:48.964Z",
       "entryMomentum": 78
     },
-    "MU": {
-      "entryDate": "2026-10-09T18:39:54.850Z",
-      "entryMomentum": 70
-    },
     "AMZN": {
       "entryDate": "2026-10-09T18:39:54.850Z",
       "entryMomentum": 66
     },
-    "PLTR": {
-      "entryDate": "2026-10-09T23:02:16.924Z",
-      "entryMomentum": 82
+    "DNA": {
+      "entryDate": "2026-10-13T19:45:12.514Z",
+      "entryMomentum": 67
+    },
+    "AMC": {
+      "entryDate": "2026-10-13T19:45:12.514Z",
+      "entryMomentum": 83
+    },
+    "AMD": {
+      "entryDate": "2026-10-13T19:45:12.514Z",
+      "entryMomentum": 68
+    },
+    "SMCI": {
+      "entryDate": "2026-10-13T19:45:12.514Z",
+      "entryMomentum": 70
+    },
+    "MRNA": {
+      "entryDate": "2026-10-13T19:45:12.514Z",
+      "entryMomentum": 91
     }
   },
   "closedTrades": [
@@ -1425,13 +1425,53 @@
       "exitDate": "2026-10-12T21:34:11.108Z",
       "returnPct": 10.06,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-10-09T18:39:54.850Z",
+      "exitDate": "2026-10-13T19:45:12.514Z",
+      "returnPct": -8.87,
+      "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "AAPL",
+      "name": "Apple",
+      "entryDate": "2026-10-07T23:40:54.224Z",
+      "exitDate": "2026-10-13T19:45:12.514Z",
+      "returnPct": 1.4,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "META",
+      "name": "Meta Platforms",
+      "entryDate": "2026-10-06T18:47:57.897Z",
+      "exitDate": "2026-10-13T19:45:12.514Z",
+      "returnPct": 2.92,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-10-09T23:02:16.924Z",
+      "exitDate": "2026-10-13T19:45:12.514Z",
+      "returnPct": -0.03,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "GME",
+      "name": "GameStop",
+      "entryDate": "2026-10-02T22:26:51.362Z",
+      "exitDate": "2026-10-13T19:45:12.514Z",
+      "returnPct": 10.07,
+      "exitReason": "Held 10+ days"
     }
   ],
   "stats": {
-    "totalTrades": 174,
-    "wins": 74,
-    "winRatePct": 42.5,
-    "avgReturnPct": 0.88,
-    "netProfitUsd": 1539.2
+    "totalTrades": 179,
+    "wins": 77,
+    "winRatePct": 43,
+    "avgReturnPct": 0.89,
+    "netProfitUsd": 1594.1
   }
 }
