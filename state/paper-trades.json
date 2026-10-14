@@ -4,10 +4,6 @@
       "entryDate": "2026-10-07T23:40:54.224Z",
       "entryMomentum": 67
     },
-    "MSFT": {
-      "entryDate": "2026-10-08T23:50:48.964Z",
-      "entryMomentum": 78
-    },
     "AMZN": {
       "entryDate": "2026-10-09T18:39:54.850Z",
       "entryMomentum": 66
@@ -24,10 +20,6 @@
       "entryDate": "2026-10-13T19:45:12.514Z",
       "entryMomentum": 68
     },
-    "SMCI": {
-      "entryDate": "2026-10-13T19:45:12.514Z",
-      "entryMomentum": 70
-    },
     "MRNA": {
       "entryDate": "2026-10-13T19:45:12.514Z",
       "entryMomentum": 91
@@ -43,6 +35,18 @@
     "GME": {
       "entryDate": "2026-10-13T23:37:08.231Z",
       "entryMomentum": 74
+    },
+    "META": {
+      "entryDate": "2026-10-14T17:47:50.939Z",
+      "entryMomentum": 67
+    },
+    "PFE": {
+      "entryDate": "2026-10-14T17:47:50.939Z",
+      "entryMomentum": 67
+    },
+    "OXY": {
+      "entryDate": "2026-10-14T17:47:50.939Z",
+      "entryMomentum": 68
     }
   },
   "closedTrades": [
@@ -1477,13 +1481,29 @@
       "exitDate": "2026-10-13T19:45:12.514Z",
       "returnPct": 10.07,
       "exitReason": "Held 10+ days"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-10-08T23:50:48.964Z",
+      "exitDate": "2026-10-14T17:47:50.939Z",
+      "returnPct": 1.39,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "SMCI",
+      "name": "Super Micro Computer",
+      "entryDate": "2026-10-13T19:45:12.514Z",
+      "exitDate": "2026-10-14T17:47:50.939Z",
+      "returnPct": -7.7,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 179,
-    "wins": 77,
-    "winRatePct": 43,
-    "avgReturnPct": 0.89,
-    "netProfitUsd": 1594.1
+    "totalTrades": 181,
+    "wins": 78,
+    "winRatePct": 43.1,
+    "avgReturnPct": 0.85,
+    "netProfitUsd": 1531
   }
 }
