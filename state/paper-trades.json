@@ -4,10 +4,6 @@
       "entryDate": "2026-10-07T23:40:54.224Z",
       "entryMomentum": 67
     },
-    "AMZN": {
-      "entryDate": "2026-10-09T18:39:54.850Z",
-      "entryMomentum": 66
-    },
     "DNA": {
       "entryDate": "2026-10-13T19:45:12.514Z",
       "entryMomentum": 67
@@ -47,6 +43,10 @@
     "OXY": {
       "entryDate": "2026-10-14T17:47:50.939Z",
       "entryMomentum": 68
+    },
+    "MSFT": {
+      "entryDate": "2026-10-14T21:19:21.156Z",
+      "entryMomentum": 80
     }
   },
   "closedTrades": [
@@ -1497,13 +1497,21 @@
       "exitDate": "2026-10-14T17:47:50.939Z",
       "returnPct": -7.7,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMZN",
+      "name": "Amazon",
+      "entryDate": "2026-10-09T18:39:54.850Z",
+      "exitDate": "2026-10-14T21:19:21.156Z",
+      "returnPct": -2.86,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 181,
+    "totalTrades": 182,
     "wins": 78,
-    "winRatePct": 43.1,
-    "avgReturnPct": 0.85,
-    "netProfitUsd": 1531
+    "winRatePct": 42.9,
+    "avgReturnPct": 0.83,
+    "netProfitUsd": 1502.4
   }
 }
