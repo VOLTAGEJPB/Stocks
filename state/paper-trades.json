@@ -39,6 +39,10 @@
     "MSFT": {
       "entryDate": "2026-10-14T21:19:21.156Z",
       "entryMomentum": 80
+    },
+    "AAPL": {
+      "entryDate": "2026-10-15T20:58:53.172Z",
+      "entryMomentum": 66
     }
   },
   "closedTrades": [
