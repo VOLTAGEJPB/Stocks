@@ -30,8 +30,8 @@
   "LRCX": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-10-14T21:19:21.156Z",
-    "lastSeverity": 70,
+    "lastAlertAt": "2026-10-15T23:38:15.366Z",
+    "lastSeverity": 77,
     "lastNegCount": 5
   },
   "BAH": {
@@ -109,7 +109,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 6
+    "lastNegCount": 7
   },
   "AVGO": {
     "seen": true,
@@ -193,7 +193,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 0
   },
   "UAL": {
     "seen": true,
