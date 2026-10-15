@@ -16,10 +16,6 @@
       "entryDate": "2026-10-13T19:45:12.514Z",
       "entryMomentum": 91
     },
-    "AAPL": {
-      "entryDate": "2026-10-13T23:37:08.231Z",
-      "entryMomentum": 67
-    },
     "PLTR": {
       "entryDate": "2026-10-13T23:37:08.231Z",
       "entryMomentum": 87
@@ -1509,13 +1505,21 @@
       "exitDate": "2026-10-15T00:00:20.803Z",
       "returnPct": -7.69,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AAPL",
+      "name": "Apple",
+      "entryDate": "2026-10-13T23:37:08.231Z",
+      "exitDate": "2026-10-15T17:37:31.535Z",
+      "returnPct": -0.09,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 183,
+    "totalTrades": 184,
     "wins": 78,
-    "winRatePct": 42.6,
-    "avgReturnPct": 0.78,
-    "netProfitUsd": 1425.5
+    "winRatePct": 42.4,
+    "avgReturnPct": 0.77,
+    "netProfitUsd": 1424.6
   }
 }
