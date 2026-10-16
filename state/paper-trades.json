@@ -1,32 +1,8 @@
 {
   "openPositions": {
-    "MSTR": {
-      "entryDate": "2026-10-07T23:40:54.224Z",
-      "entryMomentum": 67
-    },
-    "DNA": {
-      "entryDate": "2026-10-13T19:45:12.514Z",
-      "entryMomentum": 67
-    },
-    "AMC": {
-      "entryDate": "2026-10-13T19:45:12.514Z",
-      "entryMomentum": 83
-    },
-    "MRNA": {
-      "entryDate": "2026-10-13T19:45:12.514Z",
-      "entryMomentum": 91
-    },
-    "PLTR": {
-      "entryDate": "2026-10-13T23:37:08.231Z",
-      "entryMomentum": 87
-    },
     "GME": {
       "entryDate": "2026-10-13T23:37:08.231Z",
       "entryMomentum": 74
-    },
-    "META": {
-      "entryDate": "2026-10-14T17:47:50.939Z",
-      "entryMomentum": 67
     },
     "PFE": {
       "entryDate": "2026-10-14T17:47:50.939Z",
@@ -1517,13 +1493,61 @@
       "exitDate": "2026-10-15T17:37:31.535Z",
       "returnPct": -0.09,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "DNA",
+      "name": "Ginkgo Bioworks",
+      "entryDate": "2026-10-13T19:45:12.514Z",
+      "exitDate": "2026-10-16T17:10:36.484Z",
+      "returnPct": -12.75,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMC",
+      "name": "AMC Entertainment",
+      "entryDate": "2026-10-13T19:45:12.514Z",
+      "exitDate": "2026-10-16T17:10:36.484Z",
+      "returnPct": -7.33,
+      "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "META",
+      "name": "Meta Platforms",
+      "entryDate": "2026-10-14T17:47:50.939Z",
+      "exitDate": "2026-10-16T17:10:36.484Z",
+      "returnPct": -3.22,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-10-13T23:37:08.231Z",
+      "exitDate": "2026-10-16T17:10:36.484Z",
+      "returnPct": -10.3,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MSTR",
+      "name": "MicroStrategy",
+      "entryDate": "2026-10-07T23:40:54.224Z",
+      "exitDate": "2026-10-16T17:10:36.484Z",
+      "returnPct": -8.79,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-10-13T19:45:12.514Z",
+      "exitDate": "2026-10-16T17:10:36.484Z",
+      "returnPct": 0.07,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 184,
-    "wins": 78,
-    "winRatePct": 42.4,
-    "avgReturnPct": 0.77,
-    "netProfitUsd": 1424.6
+    "totalTrades": 190,
+    "wins": 79,
+    "winRatePct": 41.6,
+    "avgReturnPct": 0.53,
+    "netProfitUsd": 1001.4
   }
 }
