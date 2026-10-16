@@ -12,13 +12,17 @@
       "entryDate": "2026-10-14T17:47:50.939Z",
       "entryMomentum": 68
     },
-    "MSFT": {
-      "entryDate": "2026-10-14T21:19:21.156Z",
-      "entryMomentum": 80
+    "AMC": {
+      "entryDate": "2026-10-16T20:00:52.480Z",
+      "entryMomentum": 74
     },
-    "AAPL": {
-      "entryDate": "2026-10-15T20:58:53.172Z",
-      "entryMomentum": 66
+    "PLTR": {
+      "entryDate": "2026-10-16T20:00:52.480Z",
+      "entryMomentum": 75
+    },
+    "MRNA": {
+      "entryDate": "2026-10-16T20:00:52.480Z",
+      "entryMomentum": 88
     }
   },
   "closedTrades": [
@@ -1541,13 +1545,29 @@
       "exitDate": "2026-10-16T17:10:36.484Z",
       "returnPct": 0.07,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AAPL",
+      "name": "Apple",
+      "entryDate": "2026-10-15T20:58:53.172Z",
+      "exitDate": "2026-10-16T20:00:52.480Z",
+      "returnPct": -0.88,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-10-14T21:19:21.156Z",
+      "exitDate": "2026-10-16T20:00:52.480Z",
+      "returnPct": -0.8,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 190,
+    "totalTrades": 192,
     "wins": 79,
-    "winRatePct": 41.6,
-    "avgReturnPct": 0.53,
-    "netProfitUsd": 1001.4
+    "winRatePct": 41.1,
+    "avgReturnPct": 0.51,
+    "netProfitUsd": 984.6
   }
 }
