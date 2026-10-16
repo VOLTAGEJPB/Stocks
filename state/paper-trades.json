@@ -15,14 +15,6 @@
     "AMC": {
       "entryDate": "2026-10-16T20:00:52.480Z",
       "entryMomentum": 74
-    },
-    "PLTR": {
-      "entryDate": "2026-10-16T20:00:52.480Z",
-      "entryMomentum": 75
-    },
-    "MRNA": {
-      "entryDate": "2026-10-16T20:00:52.480Z",
-      "entryMomentum": 88
     }
   },
   "closedTrades": [
@@ -1561,12 +1553,28 @@
       "exitDate": "2026-10-16T20:00:52.480Z",
       "returnPct": -0.8,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-10-16T20:00:52.480Z",
+      "exitDate": "2026-10-16T22:56:54.334Z",
+      "returnPct": null,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-10-16T20:00:52.480Z",
+      "exitDate": "2026-10-16T22:56:54.334Z",
+      "returnPct": null,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 192,
+    "totalTrades": 194,
     "wins": 79,
-    "winRatePct": 41.1,
+    "winRatePct": 40.7,
     "avgReturnPct": 0.51,
     "netProfitUsd": 984.6
   }
