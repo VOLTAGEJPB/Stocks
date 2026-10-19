@@ -15,6 +15,22 @@
     "AMC": {
       "entryDate": "2026-10-16T20:00:52.480Z",
       "entryMomentum": 74
+    },
+    "AAPL": {
+      "entryDate": "2026-10-19T19:02:50.746Z",
+      "entryMomentum": 66
+    },
+    "MSFT": {
+      "entryDate": "2026-10-19T19:02:50.746Z",
+      "entryMomentum": 76
+    },
+    "PLTR": {
+      "entryDate": "2026-10-19T19:02:50.746Z",
+      "entryMomentum": 72
+    },
+    "MRNA": {
+      "entryDate": "2026-10-19T19:02:50.746Z",
+      "entryMomentum": 87
     }
   },
   "closedTrades": [
