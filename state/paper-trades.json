@@ -23,6 +23,14 @@
     "MRNA": {
       "entryDate": "2026-10-19T19:02:50.746Z",
       "entryMomentum": 87
+    },
+    "AAPL": {
+      "entryDate": "2026-10-20T21:18:22.652Z",
+      "entryMomentum": 65
+    },
+    "GME": {
+      "entryDate": "2026-10-20T21:18:22.652Z",
+      "entryMomentum": 68
     }
   },
   "closedTrades": [
