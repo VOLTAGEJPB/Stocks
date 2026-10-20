@@ -1,9 +1,5 @@
 {
   "openPositions": {
-    "GME": {
-      "entryDate": "2026-10-13T23:37:08.231Z",
-      "entryMomentum": 74
-    },
     "PFE": {
       "entryDate": "2026-10-14T17:47:50.939Z",
       "entryMomentum": 67
@@ -15,10 +11,6 @@
     "AMC": {
       "entryDate": "2026-10-16T20:00:52.480Z",
       "entryMomentum": 74
-    },
-    "AAPL": {
-      "entryDate": "2026-10-19T19:02:50.746Z",
-      "entryMomentum": 66
     },
     "MSFT": {
       "entryDate": "2026-10-19T19:02:50.746Z",
@@ -1585,13 +1577,29 @@
       "exitDate": "2026-10-16T22:56:54.334Z",
       "returnPct": null,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AAPL",
+      "name": "Apple",
+      "entryDate": "2026-10-19T19:02:50.746Z",
+      "exitDate": "2026-10-20T17:47:23.497Z",
+      "returnPct": -0.86,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "GME",
+      "name": "GameStop",
+      "entryDate": "2026-10-13T23:37:08.231Z",
+      "exitDate": "2026-10-20T17:47:23.497Z",
+      "returnPct": -6.79,
+      "exitReason": "Stop-loss hit (-6%)"
     }
   ],
   "stats": {
-    "totalTrades": 194,
+    "totalTrades": 196,
     "wins": 79,
-    "winRatePct": 40.7,
-    "avgReturnPct": 0.51,
-    "netProfitUsd": 984.6
+    "winRatePct": 40.3,
+    "avgReturnPct": 0.46,
+    "netProfitUsd": 908.1
   }
 }
