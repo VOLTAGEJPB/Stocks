@@ -12,14 +12,6 @@
       "entryDate": "2026-10-16T20:00:52.480Z",
       "entryMomentum": 74
     },
-    "MSFT": {
-      "entryDate": "2026-10-19T19:02:50.746Z",
-      "entryMomentum": 76
-    },
-    "PLTR": {
-      "entryDate": "2026-10-19T19:02:50.746Z",
-      "entryMomentum": 72
-    },
     "MRNA": {
       "entryDate": "2026-10-19T19:02:50.746Z",
       "entryMomentum": 87
@@ -1601,13 +1593,29 @@
       "exitDate": "2026-10-20T17:47:23.497Z",
       "returnPct": -6.79,
       "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-10-19T19:02:50.746Z",
+      "exitDate": "2026-10-21T17:55:00.709Z",
+      "returnPct": -0.32,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-10-19T19:02:50.746Z",
+      "exitDate": "2026-10-21T17:55:00.709Z",
+      "returnPct": 4.02,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 196,
-    "wins": 79,
-    "winRatePct": 40.3,
-    "avgReturnPct": 0.46,
-    "netProfitUsd": 908.1
+    "totalTrades": 198,
+    "wins": 80,
+    "winRatePct": 40.4,
+    "avgReturnPct": 0.48,
+    "netProfitUsd": 945.1
   }
 }
