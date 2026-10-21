@@ -23,6 +23,14 @@
     "GME": {
       "entryDate": "2026-10-20T21:18:22.652Z",
       "entryMomentum": 68
+    },
+    "MSFT": {
+      "entryDate": "2026-10-21T21:18:25.729Z",
+      "entryMomentum": 75
+    },
+    "PLTR": {
+      "entryDate": "2026-10-21T21:18:25.729Z",
+      "entryMomentum": 77
     }
   },
   "closedTrades": [
