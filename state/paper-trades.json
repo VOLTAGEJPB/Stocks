@@ -27,6 +27,14 @@
     "PLTR": {
       "entryDate": "2026-10-21T21:18:25.729Z",
       "entryMomentum": 77
+    },
+    "IBM": {
+      "entryDate": "2026-10-22T21:14:31.715Z",
+      "entryMomentum": 65
+    },
+    "MRNA": {
+      "entryDate": "2026-10-22T21:14:31.715Z",
+      "entryMomentum": 81
     }
   },
   "closedTrades": [
