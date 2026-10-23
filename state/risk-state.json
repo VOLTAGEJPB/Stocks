@@ -1,17 +1,17 @@
 {
   "TSLA": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-22T21:14:31.715Z",
-    "lastSeverity": 66,
-    "lastNegCount": 5
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 6
   },
   "IBM": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "SKHY": {
     "seen": true,
@@ -22,9 +22,9 @@
   },
   "MU": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-22T21:14:31.715Z",
-    "lastSeverity": 52,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 2
   },
   "LRCX": {
@@ -32,7 +32,7 @@
     "flagged": true,
     "lastAlertAt": "2026-10-22T17:51:33.514Z",
     "lastSeverity": 87,
-    "lastNegCount": 6
+    "lastNegCount": 7
   },
   "BAH": {
     "seen": true,
@@ -67,7 +67,7 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 0
+    "lastNegCount": 1
   },
   "MSFT": {
     "seen": true,
@@ -79,23 +79,23 @@
   "GOOGL": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-10-22T21:14:31.715Z",
-    "lastSeverity": 55,
-    "lastNegCount": 3
+    "lastAlertAt": "2026-10-23T00:04:30.446Z",
+    "lastSeverity": 67,
+    "lastNegCount": 5
   },
   "AMZN": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-22T21:14:31.715Z",
-    "lastSeverity": 43,
-    "lastNegCount": 2
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 3
   },
   "META": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-22T17:51:33.514Z",
-    "lastSeverity": 64,
-    "lastNegCount": 7
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 8
   },
   "AMD": {
     "seen": true,
@@ -186,7 +186,7 @@
     "flagged": true,
     "lastAlertAt": "2026-10-22T21:14:31.715Z",
     "lastSeverity": 68,
-    "lastNegCount": 7
+    "lastNegCount": 11
   },
   "PFE": {
     "seen": true,

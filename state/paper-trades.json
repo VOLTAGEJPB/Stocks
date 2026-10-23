@@ -31,10 +31,6 @@
     "IBM": {
       "entryDate": "2026-10-22T21:14:31.715Z",
       "entryMomentum": 65
-    },
-    "MRNA": {
-      "entryDate": "2026-10-22T21:14:31.715Z",
-      "entryMomentum": 81
     }
   },
   "closedTrades": [
@@ -1629,12 +1625,20 @@
       "exitDate": "2026-10-22T17:51:33.514Z",
       "returnPct": -19.25,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-10-22T21:14:31.715Z",
+      "exitDate": "2026-10-23T00:04:30.446Z",
+      "returnPct": null,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 199,
+    "totalTrades": 200,
     "wins": 80,
-    "winRatePct": 40.2,
+    "winRatePct": 40,
     "avgReturnPct": 0.38,
     "netProfitUsd": 752.6
   }
