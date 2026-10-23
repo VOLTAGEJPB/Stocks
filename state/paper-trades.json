@@ -24,13 +24,13 @@
       "entryDate": "2026-10-21T21:18:25.729Z",
       "entryMomentum": 75
     },
-    "PLTR": {
-      "entryDate": "2026-10-21T21:18:25.729Z",
-      "entryMomentum": 77
-    },
     "IBM": {
       "entryDate": "2026-10-22T21:14:31.715Z",
       "entryMomentum": 65
+    },
+    "MRNA": {
+      "entryDate": "2026-10-23T17:44:00.874Z",
+      "entryMomentum": 75
     }
   },
   "closedTrades": [
@@ -1633,13 +1633,21 @@
       "exitDate": "2026-10-23T00:04:30.446Z",
       "returnPct": null,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-10-21T21:18:25.729Z",
+      "exitDate": "2026-10-23T17:44:00.874Z",
+      "returnPct": -3.08,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 200,
+    "totalTrades": 201,
     "wins": 80,
-    "winRatePct": 40,
-    "avgReturnPct": 0.38,
-    "netProfitUsd": 752.6
+    "winRatePct": 39.8,
+    "avgReturnPct": 0.36,
+    "netProfitUsd": 721.8
   }
 }
