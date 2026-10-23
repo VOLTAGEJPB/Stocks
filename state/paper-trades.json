@@ -16,14 +16,6 @@
       "entryDate": "2026-10-20T21:18:22.652Z",
       "entryMomentum": 65
     },
-    "GME": {
-      "entryDate": "2026-10-20T21:18:22.652Z",
-      "entryMomentum": 68
-    },
-    "MSFT": {
-      "entryDate": "2026-10-21T21:18:25.729Z",
-      "entryMomentum": 75
-    },
     "IBM": {
       "entryDate": "2026-10-22T21:14:31.715Z",
       "entryMomentum": 65
@@ -31,6 +23,10 @@
     "MRNA": {
       "entryDate": "2026-10-23T17:44:00.874Z",
       "entryMomentum": 75
+    },
+    "PLTR": {
+      "entryDate": "2026-10-23T21:02:47.025Z",
+      "entryMomentum": 79
     }
   },
   "closedTrades": [
@@ -1641,13 +1637,29 @@
       "exitDate": "2026-10-23T17:44:00.874Z",
       "returnPct": -3.08,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-10-21T21:18:25.729Z",
+      "exitDate": "2026-10-23T21:02:47.025Z",
+      "returnPct": -1.63,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "GME",
+      "name": "GameStop",
+      "entryDate": "2026-10-20T21:18:22.652Z",
+      "exitDate": "2026-10-23T21:02:47.025Z",
+      "returnPct": -6.46,
+      "exitReason": "Stop-loss hit (-6%)"
     }
   ],
   "stats": {
-    "totalTrades": 201,
+    "totalTrades": 203,
     "wins": 80,
-    "winRatePct": 39.8,
-    "avgReturnPct": 0.36,
-    "netProfitUsd": 721.8
+    "winRatePct": 39.4,
+    "avgReturnPct": 0.32,
+    "netProfitUsd": 640.9
   }
 }
