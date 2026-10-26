@@ -1,23 +1,11 @@
 {
   "openPositions": {
-    "PFE": {
-      "entryDate": "2026-10-14T17:47:50.939Z",
-      "entryMomentum": 67
-    },
-    "OXY": {
-      "entryDate": "2026-10-14T17:47:50.939Z",
-      "entryMomentum": 68
-    },
     "AMC": {
       "entryDate": "2026-10-16T20:00:52.480Z",
       "entryMomentum": 74
     },
     "AAPL": {
       "entryDate": "2026-10-20T21:18:22.652Z",
-      "entryMomentum": 65
-    },
-    "IBM": {
-      "entryDate": "2026-10-22T21:14:31.715Z",
       "entryMomentum": 65
     },
     "MRNA": {
@@ -27,6 +15,10 @@
     "PLTR": {
       "entryDate": "2026-10-23T21:02:47.025Z",
       "entryMomentum": 79
+    },
+    "MSFT": {
+      "entryDate": "2026-10-26T19:01:58.086Z",
+      "entryMomentum": 74
     }
   },
   "closedTrades": [
@@ -1653,13 +1645,37 @@
       "exitDate": "2026-10-23T21:02:47.025Z",
       "returnPct": -6.46,
       "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "IBM",
+      "name": "IBM",
+      "entryDate": "2026-10-22T21:14:31.715Z",
+      "exitDate": "2026-10-26T19:01:58.086Z",
+      "returnPct": 1.14,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PFE",
+      "name": "Pfizer",
+      "entryDate": "2026-10-14T17:47:50.939Z",
+      "exitDate": "2026-10-26T19:01:58.086Z",
+      "returnPct": 0.9,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "OXY",
+      "name": "Occidental Petroleum",
+      "entryDate": "2026-10-14T17:47:50.939Z",
+      "exitDate": "2026-10-26T19:01:58.086Z",
+      "returnPct": 3.82,
+      "exitReason": "Held 10+ days"
     }
   ],
   "stats": {
-    "totalTrades": 203,
-    "wins": 80,
-    "winRatePct": 39.4,
-    "avgReturnPct": 0.32,
-    "netProfitUsd": 640.9
+    "totalTrades": 206,
+    "wins": 83,
+    "winRatePct": 40.3,
+    "avgReturnPct": 0.34,
+    "netProfitUsd": 699.5
   }
 }
