@@ -1,21 +1,5 @@
 {
   "openPositions": {
-    "AAPL": {
-      "entryDate": "2026-10-20T21:18:22.652Z",
-      "entryMomentum": 65
-    },
-    "MRNA": {
-      "entryDate": "2026-10-23T17:44:00.874Z",
-      "entryMomentum": 75
-    },
-    "PLTR": {
-      "entryDate": "2026-10-23T21:02:47.025Z",
-      "entryMomentum": 79
-    },
-    "MSFT": {
-      "entryDate": "2026-10-26T19:01:58.086Z",
-      "entryMomentum": 74
-    },
     "PFE": {
       "entryDate": "2026-10-26T23:14:38.596Z",
       "entryMomentum": 69
@@ -23,6 +7,22 @@
     "OXY": {
       "entryDate": "2026-10-26T23:14:38.596Z",
       "entryMomentum": 70
+    },
+    "TSLA": {
+      "entryDate": "2026-10-27T18:33:42.238Z",
+      "entryMomentum": 69
+    },
+    "BAH": {
+      "entryDate": "2026-10-27T18:33:42.238Z",
+      "entryMomentum": 70
+    },
+    "AMC": {
+      "entryDate": "2026-10-27T18:33:42.238Z",
+      "entryMomentum": 68
+    },
+    "AMD": {
+      "entryDate": "2026-10-27T18:33:42.238Z",
+      "entryMomentum": 65
     }
   },
   "closedTrades": [
@@ -1681,13 +1681,45 @@
       "exitDate": "2026-10-26T23:14:38.596Z",
       "returnPct": -1.72,
       "exitReason": "Held 10+ days"
+    },
+    {
+      "sym": "AAPL",
+      "name": "Apple",
+      "entryDate": "2026-10-20T21:18:22.652Z",
+      "exitDate": "2026-10-27T18:33:42.238Z",
+      "returnPct": 1.79,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-10-26T19:01:58.086Z",
+      "exitDate": "2026-10-27T18:33:42.238Z",
+      "returnPct": -0.18,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-10-23T21:02:47.025Z",
+      "exitDate": "2026-10-27T18:33:42.238Z",
+      "returnPct": 1.6,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-10-23T17:44:00.874Z",
+      "exitDate": "2026-10-27T18:33:42.238Z",
+      "returnPct": 1.88,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 207,
-    "wins": 83,
-    "winRatePct": 40.1,
-    "avgReturnPct": 0.33,
-    "netProfitUsd": 682.3
+    "totalTrades": 211,
+    "wins": 86,
+    "winRatePct": 40.8,
+    "avgReturnPct": 0.35,
+    "netProfitUsd": 733.2
   }
 }

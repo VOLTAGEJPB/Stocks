@@ -1,10 +1,10 @@
 {
   "TSLA": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 0
+    "flagged": true,
+    "lastAlertAt": "2026-10-27T18:33:42.238Z",
+    "lastSeverity": 42,
+    "lastNegCount": 3
   },
   "IBM": {
     "seen": true,
@@ -15,24 +15,24 @@
   },
   "SKHY": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-26T19:01:58.086Z",
-    "lastSeverity": 71,
-    "lastNegCount": 7
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 4
   },
   "MU": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 5
+    "lastNegCount": 2
   },
   "LRCX": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-26T19:01:58.086Z",
-    "lastSeverity": 72,
-    "lastNegCount": 5
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 3
   },
   "BAH": {
     "seen": true,
@@ -60,42 +60,42 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "AAPL": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 1
+    "flagged": true,
+    "lastAlertAt": "2026-10-27T18:33:42.238Z",
+    "lastSeverity": 53,
+    "lastNegCount": 5
   },
   "MSFT": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 2
+    "flagged": true,
+    "lastAlertAt": "2026-10-27T18:33:42.238Z",
+    "lastSeverity": 55,
+    "lastNegCount": 7
   },
   "GOOGL": {
     "seen": true,
     "flagged": true,
     "lastAlertAt": "2026-10-26T23:14:38.596Z",
     "lastSeverity": 54,
-    "lastNegCount": 2
+    "lastNegCount": 5
   },
   "AMZN": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-10-26T23:14:38.596Z",
-    "lastSeverity": 64,
-    "lastNegCount": 4
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 3
   },
   "META": {
     "seen": true,
     "flagged": true,
     "lastAlertAt": "2026-10-26T23:14:38.596Z",
     "lastSeverity": 73,
-    "lastNegCount": 4
+    "lastNegCount": 6
   },
   "AMD": {
     "seen": true,
@@ -120,38 +120,38 @@
   },
   "ARM": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 2
+    "flagged": true,
+    "lastAlertAt": "2026-10-27T18:33:42.238Z",
+    "lastSeverity": 63,
+    "lastNegCount": 4
   },
   "SMCI": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "TSM": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 2
   },
   "PLTR": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 0
+    "flagged": true,
+    "lastAlertAt": "2026-10-27T18:33:42.238Z",
+    "lastSeverity": 42,
+    "lastNegCount": 2
   },
   "COIN": {
     "seen": true,
     "flagged": true,
     "lastAlertAt": "2026-10-26T23:14:38.596Z",
     "lastSeverity": 67,
-    "lastNegCount": 3
+    "lastNegCount": 4
   },
   "MSTR": {
     "seen": true,
@@ -179,21 +179,21 @@
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 1
   },
   "MRNA": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 3
+    "flagged": true,
+    "lastAlertAt": "2026-10-27T18:33:42.238Z",
+    "lastSeverity": 59,
+    "lastNegCount": 7
   },
   "PFE": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 6
+    "lastNegCount": 1
   },
   "UAL": {
     "seen": true,
@@ -214,6 +214,6 @@
     "flagged": true,
     "lastAlertAt": "2026-10-26T19:01:58.086Z",
     "lastSeverity": 72,
-    "lastNegCount": 6
+    "lastNegCount": 8
   }
 }
