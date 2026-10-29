@@ -28,13 +28,17 @@
       "entryDate": "2026-10-27T22:51:21.427Z",
       "entryMomentum": 74
     },
-    "MU": {
-      "entryDate": "2026-10-28T18:39:58.135Z",
-      "entryMomentum": 68
+    "TSLA": {
+      "entryDate": "2026-10-29T23:06:16.291Z",
+      "entryMomentum": 73
     },
-    "DNA": {
-      "entryDate": "2026-10-28T18:39:58.135Z",
-      "entryMomentum": 81
+    "AAPL": {
+      "entryDate": "2026-10-29T23:06:16.291Z",
+      "entryMomentum": 65
+    },
+    "MSFT": {
+      "entryDate": "2026-10-29T23:06:16.291Z",
+      "entryMomentum": 75
     }
   },
   "closedTrades": [
@@ -1749,13 +1753,29 @@
       "exitDate": "2026-10-29T18:48:10.094Z",
       "returnPct": -0.86,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-10-28T18:39:58.135Z",
+      "exitDate": "2026-10-29T23:06:16.291Z",
+      "returnPct": -7.86,
+      "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "DNA",
+      "name": "Ginkgo Bioworks",
+      "entryDate": "2026-10-28T18:39:58.135Z",
+      "exitDate": "2026-10-29T23:06:16.291Z",
+      "returnPct": -11.66,
+      "exitReason": "Stop-loss hit (-6%)"
     }
   ],
   "stats": {
-    "totalTrades": 214,
+    "totalTrades": 216,
     "wins": 87,
-    "winRatePct": 40.7,
-    "avgReturnPct": 0.34,
-    "netProfitUsd": 732.1
+    "winRatePct": 40.3,
+    "avgReturnPct": 0.25,
+    "netProfitUsd": 536.9
   }
 }
