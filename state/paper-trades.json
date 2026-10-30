@@ -1,9 +1,5 @@
 {
   "openPositions": {
-    "PFE": {
-      "entryDate": "2026-10-26T23:14:38.596Z",
-      "entryMomentum": 69
-    },
     "OXY": {
       "entryDate": "2026-10-26T23:14:38.596Z",
       "entryMomentum": 70
@@ -15,14 +11,6 @@
     "AMC": {
       "entryDate": "2026-10-27T18:33:42.238Z",
       "entryMomentum": 68
-    },
-    "AMD": {
-      "entryDate": "2026-10-27T18:33:42.238Z",
-      "entryMomentum": 65
-    },
-    "PLTR": {
-      "entryDate": "2026-10-27T22:51:21.427Z",
-      "entryMomentum": 78
     },
     "MRNA": {
       "entryDate": "2026-10-27T22:51:21.427Z",
@@ -38,6 +26,14 @@
     },
     "MSFT": {
       "entryDate": "2026-10-29T23:06:16.291Z",
+      "entryMomentum": 75
+    },
+    "MU": {
+      "entryDate": "2026-10-30T18:26:05.186Z",
+      "entryMomentum": 74
+    },
+    "DNA": {
+      "entryDate": "2026-10-30T18:26:05.186Z",
       "entryMomentum": 75
     }
   },
@@ -1769,13 +1765,37 @@
       "exitDate": "2026-10-29T23:06:16.291Z",
       "returnPct": -11.66,
       "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "AMD",
+      "name": "Advanced Micro Devices",
+      "entryDate": "2026-10-27T18:33:42.238Z",
+      "exitDate": "2026-10-30T18:26:05.186Z",
+      "returnPct": -11.41,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-10-27T22:51:21.427Z",
+      "exitDate": "2026-10-30T18:26:05.186Z",
+      "returnPct": -6.54,
+      "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "PFE",
+      "name": "Pfizer",
+      "entryDate": "2026-10-26T23:14:38.596Z",
+      "exitDate": "2026-10-30T18:26:05.186Z",
+      "returnPct": 3.3,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 216,
-    "wins": 87,
-    "winRatePct": 40.3,
-    "avgReturnPct": 0.25,
-    "netProfitUsd": 536.9
+    "totalTrades": 219,
+    "wins": 88,
+    "winRatePct": 40.2,
+    "avgReturnPct": 0.18,
+    "netProfitUsd": 390.4
   }
 }
