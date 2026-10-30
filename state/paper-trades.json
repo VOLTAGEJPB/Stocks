@@ -16,25 +16,25 @@
       "entryDate": "2026-10-27T22:51:21.427Z",
       "entryMomentum": 74
     },
-    "TSLA": {
-      "entryDate": "2026-10-29T23:06:16.291Z",
-      "entryMomentum": 73
-    },
-    "AAPL": {
-      "entryDate": "2026-10-29T23:06:16.291Z",
-      "entryMomentum": 65
-    },
-    "MSFT": {
-      "entryDate": "2026-10-29T23:06:16.291Z",
-      "entryMomentum": 75
-    },
     "MU": {
       "entryDate": "2026-10-30T18:26:05.186Z",
       "entryMomentum": 74
     },
-    "DNA": {
-      "entryDate": "2026-10-30T18:26:05.186Z",
-      "entryMomentum": 75
+    "IBM": {
+      "entryDate": "2026-10-30T22:34:48.090Z",
+      "entryMomentum": 65
+    },
+    "AMD": {
+      "entryDate": "2026-10-30T22:34:48.090Z",
+      "entryMomentum": 66
+    },
+    "PLTR": {
+      "entryDate": "2026-10-30T22:34:48.090Z",
+      "entryMomentum": 71
+    },
+    "PFE": {
+      "entryDate": "2026-10-30T22:34:48.090Z",
+      "entryMomentum": 70
     }
   },
   "closedTrades": [
@@ -1789,13 +1789,45 @@
       "exitDate": "2026-10-30T18:26:05.186Z",
       "returnPct": 3.3,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "TSLA",
+      "name": "Tesla",
+      "entryDate": "2026-10-29T23:06:16.291Z",
+      "exitDate": "2026-10-30T22:34:48.090Z",
+      "returnPct": 2.13,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "DNA",
+      "name": "Ginkgo Bioworks",
+      "entryDate": "2026-10-30T18:26:05.186Z",
+      "exitDate": "2026-10-30T22:34:48.090Z",
+      "returnPct": 5.1,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AAPL",
+      "name": "Apple",
+      "entryDate": "2026-10-29T23:06:16.291Z",
+      "exitDate": "2026-10-30T22:34:48.090Z",
+      "returnPct": -0.87,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-10-29T23:06:16.291Z",
+      "exitDate": "2026-10-30T22:34:48.090Z",
+      "returnPct": -0.34,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 219,
-    "wins": 88,
-    "winRatePct": 40.2,
-    "avgReturnPct": 0.18,
-    "netProfitUsd": 390.4
+    "totalTrades": 223,
+    "wins": 90,
+    "winRatePct": 40.4,
+    "avgReturnPct": 0.2,
+    "netProfitUsd": 450.6
   }
 }
