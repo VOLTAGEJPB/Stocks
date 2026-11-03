@@ -24,10 +24,6 @@
       "entryDate": "2026-10-30T22:34:48.090Z",
       "entryMomentum": 65
     },
-    "PLTR": {
-      "entryDate": "2026-10-30T22:34:48.090Z",
-      "entryMomentum": 71
-    },
     "PFE": {
       "entryDate": "2026-10-30T22:34:48.090Z",
       "entryMomentum": 70
@@ -39,10 +35,6 @@
     "DNA": {
       "entryDate": "2026-11-02T22:10:23.289Z",
       "entryMomentum": 65
-    },
-    "AAPL": {
-      "entryDate": "2026-11-02T22:10:23.289Z",
-      "entryMomentum": 66
     }
   },
   "closedTrades": [
@@ -1837,13 +1829,29 @@
       "exitDate": "2026-11-02T22:10:23.289Z",
       "returnPct": -7.9,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AAPL",
+      "name": "Apple",
+      "entryDate": "2026-11-02T22:10:23.289Z",
+      "exitDate": "2026-11-03T19:57:54.475Z",
+      "returnPct": 0.64,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "PLTR",
+      "name": "Palantir",
+      "entryDate": "2026-10-30T22:34:48.090Z",
+      "exitDate": "2026-11-03T19:57:54.475Z",
+      "returnPct": -5.39,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 224,
-    "wins": 90,
-    "winRatePct": 40.2,
-    "avgReturnPct": 0.17,
-    "netProfitUsd": 371.6
+    "totalTrades": 226,
+    "wins": 91,
+    "winRatePct": 40.3,
+    "avgReturnPct": 0.14,
+    "netProfitUsd": 324.1
   }
 }
