@@ -16,10 +16,6 @@
       "entryDate": "2026-10-27T22:51:21.427Z",
       "entryMomentum": 74
     },
-    "MU": {
-      "entryDate": "2026-10-30T18:26:05.186Z",
-      "entryMomentum": 74
-    },
     "IBM": {
       "entryDate": "2026-10-30T22:34:48.090Z",
       "entryMomentum": 65
@@ -28,12 +24,12 @@
       "entryDate": "2026-10-30T22:34:48.090Z",
       "entryMomentum": 70
     },
-    "TSLA": {
-      "entryDate": "2026-11-02T22:10:23.289Z",
-      "entryMomentum": 68
-    },
     "DNA": {
       "entryDate": "2026-11-02T22:10:23.289Z",
+      "entryMomentum": 65
+    },
+    "AAPL": {
+      "entryDate": "2026-11-04T00:31:55.925Z",
       "entryMomentum": 65
     }
   },
@@ -1845,13 +1841,29 @@
       "exitDate": "2026-11-03T19:57:54.475Z",
       "returnPct": -5.39,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "TSLA",
+      "name": "Tesla",
+      "entryDate": "2026-11-02T22:10:23.289Z",
+      "exitDate": "2026-11-04T00:31:55.925Z",
+      "returnPct": -3.04,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MU",
+      "name": "Micron",
+      "entryDate": "2026-10-30T18:26:05.186Z",
+      "exitDate": "2026-11-04T00:31:55.925Z",
+      "returnPct": -2.29,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 226,
+    "totalTrades": 228,
     "wins": 91,
-    "winRatePct": 40.3,
-    "avgReturnPct": 0.14,
-    "netProfitUsd": 324.1
+    "winRatePct": 39.9,
+    "avgReturnPct": 0.12,
+    "netProfitUsd": 270.8
   }
 }
