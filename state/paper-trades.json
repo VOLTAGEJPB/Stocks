@@ -1,9 +1,5 @@
 {
   "openPositions": {
-    "OXY": {
-      "entryDate": "2026-10-26T23:14:38.596Z",
-      "entryMomentum": 70
-    },
     "BAH": {
       "entryDate": "2026-10-27T18:33:42.238Z",
       "entryMomentum": 70
@@ -11,10 +7,6 @@
     "AMC": {
       "entryDate": "2026-10-27T18:33:42.238Z",
       "entryMomentum": 68
-    },
-    "MRNA": {
-      "entryDate": "2026-10-27T22:51:21.427Z",
-      "entryMomentum": 74
     },
     "IBM": {
       "entryDate": "2026-10-30T22:34:48.090Z",
@@ -31,6 +23,14 @@
     "AAPL": {
       "entryDate": "2026-11-04T00:31:55.925Z",
       "entryMomentum": 65
+    },
+    "MSFT": {
+      "entryDate": "2026-11-04T20:17:31.492Z",
+      "entryMomentum": 69
+    },
+    "GME": {
+      "entryDate": "2026-11-04T20:17:31.492Z",
+      "entryMomentum": 66
     }
   },
   "closedTrades": [
@@ -1857,13 +1857,29 @@
       "exitDate": "2026-11-04T00:31:55.925Z",
       "returnPct": -2.29,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-10-27T22:51:21.427Z",
+      "exitDate": "2026-11-04T20:17:31.492Z",
+      "returnPct": 19.52,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "OXY",
+      "name": "Occidental Petroleum",
+      "entryDate": "2026-10-26T23:14:38.596Z",
+      "exitDate": "2026-11-04T20:17:31.492Z",
+      "returnPct": -10.8,
+      "exitReason": "Stop-loss hit (-6%)"
     }
   ],
   "stats": {
-    "totalTrades": 228,
-    "wins": 91,
-    "winRatePct": 39.9,
-    "avgReturnPct": 0.12,
-    "netProfitUsd": 270.8
+    "totalTrades": 230,
+    "wins": 92,
+    "winRatePct": 40,
+    "avgReturnPct": 0.16,
+    "netProfitUsd": 358
   }
 }
