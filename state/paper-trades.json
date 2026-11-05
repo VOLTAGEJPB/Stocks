@@ -20,10 +20,6 @@
       "entryDate": "2026-11-02T22:10:23.289Z",
       "entryMomentum": 65
     },
-    "AAPL": {
-      "entryDate": "2026-11-04T00:31:55.925Z",
-      "entryMomentum": 65
-    },
     "MSFT": {
       "entryDate": "2026-11-04T20:17:31.492Z",
       "entryMomentum": 69
@@ -31,6 +27,10 @@
     "GME": {
       "entryDate": "2026-11-04T20:17:31.492Z",
       "entryMomentum": 66
+    },
+    "MRNA": {
+      "entryDate": "2026-11-05T00:58:55.388Z",
+      "entryMomentum": 89
     }
   },
   "closedTrades": [
@@ -1873,13 +1873,21 @@
       "exitDate": "2026-11-04T20:17:31.492Z",
       "returnPct": -10.8,
       "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "AAPL",
+      "name": "Apple",
+      "entryDate": "2026-11-04T00:31:55.925Z",
+      "exitDate": "2026-11-05T00:58:55.388Z",
+      "returnPct": 1.63,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 230,
-    "wins": 92,
-    "winRatePct": 40,
+    "totalTrades": 231,
+    "wins": 93,
+    "winRatePct": 40.3,
     "avgReturnPct": 0.16,
-    "netProfitUsd": 358
+    "netProfitUsd": 374.3
   }
 }
