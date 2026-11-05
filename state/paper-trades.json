@@ -4,25 +4,9 @@
       "entryDate": "2026-10-27T18:33:42.238Z",
       "entryMomentum": 70
     },
-    "AMC": {
-      "entryDate": "2026-10-27T18:33:42.238Z",
-      "entryMomentum": 68
-    },
-    "IBM": {
-      "entryDate": "2026-10-30T22:34:48.090Z",
-      "entryMomentum": 65
-    },
     "PFE": {
       "entryDate": "2026-10-30T22:34:48.090Z",
       "entryMomentum": 70
-    },
-    "DNA": {
-      "entryDate": "2026-11-02T22:10:23.289Z",
-      "entryMomentum": 65
-    },
-    "MSFT": {
-      "entryDate": "2026-11-04T20:17:31.492Z",
-      "entryMomentum": 69
     },
     "GME": {
       "entryDate": "2026-11-04T20:17:31.492Z",
@@ -31,6 +15,10 @@
     "MRNA": {
       "entryDate": "2026-11-05T00:58:55.388Z",
       "entryMomentum": 89
+    },
+    "AAPL": {
+      "entryDate": "2026-11-05T20:28:29.928Z",
+      "entryMomentum": 66
     }
   },
   "closedTrades": [
@@ -1881,13 +1869,45 @@
       "exitDate": "2026-11-05T00:58:55.388Z",
       "returnPct": 1.63,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "IBM",
+      "name": "IBM",
+      "entryDate": "2026-10-30T22:34:48.090Z",
+      "exitDate": "2026-11-05T20:28:29.928Z",
+      "returnPct": -4.01,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "DNA",
+      "name": "Ginkgo Bioworks",
+      "entryDate": "2026-11-02T22:10:23.289Z",
+      "exitDate": "2026-11-05T20:28:29.928Z",
+      "returnPct": -3.15,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMC",
+      "name": "AMC Entertainment",
+      "entryDate": "2026-10-27T18:33:42.238Z",
+      "exitDate": "2026-11-05T20:28:29.928Z",
+      "returnPct": 4.03,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-11-04T20:17:31.492Z",
+      "exitDate": "2026-11-05T20:28:29.928Z",
+      "returnPct": -4.18,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 231,
-    "wins": 93,
-    "winRatePct": 40.3,
-    "avgReturnPct": 0.16,
-    "netProfitUsd": 374.3
+    "totalTrades": 235,
+    "wins": 94,
+    "winRatePct": 40,
+    "avgReturnPct": 0.13,
+    "netProfitUsd": 301.2
   }
 }
