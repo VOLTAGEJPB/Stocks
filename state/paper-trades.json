@@ -1,9 +1,5 @@
 {
   "openPositions": {
-    "BAH": {
-      "entryDate": "2026-10-27T18:33:42.238Z",
-      "entryMomentum": 70
-    },
     "PFE": {
       "entryDate": "2026-10-30T22:34:48.090Z",
       "entryMomentum": 70
@@ -23,6 +19,10 @@
     "MSFT": {
       "entryDate": "2026-11-06T01:03:58.982Z",
       "entryMomentum": 70
+    },
+    "MRNA": {
+      "entryDate": "2026-11-06T19:51:18.756Z",
+      "entryMomentum": 93
     }
   },
   "closedTrades": [
@@ -1913,13 +1913,21 @@
       "exitDate": "2026-11-06T01:03:58.982Z",
       "returnPct": -8.78,
       "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "BAH",
+      "name": "Booz Allen Hamilton",
+      "entryDate": "2026-10-27T18:33:42.238Z",
+      "exitDate": "2026-11-06T19:51:18.756Z",
+      "returnPct": 2.34,
+      "exitReason": "Held 10+ days"
     }
   ],
   "stats": {
-    "totalTrades": 236,
-    "wins": 94,
-    "winRatePct": 39.8,
-    "avgReturnPct": 0.09,
-    "netProfitUsd": 213.4
+    "totalTrades": 237,
+    "wins": 95,
+    "winRatePct": 40.1,
+    "avgReturnPct": 0.1,
+    "netProfitUsd": 236.8
   }
 }
