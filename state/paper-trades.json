@@ -12,10 +12,6 @@
       "entryDate": "2026-11-06T01:03:58.982Z",
       "entryMomentum": 84
     },
-    "MSFT": {
-      "entryDate": "2026-11-06T01:03:58.982Z",
-      "entryMomentum": 70
-    },
     "MRNA": {
       "entryDate": "2026-11-06T19:51:18.756Z",
       "entryMomentum": 93
@@ -23,6 +19,10 @@
     "DNA": {
       "entryDate": "2026-11-09T22:52:39.903Z",
       "entryMomentum": 79
+    },
+    "UAL": {
+      "entryDate": "2026-11-10T20:15:44.445Z",
+      "entryMomentum": 67
     }
   },
   "closedTrades": [
@@ -1929,13 +1929,21 @@
       "exitDate": "2026-11-09T22:52:39.903Z",
       "returnPct": -4.27,
       "exitReason": "Held 10+ days"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-11-06T01:03:58.982Z",
+      "exitDate": "2026-11-10T20:15:44.445Z",
+      "returnPct": 1.5,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 238,
-    "wins": 95,
-    "winRatePct": 39.9,
-    "avgReturnPct": 0.08,
-    "netProfitUsd": 194.1
+    "totalTrades": 239,
+    "wins": 96,
+    "winRatePct": 40.2,
+    "avgReturnPct": 0.09,
+    "netProfitUsd": 209.1
   }
 }
