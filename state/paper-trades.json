@@ -16,10 +16,6 @@
       "entryDate": "2026-11-06T19:51:18.756Z",
       "entryMomentum": 93
     },
-    "DNA": {
-      "entryDate": "2026-11-09T22:52:39.903Z",
-      "entryMomentum": 79
-    },
     "UAL": {
       "entryDate": "2026-11-10T20:15:44.445Z",
       "entryMomentum": 67
@@ -1941,13 +1937,21 @@
       "exitDate": "2026-11-10T20:15:44.445Z",
       "returnPct": 1.5,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "DNA",
+      "name": "Ginkgo Bioworks",
+      "entryDate": "2026-11-09T22:52:39.903Z",
+      "exitDate": "2026-11-11T20:00:20.846Z",
+      "returnPct": -13.24,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 239,
+    "totalTrades": 240,
     "wins": 96,
-    "winRatePct": 40.2,
-    "avgReturnPct": 0.09,
-    "netProfitUsd": 209.1
+    "winRatePct": 40,
+    "avgReturnPct": 0.03,
+    "netProfitUsd": 76.7
   }
 }
