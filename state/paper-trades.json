@@ -8,17 +8,13 @@
       "entryDate": "2026-11-06T01:03:58.982Z",
       "entryMomentum": 84
     },
-    "UAL": {
-      "entryDate": "2026-11-10T20:15:44.445Z",
-      "entryMomentum": 67
+    "AAPL": {
+      "entryDate": "2026-11-12T20:39:28.063Z",
+      "entryMomentum": 71
     },
-    "MSFT": {
-      "entryDate": "2026-11-11T00:46:31.229Z",
-      "entryMomentum": 67
-    },
-    "AMD": {
-      "entryDate": "2026-11-12T01:57:47.032Z",
-      "entryMomentum": 70
+    "MRNA": {
+      "entryDate": "2026-11-12T20:39:28.063Z",
+      "entryMomentum": 79
     }
   },
   "closedTrades": [
@@ -1957,13 +1953,37 @@
       "exitDate": "2026-11-12T01:57:47.032Z",
       "returnPct": -6.88,
       "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "MSFT",
+      "name": "Microsoft",
+      "entryDate": "2026-11-11T00:46:31.229Z",
+      "exitDate": "2026-11-12T20:39:28.063Z",
+      "returnPct": -2.29,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMD",
+      "name": "Advanced Micro Devices",
+      "entryDate": "2026-11-12T01:57:47.032Z",
+      "exitDate": "2026-11-12T20:39:28.063Z",
+      "returnPct": 2.15,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "UAL",
+      "name": "United Airlines",
+      "entryDate": "2026-11-10T20:15:44.445Z",
+      "exitDate": "2026-11-12T20:39:28.063Z",
+      "returnPct": -6.82,
+      "exitReason": "Stop-loss hit (-6%)"
     }
   ],
   "stats": {
-    "totalTrades": 242,
-    "wins": 97,
-    "winRatePct": 40.1,
-    "avgReturnPct": 0.02,
-    "netProfitUsd": 38.8
+    "totalTrades": 245,
+    "wins": 98,
+    "winRatePct": 40,
+    "avgReturnPct": -0.01,
+    "netProfitUsd": -30.8
   }
 }
