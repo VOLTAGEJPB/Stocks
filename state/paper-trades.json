@@ -15,10 +15,6 @@
     "MRNA": {
       "entryDate": "2026-11-12T20:39:28.063Z",
       "entryMomentum": 79
-    },
-    "AMD": {
-      "entryDate": "2026-11-13T01:41:22.815Z",
-      "entryMomentum": 79
     }
   },
   "closedTrades": [
@@ -1981,13 +1977,21 @@
       "exitDate": "2026-11-12T20:39:28.063Z",
       "returnPct": -6.82,
       "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "AMD",
+      "name": "Advanced Micro Devices",
+      "entryDate": "2026-11-13T01:41:22.815Z",
+      "exitDate": "2026-11-13T20:20:32.453Z",
+      "returnPct": -6.09,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 245,
+    "totalTrades": 246,
     "wins": 98,
-    "winRatePct": 40,
-    "avgReturnPct": -0.01,
-    "netProfitUsd": -30.8
+    "winRatePct": 39.8,
+    "avgReturnPct": -0.04,
+    "netProfitUsd": -91.7
   }
 }
