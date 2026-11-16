@@ -1,13 +1,5 @@
 {
   "openPositions": {
-    "GME": {
-      "entryDate": "2026-11-04T20:17:31.492Z",
-      "entryMomentum": 66
-    },
-    "AMC": {
-      "entryDate": "2026-11-06T01:03:58.982Z",
-      "entryMomentum": 84
-    },
     "AAPL": {
       "entryDate": "2026-11-12T20:39:28.063Z",
       "entryMomentum": 71
@@ -15,6 +7,10 @@
     "AMD": {
       "entryDate": "2026-11-14T00:57:50.041Z",
       "entryMomentum": 75
+    },
+    "MRNA": {
+      "entryDate": "2026-11-16T22:45:03.365Z",
+      "entryMomentum": 67
     }
   },
   "closedTrades": [
@@ -1993,13 +1989,29 @@
       "exitDate": "2026-11-14T00:57:50.041Z",
       "returnPct": -6.86,
       "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "AMC",
+      "name": "AMC Entertainment",
+      "entryDate": "2026-11-06T01:03:58.982Z",
+      "exitDate": "2026-11-16T22:45:03.365Z",
+      "returnPct": 3.46,
+      "exitReason": "Held 10+ days"
+    },
+    {
+      "sym": "GME",
+      "name": "GameStop",
+      "entryDate": "2026-11-04T20:17:31.492Z",
+      "exitDate": "2026-11-16T22:45:03.365Z",
+      "returnPct": 1.96,
+      "exitReason": "Held 10+ days"
     }
   ],
   "stats": {
-    "totalTrades": 247,
-    "wins": 98,
-    "winRatePct": 39.7,
-    "avgReturnPct": -0.06,
-    "netProfitUsd": -160.3
+    "totalTrades": 249,
+    "wins": 100,
+    "winRatePct": 40.2,
+    "avgReturnPct": -0.04,
+    "netProfitUsd": -106.1
   }
 }
