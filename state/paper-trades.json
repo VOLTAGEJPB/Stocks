@@ -1,16 +1,8 @@
 {
   "openPositions": {
-    "AAPL": {
-      "entryDate": "2026-11-12T20:39:28.063Z",
-      "entryMomentum": 71
-    },
     "AMD": {
       "entryDate": "2026-11-14T00:57:50.041Z",
       "entryMomentum": 75
-    },
-    "MRNA": {
-      "entryDate": "2026-11-16T22:45:03.365Z",
-      "entryMomentum": 67
     },
     "AMC": {
       "entryDate": "2026-11-17T21:30:57.261Z",
@@ -2013,13 +2005,29 @@
       "exitDate": "2026-11-16T22:45:03.365Z",
       "returnPct": 1.96,
       "exitReason": "Held 10+ days"
+    },
+    {
+      "sym": "AAPL",
+      "name": "Apple",
+      "entryDate": "2026-11-12T20:39:28.063Z",
+      "exitDate": "2026-11-18T21:06:45.964Z",
+      "returnPct": -0.84,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "MRNA",
+      "name": "Moderna",
+      "entryDate": "2026-11-16T22:45:03.365Z",
+      "exitDate": "2026-11-18T21:06:45.964Z",
+      "returnPct": -7.15,
+      "exitReason": "Stop-loss hit (-6%)"
     }
   ],
   "stats": {
-    "totalTrades": 249,
+    "totalTrades": 251,
     "wins": 100,
-    "winRatePct": 40.2,
-    "avgReturnPct": -0.04,
-    "netProfitUsd": -106.1
+    "winRatePct": 39.8,
+    "avgReturnPct": -0.07,
+    "netProfitUsd": -186
   }
 }
