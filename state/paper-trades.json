@@ -1,13 +1,5 @@
 {
   "openPositions": {
-    "AMD": {
-      "entryDate": "2026-11-14T00:57:50.041Z",
-      "entryMomentum": 75
-    },
-    "AMC": {
-      "entryDate": "2026-11-17T21:30:57.261Z",
-      "entryMomentum": 74
-    },
     "GME": {
       "entryDate": "2026-11-17T21:30:57.261Z",
       "entryMomentum": 71
@@ -2021,13 +2013,29 @@
       "exitDate": "2026-11-18T21:06:45.964Z",
       "returnPct": -7.15,
       "exitReason": "Stop-loss hit (-6%)"
+    },
+    {
+      "sym": "AMC",
+      "name": "AMC Entertainment",
+      "entryDate": "2026-11-17T21:30:57.261Z",
+      "exitDate": "2026-11-19T21:11:28.706Z",
+      "returnPct": -13.08,
+      "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "AMD",
+      "name": "Advanced Micro Devices",
+      "entryDate": "2026-11-14T00:57:50.041Z",
+      "exitDate": "2026-11-19T21:11:28.706Z",
+      "returnPct": -3.26,
+      "exitReason": "Risk Watch flagged"
     }
   ],
   "stats": {
-    "totalTrades": 251,
+    "totalTrades": 253,
     "wins": 100,
-    "winRatePct": 39.8,
-    "avgReturnPct": -0.07,
-    "netProfitUsd": -186
+    "winRatePct": 39.5,
+    "avgReturnPct": -0.14,
+    "netProfitUsd": -349.4
   }
 }
