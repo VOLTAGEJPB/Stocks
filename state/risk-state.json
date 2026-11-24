@@ -1,38 +1,38 @@
 {
   "TSLA": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-11-20T20:56:10.377Z",
-    "lastSeverity": 49,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 4
   },
   "IBM": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 1
+    "flagged": true,
+    "lastAlertAt": "2026-11-24T00:35:57.296Z",
+    "lastSeverity": 54,
+    "lastNegCount": 3
   },
   "SKHY": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-11-21T02:00:13.013Z",
-    "lastSeverity": 92,
-    "lastNegCount": 6
+    "lastAlertAt": "2026-11-24T00:35:57.296Z",
+    "lastSeverity": 80,
+    "lastNegCount": 10
   },
   "MU": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-11-20T20:56:10.377Z",
-    "lastSeverity": 91,
-    "lastNegCount": 11
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 5
   },
   "LRCX": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-11-20T20:56:10.377Z",
-    "lastSeverity": 67,
-    "lastNegCount": 2
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 3
   },
   "BAH": {
     "seen": true,
@@ -43,177 +43,177 @@
   },
   "DNA": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-11-20T20:56:10.377Z",
-    "lastSeverity": 65,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 0
   },
   "AMC": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-11-19T21:11:28.706Z",
-    "lastSeverity": 50,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
     "lastNegCount": 0
   },
   "NVDA": {
-    "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-11-20T02:28:53.396Z",
-    "lastSeverity": 86,
-    "lastNegCount": 9
-  },
-  "AAPL": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
     "lastNegCount": 3
   },
-  "MSFT": {
-    "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 2
-  },
-  "GOOGL": {
+  "AAPL": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-11-21T02:00:13.013Z",
-    "lastSeverity": 79,
+    "lastAlertAt": "2026-11-24T00:35:57.296Z",
+    "lastSeverity": 57,
     "lastNegCount": 10
   },
-  "AMZN": {
+  "MSFT": {
     "seen": true,
-    "flagged": false,
-    "lastAlertAt": null,
-    "lastSeverity": null,
-    "lastNegCount": 1
+    "flagged": true,
+    "lastAlertAt": "2026-11-24T00:35:57.296Z",
+    "lastSeverity": 56,
+    "lastNegCount": 4
   },
-  "META": {
+  "GOOGL": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
     "lastNegCount": 4
   },
-  "AMD": {
+  "AMZN": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-11-21T02:00:13.013Z",
-    "lastSeverity": 78,
-    "lastNegCount": 8
+    "lastAlertAt": "2026-11-24T00:35:57.296Z",
+    "lastSeverity": 52,
+    "lastNegCount": 6
+  },
+  "META": {
+    "seen": true,
+    "flagged": true,
+    "lastAlertAt": "2026-11-24T00:35:57.296Z",
+    "lastSeverity": 71,
+    "lastNegCount": 10
+  },
+  "AMD": {
+    "seen": true,
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 6
   },
   "INTC": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-11-20T20:56:10.377Z",
-    "lastSeverity": 83,
-    "lastNegCount": 5
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 3
   },
   "AVGO": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-11-20T20:56:10.377Z",
-    "lastSeverity": 83,
-    "lastNegCount": 7
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 6
   },
   "ARM": {
     "seen": true,
     "flagged": true,
     "lastAlertAt": "2026-11-21T02:00:13.013Z",
     "lastSeverity": 80,
-    "lastNegCount": 2
+    "lastNegCount": 4
   },
   "SMCI": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-11-21T02:00:13.013Z",
-    "lastSeverity": 91,
-    "lastNegCount": 6
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 7
   },
   "TSM": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-11-20T20:56:10.377Z",
-    "lastSeverity": 84,
-    "lastNegCount": 4
+    "lastAlertAt": "2026-11-24T00:35:57.296Z",
+    "lastSeverity": 76,
+    "lastNegCount": 5
   },
   "PLTR": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-11-21T02:00:13.013Z",
-    "lastSeverity": 68,
-    "lastNegCount": 4
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 5
   },
   "COIN": {
     "seen": true,
     "flagged": true,
     "lastAlertAt": "2026-11-20T20:56:10.377Z",
     "lastSeverity": 81,
-    "lastNegCount": 2
+    "lastNegCount": 7
   },
   "MSTR": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-11-21T02:00:13.013Z",
-    "lastSeverity": 92,
-    "lastNegCount": 6
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 7
   },
   "RIVN": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-11-20T20:56:10.377Z",
-    "lastSeverity": 74,
-    "lastNegCount": 2
+    "lastAlertAt": "2026-11-24T00:35:57.296Z",
+    "lastSeverity": 71,
+    "lastNegCount": 5
   },
   "LCID": {
     "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-11-20T20:56:10.377Z",
-    "lastSeverity": 74,
-    "lastNegCount": 2
+    "flagged": false,
+    "lastAlertAt": null,
+    "lastSeverity": null,
+    "lastNegCount": 1
   },
   "GME": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 1
+    "lastNegCount": 2
   },
   "MRNA": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 3
+    "lastNegCount": 4
   },
   "PFE": {
+    "seen": true,
+    "flagged": true,
+    "lastAlertAt": "2026-11-24T00:35:57.296Z",
+    "lastSeverity": 64,
+    "lastNegCount": 5
+  },
+  "UAL": {
     "seen": true,
     "flagged": false,
     "lastAlertAt": null,
     "lastSeverity": null,
-    "lastNegCount": 4
-  },
-  "UAL": {
-    "seen": true,
-    "flagged": true,
-    "lastAlertAt": "2026-11-20T20:56:10.377Z",
-    "lastSeverity": 62,
     "lastNegCount": 1
   },
   "OXY": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-11-21T02:00:13.013Z",
-    "lastSeverity": 74,
-    "lastNegCount": 5
+    "lastAlertAt": "2026-11-24T00:35:57.296Z",
+    "lastSeverity": 67,
+    "lastNegCount": 2
   },
   "APLD": {
     "seen": true,
     "flagged": true,
-    "lastAlertAt": "2026-11-21T02:00:13.013Z",
-    "lastSeverity": 100,
-    "lastNegCount": 4
+    "lastAlertAt": "2026-11-24T00:35:57.296Z",
+    "lastSeverity": 83,
+    "lastNegCount": 6
   }
 }
