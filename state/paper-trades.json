@@ -1,9 +1,5 @@
 {
   "openPositions": {
-    "GME": {
-      "entryDate": "2026-11-17T21:30:57.261Z",
-      "entryMomentum": 71
-    },
     "MRNA": {
       "entryDate": "2026-11-24T00:35:57.296Z",
       "entryMomentum": 72
@@ -2041,13 +2037,21 @@
       "exitDate": "2026-11-19T21:11:28.706Z",
       "returnPct": -3.26,
       "exitReason": "Risk Watch flagged"
+    },
+    {
+      "sym": "GME",
+      "name": "GameStop",
+      "entryDate": "2026-11-17T21:30:57.261Z",
+      "exitDate": "2026-11-27T21:49:07.162Z",
+      "returnPct": 3.13,
+      "exitReason": "Held 10+ days"
     }
   ],
   "stats": {
-    "totalTrades": 253,
-    "wins": 100,
-    "winRatePct": 39.5,
-    "avgReturnPct": -0.14,
-    "netProfitUsd": -349.4
+    "totalTrades": 254,
+    "wins": 101,
+    "winRatePct": 39.8,
+    "avgReturnPct": -0.13,
+    "netProfitUsd": -318.1
   }
 }
